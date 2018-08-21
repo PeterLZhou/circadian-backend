@@ -1,0 +1,10 @@
+type User {
+  id: ID! @unique
+  username: String!
+}
+
+type Workout {
+  id: ID! @unique
+  user: User
+  description: String
+}
