@@ -1,0 +1,11 @@
+type User {
+  id: ID! @unique
+  email: String!
+  password: String!
+}
+
+type Workout {
+  id: ID! @unique
+  user: User
+  description: String
+}

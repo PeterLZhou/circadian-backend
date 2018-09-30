@@ -1,0 +1,10 @@
+endpoint: https://circadian-backend.herokuapp.com/circadian-backend/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma
+
+hooks:
+  post-deploy:
+    - prisma generate
