@@ -1,16 +1,12 @@
-import { GraphQLResolveInfo } from 'graphql';
-import { IContext } from '../types';
-import { ID_Output, Query } from '../generated/api';
+import { QueryResolvers } from '../generated/graphqlgen'
+import { getUserId } from '../utils'
 
-export const queries: any = {
-  user: (parent: any, args: any, context: any, info: any) => {
-    return context.db.query.user({
-      where: {
-        id: args.id
-      }
-    });
+export const Query: QueryResolvers.Type = {
+  me: (parent, args, ctx) => {
+    return ctx.db.user({ id: getUserId(ctx) })
   },
-  users: (parent: any, args: any, context: any, info: any) => {
-    return context.db.query.users();
-  }
-};
+  feed: (parent, args, ctx) => ctx.db.posts({ where: { isPublished: true } }),
+  drafts: (parent, args, ctx) =>
+    ctx.db.posts({ where: { isPublished: false } }),
+  post: (parent, { id }, ctx) => ctx.db.post({ id }),
+}
