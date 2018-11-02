@@ -1,7 +1,8 @@
 {
   "name": "circadian-backend",
   "scripts": {
-    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
+    "start": "npx dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
+    "prod": "ts-node src/index.ts",
     "dev": "npm-run-all --parallel gen start playground",
     "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
     "gen": "graphql prepare && graphql codegen",
@@ -10,7 +11,8 @@
     "updatedatabase": "prisma deploy"
   },
   "dependencies": {
-    "bcryptjs": "2.4.3",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.0.0",
     "graphql-yoga": "1.16.1",
     "jsonwebtoken": "8.3.0",
     "prisma-binding": "2.1.4"

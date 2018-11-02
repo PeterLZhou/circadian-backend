@@ -1,5 +1,10 @@
-endpoint: http://localhost:4466
-datamodel: datamodel.graphql
+endpoint: https://circadian-backend.herokuapp.com/circadian-backend/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma
+
 hooks:
   post-deploy:
-    - graphql get-schema -p prisma
+    - prisma generate

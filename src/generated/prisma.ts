@@ -143,7 +143,12 @@ type Subscription {
 
 type User implements Node {
   id: ID!
+<<<<<<< HEAD
   username: String!
+=======
+  email: String!
+  password: String!
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 """A connection to a list of items."""
@@ -157,7 +162,12 @@ type UserConnection {
 }
 
 input UserCreateInput {
+<<<<<<< HEAD
   username: String!
+=======
+  email: String!
+  password: String!
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 input UserCreateOneInput {
@@ -177,8 +187,15 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+<<<<<<< HEAD
   username_ASC
   username_DESC
+=======
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -187,7 +204,12 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+<<<<<<< HEAD
   username: String!
+=======
+  email: String!
+  password: String!
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 type UserSubscriptionPayload {
@@ -230,11 +252,21 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+<<<<<<< HEAD
   username: String
 }
 
 input UserUpdateInput {
   username: String
+=======
+  email: String
+  password: String
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 input UserUpdateOneInput {
@@ -300,6 +332,7 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+<<<<<<< HEAD
   username: String
 
   """All values that are not equal to given value."""
@@ -340,6 +373,88 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   username_not_ends_with: String
+=======
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 input UserWhereUniqueInput {
@@ -554,8 +669,15 @@ export type WorkoutOrderByInput =   'id_ASC' |
 
 export type UserOrderByInput =   'id_ASC' |
   'id_DESC' |
+<<<<<<< HEAD
   'username_ASC' |
   'username_DESC' |
+=======
+  'email_ASC' |
+  'email_DESC' |
+  'password_ASC' |
+  'password_DESC' |
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -611,7 +733,12 @@ export interface WorkoutWhereInput {
 }
 
 export interface UserUpdateDataInput {
+<<<<<<< HEAD
   username?: String
+=======
+  email?: String
+  password?: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 export interface WorkoutSubscriptionWhereInput {
@@ -626,7 +753,12 @@ export interface WorkoutSubscriptionWhereInput {
 }
 
 export interface UserUpdateInput {
+<<<<<<< HEAD
   username?: String
+=======
+  email?: String
+  password?: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 export interface UserCreateOneInput {
@@ -635,7 +767,12 @@ export interface UserCreateOneInput {
 }
 
 export interface UserCreateInput {
+<<<<<<< HEAD
   username: String
+=======
+  email: String
+  password: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 export interface WorkoutUpdateInput {
@@ -670,6 +807,7 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+<<<<<<< HEAD
   username?: String
   username_not?: String
   username_in?: String[] | String
@@ -684,6 +822,36 @@ export interface UserWhereInput {
   username_not_starts_with?: String
   username_ends_with?: String
   username_not_ends_with?: String
+=======
+  email?: String
+  email_not?: String
+  email_in?: String[] | String
+  email_not_in?: String[] | String
+  email_lt?: String
+  email_lte?: String
+  email_gt?: String
+  email_gte?: String
+  email_contains?: String
+  email_not_contains?: String
+  email_starts_with?: String
+  email_not_starts_with?: String
+  email_ends_with?: String
+  email_not_ends_with?: String
+  password?: String
+  password_not?: String
+  password_in?: String[] | String
+  password_not_in?: String[] | String
+  password_lt?: String
+  password_lte?: String
+  password_gt?: String
+  password_gte?: String
+  password_contains?: String
+  password_not_contains?: String
+  password_starts_with?: String
+  password_not_starts_with?: String
+  password_ends_with?: String
+  password_not_ends_with?: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 export interface UserWhereUniqueInput {
@@ -724,7 +892,12 @@ export interface BatchPayload {
 
 export interface UserPreviousValues {
   id: ID_Output
+<<<<<<< HEAD
   username: String
+=======
+  email: String
+  password: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 export interface AggregateUser {
@@ -791,7 +964,12 @@ export interface UserSubscriptionPayload {
 
 export interface User extends Node {
   id: ID_Output
+<<<<<<< HEAD
   username: String
+=======
+  email: String
+  password: String
+>>>>>>> f6afa5c8ec78c243715f1eb07d72752e549a2127
 }
 
 /*
