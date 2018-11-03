@@ -248,7 +248,6 @@ type Subscription {
 
 type User {
   id: ID!
-  name: String!
   email: String!
   password: String!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
@@ -263,7 +262,6 @@ type UserConnection {
 }
 
 input UserCreateInput {
-  name: String!
   email: String!
   password: String!
   posts: PostCreateManyWithoutAuthorInput
@@ -275,7 +273,6 @@ input UserCreateOneWithoutPostsInput {
 }
 
 input UserCreateWithoutPostsInput {
-  name: String!
   email: String!
   password: String!
 }
@@ -288,8 +285,6 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
   email_ASC
   email_DESC
   password_ASC
@@ -302,7 +297,6 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  name: String!
   email: String!
   password: String!
   createdAt: DateTime!
@@ -328,7 +322,6 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
-  name: String
   email: String
   password: String
   posts: PostUpdateManyWithoutAuthorInput
@@ -342,7 +335,6 @@ input UserUpdateOneRequiredWithoutPostsInput {
 }
 
 input UserUpdateWithoutPostsDataInput {
-  name: String
   email: String
   password: String
 }
@@ -367,20 +359,6 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]

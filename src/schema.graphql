@@ -11,7 +11,7 @@ type Mutation {
   createDraft(title: String!, content: String!, authorEmail: String!): Post!
   deletePost(id: ID!): Post
   publish(id: ID!): Post
-  signup(name: String!, email: String!, password: String!): AuthPayload!
+  signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
 }
 
@@ -33,7 +33,6 @@ type Post {
 type User {
   id: ID!
   email: String!
-  name: String!
   posts: [Post!]!
   createdAt: DateTime!
 }
