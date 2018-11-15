@@ -33,25 +33,5 @@ export const Mutation: MutationResolvers.Type = {
       token: sign({ userId: user.id }, APP_SECRET),
       user
     };
-  },
-  createDraft: async (parent, { title, content, authorEmail }, ctx) => {
-    const email = authorEmail;
-
-    return ctx.db.createPost({
-      title,
-      content,
-      author: { connect: { email } }
-    });
-  },
-
-  deletePost: async (parent, { id }, ctx) => {
-    return ctx.db.deletePost({ id });
-  },
-
-  publish: async (parent, { id }, ctx) => {
-    return ctx.db.updatePost({
-      where: { id },
-      data: { isPublished: true }
-    });
   }
 };

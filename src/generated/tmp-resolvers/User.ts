@@ -6,7 +6,7 @@ import { UserResolvers } from "../graphqlgen";
 export const User: UserResolvers.Type = {
   ...UserResolvers.defaultResolvers,
 
-  posts: parent => {
+  googleFitAccount: parent => {
     throw new Error("Resolver not implemented");
   }
 };

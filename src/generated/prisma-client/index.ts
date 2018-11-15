@@ -11,7 +11,10 @@ type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  post: (where?: PostWhereInput) => Promise<boolean>;
+  googleFitAccessToken: (
+    where?: GoogleFitAccessTokenWhereInput
+  ) => Promise<boolean>;
+  googleFitAccount: (where?: GoogleFitAccountWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -34,29 +37,56 @@ export interface Prisma {
    * Queries
    */
 
-  post: (where: PostWhereUniqueInput) => Post;
-  posts: (
+  googleFitAccessToken: (
+    where: GoogleFitAccessTokenWhereUniqueInput
+  ) => GoogleFitAccessToken;
+  googleFitAccessTokens: (
     args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
+      where?: GoogleFitAccessTokenWhereInput;
+      orderBy?: GoogleFitAccessTokenOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => FragmentableArray<PostNode>;
-  postsConnection: (
+  ) => FragmentableArray<GoogleFitAccessTokenNode>;
+  googleFitAccessTokensConnection: (
     args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
+      where?: GoogleFitAccessTokenWhereInput;
+      orderBy?: GoogleFitAccessTokenOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => PostConnection;
+  ) => GoogleFitAccessTokenConnection;
+  googleFitAccount: (
+    where: GoogleFitAccountWhereUniqueInput
+  ) => GoogleFitAccount;
+  googleFitAccounts: (
+    args?: {
+      where?: GoogleFitAccountWhereInput;
+      orderBy?: GoogleFitAccountOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => FragmentableArray<GoogleFitAccountNode>;
+  googleFitAccountsConnection: (
+    args?: {
+      where?: GoogleFitAccountWhereInput;
+      orderBy?: GoogleFitAccountOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => GoogleFitAccountConnection;
   user: (where: UserWhereUniqueInput) => User;
   users: (
     args?: {
@@ -86,22 +116,62 @@ export interface Prisma {
    * Mutations
    */
 
-  createPost: (data: PostCreateInput) => Post;
-  updatePost: (
-    args: { data: PostUpdateInput; where: PostWhereUniqueInput }
-  ) => Post;
-  updateManyPosts: (
-    args: { data: PostUpdateInput; where?: PostWhereInput }
-  ) => BatchPayload;
-  upsertPost: (
+  createGoogleFitAccessToken: (
+    data: GoogleFitAccessTokenCreateInput
+  ) => GoogleFitAccessToken;
+  updateGoogleFitAccessToken: (
     args: {
-      where: PostWhereUniqueInput;
-      create: PostCreateInput;
-      update: PostUpdateInput;
+      data: GoogleFitAccessTokenUpdateInput;
+      where: GoogleFitAccessTokenWhereUniqueInput;
     }
-  ) => Post;
-  deletePost: (where: PostWhereUniqueInput) => Post;
-  deleteManyPosts: (where?: PostWhereInput) => BatchPayload;
+  ) => GoogleFitAccessToken;
+  updateManyGoogleFitAccessTokens: (
+    args: {
+      data: GoogleFitAccessTokenUpdateInput;
+      where?: GoogleFitAccessTokenWhereInput;
+    }
+  ) => BatchPayload;
+  upsertGoogleFitAccessToken: (
+    args: {
+      where: GoogleFitAccessTokenWhereUniqueInput;
+      create: GoogleFitAccessTokenCreateInput;
+      update: GoogleFitAccessTokenUpdateInput;
+    }
+  ) => GoogleFitAccessToken;
+  deleteGoogleFitAccessToken: (
+    where: GoogleFitAccessTokenWhereUniqueInput
+  ) => GoogleFitAccessToken;
+  deleteManyGoogleFitAccessTokens: (
+    where?: GoogleFitAccessTokenWhereInput
+  ) => BatchPayload;
+  createGoogleFitAccount: (
+    data: GoogleFitAccountCreateInput
+  ) => GoogleFitAccount;
+  updateGoogleFitAccount: (
+    args: {
+      data: GoogleFitAccountUpdateInput;
+      where: GoogleFitAccountWhereUniqueInput;
+    }
+  ) => GoogleFitAccount;
+  updateManyGoogleFitAccounts: (
+    args: {
+      data: GoogleFitAccountUpdateInput;
+      where?: GoogleFitAccountWhereInput;
+    }
+  ) => BatchPayload;
+  upsertGoogleFitAccount: (
+    args: {
+      where: GoogleFitAccountWhereUniqueInput;
+      create: GoogleFitAccountCreateInput;
+      update: GoogleFitAccountUpdateInput;
+    }
+  ) => GoogleFitAccount;
+  deleteGoogleFitAccount: (
+    where: GoogleFitAccountWhereUniqueInput
+  ) => GoogleFitAccount;
+  deleteManyGoogleFitAccounts: (
+    where?: GoogleFitAccountWhereInput
+  ) => BatchPayload;
   createUser: (data: UserCreateInput) => User;
   updateUser: (
     args: { data: UserUpdateInput; where: UserWhereUniqueInput }
@@ -127,9 +197,12 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  post: (
-    where?: PostSubscriptionWhereInput
-  ) => PostSubscriptionPayloadSubscription;
+  googleFitAccessToken: (
+    where?: GoogleFitAccessTokenSubscriptionWhereInput
+  ) => GoogleFitAccessTokenSubscriptionPayloadSubscription;
+  googleFitAccount: (
+    where?: GoogleFitAccountSubscriptionWhereInput
+  ) => GoogleFitAccountSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -143,19 +216,31 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type PostOrderByInput =
+export type GoogleFitAccessTokenOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "account_id_ASC"
+  | "account_id_DESC"
+  | "value_ASC"
+  | "value_DESC"
+  | "expiration_ASC"
+  | "expiration_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "isPublished_ASC"
-  | "isPublished_DESC"
-  | "title_ASC"
-  | "title_DESC"
-  | "content_ASC"
-  | "content_DESC";
+  | "updatedAt_DESC";
+
+export type GoogleFitAccountOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "refreshToken_ASC"
+  | "refreshToken_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -169,45 +254,81 @@ export type UserOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
-
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
+export interface UserCreateInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneInput;
 }
 
-export type PostWhereUniqueInput = AtLeastOne<{
+export interface GoogleFitAccessTokenCreateInput {
+  account_id: ID_Input;
+  value: String;
+  expiration: DateTimeInput;
+}
+
+export interface GoogleFitAccessTokenUpsertNestedInput {
+  update: GoogleFitAccessTokenUpdateDataInput;
+  create: GoogleFitAccessTokenCreateInput;
+}
+
+export type GoogleFitAccessTokenWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
+}>;
+
+export interface GoogleFitAccessTokenUpdateDataInput {
+  account_id?: ID_Input;
+  value?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface GoogleFitAccessTokenSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: GoogleFitAccessTokenWhereInput;
+  AND?:
+    | GoogleFitAccessTokenSubscriptionWhereInput[]
+    | GoogleFitAccessTokenSubscriptionWhereInput;
+  OR?:
+    | GoogleFitAccessTokenSubscriptionWhereInput[]
+    | GoogleFitAccessTokenSubscriptionWhereInput;
+  NOT?:
+    | GoogleFitAccessTokenSubscriptionWhereInput[]
+    | GoogleFitAccessTokenSubscriptionWhereInput;
+}
+
+export interface GoogleFitAccessTokenUpdateOneRequiredInput {
+  create?: GoogleFitAccessTokenCreateInput;
+  update?: GoogleFitAccessTokenUpdateDataInput;
+  upsert?: GoogleFitAccessTokenUpsertNestedInput;
+  connect?: GoogleFitAccessTokenWhereUniqueInput;
+}
+
+export interface GoogleFitAccountUpdateDataInput {
+  refreshToken?: String;
+  accessToken?: GoogleFitAccessTokenUpdateOneRequiredInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
 }>;
 
 export interface UserUpdateInput {
   email?: String;
   password?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
+  googleFitAccount?: GoogleFitAccountUpdateOneInput;
 }
 
-export interface UserUpdateWithoutPostsDataInput {
-  email?: String;
-  password?: String;
+export interface GoogleFitAccountUpdateInput {
+  refreshToken?: String;
+  accessToken?: GoogleFitAccessTokenUpdateOneRequiredInput;
 }
 
-export interface PostCreateWithoutAuthorInput {
-  isPublished?: Boolean;
-  title: String;
-  content: String;
-}
-
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  update?: UserUpdateWithoutPostsDataInput;
-  upsert?: UserUpsertWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-}
+export type GoogleFitAccountWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
 
 export interface UserWhereInput {
   id?: ID_Input;
@@ -252,9 +373,7 @@ export interface UserWhereInput {
   password_not_starts_with?: String;
   password_ends_with?: String;
   password_not_ends_with?: String;
-  posts_every?: PostWhereInput;
-  posts_some?: PostWhereInput;
-  posts_none?: PostWhereInput;
+  googleFitAccount?: GoogleFitAccountWhereInput;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -276,94 +395,7 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface UserCreateInput {
-  email: String;
-  password: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-}
-
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-}
-
-export interface PostUpdateWithoutAuthorDataInput {
-  isPublished?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  update?:
-    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    | PostUpdateWithWhereUniqueWithoutAuthorInput;
-  upsert?:
-    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    | PostUpsertWithWhereUniqueWithoutAuthorInput;
-}
-
-export interface PostUpdateInput {
-  isPublished?: Boolean;
-  title?: String;
-  content?: String;
-  author?: UserUpdateOneRequiredWithoutPostsInput;
-}
-
-export interface UserCreateWithoutPostsInput {
-  email: String;
-  password: String;
-}
-
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput;
-  create: UserCreateWithoutPostsInput;
-}
-
-export interface PostCreateInput {
-  isPublished?: Boolean;
-  title: String;
-  content: String;
-  author: UserCreateOneWithoutPostsInput;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
-
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutAuthorDataInput;
-}
-
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateWithoutAuthorDataInput;
-  create: PostCreateWithoutAuthorInput;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
-
-export interface PostWhereInput {
+export interface GoogleFitAccountWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -378,60 +410,204 @@ export interface PostWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  isPublished?: Boolean;
-  isPublished_not?: Boolean;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  author?: UserWhereInput;
-  AND?: PostWhereInput[] | PostWhereInput;
-  OR?: PostWhereInput[] | PostWhereInput;
-  NOT?: PostWhereInput[] | PostWhereInput;
+  refreshToken?: String;
+  refreshToken_not?: String;
+  refreshToken_in?: String[] | String;
+  refreshToken_not_in?: String[] | String;
+  refreshToken_lt?: String;
+  refreshToken_lte?: String;
+  refreshToken_gt?: String;
+  refreshToken_gte?: String;
+  refreshToken_contains?: String;
+  refreshToken_not_contains?: String;
+  refreshToken_starts_with?: String;
+  refreshToken_not_starts_with?: String;
+  refreshToken_ends_with?: String;
+  refreshToken_not_ends_with?: String;
+  accessToken?: GoogleFitAccessTokenWhereInput;
+  AND?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+  OR?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+  NOT?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+}
+
+export interface GoogleFitAccountUpsertNestedInput {
+  update: GoogleFitAccountUpdateDataInput;
+  create: GoogleFitAccountCreateInput;
+}
+
+export interface GoogleFitAccessTokenUpdateInput {
+  account_id?: ID_Input;
+  value?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface GoogleFitAccountCreateInput {
+  refreshToken: String;
+  accessToken: GoogleFitAccessTokenCreateOneInput;
+}
+
+export interface GoogleFitAccessTokenCreateOneInput {
+  create?: GoogleFitAccessTokenCreateInput;
+  connect?: GoogleFitAccessTokenWhereUniqueInput;
+}
+
+export interface GoogleFitAccountSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: GoogleFitAccountWhereInput;
+  AND?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
+  OR?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
+  NOT?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
+}
+
+export interface GoogleFitAccountUpdateOneInput {
+  create?: GoogleFitAccountCreateInput;
+  update?: GoogleFitAccountUpdateDataInput;
+  upsert?: GoogleFitAccountUpsertNestedInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: GoogleFitAccountWhereUniqueInput;
+}
+
+export interface GoogleFitAccessTokenWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  account_id?: ID_Input;
+  account_id_not?: ID_Input;
+  account_id_in?: ID_Input[] | ID_Input;
+  account_id_not_in?: ID_Input[] | ID_Input;
+  account_id_lt?: ID_Input;
+  account_id_lte?: ID_Input;
+  account_id_gt?: ID_Input;
+  account_id_gte?: ID_Input;
+  account_id_contains?: ID_Input;
+  account_id_not_contains?: ID_Input;
+  account_id_starts_with?: ID_Input;
+  account_id_not_starts_with?: ID_Input;
+  account_id_ends_with?: ID_Input;
+  account_id_not_ends_with?: ID_Input;
+  value?: String;
+  value_not?: String;
+  value_in?: String[] | String;
+  value_not_in?: String[] | String;
+  value_lt?: String;
+  value_lte?: String;
+  value_gt?: String;
+  value_gte?: String;
+  value_contains?: String;
+  value_not_contains?: String;
+  value_starts_with?: String;
+  value_not_starts_with?: String;
+  value_ends_with?: String;
+  value_not_ends_with?: String;
+  expiration?: DateTimeInput;
+  expiration_not?: DateTimeInput;
+  expiration_in?: DateTimeInput[] | DateTimeInput;
+  expiration_not_in?: DateTimeInput[] | DateTimeInput;
+  expiration_lt?: DateTimeInput;
+  expiration_lte?: DateTimeInput;
+  expiration_gt?: DateTimeInput;
+  expiration_gte?: DateTimeInput;
+  AND?: GoogleFitAccessTokenWhereInput[] | GoogleFitAccessTokenWhereInput;
+  OR?: GoogleFitAccessTokenWhereInput[] | GoogleFitAccessTokenWhereInput;
+  NOT?: GoogleFitAccessTokenWhereInput[] | GoogleFitAccessTokenWhereInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
+export interface GoogleFitAccountCreateOneInput {
+  create?: GoogleFitAccountCreateInput;
+  connect?: GoogleFitAccountWhereUniqueInput;
 }
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface AggregateGoogleFitAccessTokenNode {
+  count: Int;
+}
+
+export interface AggregateGoogleFitAccessToken
+  extends Promise<AggregateGoogleFitAccessTokenNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGoogleFitAccessTokenSubscription
+  extends Promise<AsyncIterator<AggregateGoogleFitAccessTokenNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface GoogleFitAccountSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface GoogleFitAccountSubscriptionPayload
+  extends Promise<GoogleFitAccountSubscriptionPayloadNode>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GoogleFitAccount>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GoogleFitAccountPreviousValues>() => T;
+}
+
+export interface GoogleFitAccountSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountSubscriptionPayloadNode>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GoogleFitAccountSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GoogleFitAccountPreviousValuesSubscription>() => T;
+}
+
+export interface GoogleFitAccessTokenEdgeNode {
+  cursor: String;
+}
+
+export interface GoogleFitAccessTokenEdge
+  extends Promise<GoogleFitAccessTokenEdgeNode>,
+    Fragmentable {
+  node: <T = GoogleFitAccessToken>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GoogleFitAccessTokenEdgeSubscription
+  extends Promise<AsyncIterator<GoogleFitAccessTokenEdgeNode>>,
+    Fragmentable {
+  node: <T = GoogleFitAccessTokenSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserPreviousValuesNode {
@@ -462,125 +638,6 @@ export interface UserPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PostEdgeNode {
-  cursor: String;
-}
-
-export interface PostEdge extends Promise<PostEdgeNode>, Fragmentable {
-  node: <T = Post>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdgeNode>>,
-    Fragmentable {
-  node: <T = PostSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserNode {
-  id: ID_Output;
-  email: String;
-  password: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface User extends Promise<UserNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  posts: <T = FragmentableArray<PostNode>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<UserNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  posts: <T = Promise<AsyncIterator<PostSubscription>>>(
-    args?: {
-      where?: PostWhereInput;
-      orderBy?: PostOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PageInfoNode {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfoNode>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface BatchPayloadNode {
-  count: Long;
-}
-
-export interface BatchPayload extends Promise<BatchPayloadNode>, Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayloadNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface PostConnectionNode {}
-
-export interface PostConnection
-  extends Promise<PostConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<PostEdgeNode>>() => T;
-  aggregate: <T = AggregatePost>() => T;
-}
-
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
-}
-
 export interface AggregateUserNode {
   count: Int;
 }
@@ -595,107 +652,6 @@ export interface AggregateUserSubscription
   extends Promise<AsyncIterator<AggregateUserNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PostNode {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  isPublished: Boolean;
-  title: String;
-  content: String;
-}
-
-export interface Post extends Promise<PostNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  isPublished: () => Promise<Boolean>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  author: <T = User>() => T;
-}
-
-export interface PostSubscription
-  extends Promise<AsyncIterator<PostNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  isPublished: () => Promise<AsyncIterator<Boolean>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface PostSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface PostSubscriptionPayload
-  extends Promise<PostSubscriptionPayloadNode>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Post>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValues>() => T;
-}
-
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayloadNode>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
-}
-
-export interface UserEdgeNode {
-  cursor: String;
-}
-
-export interface UserEdge extends Promise<UserEdgeNode>, Fragmentable {
-  node: <T = User>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdgeNode>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PostPreviousValuesNode {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  isPublished: Boolean;
-  title: String;
-  content: String;
-}
-
-export interface PostPreviousValues
-  extends Promise<PostPreviousValuesNode>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  isPublished: () => Promise<Boolean>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-}
-
-export interface PostPreviousValuesSubscription
-  extends Promise<AsyncIterator<PostPreviousValuesNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  isPublished: () => Promise<AsyncIterator<Boolean>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserSubscriptionPayloadNode {
@@ -721,20 +677,27 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface AggregatePostNode {
-  count: Int;
+export interface PageInfoNode {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface AggregatePost
-  extends Promise<AggregatePostNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface AggregatePostSubscription
-  extends Promise<AsyncIterator<AggregatePostNode>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfoNode>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserConnectionNode {}
@@ -755,15 +718,253 @@ export interface UserConnectionSubscription
   aggregate: <T = AggregateUserSubscription>() => T;
 }
 
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
+export interface GoogleFitAccessTokenConnectionNode {}
+
+export interface GoogleFitAccessTokenConnection
+  extends Promise<GoogleFitAccessTokenConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<GoogleFitAccessTokenEdgeNode>>() => T;
+  aggregate: <T = AggregateGoogleFitAccessToken>() => T;
+}
+
+export interface GoogleFitAccessTokenConnectionSubscription
+  extends Promise<AsyncIterator<GoogleFitAccessTokenConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<GoogleFitAccessTokenEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateGoogleFitAccessTokenSubscription>() => T;
+}
+
+export interface AggregateGoogleFitAccountNode {
+  count: Int;
+}
+
+export interface AggregateGoogleFitAccount
+  extends Promise<AggregateGoogleFitAccountNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGoogleFitAccountSubscription
+  extends Promise<AsyncIterator<AggregateGoogleFitAccountNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface GoogleFitAccountConnectionNode {}
+
+export interface GoogleFitAccountConnection
+  extends Promise<GoogleFitAccountConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<GoogleFitAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateGoogleFitAccount>() => T;
+}
+
+export interface GoogleFitAccountConnectionSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GoogleFitAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGoogleFitAccountSubscription>() => T;
+}
+
+export interface GoogleFitAccessTokenPreviousValuesNode {
+  id: ID_Output;
+  account_id: ID_Output;
+  value: String;
+  expiration: DateTimeOutput;
+}
+
+export interface GoogleFitAccessTokenPreviousValues
+  extends Promise<GoogleFitAccessTokenPreviousValuesNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  account_id: () => Promise<ID_Output>;
+  value: () => Promise<String>;
+  expiration: () => Promise<DateTimeOutput>;
+}
+
+export interface GoogleFitAccessTokenPreviousValuesSubscription
+  extends Promise<AsyncIterator<GoogleFitAccessTokenPreviousValuesNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  account_id: () => Promise<AsyncIterator<ID_Output>>;
+  value: () => Promise<AsyncIterator<String>>;
+  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface GoogleFitAccessTokenSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface GoogleFitAccessTokenSubscriptionPayload
+  extends Promise<GoogleFitAccessTokenSubscriptionPayloadNode>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = GoogleFitAccessToken>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GoogleFitAccessTokenPreviousValues>() => T;
+}
+
+export interface GoogleFitAccessTokenSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GoogleFitAccessTokenSubscriptionPayloadNode>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GoogleFitAccessTokenSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GoogleFitAccessTokenPreviousValuesSubscription>() => T;
+}
+
+export interface GoogleFitAccountPreviousValuesNode {
+  id: ID_Output;
+  refreshToken: String;
+}
+
+export interface GoogleFitAccountPreviousValues
+  extends Promise<GoogleFitAccountPreviousValuesNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  refreshToken: () => Promise<String>;
+}
+
+export interface GoogleFitAccountPreviousValuesSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountPreviousValuesNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  refreshToken: () => Promise<AsyncIterator<String>>;
+}
+
+export interface GoogleFitAccessTokenNode {
+  id: ID_Output;
+  account_id: ID_Output;
+  value: String;
+  expiration: DateTimeOutput;
+}
+
+export interface GoogleFitAccessToken
+  extends Promise<GoogleFitAccessTokenNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  account_id: () => Promise<ID_Output>;
+  value: () => Promise<String>;
+  expiration: () => Promise<DateTimeOutput>;
+}
+
+export interface GoogleFitAccessTokenSubscription
+  extends Promise<AsyncIterator<GoogleFitAccessTokenNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  account_id: () => Promise<AsyncIterator<ID_Output>>;
+  value: () => Promise<AsyncIterator<String>>;
+  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface GoogleFitAccountNode {
+  id: ID_Output;
+  refreshToken: String;
+}
+
+export interface GoogleFitAccount
+  extends Promise<GoogleFitAccountNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  refreshToken: () => Promise<String>;
+  accessToken: <T = GoogleFitAccessToken>() => T;
+}
+
+export interface GoogleFitAccountSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  refreshToken: () => Promise<AsyncIterator<String>>;
+  accessToken: <T = GoogleFitAccessTokenSubscription>() => T;
+}
+
+export interface GoogleFitAccountEdgeNode {
+  cursor: String;
+}
+
+export interface GoogleFitAccountEdge
+  extends Promise<GoogleFitAccountEdgeNode>,
+    Fragmentable {
+  node: <T = GoogleFitAccount>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GoogleFitAccountEdgeSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountEdgeNode>>,
+    Fragmentable {
+  node: <T = GoogleFitAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserNode {
+  id: ID_Output;
+  email: String;
+  password: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface User extends Promise<UserNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  googleFitAccount: <T = GoogleFitAccount>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<UserNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  googleFitAccount: <T = GoogleFitAccountSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface UserEdgeNode {
+  cursor: String;
+}
+
+export interface UserEdge extends Promise<UserEdgeNode>, Fragmentable {
+  node: <T = User>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdgeNode>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface BatchPayloadNode {
+  count: Long;
+}
+
+export interface BatchPayload extends Promise<BatchPayloadNode>, Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayloadNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Boolean` scalar type represents `true` or `false`.
 */
-export type String = string;
+export type Boolean = boolean;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -771,12 +972,12 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 export type ID_Input = string | number;
 export type ID_Output = string;
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
-
 export type Long = string;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
 
 /*
 DateTime scalar input type, allowing Date
@@ -787,6 +988,11 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
 
 /**
  * Type Defs

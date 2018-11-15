@@ -1,15 +1,16 @@
-import { Resolvers } from '../generated/graphqlgen'
-
-import { Query } from './Query'
-import { Mutation } from './Mutation'
-import { AuthPayload } from './AuthPayload'
-import { Post } from './Post'
-import { User } from './User'
+import { AuthPayload } from './AuthPayload';
+import { GoogleFitAccessToken } from './GoogleFitAccessToken';
+import { GoogleFitAccount } from './GoogleFitAccount';
+import { Mutation } from './Mutation';
+import { Query } from './Query';
+import { Resolvers } from '../generated/graphqlgen';
+import { User } from './User';
 
 export const resolvers: Resolvers = {
   Query,
   Mutation,
   AuthPayload,
-  Post,
   User,
-}
+  GoogleFitAccount,
+  GoogleFitAccessToken
+};

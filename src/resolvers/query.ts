@@ -1,12 +1,8 @@
-import { QueryResolvers } from '../generated/graphqlgen'
-import { getUserId } from '../utils'
+import { getUserId } from '../utils';
+import { QueryResolvers } from '../generated/graphqlgen';
 
 export const Query: QueryResolvers.Type = {
   me: (parent, args, ctx) => {
-    return ctx.db.user({ id: getUserId(ctx) })
-  },
-  feed: (parent, args, ctx) => ctx.db.posts({ where: { isPublished: true } }),
-  drafts: (parent, args, ctx) =>
-    ctx.db.posts({ where: { isPublished: false } }),
-  post: (parent, { id }, ctx) => ctx.db.post({ id }),
-}
+    return ctx.db.user({ id: getUserId(ctx) });
+  }
+};

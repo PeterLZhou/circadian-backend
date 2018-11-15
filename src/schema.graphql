@@ -2,15 +2,9 @@ scalar DateTime
 
 type Query {
   me: User
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
 }
 
 type Mutation {
-  createDraft(title: String!, content: String!, authorEmail: String!): Post!
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
 }
@@ -20,19 +14,22 @@ type AuthPayload {
   user: User!
 }
 
-type Post {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  isPublished: Boolean!
-  title: String!
-  content: String!
-  author: User!
-}
-
 type User {
   id: ID!
   email: String!
-  posts: [Post!]!
+  googleFitAccount: GoogleFitAccount
   createdAt: DateTime!
+}
+
+type GoogleFitAccount {
+  id: ID!
+  refreshToken: String!
+  accessToken: GoogleFitAccessToken!
+}
+
+type GoogleFitAccessToken {
+  id: ID!
+  account_id: ID!
+  value: String!
+  expiration: DateTime!
 }

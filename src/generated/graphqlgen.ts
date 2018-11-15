@@ -3,15 +3,12 @@
 import { GraphQLResolveInfo } from "graphql";
 import { Context } from "../types";
 import { AuthPayload } from "../types";
-import { PostNode } from "./prisma-client";
 import { UserNode } from "./prisma-client";
+import { GoogleFitAccountNode } from "./prisma-client";
+import { GoogleFitAccessTokenNode } from "./prisma-client";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
-
-  export interface ArgsPost {
-    id: string;
-  }
 
   export type MeResolver = (
     parent: {},
@@ -20,27 +17,6 @@ export namespace QueryResolvers {
     info: GraphQLResolveInfo
   ) => UserNode | null | Promise<UserNode | null>;
 
-  export type FeedResolver = (
-    parent: {},
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode[] | Promise<PostNode[]>;
-
-  export type DraftsResolver = (
-    parent: {},
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode[] | Promise<PostNode[]>;
-
-  export type PostResolver = (
-    parent: {},
-    args: ArgsPost,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode | null | Promise<PostNode | null>;
-
   export interface Type {
     me: (
       parent: {},
@@ -48,46 +24,11 @@ export namespace QueryResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => UserNode | null | Promise<UserNode | null>;
-
-    feed: (
-      parent: {},
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode[] | Promise<PostNode[]>;
-
-    drafts: (
-      parent: {},
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode[] | Promise<PostNode[]>;
-
-    post: (
-      parent: {},
-      args: ArgsPost,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode | null | Promise<PostNode | null>;
   }
 }
 
 export namespace MutationResolvers {
   export const defaultResolvers = {};
-
-  export interface ArgsCreateDraft {
-    title: string;
-    content: string;
-    authorEmail: string;
-  }
-
-  export interface ArgsDeletePost {
-    id: string;
-  }
-
-  export interface ArgsPublish {
-    id: string;
-  }
 
   export interface ArgsSignup {
     email: string;
@@ -98,27 +39,6 @@ export namespace MutationResolvers {
     email: string;
     password: string;
   }
-
-  export type CreateDraftResolver = (
-    parent: {},
-    args: ArgsCreateDraft,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode | Promise<PostNode>;
-
-  export type DeletePostResolver = (
-    parent: {},
-    args: ArgsDeletePost,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode | null | Promise<PostNode | null>;
-
-  export type PublishResolver = (
-    parent: {},
-    args: ArgsPublish,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => PostNode | null | Promise<PostNode | null>;
 
   export type SignupResolver = (
     parent: {},
@@ -135,27 +55,6 @@ export namespace MutationResolvers {
   ) => AuthPayload | Promise<AuthPayload>;
 
   export interface Type {
-    createDraft: (
-      parent: {},
-      args: ArgsCreateDraft,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode | Promise<PostNode>;
-
-    deletePost: (
-      parent: {},
-      args: ArgsDeletePost,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode | null | Promise<PostNode | null>;
-
-    publish: (
-      parent: {},
-      args: ArgsPublish,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => PostNode | null | Promise<PostNode | null>;
-
     signup: (
       parent: {},
       args: ArgsSignup,
@@ -209,117 +108,6 @@ export namespace AuthPayloadResolvers {
   }
 }
 
-export namespace PostResolvers {
-  export const defaultResolvers = {
-    id: (parent: PostNode) => parent.id,
-    createdAt: (parent: PostNode) => parent.createdAt,
-    updatedAt: (parent: PostNode) => parent.updatedAt,
-    isPublished: (parent: PostNode) => parent.isPublished,
-    title: (parent: PostNode) => parent.title,
-    content: (parent: PostNode) => parent.content
-  };
-
-  export type IdResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type CreatedAtResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type UpdatedAtResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type IsPublishedResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => boolean | Promise<boolean>;
-
-  export type TitleResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type ContentResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type AuthorResolver = (
-    parent: PostNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => UserNode | Promise<UserNode>;
-
-  export interface Type {
-    id: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    createdAt: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    updatedAt: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    isPublished: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => boolean | Promise<boolean>;
-
-    title: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    content: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    author: (
-      parent: PostNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => UserNode | Promise<UserNode>;
-  }
-}
-
 export namespace UserResolvers {
   export const defaultResolvers = {
     id: (parent: UserNode) => parent.id,
@@ -341,12 +129,12 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type PostsResolver = (
+  export type GoogleFitAccountResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => PostNode[] | Promise<PostNode[]>;
+  ) => GoogleFitAccountNode | null | Promise<GoogleFitAccountNode | null>;
 
   export type CreatedAtResolver = (
     parent: UserNode,
@@ -370,15 +158,133 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    posts: (
+    googleFitAccount: (
       parent: UserNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => PostNode[] | Promise<PostNode[]>;
+    ) => GoogleFitAccountNode | null | Promise<GoogleFitAccountNode | null>;
 
     createdAt: (
       parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+  }
+}
+
+export namespace GoogleFitAccountResolvers {
+  export const defaultResolvers = {
+    id: (parent: GoogleFitAccountNode) => parent.id,
+    refreshToken: (parent: GoogleFitAccountNode) => parent.refreshToken
+  };
+
+  export type IdResolver = (
+    parent: GoogleFitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type RefreshTokenResolver = (
+    parent: GoogleFitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type AccessTokenResolver = (
+    parent: GoogleFitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => GoogleFitAccessTokenNode | Promise<GoogleFitAccessTokenNode>;
+
+  export interface Type {
+    id: (
+      parent: GoogleFitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    refreshToken: (
+      parent: GoogleFitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    accessToken: (
+      parent: GoogleFitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => GoogleFitAccessTokenNode | Promise<GoogleFitAccessTokenNode>;
+  }
+}
+
+export namespace GoogleFitAccessTokenResolvers {
+  export const defaultResolvers = {
+    id: (parent: GoogleFitAccessTokenNode) => parent.id,
+    account_id: (parent: GoogleFitAccessTokenNode) => parent.account_id,
+    value: (parent: GoogleFitAccessTokenNode) => parent.value,
+    expiration: (parent: GoogleFitAccessTokenNode) => parent.expiration
+  };
+
+  export type IdResolver = (
+    parent: GoogleFitAccessTokenNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type Account_idResolver = (
+    parent: GoogleFitAccessTokenNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type ValueResolver = (
+    parent: GoogleFitAccessTokenNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type ExpirationResolver = (
+    parent: GoogleFitAccessTokenNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export interface Type {
+    id: (
+      parent: GoogleFitAccessTokenNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    account_id: (
+      parent: GoogleFitAccessTokenNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    value: (
+      parent: GoogleFitAccessTokenNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    expiration: (
+      parent: GoogleFitAccessTokenNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
@@ -390,6 +296,7 @@ export interface Resolvers {
   Query: QueryResolvers.Type;
   Mutation: MutationResolvers.Type;
   AuthPayload: AuthPayloadResolvers.Type;
-  Post: PostResolvers.Type;
   User: UserResolvers.Type;
+  GoogleFitAccount: GoogleFitAccountResolvers.Type;
+  GoogleFitAccessToken: GoogleFitAccessTokenResolvers.Type;
 }

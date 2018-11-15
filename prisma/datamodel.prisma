@@ -1,18 +1,21 @@
-type Post {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  isPublished: Boolean! @default(value: "false")
-  title: String!
-  content: String!
-  author: User!
-}
-
 type User {
   id: ID! @unique
   email: String! @unique
   password: String!
-  posts: [Post!]!
+  googleFitAccount: GoogleFitAccount
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type GoogleFitAccount {
+  id: ID! @unique
+  refreshToken: String!
+  accessToken: GoogleFitAccessToken!
+}
+
+type GoogleFitAccessToken {
+  id: ID! @unique
+  account_id: ID!
+  value: String!
+  expiration: DateTime!
 }

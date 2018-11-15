@@ -1,5 +1,5 @@
+import btoa from 'btoa';
 import { verify } from 'jsonwebtoken';
-
 export const APP_SECRET = "appsecret321";
 
 interface Token {
@@ -17,4 +17,8 @@ export function getUserId(context: Context) {
     const verifiedToken = verify(token, APP_SECRET) as Token;
     return verifiedToken && verifiedToken.userId;
   }
+}
+
+export function base64Hash(value: string) {
+  return Buffer.from(value, "binary").toString("base64");
 }
