@@ -8,7 +8,9 @@ import { Mutation } from "./Mutation";
 import { AuthPayload } from "./AuthPayload";
 import { User } from "./User";
 import { GoogleFitAccount } from "./GoogleFitAccount";
-import { GoogleFitAccessToken } from "./GoogleFitAccessToken";
+import { FitbitAccount } from "./FitbitAccount";
+import { SleepLog } from "./SleepLog";
+import { SleepData } from "./SleepData";
 
 export const resolvers: Resolvers = {
   Query,
@@ -16,5 +18,7 @@ export const resolvers: Resolvers = {
   AuthPayload,
   User,
   GoogleFitAccount,
-  GoogleFitAccessToken
+  FitbitAccount,
+  SleepLog,
+  SleepData
 };

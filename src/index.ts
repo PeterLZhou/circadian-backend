@@ -1,7 +1,9 @@
 import * as bodyParser from 'body-parser';
+import * as querystring from 'querystring';
 import axios from 'axios';
 import { base64Hash } from './utils';
 import { fetchAggregateSteps } from './api/googlefit/aggregate';
+import { getSleepLogs } from './api/fitbit/sleep';
 import { GraphQLServer } from 'graphql-yoga';
 import { permissions } from './permissions';
 import { prisma } from './generated/prisma-client';
@@ -48,30 +50,69 @@ server.express.post("/user/:id/googlefitauthenticate", (req, res) => {
 server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
   const userId = req.params.id;
   const oneTimeCode = req.body.code;
-  console.log("HERE");
-  console.log(userId);
-  console.log(oneTimeCode);
-  console.log("SENDING");
-  const response = axios
-    .post(
-      "https://api.fitbit.com/oauth2/token",
-      JSON.stringify({
-        code: oneTimeCode,
+
+  // TODO: Assert there isn't an existing account, otherwise we need to update
+  axios({
+    method: "post",
+    url:
+      "https://api.fitbit.com/oauth2/token?" +
+      querystring.stringify({
         grant_type: "authorization_code",
-        client_id: process.env.FITBIT_CLIENT_ID
+        code: oneTimeCode,
+        client_id: process.env.FITBIT_CLIENT_ID,
+        redirect_uri: "http://localhost:3000/auth/fitbit"
       }),
-      {
-        headers: {
-          Authorization: `Basic ${base64Hash(
-            `${process.env.FITBIT_CLIENT_ID}:${
-              process.env.FITBIT_CLIENT_SECRET
-            }`
-          )}`
-        }
+    data: {},
+    headers: {
+      Authorization: `Basic ${base64Hash(
+        `${process.env.FITBIT_CLIENT_ID}:${process.env.FITBIT_CLIENT_SECRET}`
+      )}`,
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  })
+    .then(async response => {
+      const payload = response.data;
+      let expirationDate = new Date();
+      expirationDate.setSeconds(
+        expirationDate.getSeconds() + payload.expires_in
+      );
+
+      const existingAccount = prisma.fitbitAccount({
+        userId: userId
+      });
+      if (!existingAccount) {
+        let acct = prisma
+          .createFitbitAccount({
+            userId: userId,
+            accessToken: payload.access_token,
+            refreshToken: payload.refresh_token,
+            fitbitUserId: payload.user_id,
+            expiration: expirationDate.toISOString()
+          })
+          .then(ok => {})
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        let acct = prisma
+          .updateFitbitAccount({
+            data: {
+              userId: userId,
+              accessToken: payload.access_token,
+              refreshToken: payload.refresh_token,
+              fitbitUserId: payload.user_id,
+              expiration: expirationDate.toISOString()
+            },
+            where: {
+              userId: userId,
+              id: await existingAccount.id()
+            }
+          })
+          .then(ok => {})
+          .catch(error => {
+            console.log(error);
+          });
       }
-    )
-    .then(data => {
-      console.log(data);
     })
     .catch(error => {
       // console.log(error);

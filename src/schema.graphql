@@ -2,11 +2,13 @@ scalar DateTime
 
 type Query {
   me: User
+  fitbitAccounts: [FitbitAccount!]!
 }
 
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  getSleepLogs(userId: ID!, date: String!): String!
 }
 
 type AuthPayload {
@@ -18,18 +20,67 @@ type User {
   id: ID!
   email: String!
   googleFitAccount: GoogleFitAccount
+  fitbitAccount: FitbitAccount
+  sleepLogs: [SleepLog!]!
   createdAt: DateTime!
 }
 
 type GoogleFitAccount {
   id: ID!
+  userId: ID!
   refreshToken: String!
-  accessToken: GoogleFitAccessToken!
+  accessToken: String!
+  expiration: DateTime!
 }
 
-type GoogleFitAccessToken {
+type FitbitAccount {
   id: ID!
-  account_id: ID!
-  value: String!
+  userId: ID!
+  fitbitUserId: String!
+  refreshToken: String!
+  accessToken: String!
   expiration: DateTime!
+}
+
+type SleepLog {
+  id: ID!
+  userId: ID!
+  dateOfSleep: String!
+  duration: Int!
+  efficiency: Int!
+  isMainSleep: Boolean!
+  logId: String!
+  minutesAfterWakeup: Int!
+  minutesAsleep: Int!
+  minutesAwake: Int!
+  minutesToFallAsleep: Int!
+  startTime: DateTime!
+  timeInBed: Int!
+  type: String
+  data: [SleepData!]!
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryAsleepCount: Int
+  summarySleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+type SleepData {
+  id: ID!
+  sleepLogId: ID!
+  dateTime: DateTime!
+  level: String!
+  second: Int!
 }

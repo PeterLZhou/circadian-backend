@@ -3,9 +3,5 @@ import { GoogleFitAccountResolvers } from '../generated/graphqlgen';
 // Please do not import this file directly but copy & paste to your application code.
 
 export const GoogleFitAccount: GoogleFitAccountResolvers.Type = {
-  ...GoogleFitAccountResolvers.defaultResolvers,
-
-  accessToken: (parent, args: any, ctx) => {
-    return ctx.db.googleFitAccessToken({ id: args.id });
-  }
+  ...GoogleFitAccountResolvers.defaultResolvers
 };

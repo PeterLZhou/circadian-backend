@@ -1,5 +1,6 @@
 import { APP_SECRET, getUserId } from '../utils';
 import { compare, hash } from 'bcrypt';
+import { getSleepLogs } from '../api/fitbit/sleep';
 import { MutationResolvers } from '../generated/graphqlgen';
 import { sign } from 'jsonwebtoken';
 
@@ -33,5 +34,9 @@ export const Mutation: MutationResolvers.Type = {
       token: sign({ userId: user.id }, APP_SECRET),
       user
     };
+  },
+  getSleepLogs: async (_parent, { userId, date }, ctx) => {
+    const result = await getSleepLogs(ctx, userId, date);
+    return "OK";
   }
 };

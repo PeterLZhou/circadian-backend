@@ -3,19 +3,68 @@ type User {
   email: String! @unique
   password: String!
   googleFitAccount: GoogleFitAccount
+  fitbitAccount: FitbitAccount
+  sleepLogs: [SleepLog!]!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 type GoogleFitAccount {
   id: ID! @unique
+  userId: ID! @unique
   refreshToken: String!
-  accessToken: GoogleFitAccessToken!
+  accessToken: String!
+  expiration: DateTime!
 }
 
-type GoogleFitAccessToken {
+type FitbitAccount {
   id: ID! @unique
-  account_id: ID!
-  value: String!
+  userId: ID! @unique
+  fitbitUserId: String!
+  refreshToken: String!
+  accessToken: String!
   expiration: DateTime!
+}
+
+type SleepLog {
+  id: ID! @unique
+  userId: ID!
+  dateOfSleep: String!
+  duration: Int!
+  efficiency: Int!
+  isMainSleep: Boolean!
+  logId: String!
+  minutesAfterWakeup: Int!
+  minutesAsleep: Int!
+  minutesAwake: Int!
+  minutesToFallAsleep: Int!
+  startTime: DateTime!
+  timeInBed: Int!
+  type: String
+  data: [SleepData!]!
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryAsleepCount: Int
+  summarySleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+type SleepData {
+  id: ID! @unique
+  sleepLogId: ID!
+  dateTime: DateTime!
+  level: String!
+  second: Int!
 }

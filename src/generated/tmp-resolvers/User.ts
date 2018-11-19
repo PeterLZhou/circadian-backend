@@ -8,5 +8,11 @@ export const User: UserResolvers.Type = {
 
   googleFitAccount: parent => {
     throw new Error("Resolver not implemented");
+  },
+  fitbitAccount: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  sleepLogs: parent => {
+    throw new Error("Resolver not implemented");
   }
 };

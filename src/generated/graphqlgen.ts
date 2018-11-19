@@ -5,7 +5,9 @@ import { Context } from "../types";
 import { AuthPayload } from "../types";
 import { UserNode } from "./prisma-client";
 import { GoogleFitAccountNode } from "./prisma-client";
-import { GoogleFitAccessTokenNode } from "./prisma-client";
+import { FitbitAccountNode } from "./prisma-client";
+import { SleepLogNode } from "./prisma-client";
+import { SleepDataNode } from "./prisma-client";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -17,6 +19,13 @@ export namespace QueryResolvers {
     info: GraphQLResolveInfo
   ) => UserNode | null | Promise<UserNode | null>;
 
+  export type FitbitAccountsResolver = (
+    parent: {},
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => FitbitAccountNode[] | Promise<FitbitAccountNode[]>;
+
   export interface Type {
     me: (
       parent: {},
@@ -24,6 +33,13 @@ export namespace QueryResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => UserNode | null | Promise<UserNode | null>;
+
+    fitbitAccounts: (
+      parent: {},
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => FitbitAccountNode[] | Promise<FitbitAccountNode[]>;
   }
 }
 
@@ -40,6 +56,11 @@ export namespace MutationResolvers {
     password: string;
   }
 
+  export interface ArgsGetSleepLogs {
+    userId: string;
+    date: string;
+  }
+
   export type SignupResolver = (
     parent: {},
     args: ArgsSignup,
@@ -53,6 +74,13 @@ export namespace MutationResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => AuthPayload | Promise<AuthPayload>;
+
+  export type GetSleepLogsResolver = (
+    parent: {},
+    args: ArgsGetSleepLogs,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
 
   export interface Type {
     signup: (
@@ -68,6 +96,13 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => AuthPayload | Promise<AuthPayload>;
+
+    getSleepLogs: (
+      parent: {},
+      args: ArgsGetSleepLogs,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
   }
 }
 
@@ -136,6 +171,20 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => GoogleFitAccountNode | null | Promise<GoogleFitAccountNode | null>;
 
+  export type FitbitAccountResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
+
+  export type SleepLogsResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => SleepLogNode[] | Promise<SleepLogNode[]>;
+
   export type CreatedAtResolver = (
     parent: UserNode,
     args: {},
@@ -165,6 +214,20 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => GoogleFitAccountNode | null | Promise<GoogleFitAccountNode | null>;
 
+    fitbitAccount: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
+
+    sleepLogs: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => SleepLogNode[] | Promise<SleepLogNode[]>;
+
     createdAt: (
       parent: UserNode,
       args: {},
@@ -177,10 +240,20 @@ export namespace UserResolvers {
 export namespace GoogleFitAccountResolvers {
   export const defaultResolvers = {
     id: (parent: GoogleFitAccountNode) => parent.id,
-    refreshToken: (parent: GoogleFitAccountNode) => parent.refreshToken
+    userId: (parent: GoogleFitAccountNode) => parent.userId,
+    refreshToken: (parent: GoogleFitAccountNode) => parent.refreshToken,
+    accessToken: (parent: GoogleFitAccountNode) => parent.accessToken,
+    expiration: (parent: GoogleFitAccountNode) => parent.expiration
   };
 
   export type IdResolver = (
+    parent: GoogleFitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type UserIdResolver = (
     parent: GoogleFitAccountNode,
     args: {},
     ctx: Context,
@@ -199,10 +272,24 @@ export namespace GoogleFitAccountResolvers {
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => GoogleFitAccessTokenNode | Promise<GoogleFitAccessTokenNode>;
+  ) => string | Promise<string>;
+
+  export type ExpirationResolver = (
+    parent: GoogleFitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
 
   export interface Type {
     id: (
+      parent: GoogleFitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    userId: (
       parent: GoogleFitAccountNode,
       args: {},
       ctx: Context,
@@ -221,41 +308,64 @@ export namespace GoogleFitAccountResolvers {
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => GoogleFitAccessTokenNode | Promise<GoogleFitAccessTokenNode>;
+    ) => string | Promise<string>;
+
+    expiration: (
+      parent: GoogleFitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
   }
 }
 
-export namespace GoogleFitAccessTokenResolvers {
+export namespace FitbitAccountResolvers {
   export const defaultResolvers = {
-    id: (parent: GoogleFitAccessTokenNode) => parent.id,
-    account_id: (parent: GoogleFitAccessTokenNode) => parent.account_id,
-    value: (parent: GoogleFitAccessTokenNode) => parent.value,
-    expiration: (parent: GoogleFitAccessTokenNode) => parent.expiration
+    id: (parent: FitbitAccountNode) => parent.id,
+    userId: (parent: FitbitAccountNode) => parent.userId,
+    fitbitUserId: (parent: FitbitAccountNode) => parent.fitbitUserId,
+    refreshToken: (parent: FitbitAccountNode) => parent.refreshToken,
+    accessToken: (parent: FitbitAccountNode) => parent.accessToken,
+    expiration: (parent: FitbitAccountNode) => parent.expiration
   };
 
   export type IdResolver = (
-    parent: GoogleFitAccessTokenNode,
+    parent: FitbitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type Account_idResolver = (
-    parent: GoogleFitAccessTokenNode,
+  export type UserIdResolver = (
+    parent: FitbitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type ValueResolver = (
-    parent: GoogleFitAccessTokenNode,
+  export type FitbitUserIdResolver = (
+    parent: FitbitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type RefreshTokenResolver = (
+    parent: FitbitAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type AccessTokenResolver = (
+    parent: FitbitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
   export type ExpirationResolver = (
-    parent: GoogleFitAccessTokenNode,
+    parent: FitbitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
@@ -263,32 +373,654 @@ export namespace GoogleFitAccessTokenResolvers {
 
   export interface Type {
     id: (
-      parent: GoogleFitAccessTokenNode,
+      parent: FitbitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    account_id: (
-      parent: GoogleFitAccessTokenNode,
+    userId: (
+      parent: FitbitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    value: (
-      parent: GoogleFitAccessTokenNode,
+    fitbitUserId: (
+      parent: FitbitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    refreshToken: (
+      parent: FitbitAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    accessToken: (
+      parent: FitbitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
     expiration: (
-      parent: GoogleFitAccessTokenNode,
+      parent: FitbitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+  }
+}
+
+export namespace SleepLogResolvers {
+  export const defaultResolvers = {
+    id: (parent: SleepLogNode) => parent.id,
+    userId: (parent: SleepLogNode) => parent.userId,
+    dateOfSleep: (parent: SleepLogNode) => parent.dateOfSleep,
+    duration: (parent: SleepLogNode) => parent.duration,
+    efficiency: (parent: SleepLogNode) => parent.efficiency,
+    isMainSleep: (parent: SleepLogNode) => parent.isMainSleep,
+    logId: (parent: SleepLogNode) => parent.logId,
+    minutesAfterWakeup: (parent: SleepLogNode) => parent.minutesAfterWakeup,
+    minutesAsleep: (parent: SleepLogNode) => parent.minutesAsleep,
+    minutesAwake: (parent: SleepLogNode) => parent.minutesAwake,
+    minutesToFallAsleep: (parent: SleepLogNode) => parent.minutesToFallAsleep,
+    startTime: (parent: SleepLogNode) => parent.startTime,
+    timeInBed: (parent: SleepLogNode) => parent.timeInBed,
+    type: (parent: SleepLogNode) =>
+      parent.type === undefined ? null : parent.type,
+    summaryDeepCount: (parent: SleepLogNode) =>
+      parent.summaryDeepCount === undefined ? null : parent.summaryDeepCount,
+    summaryDeepMinutes: (parent: SleepLogNode) =>
+      parent.summaryDeepMinutes === undefined
+        ? null
+        : parent.summaryDeepMinutes,
+    summaryLightThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryLightThirtyDayAvgMinutes === undefined
+        ? null
+        : parent.summaryLightThirtyDayAvgMinutes,
+    summaryLightCount: (parent: SleepLogNode) =>
+      parent.summaryLightCount === undefined ? null : parent.summaryLightCount,
+    summaryLightMinutes: (parent: SleepLogNode) =>
+      parent.summaryLightMinutes === undefined
+        ? null
+        : parent.summaryLightMinutes,
+    summaryRemThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryRemThirtyDayAvgMinutes === undefined
+        ? null
+        : parent.summaryRemThirtyDayAvgMinutes,
+    summaryRemCount: (parent: SleepLogNode) =>
+      parent.summaryRemCount === undefined ? null : parent.summaryRemCount,
+    summaryRemMinutes: (parent: SleepLogNode) =>
+      parent.summaryRemMinutes === undefined ? null : parent.summaryRemMinutes,
+    summaryWakeThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryWakeThirtyDayAvgMinutes === undefined
+        ? null
+        : parent.summaryWakeThirtyDayAvgMinutes,
+    summaryWakeCount: (parent: SleepLogNode) =>
+      parent.summaryWakeCount === undefined ? null : parent.summaryWakeCount,
+    summaryWakeMinutes: (parent: SleepLogNode) =>
+      parent.summaryWakeMinutes === undefined
+        ? null
+        : parent.summaryWakeMinutes,
+    summaryAsleepCount: (parent: SleepLogNode) =>
+      parent.summaryAsleepCount === undefined
+        ? null
+        : parent.summaryAsleepCount,
+    summarySleepMinutes: (parent: SleepLogNode) =>
+      parent.summarySleepMinutes === undefined
+        ? null
+        : parent.summarySleepMinutes,
+    summaryAwakeCount: (parent: SleepLogNode) =>
+      parent.summaryAwakeCount === undefined ? null : parent.summaryAwakeCount,
+    summaryAwakeMinutes: (parent: SleepLogNode) =>
+      parent.summaryAwakeMinutes === undefined
+        ? null
+        : parent.summaryAwakeMinutes,
+    summaryRestlessCount: (parent: SleepLogNode) =>
+      parent.summaryRestlessCount === undefined
+        ? null
+        : parent.summaryRestlessCount,
+    summaryRestlessMinutes: (parent: SleepLogNode) =>
+      parent.summaryRestlessMinutes === undefined
+        ? null
+        : parent.summaryRestlessMinutes
+  };
+
+  export type IdResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type UserIdResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateOfSleepResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DurationResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type EfficiencyResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type IsMainSleepResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => boolean | Promise<boolean>;
+
+  export type LogIdResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type MinutesAfterWakeupResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesAsleepResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesAwakeResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesToFallAsleepResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type StartTimeResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type TimeInBedResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type TypeResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | null | Promise<string | null>;
+
+  export type DataResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => SleepDataNode[] | Promise<SleepDataNode[]>;
+
+  export type SummaryDeepCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryDeepMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryLightThirtyDayAvgMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryLightCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryLightMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryRemThirtyDayAvgMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryRemCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryRemMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryWakeThirtyDayAvgMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryWakeCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryWakeMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryAsleepCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummarySleepMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryAwakeCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryAwakeMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryRestlessCountResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export type SummaryRestlessMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
+  export interface Type {
+    id: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    userId: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateOfSleep: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    duration: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    efficiency: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    isMainSleep: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => boolean | Promise<boolean>;
+
+    logId: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    minutesAfterWakeup: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesAsleep: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesAwake: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesToFallAsleep: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    startTime: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    timeInBed: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    type: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | null | Promise<string | null>;
+
+    data: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => SleepDataNode[] | Promise<SleepDataNode[]>;
+
+    summaryDeepCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryDeepMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryLightThirtyDayAvgMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryLightCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryLightMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryRemThirtyDayAvgMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryRemCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryRemMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryWakeThirtyDayAvgMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryWakeCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryWakeMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryAsleepCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summarySleepMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryAwakeCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryAwakeMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryRestlessCount: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
+    summaryRestlessMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+  }
+}
+
+export namespace SleepDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: SleepDataNode) => parent.id,
+    sleepLogId: (parent: SleepDataNode) => parent.sleepLogId,
+    dateTime: (parent: SleepDataNode) => parent.dateTime,
+    level: (parent: SleepDataNode) => parent.level,
+    second: (parent: SleepDataNode) => parent.second
+  };
+
+  export type IdResolver = (
+    parent: SleepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type SleepLogIdResolver = (
+    parent: SleepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: SleepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type LevelResolver = (
+    parent: SleepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type SecondResolver = (
+    parent: SleepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: SleepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    sleepLogId: (
+      parent: SleepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: SleepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    level: (
+      parent: SleepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    second: (
+      parent: SleepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
   }
 }
 
@@ -298,5 +1030,7 @@ export interface Resolvers {
   AuthPayload: AuthPayloadResolvers.Type;
   User: UserResolvers.Type;
   GoogleFitAccount: GoogleFitAccountResolvers.Type;
-  GoogleFitAccessToken: GoogleFitAccessTokenResolvers.Type;
+  FitbitAccount: FitbitAccountResolvers.Type;
+  SleepLog: SleepLogResolvers.Type;
+  SleepData: SleepDataResolvers.Type;
 }
