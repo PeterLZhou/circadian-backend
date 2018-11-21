@@ -1,6 +1,6 @@
 import { APP_SECRET, getUserId } from '../utils';
 import { compare, hash } from 'bcrypt';
-import { getSleepLogs } from '../api/fitbit/sleep';
+import { getAllSleepLogs, getSleepLogs } from '../api/fitbit/sleep';
 import { MutationResolvers } from '../generated/graphqlgen';
 import { sign } from 'jsonwebtoken';
 
@@ -36,7 +36,14 @@ export const Mutation: MutationResolvers.Type = {
     };
   },
   getSleepLogs: async (_parent, { userId, date }, ctx) => {
-    const result = await getSleepLogs(ctx, userId, date);
+    const result = await getAllSleepLogs(ctx, userId);
+    return "OK";
+  },
+
+  deleteAllSleepLogs: async (_parent, { userId }, ctx) => {
+    ctx.db.deleteManySleepLogs({ userId: userId }).catch(error => {
+      console.log(error);
+    });
     return "OK";
   }
 };

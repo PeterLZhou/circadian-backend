@@ -8,5 +8,9 @@ export const Query: QueryResolvers.Type = {
   fitbitAccounts: (parent, args, ctx) => {
     console.log("WHAT");
     return ctx.db.fitbitAccounts();
+  },
+  sleepDatas: (parent, args, ctx) => {
+    console.log("WHAT");
+    return ctx.db.sleepDatas();
   }
 };

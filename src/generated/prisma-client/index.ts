@@ -289,8 +289,6 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
-
 export type GoogleFitAccountOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -374,28 +372,30 @@ export type SleepLogOrderByInput =
   | "summaryDeepCount_DESC"
   | "summaryDeepMinutes_ASC"
   | "summaryDeepMinutes_DESC"
-  | "summaryLightThirtyDayAvgMinutes_ASC"
-  | "summaryLightThirtyDayAvgMinutes_DESC"
+  | "summaryDeepThirtyDayAvgMinutes_ASC"
+  | "summaryDeepThirtyDayAvgMinutes_DESC"
   | "summaryLightCount_ASC"
   | "summaryLightCount_DESC"
   | "summaryLightMinutes_ASC"
   | "summaryLightMinutes_DESC"
-  | "summaryRemThirtyDayAvgMinutes_ASC"
-  | "summaryRemThirtyDayAvgMinutes_DESC"
+  | "summaryLightThirtyDayAvgMinutes_ASC"
+  | "summaryLightThirtyDayAvgMinutes_DESC"
   | "summaryRemCount_ASC"
   | "summaryRemCount_DESC"
   | "summaryRemMinutes_ASC"
   | "summaryRemMinutes_DESC"
-  | "summaryWakeThirtyDayAvgMinutes_ASC"
-  | "summaryWakeThirtyDayAvgMinutes_DESC"
+  | "summaryRemThirtyDayAvgMinutes_ASC"
+  | "summaryRemThirtyDayAvgMinutes_DESC"
   | "summaryWakeCount_ASC"
   | "summaryWakeCount_DESC"
   | "summaryWakeMinutes_ASC"
   | "summaryWakeMinutes_DESC"
+  | "summaryWakeThirtyDayAvgMinutes_ASC"
+  | "summaryWakeThirtyDayAvgMinutes_DESC"
   | "summaryAsleepCount_ASC"
   | "summaryAsleepCount_DESC"
-  | "summarySleepMinutes_ASC"
-  | "summarySleepMinutes_DESC"
+  | "summaryAsleepMinutes_ASC"
+  | "summaryAsleepMinutes_DESC"
   | "summaryAwakeCount_ASC"
   | "summaryAwakeCount_DESC"
   | "summaryAwakeMinutes_ASC"
@@ -421,6 +421,327 @@ export type UserOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export interface FitbitAccountUpdateInput {
+  userId?: ID_Input;
+  fitbitUserId?: String;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export type FitbitAccountWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  userId?: ID_Input;
+}>;
+
+export interface SleepLogWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  userId?: ID_Input;
+  userId_not?: ID_Input;
+  userId_in?: ID_Input[] | ID_Input;
+  userId_not_in?: ID_Input[] | ID_Input;
+  userId_lt?: ID_Input;
+  userId_lte?: ID_Input;
+  userId_gt?: ID_Input;
+  userId_gte?: ID_Input;
+  userId_contains?: ID_Input;
+  userId_not_contains?: ID_Input;
+  userId_starts_with?: ID_Input;
+  userId_not_starts_with?: ID_Input;
+  userId_ends_with?: ID_Input;
+  userId_not_ends_with?: ID_Input;
+  dateOfSleep?: String;
+  dateOfSleep_not?: String;
+  dateOfSleep_in?: String[] | String;
+  dateOfSleep_not_in?: String[] | String;
+  dateOfSleep_lt?: String;
+  dateOfSleep_lte?: String;
+  dateOfSleep_gt?: String;
+  dateOfSleep_gte?: String;
+  dateOfSleep_contains?: String;
+  dateOfSleep_not_contains?: String;
+  dateOfSleep_starts_with?: String;
+  dateOfSleep_not_starts_with?: String;
+  dateOfSleep_ends_with?: String;
+  dateOfSleep_not_ends_with?: String;
+  duration?: Int;
+  duration_not?: Int;
+  duration_in?: Int[] | Int;
+  duration_not_in?: Int[] | Int;
+  duration_lt?: Int;
+  duration_lte?: Int;
+  duration_gt?: Int;
+  duration_gte?: Int;
+  efficiency?: Int;
+  efficiency_not?: Int;
+  efficiency_in?: Int[] | Int;
+  efficiency_not_in?: Int[] | Int;
+  efficiency_lt?: Int;
+  efficiency_lte?: Int;
+  efficiency_gt?: Int;
+  efficiency_gte?: Int;
+  isMainSleep?: Boolean;
+  isMainSleep_not?: Boolean;
+  logId?: Float;
+  logId_not?: Float;
+  logId_in?: Float[] | Float;
+  logId_not_in?: Float[] | Float;
+  logId_lt?: Float;
+  logId_lte?: Float;
+  logId_gt?: Float;
+  logId_gte?: Float;
+  minutesAfterWakeup?: Int;
+  minutesAfterWakeup_not?: Int;
+  minutesAfterWakeup_in?: Int[] | Int;
+  minutesAfterWakeup_not_in?: Int[] | Int;
+  minutesAfterWakeup_lt?: Int;
+  minutesAfterWakeup_lte?: Int;
+  minutesAfterWakeup_gt?: Int;
+  minutesAfterWakeup_gte?: Int;
+  minutesAsleep?: Int;
+  minutesAsleep_not?: Int;
+  minutesAsleep_in?: Int[] | Int;
+  minutesAsleep_not_in?: Int[] | Int;
+  minutesAsleep_lt?: Int;
+  minutesAsleep_lte?: Int;
+  minutesAsleep_gt?: Int;
+  minutesAsleep_gte?: Int;
+  minutesAwake?: Int;
+  minutesAwake_not?: Int;
+  minutesAwake_in?: Int[] | Int;
+  minutesAwake_not_in?: Int[] | Int;
+  minutesAwake_lt?: Int;
+  minutesAwake_lte?: Int;
+  minutesAwake_gt?: Int;
+  minutesAwake_gte?: Int;
+  minutesToFallAsleep?: Int;
+  minutesToFallAsleep_not?: Int;
+  minutesToFallAsleep_in?: Int[] | Int;
+  minutesToFallAsleep_not_in?: Int[] | Int;
+  minutesToFallAsleep_lt?: Int;
+  minutesToFallAsleep_lte?: Int;
+  minutesToFallAsleep_gt?: Int;
+  minutesToFallAsleep_gte?: Int;
+  startTime?: DateTimeInput;
+  startTime_not?: DateTimeInput;
+  startTime_in?: DateTimeInput[] | DateTimeInput;
+  startTime_not_in?: DateTimeInput[] | DateTimeInput;
+  startTime_lt?: DateTimeInput;
+  startTime_lte?: DateTimeInput;
+  startTime_gt?: DateTimeInput;
+  startTime_gte?: DateTimeInput;
+  timeInBed?: Int;
+  timeInBed_not?: Int;
+  timeInBed_in?: Int[] | Int;
+  timeInBed_not_in?: Int[] | Int;
+  timeInBed_lt?: Int;
+  timeInBed_lte?: Int;
+  timeInBed_gt?: Int;
+  timeInBed_gte?: Int;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  data_every?: SleepDataWhereInput;
+  data_some?: SleepDataWhereInput;
+  data_none?: SleepDataWhereInput;
+  summaryDeepCount?: Int;
+  summaryDeepCount_not?: Int;
+  summaryDeepCount_in?: Int[] | Int;
+  summaryDeepCount_not_in?: Int[] | Int;
+  summaryDeepCount_lt?: Int;
+  summaryDeepCount_lte?: Int;
+  summaryDeepCount_gt?: Int;
+  summaryDeepCount_gte?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepMinutes_not?: Int;
+  summaryDeepMinutes_in?: Int[] | Int;
+  summaryDeepMinutes_not_in?: Int[] | Int;
+  summaryDeepMinutes_lt?: Int;
+  summaryDeepMinutes_lte?: Int;
+  summaryDeepMinutes_gt?: Int;
+  summaryDeepMinutes_gte?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes_not?: Int;
+  summaryDeepThirtyDayAvgMinutes_in?: Int[] | Int;
+  summaryDeepThirtyDayAvgMinutes_not_in?: Int[] | Int;
+  summaryDeepThirtyDayAvgMinutes_lt?: Int;
+  summaryDeepThirtyDayAvgMinutes_lte?: Int;
+  summaryDeepThirtyDayAvgMinutes_gt?: Int;
+  summaryDeepThirtyDayAvgMinutes_gte?: Int;
+  summaryLightCount?: Int;
+  summaryLightCount_not?: Int;
+  summaryLightCount_in?: Int[] | Int;
+  summaryLightCount_not_in?: Int[] | Int;
+  summaryLightCount_lt?: Int;
+  summaryLightCount_lte?: Int;
+  summaryLightCount_gt?: Int;
+  summaryLightCount_gte?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightMinutes_not?: Int;
+  summaryLightMinutes_in?: Int[] | Int;
+  summaryLightMinutes_not_in?: Int[] | Int;
+  summaryLightMinutes_lt?: Int;
+  summaryLightMinutes_lte?: Int;
+  summaryLightMinutes_gt?: Int;
+  summaryLightMinutes_gte?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes_not?: Int;
+  summaryLightThirtyDayAvgMinutes_in?: Int[] | Int;
+  summaryLightThirtyDayAvgMinutes_not_in?: Int[] | Int;
+  summaryLightThirtyDayAvgMinutes_lt?: Int;
+  summaryLightThirtyDayAvgMinutes_lte?: Int;
+  summaryLightThirtyDayAvgMinutes_gt?: Int;
+  summaryLightThirtyDayAvgMinutes_gte?: Int;
+  summaryRemCount?: Int;
+  summaryRemCount_not?: Int;
+  summaryRemCount_in?: Int[] | Int;
+  summaryRemCount_not_in?: Int[] | Int;
+  summaryRemCount_lt?: Int;
+  summaryRemCount_lte?: Int;
+  summaryRemCount_gt?: Int;
+  summaryRemCount_gte?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemMinutes_not?: Int;
+  summaryRemMinutes_in?: Int[] | Int;
+  summaryRemMinutes_not_in?: Int[] | Int;
+  summaryRemMinutes_lt?: Int;
+  summaryRemMinutes_lte?: Int;
+  summaryRemMinutes_gt?: Int;
+  summaryRemMinutes_gte?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes_not?: Int;
+  summaryRemThirtyDayAvgMinutes_in?: Int[] | Int;
+  summaryRemThirtyDayAvgMinutes_not_in?: Int[] | Int;
+  summaryRemThirtyDayAvgMinutes_lt?: Int;
+  summaryRemThirtyDayAvgMinutes_lte?: Int;
+  summaryRemThirtyDayAvgMinutes_gt?: Int;
+  summaryRemThirtyDayAvgMinutes_gte?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeCount_not?: Int;
+  summaryWakeCount_in?: Int[] | Int;
+  summaryWakeCount_not_in?: Int[] | Int;
+  summaryWakeCount_lt?: Int;
+  summaryWakeCount_lte?: Int;
+  summaryWakeCount_gt?: Int;
+  summaryWakeCount_gte?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeMinutes_not?: Int;
+  summaryWakeMinutes_in?: Int[] | Int;
+  summaryWakeMinutes_not_in?: Int[] | Int;
+  summaryWakeMinutes_lt?: Int;
+  summaryWakeMinutes_lte?: Int;
+  summaryWakeMinutes_gt?: Int;
+  summaryWakeMinutes_gte?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes_not?: Int;
+  summaryWakeThirtyDayAvgMinutes_in?: Int[] | Int;
+  summaryWakeThirtyDayAvgMinutes_not_in?: Int[] | Int;
+  summaryWakeThirtyDayAvgMinutes_lt?: Int;
+  summaryWakeThirtyDayAvgMinutes_lte?: Int;
+  summaryWakeThirtyDayAvgMinutes_gt?: Int;
+  summaryWakeThirtyDayAvgMinutes_gte?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepCount_not?: Int;
+  summaryAsleepCount_in?: Int[] | Int;
+  summaryAsleepCount_not_in?: Int[] | Int;
+  summaryAsleepCount_lt?: Int;
+  summaryAsleepCount_lte?: Int;
+  summaryAsleepCount_gt?: Int;
+  summaryAsleepCount_gte?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAsleepMinutes_not?: Int;
+  summaryAsleepMinutes_in?: Int[] | Int;
+  summaryAsleepMinutes_not_in?: Int[] | Int;
+  summaryAsleepMinutes_lt?: Int;
+  summaryAsleepMinutes_lte?: Int;
+  summaryAsleepMinutes_gt?: Int;
+  summaryAsleepMinutes_gte?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeCount_not?: Int;
+  summaryAwakeCount_in?: Int[] | Int;
+  summaryAwakeCount_not_in?: Int[] | Int;
+  summaryAwakeCount_lt?: Int;
+  summaryAwakeCount_lte?: Int;
+  summaryAwakeCount_gt?: Int;
+  summaryAwakeCount_gte?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryAwakeMinutes_not?: Int;
+  summaryAwakeMinutes_in?: Int[] | Int;
+  summaryAwakeMinutes_not_in?: Int[] | Int;
+  summaryAwakeMinutes_lt?: Int;
+  summaryAwakeMinutes_lte?: Int;
+  summaryAwakeMinutes_gt?: Int;
+  summaryAwakeMinutes_gte?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessCount_not?: Int;
+  summaryRestlessCount_in?: Int[] | Int;
+  summaryRestlessCount_not_in?: Int[] | Int;
+  summaryRestlessCount_lt?: Int;
+  summaryRestlessCount_lte?: Int;
+  summaryRestlessCount_gt?: Int;
+  summaryRestlessCount_gte?: Int;
+  summaryRestlessMinutes?: Int;
+  summaryRestlessMinutes_not?: Int;
+  summaryRestlessMinutes_in?: Int[] | Int;
+  summaryRestlessMinutes_not_in?: Int[] | Int;
+  summaryRestlessMinutes_lt?: Int;
+  summaryRestlessMinutes_lte?: Int;
+  summaryRestlessMinutes_gt?: Int;
+  summaryRestlessMinutes_gte?: Int;
+  AND?: SleepLogWhereInput[] | SleepLogWhereInput;
+  OR?: SleepLogWhereInput[] | SleepLogWhereInput;
+  NOT?: SleepLogWhereInput[] | SleepLogWhereInput;
+}
+
+export interface SleepDataUpdateInput {
+  sleepLogId?: ID_Input;
+  dateTime?: DateTimeInput;
+  level?: String;
+  second?: Int;
+}
+
+export interface GoogleFitAccountUpdateOneInput {
+  create?: GoogleFitAccountCreateInput;
+  update?: GoogleFitAccountUpdateDataInput;
+  upsert?: GoogleFitAccountUpsertNestedInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: GoogleFitAccountWhereUniqueInput;
+}
+
+export interface GoogleFitAccountUpdateInput {
+  userId?: ID_Input;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
 export interface UserUpdateInput {
   email?: String;
   password?: String;
@@ -429,52 +750,23 @@ export interface UserUpdateInput {
   sleepLogs?: SleepLogUpdateManyInput;
 }
 
-export interface SleepLogCreateInput {
-  userId: ID_Input;
-  dateOfSleep: String;
-  duration: Int;
-  efficiency: Int;
-  isMainSleep: Boolean;
-  logId: String;
-  minutesAfterWakeup: Int;
-  minutesAsleep: Int;
-  minutesAwake: Int;
-  minutesToFallAsleep: Int;
-  startTime: DateTimeInput;
-  timeInBed: Int;
-  type?: String;
-  data?: SleepDataCreateManyInput;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summarySleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface SleepDataSubscriptionWhereInput {
+export interface SleepLogSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: SleepDataWhereInput;
-  AND?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
-  OR?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
-  NOT?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+  node?: SleepLogWhereInput;
+  AND?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+  OR?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+  NOT?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
 }
 
-export type FitbitAccountWhereUniqueInput = AtLeastOne<{
+export interface SleepLogCreateManyInput {
+  create?: SleepLogCreateInput[] | SleepLogCreateInput;
+  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+}
+
+export type GoogleFitAccountWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
   userId?: ID_Input;
 }>;
@@ -483,80 +775,6 @@ export interface FitbitAccountCreateOneInput {
   create?: FitbitAccountCreateInput;
   connect?: FitbitAccountWhereUniqueInput;
 }
-
-export interface FitbitAccountSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: FitbitAccountWhereInput;
-  AND?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-  OR?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-  NOT?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-}
-
-export interface GoogleFitAccountCreateOneInput {
-  create?: GoogleFitAccountCreateInput;
-  connect?: GoogleFitAccountWhereUniqueInput;
-}
-
-export interface SleepLogUpdateDataInput {
-  userId?: ID_Input;
-  dateOfSleep?: String;
-  duration?: Int;
-  efficiency?: Int;
-  isMainSleep?: Boolean;
-  logId?: String;
-  minutesAfterWakeup?: Int;
-  minutesAsleep?: Int;
-  minutesAwake?: Int;
-  minutesToFallAsleep?: Int;
-  startTime?: DateTimeInput;
-  timeInBed?: Int;
-  type?: String;
-  data?: SleepDataUpdateManyInput;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summarySleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface UserCreateInput {
-  email: String;
-  password: String;
-  googleFitAccount?: GoogleFitAccountCreateOneInput;
-  fitbitAccount?: FitbitAccountCreateOneInput;
-  sleepLogs?: SleepLogCreateManyInput;
-}
-
-export type GoogleFitAccountWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  userId?: ID_Input;
-}>;
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
 
 export interface GoogleFitAccountWhereInput {
   id?: ID_Input;
@@ -628,15 +846,25 @@ export interface GoogleFitAccountWhereInput {
   NOT?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
 }
 
-export interface SleepDataUpsertWithWhereUniqueNestedInput {
-  where: SleepDataWhereUniqueInput;
-  update: SleepDataUpdateDataInput;
-  create: SleepDataCreateInput;
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface SleepLogUpsertWithWhereUniqueNestedInput {
+  where: SleepLogWhereUniqueInput;
+  update: SleepLogUpdateDataInput;
+  create: SleepLogCreateInput;
 }
 
-export interface FitbitAccountUpsertNestedInput {
-  update: FitbitAccountUpdateDataInput;
-  create: FitbitAccountCreateInput;
+export interface GoogleFitAccountCreateOneInput {
+  create?: GoogleFitAccountCreateInput;
+  connect?: GoogleFitAccountWhereUniqueInput;
+}
+
+export interface SleepLogUpdateWithWhereUniqueNestedInput {
+  where: SleepLogWhereUniqueInput;
+  data: SleepLogUpdateDataInput;
 }
 
 export interface UserWhereInput {
@@ -708,36 +936,25 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface FitbitAccountUpdateOneInput {
-  create?: FitbitAccountCreateInput;
-  update?: FitbitAccountUpdateDataInput;
-  upsert?: FitbitAccountUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: FitbitAccountWhereUniqueInput;
+export interface SleepLogUpdateManyInput {
+  create?: SleepLogCreateInput[] | SleepLogCreateInput;
+  update?:
+    | SleepLogUpdateWithWhereUniqueNestedInput[]
+    | SleepLogUpdateWithWhereUniqueNestedInput;
+  upsert?:
+    | SleepLogUpsertWithWhereUniqueNestedInput[]
+    | SleepLogUpsertWithWhereUniqueNestedInput;
+  delete?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+  disconnect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
 }
 
-export interface SleepLogSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: SleepLogWhereInput;
-  AND?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
-  OR?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
-  NOT?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
-}
-
-export interface GoogleFitAccountUpsertNestedInput {
-  update: GoogleFitAccountUpdateDataInput;
-  create: GoogleFitAccountCreateInput;
-}
-
-export interface SleepDataUpdateDataInput {
-  sleepLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  level?: String;
-  second?: Int;
+export interface UserCreateInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneInput;
+  fitbitAccount?: FitbitAccountCreateOneInput;
+  sleepLogs?: SleepLogCreateManyInput;
 }
 
 export interface FitbitAccountWhereInput {
@@ -824,19 +1041,83 @@ export interface FitbitAccountWhereInput {
   NOT?: FitbitAccountWhereInput[] | FitbitAccountWhereInput;
 }
 
+export interface SleepDataUpsertWithWhereUniqueNestedInput {
+  where: SleepDataWhereUniqueInput;
+  update: SleepDataUpdateDataInput;
+  create: SleepDataCreateInput;
+}
+
+export interface FitbitAccountUpdateDataInput {
+  userId?: ID_Input;
+  fitbitUserId?: String;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface SleepDataUpdateDataInput {
+  sleepLogId?: ID_Input;
+  dateTime?: DateTimeInput;
+  level?: String;
+  second?: Int;
+}
+
+export type SleepLogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  logId?: Float;
+}>;
+
 export interface SleepDataUpdateWithWhereUniqueNestedInput {
   where: SleepDataWhereUniqueInput;
   data: SleepDataUpdateDataInput;
 }
 
-export interface GoogleFitAccountUpdateOneInput {
-  create?: GoogleFitAccountCreateInput;
-  update?: GoogleFitAccountUpdateDataInput;
-  upsert?: GoogleFitAccountUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: GoogleFitAccountWhereUniqueInput;
+export interface GoogleFitAccountUpdateDataInput {
+  userId?: ID_Input;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
 }
+
+export interface SleepDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: SleepDataWhereInput;
+  AND?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+  OR?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+  NOT?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+}
+
+export interface FitbitAccountSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: FitbitAccountWhereInput;
+  AND?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+  OR?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+  NOT?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+}
+
+export interface FitbitAccountCreateInput {
+  userId: ID_Input;
+  fitbitUserId: String;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeInput;
+}
+
+export type SleepDataWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
 
 export interface SleepDataUpdateManyInput {
   create?: SleepDataCreateInput[] | SleepDataCreateInput;
@@ -851,332 +1132,10 @@ export interface SleepDataUpdateManyInput {
   disconnect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
 }
 
-export type SleepLogWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface SleepLogWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  userId?: ID_Input;
-  userId_not?: ID_Input;
-  userId_in?: ID_Input[] | ID_Input;
-  userId_not_in?: ID_Input[] | ID_Input;
-  userId_lt?: ID_Input;
-  userId_lte?: ID_Input;
-  userId_gt?: ID_Input;
-  userId_gte?: ID_Input;
-  userId_contains?: ID_Input;
-  userId_not_contains?: ID_Input;
-  userId_starts_with?: ID_Input;
-  userId_not_starts_with?: ID_Input;
-  userId_ends_with?: ID_Input;
-  userId_not_ends_with?: ID_Input;
-  dateOfSleep?: String;
-  dateOfSleep_not?: String;
-  dateOfSleep_in?: String[] | String;
-  dateOfSleep_not_in?: String[] | String;
-  dateOfSleep_lt?: String;
-  dateOfSleep_lte?: String;
-  dateOfSleep_gt?: String;
-  dateOfSleep_gte?: String;
-  dateOfSleep_contains?: String;
-  dateOfSleep_not_contains?: String;
-  dateOfSleep_starts_with?: String;
-  dateOfSleep_not_starts_with?: String;
-  dateOfSleep_ends_with?: String;
-  dateOfSleep_not_ends_with?: String;
-  duration?: Int;
-  duration_not?: Int;
-  duration_in?: Int[] | Int;
-  duration_not_in?: Int[] | Int;
-  duration_lt?: Int;
-  duration_lte?: Int;
-  duration_gt?: Int;
-  duration_gte?: Int;
-  efficiency?: Int;
-  efficiency_not?: Int;
-  efficiency_in?: Int[] | Int;
-  efficiency_not_in?: Int[] | Int;
-  efficiency_lt?: Int;
-  efficiency_lte?: Int;
-  efficiency_gt?: Int;
-  efficiency_gte?: Int;
-  isMainSleep?: Boolean;
-  isMainSleep_not?: Boolean;
-  logId?: String;
-  logId_not?: String;
-  logId_in?: String[] | String;
-  logId_not_in?: String[] | String;
-  logId_lt?: String;
-  logId_lte?: String;
-  logId_gt?: String;
-  logId_gte?: String;
-  logId_contains?: String;
-  logId_not_contains?: String;
-  logId_starts_with?: String;
-  logId_not_starts_with?: String;
-  logId_ends_with?: String;
-  logId_not_ends_with?: String;
-  minutesAfterWakeup?: Int;
-  minutesAfterWakeup_not?: Int;
-  minutesAfterWakeup_in?: Int[] | Int;
-  minutesAfterWakeup_not_in?: Int[] | Int;
-  minutesAfterWakeup_lt?: Int;
-  minutesAfterWakeup_lte?: Int;
-  minutesAfterWakeup_gt?: Int;
-  minutesAfterWakeup_gte?: Int;
-  minutesAsleep?: Int;
-  minutesAsleep_not?: Int;
-  minutesAsleep_in?: Int[] | Int;
-  minutesAsleep_not_in?: Int[] | Int;
-  minutesAsleep_lt?: Int;
-  minutesAsleep_lte?: Int;
-  minutesAsleep_gt?: Int;
-  minutesAsleep_gte?: Int;
-  minutesAwake?: Int;
-  minutesAwake_not?: Int;
-  minutesAwake_in?: Int[] | Int;
-  minutesAwake_not_in?: Int[] | Int;
-  minutesAwake_lt?: Int;
-  minutesAwake_lte?: Int;
-  minutesAwake_gt?: Int;
-  minutesAwake_gte?: Int;
-  minutesToFallAsleep?: Int;
-  minutesToFallAsleep_not?: Int;
-  minutesToFallAsleep_in?: Int[] | Int;
-  minutesToFallAsleep_not_in?: Int[] | Int;
-  minutesToFallAsleep_lt?: Int;
-  minutesToFallAsleep_lte?: Int;
-  minutesToFallAsleep_gt?: Int;
-  minutesToFallAsleep_gte?: Int;
-  startTime?: DateTimeInput;
-  startTime_not?: DateTimeInput;
-  startTime_in?: DateTimeInput[] | DateTimeInput;
-  startTime_not_in?: DateTimeInput[] | DateTimeInput;
-  startTime_lt?: DateTimeInput;
-  startTime_lte?: DateTimeInput;
-  startTime_gt?: DateTimeInput;
-  startTime_gte?: DateTimeInput;
-  timeInBed?: Int;
-  timeInBed_not?: Int;
-  timeInBed_in?: Int[] | Int;
-  timeInBed_not_in?: Int[] | Int;
-  timeInBed_lt?: Int;
-  timeInBed_lte?: Int;
-  timeInBed_gt?: Int;
-  timeInBed_gte?: Int;
-  type?: String;
-  type_not?: String;
-  type_in?: String[] | String;
-  type_not_in?: String[] | String;
-  type_lt?: String;
-  type_lte?: String;
-  type_gt?: String;
-  type_gte?: String;
-  type_contains?: String;
-  type_not_contains?: String;
-  type_starts_with?: String;
-  type_not_starts_with?: String;
-  type_ends_with?: String;
-  type_not_ends_with?: String;
-  data_every?: SleepDataWhereInput;
-  data_some?: SleepDataWhereInput;
-  data_none?: SleepDataWhereInput;
-  summaryDeepCount?: Int;
-  summaryDeepCount_not?: Int;
-  summaryDeepCount_in?: Int[] | Int;
-  summaryDeepCount_not_in?: Int[] | Int;
-  summaryDeepCount_lt?: Int;
-  summaryDeepCount_lte?: Int;
-  summaryDeepCount_gt?: Int;
-  summaryDeepCount_gte?: Int;
-  summaryDeepMinutes?: Int;
-  summaryDeepMinutes_not?: Int;
-  summaryDeepMinutes_in?: Int[] | Int;
-  summaryDeepMinutes_not_in?: Int[] | Int;
-  summaryDeepMinutes_lt?: Int;
-  summaryDeepMinutes_lte?: Int;
-  summaryDeepMinutes_gt?: Int;
-  summaryDeepMinutes_gte?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes_not?: Int;
-  summaryLightThirtyDayAvgMinutes_in?: Int[] | Int;
-  summaryLightThirtyDayAvgMinutes_not_in?: Int[] | Int;
-  summaryLightThirtyDayAvgMinutes_lt?: Int;
-  summaryLightThirtyDayAvgMinutes_lte?: Int;
-  summaryLightThirtyDayAvgMinutes_gt?: Int;
-  summaryLightThirtyDayAvgMinutes_gte?: Int;
-  summaryLightCount?: Int;
-  summaryLightCount_not?: Int;
-  summaryLightCount_in?: Int[] | Int;
-  summaryLightCount_not_in?: Int[] | Int;
-  summaryLightCount_lt?: Int;
-  summaryLightCount_lte?: Int;
-  summaryLightCount_gt?: Int;
-  summaryLightCount_gte?: Int;
-  summaryLightMinutes?: Int;
-  summaryLightMinutes_not?: Int;
-  summaryLightMinutes_in?: Int[] | Int;
-  summaryLightMinutes_not_in?: Int[] | Int;
-  summaryLightMinutes_lt?: Int;
-  summaryLightMinutes_lte?: Int;
-  summaryLightMinutes_gt?: Int;
-  summaryLightMinutes_gte?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes_not?: Int;
-  summaryRemThirtyDayAvgMinutes_in?: Int[] | Int;
-  summaryRemThirtyDayAvgMinutes_not_in?: Int[] | Int;
-  summaryRemThirtyDayAvgMinutes_lt?: Int;
-  summaryRemThirtyDayAvgMinutes_lte?: Int;
-  summaryRemThirtyDayAvgMinutes_gt?: Int;
-  summaryRemThirtyDayAvgMinutes_gte?: Int;
-  summaryRemCount?: Int;
-  summaryRemCount_not?: Int;
-  summaryRemCount_in?: Int[] | Int;
-  summaryRemCount_not_in?: Int[] | Int;
-  summaryRemCount_lt?: Int;
-  summaryRemCount_lte?: Int;
-  summaryRemCount_gt?: Int;
-  summaryRemCount_gte?: Int;
-  summaryRemMinutes?: Int;
-  summaryRemMinutes_not?: Int;
-  summaryRemMinutes_in?: Int[] | Int;
-  summaryRemMinutes_not_in?: Int[] | Int;
-  summaryRemMinutes_lt?: Int;
-  summaryRemMinutes_lte?: Int;
-  summaryRemMinutes_gt?: Int;
-  summaryRemMinutes_gte?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes_not?: Int;
-  summaryWakeThirtyDayAvgMinutes_in?: Int[] | Int;
-  summaryWakeThirtyDayAvgMinutes_not_in?: Int[] | Int;
-  summaryWakeThirtyDayAvgMinutes_lt?: Int;
-  summaryWakeThirtyDayAvgMinutes_lte?: Int;
-  summaryWakeThirtyDayAvgMinutes_gt?: Int;
-  summaryWakeThirtyDayAvgMinutes_gte?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeCount_not?: Int;
-  summaryWakeCount_in?: Int[] | Int;
-  summaryWakeCount_not_in?: Int[] | Int;
-  summaryWakeCount_lt?: Int;
-  summaryWakeCount_lte?: Int;
-  summaryWakeCount_gt?: Int;
-  summaryWakeCount_gte?: Int;
-  summaryWakeMinutes?: Int;
-  summaryWakeMinutes_not?: Int;
-  summaryWakeMinutes_in?: Int[] | Int;
-  summaryWakeMinutes_not_in?: Int[] | Int;
-  summaryWakeMinutes_lt?: Int;
-  summaryWakeMinutes_lte?: Int;
-  summaryWakeMinutes_gt?: Int;
-  summaryWakeMinutes_gte?: Int;
-  summaryAsleepCount?: Int;
-  summaryAsleepCount_not?: Int;
-  summaryAsleepCount_in?: Int[] | Int;
-  summaryAsleepCount_not_in?: Int[] | Int;
-  summaryAsleepCount_lt?: Int;
-  summaryAsleepCount_lte?: Int;
-  summaryAsleepCount_gt?: Int;
-  summaryAsleepCount_gte?: Int;
-  summarySleepMinutes?: Int;
-  summarySleepMinutes_not?: Int;
-  summarySleepMinutes_in?: Int[] | Int;
-  summarySleepMinutes_not_in?: Int[] | Int;
-  summarySleepMinutes_lt?: Int;
-  summarySleepMinutes_lte?: Int;
-  summarySleepMinutes_gt?: Int;
-  summarySleepMinutes_gte?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeCount_not?: Int;
-  summaryAwakeCount_in?: Int[] | Int;
-  summaryAwakeCount_not_in?: Int[] | Int;
-  summaryAwakeCount_lt?: Int;
-  summaryAwakeCount_lte?: Int;
-  summaryAwakeCount_gt?: Int;
-  summaryAwakeCount_gte?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryAwakeMinutes_not?: Int;
-  summaryAwakeMinutes_in?: Int[] | Int;
-  summaryAwakeMinutes_not_in?: Int[] | Int;
-  summaryAwakeMinutes_lt?: Int;
-  summaryAwakeMinutes_lte?: Int;
-  summaryAwakeMinutes_gt?: Int;
-  summaryAwakeMinutes_gte?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessCount_not?: Int;
-  summaryRestlessCount_in?: Int[] | Int;
-  summaryRestlessCount_not_in?: Int[] | Int;
-  summaryRestlessCount_lt?: Int;
-  summaryRestlessCount_lte?: Int;
-  summaryRestlessCount_gt?: Int;
-  summaryRestlessCount_gte?: Int;
-  summaryRestlessMinutes?: Int;
-  summaryRestlessMinutes_not?: Int;
-  summaryRestlessMinutes_in?: Int[] | Int;
-  summaryRestlessMinutes_not_in?: Int[] | Int;
-  summaryRestlessMinutes_lt?: Int;
-  summaryRestlessMinutes_lte?: Int;
-  summaryRestlessMinutes_gt?: Int;
-  summaryRestlessMinutes_gte?: Int;
-  AND?: SleepLogWhereInput[] | SleepLogWhereInput;
-  OR?: SleepLogWhereInput[] | SleepLogWhereInput;
-  NOT?: SleepLogWhereInput[] | SleepLogWhereInput;
+export interface FitbitAccountUpsertNestedInput {
+  update: FitbitAccountUpdateDataInput;
+  create: FitbitAccountCreateInput;
 }
-
-export interface SleepLogUpdateWithWhereUniqueNestedInput {
-  where: SleepLogWhereUniqueInput;
-  data: SleepLogUpdateDataInput;
-}
-
-export interface FitbitAccountCreateInput {
-  userId: ID_Input;
-  fitbitUserId: String;
-  refreshToken: String;
-  accessToken: String;
-  expiration: DateTimeInput;
-}
-
-export interface GoogleFitAccountSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: GoogleFitAccountWhereInput;
-  AND?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-  OR?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-  NOT?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-}
-
-export interface FitbitAccountUpdateInput {
-  userId?: ID_Input;
-  fitbitUserId?: String;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export type SleepDataWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
 
 export interface SleepLogUpdateInput {
   userId?: ID_Input;
@@ -1184,7 +1143,7 @@ export interface SleepLogUpdateInput {
   duration?: Int;
   efficiency?: Int;
   isMainSleep?: Boolean;
-  logId?: String;
+  logId?: Float;
   minutesAfterWakeup?: Int;
   minutesAsleep?: Int;
   minutesAwake?: Int;
@@ -1195,45 +1154,27 @@ export interface SleepLogUpdateInput {
   data?: SleepDataUpdateManyInput;
   summaryDeepCount?: Int;
   summaryDeepMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
   summaryLightCount?: Int;
   summaryLightMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
   summaryRemCount?: Int;
   summaryRemMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
   summaryWakeCount?: Int;
   summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
   summaryAsleepCount?: Int;
-  summarySleepMinutes?: Int;
+  summaryAsleepMinutes?: Int;
   summaryAwakeCount?: Int;
   summaryAwakeMinutes?: Int;
   summaryRestlessCount?: Int;
   summaryRestlessMinutes?: Int;
 }
 
-export interface GoogleFitAccountUpdateDataInput {
-  userId?: ID_Input;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export interface SleepDataCreateManyInput {
-  create?: SleepDataCreateInput[] | SleepDataCreateInput;
-  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
-}
-
-export interface SleepLogCreateManyInput {
-  create?: SleepLogCreateInput[] | SleepLogCreateInput;
-  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-}
-
-export interface SleepDataUpdateInput {
-  sleepLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  level?: String;
-  second?: Int;
+export interface GoogleFitAccountUpsertNestedInput {
+  update: GoogleFitAccountUpdateDataInput;
+  create: GoogleFitAccountCreateInput;
 }
 
 export interface SleepDataCreateInput {
@@ -1243,11 +1184,39 @@ export interface SleepDataCreateInput {
   second: Int;
 }
 
-export interface GoogleFitAccountUpdateInput {
-  userId?: ID_Input;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
+export interface SleepLogCreateInput {
+  userId: ID_Input;
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeInput;
+  timeInBed: Int;
+  type?: String;
+  data?: SleepDataCreateManyInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
 }
 
 export interface GoogleFitAccountCreateInput {
@@ -1257,10 +1226,9 @@ export interface GoogleFitAccountCreateInput {
   expiration: DateTimeInput;
 }
 
-export interface SleepLogUpsertWithWhereUniqueNestedInput {
-  where: SleepLogWhereUniqueInput;
-  update: SleepLogUpdateDataInput;
-  create: SleepLogCreateInput;
+export interface SleepDataCreateManyInput {
+  create?: SleepDataCreateInput[] | SleepDataCreateInput;
+  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -1272,6 +1240,15 @@ export interface UserSubscriptionWhereInput {
   AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
   OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
   NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
+export interface FitbitAccountUpdateOneInput {
+  create?: FitbitAccountCreateInput;
+  update?: FitbitAccountUpdateDataInput;
+  upsert?: FitbitAccountUpsertNestedInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: FitbitAccountWhereUniqueInput;
 }
 
 export interface SleepDataWhereInput {
@@ -1338,59 +1315,60 @@ export interface SleepDataWhereInput {
   NOT?: SleepDataWhereInput[] | SleepDataWhereInput;
 }
 
-export interface FitbitAccountUpdateDataInput {
+export interface SleepLogUpdateDataInput {
   userId?: ID_Input;
-  fitbitUserId?: String;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
+  dateOfSleep?: String;
+  duration?: Int;
+  efficiency?: Int;
+  isMainSleep?: Boolean;
+  logId?: Float;
+  minutesAfterWakeup?: Int;
+  minutesAsleep?: Int;
+  minutesAwake?: Int;
+  minutesToFallAsleep?: Int;
+  startTime?: DateTimeInput;
+  timeInBed?: Int;
+  type?: String;
+  data?: SleepDataUpdateManyInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
 }
 
-export interface SleepLogUpdateManyInput {
-  create?: SleepLogCreateInput[] | SleepLogCreateInput;
-  update?:
-    | SleepLogUpdateWithWhereUniqueNestedInput[]
-    | SleepLogUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | SleepLogUpsertWithWhereUniqueNestedInput[]
-    | SleepLogUpsertWithWhereUniqueNestedInput;
-  delete?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-  disconnect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+export interface GoogleFitAccountSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: GoogleFitAccountWhereInput;
+  AND?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
+  OR?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
+  NOT?:
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
 }
 
 export interface NodeNode {
   id: ID_Output;
-}
-
-export interface BatchPayloadNode {
-  count: Long;
-}
-
-export interface BatchPayload extends Promise<BatchPayloadNode>, Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayloadNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateFitbitAccountNode {
-  count: Int;
-}
-
-export interface AggregateFitbitAccount
-  extends Promise<AggregateFitbitAccountNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateFitbitAccountSubscription
-  extends Promise<AsyncIterator<AggregateFitbitAccountNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserPreviousValuesNode {
@@ -1421,22 +1399,111 @@ export interface UserPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface FitbitAccountEdgeNode {
+export interface AggregateGoogleFitAccountNode {
+  count: Int;
+}
+
+export interface AggregateGoogleFitAccount
+  extends Promise<AggregateGoogleFitAccountNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateGoogleFitAccountSubscription
+  extends Promise<AsyncIterator<AggregateGoogleFitAccountNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface FitbitAccountConnectionNode {}
+
+export interface FitbitAccountConnection
+  extends Promise<FitbitAccountConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<FitbitAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateFitbitAccount>() => T;
+}
+
+export interface FitbitAccountConnectionSubscription
+  extends Promise<AsyncIterator<FitbitAccountConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<FitbitAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateFitbitAccountSubscription>() => T;
+}
+
+export interface GoogleFitAccountEdgeNode {
   cursor: String;
 }
 
-export interface FitbitAccountEdge
-  extends Promise<FitbitAccountEdgeNode>,
+export interface GoogleFitAccountEdge
+  extends Promise<GoogleFitAccountEdgeNode>,
     Fragmentable {
-  node: <T = FitbitAccount>() => T;
+  node: <T = GoogleFitAccount>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface FitbitAccountEdgeSubscription
-  extends Promise<AsyncIterator<FitbitAccountEdgeNode>>,
+export interface GoogleFitAccountEdgeSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountEdgeNode>>,
     Fragmentable {
-  node: <T = FitbitAccountSubscription>() => T;
+  node: <T = GoogleFitAccountSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PageInfoNode {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfoNode>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface GoogleFitAccountConnectionNode {}
+
+export interface GoogleFitAccountConnection
+  extends Promise<GoogleFitAccountConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<GoogleFitAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateGoogleFitAccount>() => T;
+}
+
+export interface GoogleFitAccountConnectionSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GoogleFitAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGoogleFitAccountSubscription>() => T;
+}
+
+export interface BatchPayloadNode {
+  count: Long;
+}
+
+export interface BatchPayload extends Promise<BatchPayloadNode>, Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayloadNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
 }
 
 export interface AggregateUserNode {
@@ -1455,68 +1522,6 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface UserSubscriptionPayload
-  extends Promise<UserSubscriptionPayloadNode>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = User>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValues>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayloadNode>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface SleepLogSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface SleepLogSubscriptionPayload
-  extends Promise<SleepLogSubscriptionPayloadNode>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = SleepLog>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = SleepLogPreviousValues>() => T;
-}
-
-export interface SleepLogSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<SleepLogSubscriptionPayloadNode>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = SleepLogSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = SleepLogPreviousValuesSubscription>() => T;
-}
-
-export interface UserEdgeNode {
-  cursor: String;
-}
-
-export interface UserEdge extends Promise<UserEdgeNode>, Fragmentable {
-  node: <T = User>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdgeNode>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface UserConnectionNode {}
 
 export interface UserConnection
@@ -1533,6 +1538,37 @@ export interface UserConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
   aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface FitbitAccountNode {
+  id: ID_Output;
+  userId: ID_Output;
+  fitbitUserId: String;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeOutput;
+}
+
+export interface FitbitAccount
+  extends Promise<FitbitAccountNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<ID_Output>;
+  fitbitUserId: () => Promise<String>;
+  refreshToken: () => Promise<String>;
+  accessToken: () => Promise<String>;
+  expiration: () => Promise<DateTimeOutput>;
+}
+
+export interface FitbitAccountSubscription
+  extends Promise<AsyncIterator<FitbitAccountNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<ID_Output>>;
+  fitbitUserId: () => Promise<AsyncIterator<String>>;
+  refreshToken: () => Promise<AsyncIterator<String>>;
+  accessToken: () => Promise<AsyncIterator<String>>;
+  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface UserNode {
@@ -1587,207 +1623,6 @@ export interface UserSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface SleepLogEdgeNode {
-  cursor: String;
-}
-
-export interface SleepLogEdge extends Promise<SleepLogEdgeNode>, Fragmentable {
-  node: <T = SleepLog>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface SleepLogEdgeSubscription
-  extends Promise<AsyncIterator<SleepLogEdgeNode>>,
-    Fragmentable {
-  node: <T = SleepLogSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PageInfoNode {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfoNode>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface SleepLogNode {
-  id: ID_Output;
-  userId: ID_Output;
-  dateOfSleep: String;
-  duration: Int;
-  efficiency: Int;
-  isMainSleep: Boolean;
-  logId: String;
-  minutesAfterWakeup: Int;
-  minutesAsleep: Int;
-  minutesAwake: Int;
-  minutesToFallAsleep: Int;
-  startTime: DateTimeOutput;
-  timeInBed: Int;
-  type?: String;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summarySleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface SleepLog extends Promise<SleepLogNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
-  dateOfSleep: () => Promise<String>;
-  duration: () => Promise<Int>;
-  efficiency: () => Promise<Int>;
-  isMainSleep: () => Promise<Boolean>;
-  logId: () => Promise<String>;
-  minutesAfterWakeup: () => Promise<Int>;
-  minutesAsleep: () => Promise<Int>;
-  minutesAwake: () => Promise<Int>;
-  minutesToFallAsleep: () => Promise<Int>;
-  startTime: () => Promise<DateTimeOutput>;
-  timeInBed: () => Promise<Int>;
-  type: () => Promise<String>;
-  data: <T = FragmentableArray<SleepDataNode>>(
-    args?: {
-      where?: SleepDataWhereInput;
-      orderBy?: SleepDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  summaryDeepCount: () => Promise<Int>;
-  summaryDeepMinutes: () => Promise<Int>;
-  summaryLightThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryLightCount: () => Promise<Int>;
-  summaryLightMinutes: () => Promise<Int>;
-  summaryRemThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryRemCount: () => Promise<Int>;
-  summaryRemMinutes: () => Promise<Int>;
-  summaryWakeThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryWakeCount: () => Promise<Int>;
-  summaryWakeMinutes: () => Promise<Int>;
-  summaryAsleepCount: () => Promise<Int>;
-  summarySleepMinutes: () => Promise<Int>;
-  summaryAwakeCount: () => Promise<Int>;
-  summaryAwakeMinutes: () => Promise<Int>;
-  summaryRestlessCount: () => Promise<Int>;
-  summaryRestlessMinutes: () => Promise<Int>;
-}
-
-export interface SleepLogSubscription
-  extends Promise<AsyncIterator<SleepLogNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
-  dateOfSleep: () => Promise<AsyncIterator<String>>;
-  duration: () => Promise<AsyncIterator<Int>>;
-  efficiency: () => Promise<AsyncIterator<Int>>;
-  isMainSleep: () => Promise<AsyncIterator<Boolean>>;
-  logId: () => Promise<AsyncIterator<String>>;
-  minutesAfterWakeup: () => Promise<AsyncIterator<Int>>;
-  minutesAsleep: () => Promise<AsyncIterator<Int>>;
-  minutesAwake: () => Promise<AsyncIterator<Int>>;
-  minutesToFallAsleep: () => Promise<AsyncIterator<Int>>;
-  startTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  timeInBed: () => Promise<AsyncIterator<Int>>;
-  type: () => Promise<AsyncIterator<String>>;
-  data: <T = Promise<AsyncIterator<SleepDataSubscription>>>(
-    args?: {
-      where?: SleepDataWhereInput;
-      orderBy?: SleepDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  summaryDeepCount: () => Promise<AsyncIterator<Int>>;
-  summaryDeepMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryLightThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryLightCount: () => Promise<AsyncIterator<Int>>;
-  summaryLightMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRemThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRemCount: () => Promise<AsyncIterator<Int>>;
-  summaryRemMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryWakeThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryWakeCount: () => Promise<AsyncIterator<Int>>;
-  summaryWakeMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryAsleepCount: () => Promise<AsyncIterator<Int>>;
-  summarySleepMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryAwakeCount: () => Promise<AsyncIterator<Int>>;
-  summaryAwakeMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRestlessCount: () => Promise<AsyncIterator<Int>>;
-  summaryRestlessMinutes: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface FitbitAccountConnectionNode {}
-
-export interface FitbitAccountConnection
-  extends Promise<FitbitAccountConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<FitbitAccountEdgeNode>>() => T;
-  aggregate: <T = AggregateFitbitAccount>() => T;
-}
-
-export interface FitbitAccountConnectionSubscription
-  extends Promise<AsyncIterator<FitbitAccountConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<FitbitAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateFitbitAccountSubscription>() => T;
-}
-
-export interface SleepDataEdgeNode {
-  cursor: String;
-}
-
-export interface SleepDataEdge
-  extends Promise<SleepDataEdgeNode>,
-    Fragmentable {
-  node: <T = SleepData>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface SleepDataEdgeSubscription
-  extends Promise<AsyncIterator<SleepDataEdgeNode>>,
-    Fragmentable {
-  node: <T = SleepDataSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface FitbitAccountSubscriptionPayloadNode {
   mutation: MutationType;
   updatedFields?: String[];
@@ -1811,7 +1646,41 @@ export interface FitbitAccountSubscriptionPayloadSubscription
   previousValues: <T = FitbitAccountPreviousValuesSubscription>() => T;
 }
 
-export interface SleepDataNode {
+export interface SleepLogEdgeNode {
+  cursor: String;
+}
+
+export interface SleepLogEdge extends Promise<SleepLogEdgeNode>, Fragmentable {
+  node: <T = SleepLog>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SleepLogEdgeSubscription
+  extends Promise<AsyncIterator<SleepLogEdgeNode>>,
+    Fragmentable {
+  node: <T = SleepLogSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface FitbitAccountEdgeNode {
+  cursor: String;
+}
+
+export interface FitbitAccountEdge
+  extends Promise<FitbitAccountEdgeNode>,
+    Fragmentable {
+  node: <T = FitbitAccount>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface FitbitAccountEdgeSubscription
+  extends Promise<AsyncIterator<FitbitAccountEdgeNode>>,
+    Fragmentable {
+  node: <T = FitbitAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface SleepDataPreviousValuesNode {
   id: ID_Output;
   sleepLogId: ID_Output;
   dateTime: DateTimeOutput;
@@ -1819,7 +1688,9 @@ export interface SleepDataNode {
   second: Int;
 }
 
-export interface SleepData extends Promise<SleepDataNode>, Fragmentable {
+export interface SleepDataPreviousValues
+  extends Promise<SleepDataPreviousValuesNode>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
   sleepLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
@@ -1827,14 +1698,30 @@ export interface SleepData extends Promise<SleepDataNode>, Fragmentable {
   second: () => Promise<Int>;
 }
 
-export interface SleepDataSubscription
-  extends Promise<AsyncIterator<SleepDataNode>>,
+export interface SleepDataPreviousValuesSubscription
+  extends Promise<AsyncIterator<SleepDataPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   sleepLogId: () => Promise<AsyncIterator<ID_Output>>;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   level: () => Promise<AsyncIterator<String>>;
   second: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateSleepLogNode {
+  count: Int;
+}
+
+export interface AggregateSleepLog
+  extends Promise<AggregateSleepLogNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSleepLogSubscription
+  extends Promise<AsyncIterator<AggregateSleepLogNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface FitbitAccountPreviousValuesNode {
@@ -1868,53 +1755,185 @@ export interface FitbitAccountPreviousValuesSubscription
   expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface GoogleFitAccountEdgeNode {
-  cursor: String;
-}
+export interface SleepLogConnectionNode {}
 
-export interface GoogleFitAccountEdge
-  extends Promise<GoogleFitAccountEdgeNode>,
+export interface SleepLogConnection
+  extends Promise<SleepLogConnectionNode>,
     Fragmentable {
-  node: <T = GoogleFitAccount>() => T;
-  cursor: () => Promise<String>;
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<SleepLogEdgeNode>>() => T;
+  aggregate: <T = AggregateSleepLog>() => T;
 }
 
-export interface GoogleFitAccountEdgeSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountEdgeNode>>,
+export interface SleepLogConnectionSubscription
+  extends Promise<AsyncIterator<SleepLogConnectionNode>>,
     Fragmentable {
-  node: <T = GoogleFitAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SleepLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSleepLogSubscription>() => T;
 }
 
-export interface FitbitAccountNode {
+export interface AggregateSleepDataNode {
+  count: Int;
+}
+
+export interface AggregateSleepData
+  extends Promise<AggregateSleepDataNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateSleepDataSubscription
+  extends Promise<AsyncIterator<AggregateSleepDataNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SleepLogNode {
   id: ID_Output;
   userId: ID_Output;
-  fitbitUserId: String;
-  refreshToken: String;
-  accessToken: String;
-  expiration: DateTimeOutput;
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeOutput;
+  timeInBed: Int;
+  type?: String;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
 }
 
-export interface FitbitAccount
-  extends Promise<FitbitAccountNode>,
-    Fragmentable {
+export interface SleepLog extends Promise<SleepLogNode>, Fragmentable {
   id: () => Promise<ID_Output>;
   userId: () => Promise<ID_Output>;
-  fitbitUserId: () => Promise<String>;
-  refreshToken: () => Promise<String>;
-  accessToken: () => Promise<String>;
-  expiration: () => Promise<DateTimeOutput>;
+  dateOfSleep: () => Promise<String>;
+  duration: () => Promise<Int>;
+  efficiency: () => Promise<Int>;
+  isMainSleep: () => Promise<Boolean>;
+  logId: () => Promise<Float>;
+  minutesAfterWakeup: () => Promise<Int>;
+  minutesAsleep: () => Promise<Int>;
+  minutesAwake: () => Promise<Int>;
+  minutesToFallAsleep: () => Promise<Int>;
+  startTime: () => Promise<DateTimeOutput>;
+  timeInBed: () => Promise<Int>;
+  type: () => Promise<String>;
+  data: <T = FragmentableArray<SleepDataNode>>(
+    args?: {
+      where?: SleepDataWhereInput;
+      orderBy?: SleepDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  summaryDeepCount: () => Promise<Int>;
+  summaryDeepMinutes: () => Promise<Int>;
+  summaryDeepThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryLightCount: () => Promise<Int>;
+  summaryLightMinutes: () => Promise<Int>;
+  summaryLightThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryRemCount: () => Promise<Int>;
+  summaryRemMinutes: () => Promise<Int>;
+  summaryRemThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryWakeCount: () => Promise<Int>;
+  summaryWakeMinutes: () => Promise<Int>;
+  summaryWakeThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryAsleepCount: () => Promise<Int>;
+  summaryAsleepMinutes: () => Promise<Int>;
+  summaryAwakeCount: () => Promise<Int>;
+  summaryAwakeMinutes: () => Promise<Int>;
+  summaryRestlessCount: () => Promise<Int>;
+  summaryRestlessMinutes: () => Promise<Int>;
 }
 
-export interface FitbitAccountSubscription
-  extends Promise<AsyncIterator<FitbitAccountNode>>,
+export interface SleepLogSubscription
+  extends Promise<AsyncIterator<SleepLogNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   userId: () => Promise<AsyncIterator<ID_Output>>;
-  fitbitUserId: () => Promise<AsyncIterator<String>>;
-  refreshToken: () => Promise<AsyncIterator<String>>;
-  accessToken: () => Promise<AsyncIterator<String>>;
-  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
+  dateOfSleep: () => Promise<AsyncIterator<String>>;
+  duration: () => Promise<AsyncIterator<Int>>;
+  efficiency: () => Promise<AsyncIterator<Int>>;
+  isMainSleep: () => Promise<AsyncIterator<Boolean>>;
+  logId: () => Promise<AsyncIterator<Float>>;
+  minutesAfterWakeup: () => Promise<AsyncIterator<Int>>;
+  minutesAsleep: () => Promise<AsyncIterator<Int>>;
+  minutesAwake: () => Promise<AsyncIterator<Int>>;
+  minutesToFallAsleep: () => Promise<AsyncIterator<Int>>;
+  startTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  timeInBed: () => Promise<AsyncIterator<Int>>;
+  type: () => Promise<AsyncIterator<String>>;
+  data: <T = Promise<AsyncIterator<SleepDataSubscription>>>(
+    args?: {
+      where?: SleepDataWhereInput;
+      orderBy?: SleepDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  summaryDeepCount: () => Promise<AsyncIterator<Int>>;
+  summaryDeepMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryDeepThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryLightCount: () => Promise<AsyncIterator<Int>>;
+  summaryLightMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryLightThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRemCount: () => Promise<AsyncIterator<Int>>;
+  summaryRemMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRemThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryWakeCount: () => Promise<AsyncIterator<Int>>;
+  summaryWakeMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryWakeThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryAsleepCount: () => Promise<AsyncIterator<Int>>;
+  summaryAsleepMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryAwakeCount: () => Promise<AsyncIterator<Int>>;
+  summaryAwakeMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRestlessCount: () => Promise<AsyncIterator<Int>>;
+  summaryRestlessMinutes: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface SleepDataConnectionNode {}
+
+export interface SleepDataConnection
+  extends Promise<SleepDataConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<SleepDataEdgeNode>>() => T;
+  aggregate: <T = AggregateSleepData>() => T;
+}
+
+export interface SleepDataConnectionSubscription
+  extends Promise<AsyncIterator<SleepDataConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SleepDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSleepDataSubscription>() => T;
 }
 
 export interface GoogleFitAccountNode {
@@ -1937,6 +1956,198 @@ export interface GoogleFitAccount
 
 export interface GoogleFitAccountSubscription
   extends Promise<AsyncIterator<GoogleFitAccountNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<ID_Output>>;
+  refreshToken: () => Promise<AsyncIterator<String>>;
+  accessToken: () => Promise<AsyncIterator<String>>;
+  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface SleepLogPreviousValuesNode {
+  id: ID_Output;
+  userId: ID_Output;
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeOutput;
+  timeInBed: Int;
+  type?: String;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface SleepLogPreviousValues
+  extends Promise<SleepLogPreviousValuesNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<ID_Output>;
+  dateOfSleep: () => Promise<String>;
+  duration: () => Promise<Int>;
+  efficiency: () => Promise<Int>;
+  isMainSleep: () => Promise<Boolean>;
+  logId: () => Promise<Float>;
+  minutesAfterWakeup: () => Promise<Int>;
+  minutesAsleep: () => Promise<Int>;
+  minutesAwake: () => Promise<Int>;
+  minutesToFallAsleep: () => Promise<Int>;
+  startTime: () => Promise<DateTimeOutput>;
+  timeInBed: () => Promise<Int>;
+  type: () => Promise<String>;
+  summaryDeepCount: () => Promise<Int>;
+  summaryDeepMinutes: () => Promise<Int>;
+  summaryDeepThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryLightCount: () => Promise<Int>;
+  summaryLightMinutes: () => Promise<Int>;
+  summaryLightThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryRemCount: () => Promise<Int>;
+  summaryRemMinutes: () => Promise<Int>;
+  summaryRemThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryWakeCount: () => Promise<Int>;
+  summaryWakeMinutes: () => Promise<Int>;
+  summaryWakeThirtyDayAvgMinutes: () => Promise<Int>;
+  summaryAsleepCount: () => Promise<Int>;
+  summaryAsleepMinutes: () => Promise<Int>;
+  summaryAwakeCount: () => Promise<Int>;
+  summaryAwakeMinutes: () => Promise<Int>;
+  summaryRestlessCount: () => Promise<Int>;
+  summaryRestlessMinutes: () => Promise<Int>;
+}
+
+export interface SleepLogPreviousValuesSubscription
+  extends Promise<AsyncIterator<SleepLogPreviousValuesNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  userId: () => Promise<AsyncIterator<ID_Output>>;
+  dateOfSleep: () => Promise<AsyncIterator<String>>;
+  duration: () => Promise<AsyncIterator<Int>>;
+  efficiency: () => Promise<AsyncIterator<Int>>;
+  isMainSleep: () => Promise<AsyncIterator<Boolean>>;
+  logId: () => Promise<AsyncIterator<Float>>;
+  minutesAfterWakeup: () => Promise<AsyncIterator<Int>>;
+  minutesAsleep: () => Promise<AsyncIterator<Int>>;
+  minutesAwake: () => Promise<AsyncIterator<Int>>;
+  minutesToFallAsleep: () => Promise<AsyncIterator<Int>>;
+  startTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  timeInBed: () => Promise<AsyncIterator<Int>>;
+  type: () => Promise<AsyncIterator<String>>;
+  summaryDeepCount: () => Promise<AsyncIterator<Int>>;
+  summaryDeepMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryDeepThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryLightCount: () => Promise<AsyncIterator<Int>>;
+  summaryLightMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryLightThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRemCount: () => Promise<AsyncIterator<Int>>;
+  summaryRemMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRemThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryWakeCount: () => Promise<AsyncIterator<Int>>;
+  summaryWakeMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryWakeThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryAsleepCount: () => Promise<AsyncIterator<Int>>;
+  summaryAsleepMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryAwakeCount: () => Promise<AsyncIterator<Int>>;
+  summaryAwakeMinutes: () => Promise<AsyncIterator<Int>>;
+  summaryRestlessCount: () => Promise<AsyncIterator<Int>>;
+  summaryRestlessMinutes: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserEdgeNode {
+  cursor: String;
+}
+
+export interface UserEdge extends Promise<UserEdgeNode>, Fragmentable {
+  node: <T = User>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdgeNode>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface SleepDataSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface SleepDataSubscriptionPayload
+  extends Promise<SleepDataSubscriptionPayloadNode>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SleepData>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SleepDataPreviousValues>() => T;
+}
+
+export interface SleepDataSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SleepDataSubscriptionPayloadNode>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SleepDataSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SleepDataPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateFitbitAccountNode {
+  count: Int;
+}
+
+export interface AggregateFitbitAccount
+  extends Promise<AggregateFitbitAccountNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateFitbitAccountSubscription
+  extends Promise<AsyncIterator<AggregateFitbitAccountNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface GoogleFitAccountPreviousValuesNode {
+  id: ID_Output;
+  userId: ID_Output;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeOutput;
+}
+
+export interface GoogleFitAccountPreviousValues
+  extends Promise<GoogleFitAccountPreviousValuesNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  userId: () => Promise<ID_Output>;
+  refreshToken: () => Promise<String>;
+  accessToken: () => Promise<String>;
+  expiration: () => Promise<DateTimeOutput>;
+}
+
+export interface GoogleFitAccountPreviousValuesSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   userId: () => Promise<AsyncIterator<ID_Output>>;
@@ -1968,43 +2179,53 @@ export interface GoogleFitAccountSubscriptionPayloadSubscription
   previousValues: <T = GoogleFitAccountPreviousValuesSubscription>() => T;
 }
 
-export interface SleepLogConnectionNode {}
-
-export interface SleepLogConnection
-  extends Promise<SleepLogConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<SleepLogEdgeNode>>() => T;
-  aggregate: <T = AggregateSleepLog>() => T;
+export interface UserSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
 }
 
-export interface SleepLogConnectionSubscription
-  extends Promise<AsyncIterator<SleepLogConnectionNode>>,
+export interface UserSubscriptionPayload
+  extends Promise<UserSubscriptionPayloadNode>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SleepLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSleepLogSubscription>() => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = User>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValues>() => T;
 }
 
-export interface SleepDataConnectionNode {}
-
-export interface SleepDataConnection
-  extends Promise<SleepDataConnectionNode>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayloadNode>>,
     Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<SleepDataEdgeNode>>() => T;
-  aggregate: <T = AggregateSleepData>() => T;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface SleepDataConnectionSubscription
-  extends Promise<AsyncIterator<SleepDataConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SleepDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSleepDataSubscription>() => T;
+export interface SleepLogSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
 }
 
-export interface SleepDataPreviousValuesNode {
+export interface SleepLogSubscriptionPayload
+  extends Promise<SleepLogSubscriptionPayloadNode>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = SleepLog>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = SleepLogPreviousValues>() => T;
+}
+
+export interface SleepLogSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<SleepLogSubscriptionPayloadNode>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = SleepLogSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = SleepLogPreviousValuesSubscription>() => T;
+}
+
+export interface SleepDataNode {
   id: ID_Output;
   sleepLogId: ID_Output;
   dateTime: DateTimeOutput;
@@ -2012,9 +2233,7 @@ export interface SleepDataPreviousValuesNode {
   second: Int;
 }
 
-export interface SleepDataPreviousValues
-  extends Promise<SleepDataPreviousValuesNode>,
-    Fragmentable {
+export interface SleepData extends Promise<SleepDataNode>, Fragmentable {
   id: () => Promise<ID_Output>;
   sleepLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
@@ -2022,8 +2241,8 @@ export interface SleepDataPreviousValues
   second: () => Promise<Int>;
 }
 
-export interface SleepDataPreviousValuesSubscription
-  extends Promise<AsyncIterator<SleepDataPreviousValuesNode>>,
+export interface SleepDataSubscription
+  extends Promise<AsyncIterator<SleepDataNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   sleepLogId: () => Promise<AsyncIterator<ID_Output>>;
@@ -2032,241 +2251,23 @@ export interface SleepDataPreviousValuesSubscription
   second: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface SleepDataSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
+export interface SleepDataEdgeNode {
+  cursor: String;
 }
 
-export interface SleepDataSubscriptionPayload
-  extends Promise<SleepDataSubscriptionPayloadNode>,
+export interface SleepDataEdge
+  extends Promise<SleepDataEdgeNode>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
   node: <T = SleepData>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = SleepDataPreviousValues>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface SleepDataSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<SleepDataSubscriptionPayloadNode>>,
+export interface SleepDataEdgeSubscription
+  extends Promise<AsyncIterator<SleepDataEdgeNode>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = SleepDataSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = SleepDataPreviousValuesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
-
-export interface SleepLogPreviousValuesNode {
-  id: ID_Output;
-  userId: ID_Output;
-  dateOfSleep: String;
-  duration: Int;
-  efficiency: Int;
-  isMainSleep: Boolean;
-  logId: String;
-  minutesAfterWakeup: Int;
-  minutesAsleep: Int;
-  minutesAwake: Int;
-  minutesToFallAsleep: Int;
-  startTime: DateTimeOutput;
-  timeInBed: Int;
-  type?: String;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summarySleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface SleepLogPreviousValues
-  extends Promise<SleepLogPreviousValuesNode>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
-  dateOfSleep: () => Promise<String>;
-  duration: () => Promise<Int>;
-  efficiency: () => Promise<Int>;
-  isMainSleep: () => Promise<Boolean>;
-  logId: () => Promise<String>;
-  minutesAfterWakeup: () => Promise<Int>;
-  minutesAsleep: () => Promise<Int>;
-  minutesAwake: () => Promise<Int>;
-  minutesToFallAsleep: () => Promise<Int>;
-  startTime: () => Promise<DateTimeOutput>;
-  timeInBed: () => Promise<Int>;
-  type: () => Promise<String>;
-  summaryDeepCount: () => Promise<Int>;
-  summaryDeepMinutes: () => Promise<Int>;
-  summaryLightThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryLightCount: () => Promise<Int>;
-  summaryLightMinutes: () => Promise<Int>;
-  summaryRemThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryRemCount: () => Promise<Int>;
-  summaryRemMinutes: () => Promise<Int>;
-  summaryWakeThirtyDayAvgMinutes: () => Promise<Int>;
-  summaryWakeCount: () => Promise<Int>;
-  summaryWakeMinutes: () => Promise<Int>;
-  summaryAsleepCount: () => Promise<Int>;
-  summarySleepMinutes: () => Promise<Int>;
-  summaryAwakeCount: () => Promise<Int>;
-  summaryAwakeMinutes: () => Promise<Int>;
-  summaryRestlessCount: () => Promise<Int>;
-  summaryRestlessMinutes: () => Promise<Int>;
-}
-
-export interface SleepLogPreviousValuesSubscription
-  extends Promise<AsyncIterator<SleepLogPreviousValuesNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
-  dateOfSleep: () => Promise<AsyncIterator<String>>;
-  duration: () => Promise<AsyncIterator<Int>>;
-  efficiency: () => Promise<AsyncIterator<Int>>;
-  isMainSleep: () => Promise<AsyncIterator<Boolean>>;
-  logId: () => Promise<AsyncIterator<String>>;
-  minutesAfterWakeup: () => Promise<AsyncIterator<Int>>;
-  minutesAsleep: () => Promise<AsyncIterator<Int>>;
-  minutesAwake: () => Promise<AsyncIterator<Int>>;
-  minutesToFallAsleep: () => Promise<AsyncIterator<Int>>;
-  startTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  timeInBed: () => Promise<AsyncIterator<Int>>;
-  type: () => Promise<AsyncIterator<String>>;
-  summaryDeepCount: () => Promise<AsyncIterator<Int>>;
-  summaryDeepMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryLightThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryLightCount: () => Promise<AsyncIterator<Int>>;
-  summaryLightMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRemThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRemCount: () => Promise<AsyncIterator<Int>>;
-  summaryRemMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryWakeThirtyDayAvgMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryWakeCount: () => Promise<AsyncIterator<Int>>;
-  summaryWakeMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryAsleepCount: () => Promise<AsyncIterator<Int>>;
-  summarySleepMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryAwakeCount: () => Promise<AsyncIterator<Int>>;
-  summaryAwakeMinutes: () => Promise<AsyncIterator<Int>>;
-  summaryRestlessCount: () => Promise<AsyncIterator<Int>>;
-  summaryRestlessMinutes: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface GoogleFitAccountPreviousValuesNode {
-  id: ID_Output;
-  userId: ID_Output;
-  refreshToken: String;
-  accessToken: String;
-  expiration: DateTimeOutput;
-}
-
-export interface GoogleFitAccountPreviousValues
-  extends Promise<GoogleFitAccountPreviousValuesNode>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
-  refreshToken: () => Promise<String>;
-  accessToken: () => Promise<String>;
-  expiration: () => Promise<DateTimeOutput>;
-}
-
-export interface GoogleFitAccountPreviousValuesSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountPreviousValuesNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
-  refreshToken: () => Promise<AsyncIterator<String>>;
-  accessToken: () => Promise<AsyncIterator<String>>;
-  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface AggregateGoogleFitAccountNode {
-  count: Int;
-}
-
-export interface AggregateGoogleFitAccount
-  extends Promise<AggregateGoogleFitAccountNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateGoogleFitAccountSubscription
-  extends Promise<AsyncIterator<AggregateGoogleFitAccountNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateSleepDataNode {
-  count: Int;
-}
-
-export interface AggregateSleepData
-  extends Promise<AggregateSleepDataNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateSleepDataSubscription
-  extends Promise<AsyncIterator<AggregateSleepDataNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateSleepLogNode {
-  count: Int;
-}
-
-export interface AggregateSleepLog
-  extends Promise<AggregateSleepLogNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateSleepLogSubscription
-  extends Promise<AsyncIterator<AggregateSleepLogNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface GoogleFitAccountConnectionNode {}
-
-export interface GoogleFitAccountConnection
-  extends Promise<GoogleFitAccountConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<GoogleFitAccountEdgeNode>>() => T;
-  aggregate: <T = AggregateGoogleFitAccount>() => T;
-}
-
-export interface GoogleFitAccountConnectionSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<GoogleFitAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateGoogleFitAccountSubscription>() => T;
-}
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
-
-export type Long = string;
-
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
@@ -2282,6 +2283,24 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+export type Long = string;
+
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.

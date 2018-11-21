@@ -3,8 +3,8 @@ type User {
   email: String! @unique
   password: String!
   googleFitAccount: GoogleFitAccount
-  fitbitAccount: FitbitAccount
-  sleepLogs: [SleepLog!]!
+  fitbitAccount: FitbitAccount @relation(name: "UserFitbitAccount", onDelete: CASCADE)
+  sleepLogs: [SleepLog!]! @relation(name: "UserSleepLogs", onDelete: CASCADE)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -33,7 +33,7 @@ type SleepLog {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: String!
+  logId: Float! @unique
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!
@@ -41,20 +41,21 @@ type SleepLog {
   startTime: DateTime!
   timeInBed: Int!
   type: String
-  data: [SleepData!]!
+  data: [SleepData!]! @relation(name: "SleepLogSleepData", onDelete: CASCADE)
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int  
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int

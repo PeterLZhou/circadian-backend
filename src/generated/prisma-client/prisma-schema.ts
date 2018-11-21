@@ -653,7 +653,7 @@ type SleepLog {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: String!
+  logId: Float!
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!
@@ -664,17 +664,18 @@ type SleepLog {
   data(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepData!]
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int
@@ -693,7 +694,7 @@ input SleepLogCreateInput {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: String!
+  logId: Float!
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!
@@ -704,17 +705,18 @@ input SleepLogCreateInput {
   data: SleepDataCreateManyInput
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int
@@ -764,28 +766,30 @@ enum SleepLogOrderByInput {
   summaryDeepCount_DESC
   summaryDeepMinutes_ASC
   summaryDeepMinutes_DESC
-  summaryLightThirtyDayAvgMinutes_ASC
-  summaryLightThirtyDayAvgMinutes_DESC
+  summaryDeepThirtyDayAvgMinutes_ASC
+  summaryDeepThirtyDayAvgMinutes_DESC
   summaryLightCount_ASC
   summaryLightCount_DESC
   summaryLightMinutes_ASC
   summaryLightMinutes_DESC
-  summaryRemThirtyDayAvgMinutes_ASC
-  summaryRemThirtyDayAvgMinutes_DESC
+  summaryLightThirtyDayAvgMinutes_ASC
+  summaryLightThirtyDayAvgMinutes_DESC
   summaryRemCount_ASC
   summaryRemCount_DESC
   summaryRemMinutes_ASC
   summaryRemMinutes_DESC
-  summaryWakeThirtyDayAvgMinutes_ASC
-  summaryWakeThirtyDayAvgMinutes_DESC
+  summaryRemThirtyDayAvgMinutes_ASC
+  summaryRemThirtyDayAvgMinutes_DESC
   summaryWakeCount_ASC
   summaryWakeCount_DESC
   summaryWakeMinutes_ASC
   summaryWakeMinutes_DESC
+  summaryWakeThirtyDayAvgMinutes_ASC
+  summaryWakeThirtyDayAvgMinutes_DESC
   summaryAsleepCount_ASC
   summaryAsleepCount_DESC
-  summarySleepMinutes_ASC
-  summarySleepMinutes_DESC
+  summaryAsleepMinutes_ASC
+  summaryAsleepMinutes_DESC
   summaryAwakeCount_ASC
   summaryAwakeCount_DESC
   summaryAwakeMinutes_ASC
@@ -807,7 +811,7 @@ type SleepLogPreviousValues {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: String!
+  logId: Float!
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!
@@ -817,17 +821,18 @@ type SleepLogPreviousValues {
   type: String
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int
@@ -858,7 +863,7 @@ input SleepLogUpdateDataInput {
   duration: Int
   efficiency: Int
   isMainSleep: Boolean
-  logId: String
+  logId: Float
   minutesAfterWakeup: Int
   minutesAsleep: Int
   minutesAwake: Int
@@ -869,17 +874,18 @@ input SleepLogUpdateDataInput {
   data: SleepDataUpdateManyInput
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int
@@ -892,7 +898,7 @@ input SleepLogUpdateInput {
   duration: Int
   efficiency: Int
   isMainSleep: Boolean
-  logId: String
+  logId: Float
   minutesAfterWakeup: Int
   minutesAsleep: Int
   minutesAwake: Int
@@ -903,17 +909,18 @@ input SleepLogUpdateInput {
   data: SleepDataUpdateManyInput
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int
@@ -1001,20 +1008,14 @@ input SleepLogWhereInput {
   efficiency_gte: Int
   isMainSleep: Boolean
   isMainSleep_not: Boolean
-  logId: String
-  logId_not: String
-  logId_in: [String!]
-  logId_not_in: [String!]
-  logId_lt: String
-  logId_lte: String
-  logId_gt: String
-  logId_gte: String
-  logId_contains: String
-  logId_not_contains: String
-  logId_starts_with: String
-  logId_not_starts_with: String
-  logId_ends_with: String
-  logId_not_ends_with: String
+  logId: Float
+  logId_not: Float
+  logId_in: [Float!]
+  logId_not_in: [Float!]
+  logId_lt: Float
+  logId_lte: Float
+  logId_gt: Float
+  logId_gte: Float
   minutesAfterWakeup: Int
   minutesAfterWakeup_not: Int
   minutesAfterWakeup_in: [Int!]
@@ -1096,14 +1097,14 @@ input SleepLogWhereInput {
   summaryDeepMinutes_lte: Int
   summaryDeepMinutes_gt: Int
   summaryDeepMinutes_gte: Int
-  summaryLightThirtyDayAvgMinutes: Int
-  summaryLightThirtyDayAvgMinutes_not: Int
-  summaryLightThirtyDayAvgMinutes_in: [Int!]
-  summaryLightThirtyDayAvgMinutes_not_in: [Int!]
-  summaryLightThirtyDayAvgMinutes_lt: Int
-  summaryLightThirtyDayAvgMinutes_lte: Int
-  summaryLightThirtyDayAvgMinutes_gt: Int
-  summaryLightThirtyDayAvgMinutes_gte: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes_not: Int
+  summaryDeepThirtyDayAvgMinutes_in: [Int!]
+  summaryDeepThirtyDayAvgMinutes_not_in: [Int!]
+  summaryDeepThirtyDayAvgMinutes_lt: Int
+  summaryDeepThirtyDayAvgMinutes_lte: Int
+  summaryDeepThirtyDayAvgMinutes_gt: Int
+  summaryDeepThirtyDayAvgMinutes_gte: Int
   summaryLightCount: Int
   summaryLightCount_not: Int
   summaryLightCount_in: [Int!]
@@ -1120,14 +1121,14 @@ input SleepLogWhereInput {
   summaryLightMinutes_lte: Int
   summaryLightMinutes_gt: Int
   summaryLightMinutes_gte: Int
-  summaryRemThirtyDayAvgMinutes: Int
-  summaryRemThirtyDayAvgMinutes_not: Int
-  summaryRemThirtyDayAvgMinutes_in: [Int!]
-  summaryRemThirtyDayAvgMinutes_not_in: [Int!]
-  summaryRemThirtyDayAvgMinutes_lt: Int
-  summaryRemThirtyDayAvgMinutes_lte: Int
-  summaryRemThirtyDayAvgMinutes_gt: Int
-  summaryRemThirtyDayAvgMinutes_gte: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes_not: Int
+  summaryLightThirtyDayAvgMinutes_in: [Int!]
+  summaryLightThirtyDayAvgMinutes_not_in: [Int!]
+  summaryLightThirtyDayAvgMinutes_lt: Int
+  summaryLightThirtyDayAvgMinutes_lte: Int
+  summaryLightThirtyDayAvgMinutes_gt: Int
+  summaryLightThirtyDayAvgMinutes_gte: Int
   summaryRemCount: Int
   summaryRemCount_not: Int
   summaryRemCount_in: [Int!]
@@ -1144,14 +1145,14 @@ input SleepLogWhereInput {
   summaryRemMinutes_lte: Int
   summaryRemMinutes_gt: Int
   summaryRemMinutes_gte: Int
-  summaryWakeThirtyDayAvgMinutes: Int
-  summaryWakeThirtyDayAvgMinutes_not: Int
-  summaryWakeThirtyDayAvgMinutes_in: [Int!]
-  summaryWakeThirtyDayAvgMinutes_not_in: [Int!]
-  summaryWakeThirtyDayAvgMinutes_lt: Int
-  summaryWakeThirtyDayAvgMinutes_lte: Int
-  summaryWakeThirtyDayAvgMinutes_gt: Int
-  summaryWakeThirtyDayAvgMinutes_gte: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes_not: Int
+  summaryRemThirtyDayAvgMinutes_in: [Int!]
+  summaryRemThirtyDayAvgMinutes_not_in: [Int!]
+  summaryRemThirtyDayAvgMinutes_lt: Int
+  summaryRemThirtyDayAvgMinutes_lte: Int
+  summaryRemThirtyDayAvgMinutes_gt: Int
+  summaryRemThirtyDayAvgMinutes_gte: Int
   summaryWakeCount: Int
   summaryWakeCount_not: Int
   summaryWakeCount_in: [Int!]
@@ -1168,6 +1169,14 @@ input SleepLogWhereInput {
   summaryWakeMinutes_lte: Int
   summaryWakeMinutes_gt: Int
   summaryWakeMinutes_gte: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryWakeThirtyDayAvgMinutes_not: Int
+  summaryWakeThirtyDayAvgMinutes_in: [Int!]
+  summaryWakeThirtyDayAvgMinutes_not_in: [Int!]
+  summaryWakeThirtyDayAvgMinutes_lt: Int
+  summaryWakeThirtyDayAvgMinutes_lte: Int
+  summaryWakeThirtyDayAvgMinutes_gt: Int
+  summaryWakeThirtyDayAvgMinutes_gte: Int
   summaryAsleepCount: Int
   summaryAsleepCount_not: Int
   summaryAsleepCount_in: [Int!]
@@ -1176,14 +1185,14 @@ input SleepLogWhereInput {
   summaryAsleepCount_lte: Int
   summaryAsleepCount_gt: Int
   summaryAsleepCount_gte: Int
-  summarySleepMinutes: Int
-  summarySleepMinutes_not: Int
-  summarySleepMinutes_in: [Int!]
-  summarySleepMinutes_not_in: [Int!]
-  summarySleepMinutes_lt: Int
-  summarySleepMinutes_lte: Int
-  summarySleepMinutes_gt: Int
-  summarySleepMinutes_gte: Int
+  summaryAsleepMinutes: Int
+  summaryAsleepMinutes_not: Int
+  summaryAsleepMinutes_in: [Int!]
+  summaryAsleepMinutes_not_in: [Int!]
+  summaryAsleepMinutes_lt: Int
+  summaryAsleepMinutes_lte: Int
+  summaryAsleepMinutes_gt: Int
+  summaryAsleepMinutes_gte: Int
   summaryAwakeCount: Int
   summaryAwakeCount_not: Int
   summaryAwakeCount_in: [Int!]
@@ -1223,6 +1232,7 @@ input SleepLogWhereInput {
 
 input SleepLogWhereUniqueInput {
   id: ID
+  logId: Float
 }
 
 type Subscription {

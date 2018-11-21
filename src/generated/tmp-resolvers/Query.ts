@@ -8,5 +8,8 @@ export const Query: QueryResolvers.Type = {
   me: parent => null,
   fitbitAccounts: parent => {
     throw new Error("Resolver not implemented");
+  },
+  sleepDatas: parent => {
+    throw new Error("Resolver not implemented");
   }
 };

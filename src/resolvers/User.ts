@@ -8,7 +8,6 @@ export const User: UserResolvers.Type = {
     throw new Error("Resolver not implemented");
   },
   fitbitAccount: parent => {
-    console.log("getting prisma fitbit");
     return prisma.fitbitAccount({
       userId: parent.id
     });

@@ -3,7 +3,7 @@ import * as querystring from 'querystring';
 import axios from 'axios';
 import { base64Hash } from './utils';
 import { fetchAggregateSteps } from './api/googlefit/aggregate';
-import { getSleepLogs } from './api/fitbit/sleep';
+import { getAllSleepLogs, getSleepLogs } from './api/fitbit/sleep';
 import { GraphQLServer } from 'graphql-yoga';
 import { permissions } from './permissions';
 import { prisma } from './generated/prisma-client';
@@ -51,7 +51,6 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
   const userId = req.params.id;
   const oneTimeCode = req.body.code;
 
-  // TODO: Assert there isn't an existing account, otherwise we need to update
   axios({
     method: "post",
     url:
@@ -81,7 +80,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         userId: userId
       });
       if (!existingAccount) {
-        let acct = prisma
+        prisma
           .createFitbitAccount({
             userId: userId,
             accessToken: payload.access_token,
@@ -89,7 +88,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
             fitbitUserId: payload.user_id,
             expiration: expirationDate.toISOString()
           })
-          .then(ok => {})
+          .then(acct => {})
           .catch(error => {
             console.log(error);
           });

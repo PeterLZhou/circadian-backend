@@ -3,12 +3,14 @@ scalar DateTime
 type Query {
   me: User
   fitbitAccounts: [FitbitAccount!]!
+  sleepDatas: [SleepData!]!
 }
 
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   getSleepLogs(userId: ID!, date: String!): String!
+  deleteAllSleepLogs(userId: ID!): String!
 }
 
 type AuthPayload {
@@ -49,7 +51,7 @@ type SleepLog {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: String!
+  logId: Float!
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!
@@ -60,17 +62,18 @@ type SleepLog {
   data: [SleepData!]!
   summaryDeepCount: Int
   summaryDeepMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
   summaryLightCount: Int
   summaryLightMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
   summaryRemCount: Int
   summaryRemMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
   summaryWakeCount: Int
   summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
   summaryAsleepCount: Int
-  summarySleepMinutes: Int
+  summaryAsleepMinutes: Int
   summaryAwakeCount: Int
   summaryAwakeMinutes: Int
   summaryRestlessCount: Int

@@ -26,6 +26,13 @@ export namespace QueryResolvers {
     info: GraphQLResolveInfo
   ) => FitbitAccountNode[] | Promise<FitbitAccountNode[]>;
 
+  export type SleepDatasResolver = (
+    parent: {},
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => SleepDataNode[] | Promise<SleepDataNode[]>;
+
   export interface Type {
     me: (
       parent: {},
@@ -40,6 +47,13 @@ export namespace QueryResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => FitbitAccountNode[] | Promise<FitbitAccountNode[]>;
+
+    sleepDatas: (
+      parent: {},
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => SleepDataNode[] | Promise<SleepDataNode[]>;
   }
 }
 
@@ -59,6 +73,10 @@ export namespace MutationResolvers {
   export interface ArgsGetSleepLogs {
     userId: string;
     date: string;
+  }
+
+  export interface ArgsDeleteAllSleepLogs {
+    userId: string;
   }
 
   export type SignupResolver = (
@@ -82,6 +100,13 @@ export namespace MutationResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
+  export type DeleteAllSleepLogsResolver = (
+    parent: {},
+    args: ArgsDeleteAllSleepLogs,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
   export interface Type {
     signup: (
       parent: {},
@@ -100,6 +125,13 @@ export namespace MutationResolvers {
     getSleepLogs: (
       parent: {},
       args: ArgsGetSleepLogs,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    deleteAllSleepLogs: (
+      parent: {},
+      args: ArgsDeleteAllSleepLogs,
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
@@ -439,42 +471,46 @@ export namespace SleepLogResolvers {
       parent.summaryDeepMinutes === undefined
         ? null
         : parent.summaryDeepMinutes,
-    summaryLightThirtyDayAvgMinutes: (parent: SleepLogNode) =>
-      parent.summaryLightThirtyDayAvgMinutes === undefined
+    summaryDeepThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryDeepThirtyDayAvgMinutes === undefined
         ? null
-        : parent.summaryLightThirtyDayAvgMinutes,
+        : parent.summaryDeepThirtyDayAvgMinutes,
     summaryLightCount: (parent: SleepLogNode) =>
       parent.summaryLightCount === undefined ? null : parent.summaryLightCount,
     summaryLightMinutes: (parent: SleepLogNode) =>
       parent.summaryLightMinutes === undefined
         ? null
         : parent.summaryLightMinutes,
-    summaryRemThirtyDayAvgMinutes: (parent: SleepLogNode) =>
-      parent.summaryRemThirtyDayAvgMinutes === undefined
+    summaryLightThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryLightThirtyDayAvgMinutes === undefined
         ? null
-        : parent.summaryRemThirtyDayAvgMinutes,
+        : parent.summaryLightThirtyDayAvgMinutes,
     summaryRemCount: (parent: SleepLogNode) =>
       parent.summaryRemCount === undefined ? null : parent.summaryRemCount,
     summaryRemMinutes: (parent: SleepLogNode) =>
       parent.summaryRemMinutes === undefined ? null : parent.summaryRemMinutes,
-    summaryWakeThirtyDayAvgMinutes: (parent: SleepLogNode) =>
-      parent.summaryWakeThirtyDayAvgMinutes === undefined
+    summaryRemThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryRemThirtyDayAvgMinutes === undefined
         ? null
-        : parent.summaryWakeThirtyDayAvgMinutes,
+        : parent.summaryRemThirtyDayAvgMinutes,
     summaryWakeCount: (parent: SleepLogNode) =>
       parent.summaryWakeCount === undefined ? null : parent.summaryWakeCount,
     summaryWakeMinutes: (parent: SleepLogNode) =>
       parent.summaryWakeMinutes === undefined
         ? null
         : parent.summaryWakeMinutes,
+    summaryWakeThirtyDayAvgMinutes: (parent: SleepLogNode) =>
+      parent.summaryWakeThirtyDayAvgMinutes === undefined
+        ? null
+        : parent.summaryWakeThirtyDayAvgMinutes,
     summaryAsleepCount: (parent: SleepLogNode) =>
       parent.summaryAsleepCount === undefined
         ? null
         : parent.summaryAsleepCount,
-    summarySleepMinutes: (parent: SleepLogNode) =>
-      parent.summarySleepMinutes === undefined
+    summaryAsleepMinutes: (parent: SleepLogNode) =>
+      parent.summaryAsleepMinutes === undefined
         ? null
-        : parent.summarySleepMinutes,
+        : parent.summaryAsleepMinutes,
     summaryAwakeCount: (parent: SleepLogNode) =>
       parent.summaryAwakeCount === undefined ? null : parent.summaryAwakeCount,
     summaryAwakeMinutes: (parent: SleepLogNode) =>
@@ -538,7 +574,7 @@ export namespace SleepLogResolvers {
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => number | Promise<number>;
 
   export type MinutesAfterWakeupResolver = (
     parent: SleepLogNode,
@@ -610,7 +646,7 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | null | Promise<number | null>;
 
-  export type SummaryLightThirtyDayAvgMinutesResolver = (
+  export type SummaryDeepThirtyDayAvgMinutesResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
@@ -631,7 +667,7 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | null | Promise<number | null>;
 
-  export type SummaryRemThirtyDayAvgMinutesResolver = (
+  export type SummaryLightThirtyDayAvgMinutesResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
@@ -652,7 +688,7 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | null | Promise<number | null>;
 
-  export type SummaryWakeThirtyDayAvgMinutesResolver = (
+  export type SummaryRemThirtyDayAvgMinutesResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
@@ -673,6 +709,13 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | null | Promise<number | null>;
 
+  export type SummaryWakeThirtyDayAvgMinutesResolver = (
+    parent: SleepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | null | Promise<number | null>;
+
   export type SummaryAsleepCountResolver = (
     parent: SleepLogNode,
     args: {},
@@ -680,7 +723,7 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | null | Promise<number | null>;
 
-  export type SummarySleepMinutesResolver = (
+  export type SummaryAsleepMinutesResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
@@ -763,7 +806,7 @@ export namespace SleepLogResolvers {
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => number | Promise<number>;
 
     minutesAfterWakeup: (
       parent: SleepLogNode,
@@ -835,7 +878,7 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | null | Promise<number | null>;
 
-    summaryLightThirtyDayAvgMinutes: (
+    summaryDeepThirtyDayAvgMinutes: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,
@@ -856,7 +899,7 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | null | Promise<number | null>;
 
-    summaryRemThirtyDayAvgMinutes: (
+    summaryLightThirtyDayAvgMinutes: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,
@@ -877,7 +920,7 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | null | Promise<number | null>;
 
-    summaryWakeThirtyDayAvgMinutes: (
+    summaryRemThirtyDayAvgMinutes: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,
@@ -898,6 +941,13 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | null | Promise<number | null>;
 
+    summaryWakeThirtyDayAvgMinutes: (
+      parent: SleepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | null | Promise<number | null>;
+
     summaryAsleepCount: (
       parent: SleepLogNode,
       args: {},
@@ -905,7 +955,7 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | null | Promise<number | null>;
 
-    summarySleepMinutes: (
+    summaryAsleepMinutes: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,

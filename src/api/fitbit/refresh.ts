@@ -1,8 +1,11 @@
 import * as querystring from 'querystring';
 import axios from 'axios';
 import { base64Hash } from '../../utils';
+import { FitbitAccount } from '../../resolvers/FitbitAccount';
+import { prisma } from '../../generated/prisma-client';
 
 export const refreshToken = async (
+  fitbitAccountId: string,
   refreshToken: string
 ): Promise<{
   accessToken: string;
@@ -36,6 +39,16 @@ export const refreshToken = async (
         expirationDate.setSeconds(
           expirationDate.getSeconds() + response.data.expires_in
         );
+        prisma.updateFitbitAccount({
+          data: {
+            accessToken: response.data.access_token,
+            refreshToken: response.data.refresh_token,
+            expiration: expirationDate.toISOString()
+          },
+          where: {
+            id: fitbitAccountId
+          }
+        });
         resolve({
           accessToken: response.data.access_token,
           refreshToken: response.data.refresh_token,
