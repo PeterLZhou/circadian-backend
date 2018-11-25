@@ -1,8 +1,32 @@
-export const typeDefs = /* GraphQL */ `type AggregateFitbitAccount {
+export const typeDefs = /* GraphQL */ `type AggregateCalorieData {
+  count: Int!
+}
+
+type AggregateCalorieLog {
+  count: Int!
+}
+
+type AggregateDistanceData {
+  count: Int!
+}
+
+type AggregateDistanceLog {
+  count: Int!
+}
+
+type AggregateFitbitAccount {
   count: Int!
 }
 
 type AggregateGoogleFitAccount {
+  count: Int!
+}
+
+type AggregateHeartData {
+  count: Int!
+}
+
+type AggregateHeartLog {
   count: Int!
 }
 
@@ -14,6 +38,14 @@ type AggregateSleepLog {
   count: Int!
 }
 
+type AggregateStepData {
+  count: Int!
+}
+
+type AggregateStepLog {
+  count: Int!
+}
+
 type AggregateUser {
   count: Int!
 }
@@ -22,7 +54,537 @@ type BatchPayload {
   count: Long!
 }
 
+type CalorieData {
+  id: ID!
+  calorieLogId: ID!
+  dateTime: DateTime!
+  calories: Float!
+}
+
+type CalorieDataConnection {
+  pageInfo: PageInfo!
+  edges: [CalorieDataEdge]!
+  aggregate: AggregateCalorieData!
+}
+
+input CalorieDataCreateInput {
+  calorieLogId: ID!
+  dateTime: DateTime!
+  calories: Float!
+}
+
+input CalorieDataCreateManyInput {
+  create: [CalorieDataCreateInput!]
+  connect: [CalorieDataWhereUniqueInput!]
+}
+
+type CalorieDataEdge {
+  node: CalorieData!
+  cursor: String!
+}
+
+enum CalorieDataOrderByInput {
+  id_ASC
+  id_DESC
+  calorieLogId_ASC
+  calorieLogId_DESC
+  dateTime_ASC
+  dateTime_DESC
+  calories_ASC
+  calories_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CalorieDataPreviousValues {
+  id: ID!
+  calorieLogId: ID!
+  dateTime: DateTime!
+  calories: Float!
+}
+
+type CalorieDataSubscriptionPayload {
+  mutation: MutationType!
+  node: CalorieData
+  updatedFields: [String!]
+  previousValues: CalorieDataPreviousValues
+}
+
+input CalorieDataSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CalorieDataWhereInput
+  AND: [CalorieDataSubscriptionWhereInput!]
+  OR: [CalorieDataSubscriptionWhereInput!]
+  NOT: [CalorieDataSubscriptionWhereInput!]
+}
+
+input CalorieDataUpdateDataInput {
+  calorieLogId: ID
+  dateTime: DateTime
+  calories: Float
+}
+
+input CalorieDataUpdateInput {
+  calorieLogId: ID
+  dateTime: DateTime
+  calories: Float
+}
+
+input CalorieDataUpdateManyInput {
+  create: [CalorieDataCreateInput!]
+  update: [CalorieDataUpdateWithWhereUniqueNestedInput!]
+  upsert: [CalorieDataUpsertWithWhereUniqueNestedInput!]
+  delete: [CalorieDataWhereUniqueInput!]
+  connect: [CalorieDataWhereUniqueInput!]
+  disconnect: [CalorieDataWhereUniqueInput!]
+}
+
+input CalorieDataUpdateWithWhereUniqueNestedInput {
+  where: CalorieDataWhereUniqueInput!
+  data: CalorieDataUpdateDataInput!
+}
+
+input CalorieDataUpsertWithWhereUniqueNestedInput {
+  where: CalorieDataWhereUniqueInput!
+  update: CalorieDataUpdateDataInput!
+  create: CalorieDataCreateInput!
+}
+
+input CalorieDataWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  calorieLogId: ID
+  calorieLogId_not: ID
+  calorieLogId_in: [ID!]
+  calorieLogId_not_in: [ID!]
+  calorieLogId_lt: ID
+  calorieLogId_lte: ID
+  calorieLogId_gt: ID
+  calorieLogId_gte: ID
+  calorieLogId_contains: ID
+  calorieLogId_not_contains: ID
+  calorieLogId_starts_with: ID
+  calorieLogId_not_starts_with: ID
+  calorieLogId_ends_with: ID
+  calorieLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  calories: Float
+  calories_not: Float
+  calories_in: [Float!]
+  calories_not_in: [Float!]
+  calories_lt: Float
+  calories_lte: Float
+  calories_gt: Float
+  calories_gte: Float
+  AND: [CalorieDataWhereInput!]
+  OR: [CalorieDataWhereInput!]
+  NOT: [CalorieDataWhereInput!]
+}
+
+input CalorieDataWhereUniqueInput {
+  id: ID
+}
+
+type CalorieLog {
+  id: ID!
+  date: DateTime!
+  totalCalories: Float!
+  intradayData(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieData!]
+}
+
+type CalorieLogConnection {
+  pageInfo: PageInfo!
+  edges: [CalorieLogEdge]!
+  aggregate: AggregateCalorieLog!
+}
+
+input CalorieLogCreateInput {
+  date: DateTime!
+  totalCalories: Float!
+  intradayData: CalorieDataCreateManyInput
+}
+
+type CalorieLogEdge {
+  node: CalorieLog!
+  cursor: String!
+}
+
+enum CalorieLogOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  totalCalories_ASC
+  totalCalories_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CalorieLogPreviousValues {
+  id: ID!
+  date: DateTime!
+  totalCalories: Float!
+}
+
+type CalorieLogSubscriptionPayload {
+  mutation: MutationType!
+  node: CalorieLog
+  updatedFields: [String!]
+  previousValues: CalorieLogPreviousValues
+}
+
+input CalorieLogSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CalorieLogWhereInput
+  AND: [CalorieLogSubscriptionWhereInput!]
+  OR: [CalorieLogSubscriptionWhereInput!]
+  NOT: [CalorieLogSubscriptionWhereInput!]
+}
+
+input CalorieLogUpdateInput {
+  date: DateTime
+  totalCalories: Float
+  intradayData: CalorieDataUpdateManyInput
+}
+
+input CalorieLogWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
+  totalCalories: Float
+  totalCalories_not: Float
+  totalCalories_in: [Float!]
+  totalCalories_not_in: [Float!]
+  totalCalories_lt: Float
+  totalCalories_lte: Float
+  totalCalories_gt: Float
+  totalCalories_gte: Float
+  intradayData_every: CalorieDataWhereInput
+  intradayData_some: CalorieDataWhereInput
+  intradayData_none: CalorieDataWhereInput
+  AND: [CalorieLogWhereInput!]
+  OR: [CalorieLogWhereInput!]
+  NOT: [CalorieLogWhereInput!]
+}
+
+input CalorieLogWhereUniqueInput {
+  id: ID
+}
+
 scalar DateTime
+
+type DistanceData {
+  id: ID!
+  distanceLogId: ID!
+  dateTime: DateTime!
+  distance: Float!
+}
+
+type DistanceDataConnection {
+  pageInfo: PageInfo!
+  edges: [DistanceDataEdge]!
+  aggregate: AggregateDistanceData!
+}
+
+input DistanceDataCreateInput {
+  distanceLogId: ID!
+  dateTime: DateTime!
+  distance: Float!
+}
+
+input DistanceDataCreateManyInput {
+  create: [DistanceDataCreateInput!]
+  connect: [DistanceDataWhereUniqueInput!]
+}
+
+type DistanceDataEdge {
+  node: DistanceData!
+  cursor: String!
+}
+
+enum DistanceDataOrderByInput {
+  id_ASC
+  id_DESC
+  distanceLogId_ASC
+  distanceLogId_DESC
+  dateTime_ASC
+  dateTime_DESC
+  distance_ASC
+  distance_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type DistanceDataPreviousValues {
+  id: ID!
+  distanceLogId: ID!
+  dateTime: DateTime!
+  distance: Float!
+}
+
+type DistanceDataSubscriptionPayload {
+  mutation: MutationType!
+  node: DistanceData
+  updatedFields: [String!]
+  previousValues: DistanceDataPreviousValues
+}
+
+input DistanceDataSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DistanceDataWhereInput
+  AND: [DistanceDataSubscriptionWhereInput!]
+  OR: [DistanceDataSubscriptionWhereInput!]
+  NOT: [DistanceDataSubscriptionWhereInput!]
+}
+
+input DistanceDataUpdateDataInput {
+  distanceLogId: ID
+  dateTime: DateTime
+  distance: Float
+}
+
+input DistanceDataUpdateInput {
+  distanceLogId: ID
+  dateTime: DateTime
+  distance: Float
+}
+
+input DistanceDataUpdateManyInput {
+  create: [DistanceDataCreateInput!]
+  update: [DistanceDataUpdateWithWhereUniqueNestedInput!]
+  upsert: [DistanceDataUpsertWithWhereUniqueNestedInput!]
+  delete: [DistanceDataWhereUniqueInput!]
+  connect: [DistanceDataWhereUniqueInput!]
+  disconnect: [DistanceDataWhereUniqueInput!]
+}
+
+input DistanceDataUpdateWithWhereUniqueNestedInput {
+  where: DistanceDataWhereUniqueInput!
+  data: DistanceDataUpdateDataInput!
+}
+
+input DistanceDataUpsertWithWhereUniqueNestedInput {
+  where: DistanceDataWhereUniqueInput!
+  update: DistanceDataUpdateDataInput!
+  create: DistanceDataCreateInput!
+}
+
+input DistanceDataWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  distanceLogId: ID
+  distanceLogId_not: ID
+  distanceLogId_in: [ID!]
+  distanceLogId_not_in: [ID!]
+  distanceLogId_lt: ID
+  distanceLogId_lte: ID
+  distanceLogId_gt: ID
+  distanceLogId_gte: ID
+  distanceLogId_contains: ID
+  distanceLogId_not_contains: ID
+  distanceLogId_starts_with: ID
+  distanceLogId_not_starts_with: ID
+  distanceLogId_ends_with: ID
+  distanceLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  distance: Float
+  distance_not: Float
+  distance_in: [Float!]
+  distance_not_in: [Float!]
+  distance_lt: Float
+  distance_lte: Float
+  distance_gt: Float
+  distance_gte: Float
+  AND: [DistanceDataWhereInput!]
+  OR: [DistanceDataWhereInput!]
+  NOT: [DistanceDataWhereInput!]
+}
+
+input DistanceDataWhereUniqueInput {
+  id: ID
+}
+
+type DistanceLog {
+  id: ID!
+  date: DateTime!
+  totalDistance: Float!
+  intradayData(where: DistanceDataWhereInput, orderBy: DistanceDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceData!]
+}
+
+type DistanceLogConnection {
+  pageInfo: PageInfo!
+  edges: [DistanceLogEdge]!
+  aggregate: AggregateDistanceLog!
+}
+
+input DistanceLogCreateInput {
+  date: DateTime!
+  totalDistance: Float!
+  intradayData: DistanceDataCreateManyInput
+}
+
+type DistanceLogEdge {
+  node: DistanceLog!
+  cursor: String!
+}
+
+enum DistanceLogOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  totalDistance_ASC
+  totalDistance_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type DistanceLogPreviousValues {
+  id: ID!
+  date: DateTime!
+  totalDistance: Float!
+}
+
+type DistanceLogSubscriptionPayload {
+  mutation: MutationType!
+  node: DistanceLog
+  updatedFields: [String!]
+  previousValues: DistanceLogPreviousValues
+}
+
+input DistanceLogSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DistanceLogWhereInput
+  AND: [DistanceLogSubscriptionWhereInput!]
+  OR: [DistanceLogSubscriptionWhereInput!]
+  NOT: [DistanceLogSubscriptionWhereInput!]
+}
+
+input DistanceLogUpdateInput {
+  date: DateTime
+  totalDistance: Float
+  intradayData: DistanceDataUpdateManyInput
+}
+
+input DistanceLogWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
+  totalDistance: Float
+  totalDistance_not: Float
+  totalDistance_in: [Float!]
+  totalDistance_not_in: [Float!]
+  totalDistance_lt: Float
+  totalDistance_lte: Float
+  totalDistance_gt: Float
+  totalDistance_gte: Float
+  intradayData_every: DistanceDataWhereInput
+  intradayData_some: DistanceDataWhereInput
+  intradayData_none: DistanceDataWhereInput
+  AND: [DistanceLogWhereInput!]
+  OR: [DistanceLogWhereInput!]
+  NOT: [DistanceLogWhereInput!]
+}
+
+input DistanceLogWhereUniqueInput {
+  id: ID
+}
 
 type FitbitAccount {
   id: ID!
@@ -399,9 +961,508 @@ input GoogleFitAccountWhereUniqueInput {
   userId: ID
 }
 
+type HeartData {
+  id: ID!
+  heartLogId: ID!
+  dateTime: DateTime!
+  heartRate: Float!
+}
+
+type HeartDataConnection {
+  pageInfo: PageInfo!
+  edges: [HeartDataEdge]!
+  aggregate: AggregateHeartData!
+}
+
+input HeartDataCreateInput {
+  heartLogId: ID!
+  dateTime: DateTime!
+  heartRate: Float!
+}
+
+input HeartDataCreateManyInput {
+  create: [HeartDataCreateInput!]
+  connect: [HeartDataWhereUniqueInput!]
+}
+
+type HeartDataEdge {
+  node: HeartData!
+  cursor: String!
+}
+
+enum HeartDataOrderByInput {
+  id_ASC
+  id_DESC
+  heartLogId_ASC
+  heartLogId_DESC
+  dateTime_ASC
+  dateTime_DESC
+  heartRate_ASC
+  heartRate_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type HeartDataPreviousValues {
+  id: ID!
+  heartLogId: ID!
+  dateTime: DateTime!
+  heartRate: Float!
+}
+
+type HeartDataSubscriptionPayload {
+  mutation: MutationType!
+  node: HeartData
+  updatedFields: [String!]
+  previousValues: HeartDataPreviousValues
+}
+
+input HeartDataSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HeartDataWhereInput
+  AND: [HeartDataSubscriptionWhereInput!]
+  OR: [HeartDataSubscriptionWhereInput!]
+  NOT: [HeartDataSubscriptionWhereInput!]
+}
+
+input HeartDataUpdateDataInput {
+  heartLogId: ID
+  dateTime: DateTime
+  heartRate: Float
+}
+
+input HeartDataUpdateInput {
+  heartLogId: ID
+  dateTime: DateTime
+  heartRate: Float
+}
+
+input HeartDataUpdateManyInput {
+  create: [HeartDataCreateInput!]
+  update: [HeartDataUpdateWithWhereUniqueNestedInput!]
+  upsert: [HeartDataUpsertWithWhereUniqueNestedInput!]
+  delete: [HeartDataWhereUniqueInput!]
+  connect: [HeartDataWhereUniqueInput!]
+  disconnect: [HeartDataWhereUniqueInput!]
+}
+
+input HeartDataUpdateWithWhereUniqueNestedInput {
+  where: HeartDataWhereUniqueInput!
+  data: HeartDataUpdateDataInput!
+}
+
+input HeartDataUpsertWithWhereUniqueNestedInput {
+  where: HeartDataWhereUniqueInput!
+  update: HeartDataUpdateDataInput!
+  create: HeartDataCreateInput!
+}
+
+input HeartDataWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  heartLogId: ID
+  heartLogId_not: ID
+  heartLogId_in: [ID!]
+  heartLogId_not_in: [ID!]
+  heartLogId_lt: ID
+  heartLogId_lte: ID
+  heartLogId_gt: ID
+  heartLogId_gte: ID
+  heartLogId_contains: ID
+  heartLogId_not_contains: ID
+  heartLogId_starts_with: ID
+  heartLogId_not_starts_with: ID
+  heartLogId_ends_with: ID
+  heartLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  heartRate: Float
+  heartRate_not: Float
+  heartRate_in: [Float!]
+  heartRate_not_in: [Float!]
+  heartRate_lt: Float
+  heartRate_lte: Float
+  heartRate_gt: Float
+  heartRate_gte: Float
+  AND: [HeartDataWhereInput!]
+  OR: [HeartDataWhereInput!]
+  NOT: [HeartDataWhereInput!]
+}
+
+input HeartDataWhereUniqueInput {
+  id: ID
+}
+
+type HeartLog {
+  id: ID!
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+  intradayData(where: HeartDataWhereInput, orderBy: HeartDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartData!]
+}
+
+type HeartLogConnection {
+  pageInfo: PageInfo!
+  edges: [HeartLogEdge]!
+  aggregate: AggregateHeartLog!
+}
+
+input HeartLogCreateInput {
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+  intradayData: HeartDataCreateManyInput
+}
+
+type HeartLogEdge {
+  node: HeartLog!
+  cursor: String!
+}
+
+enum HeartLogOrderByInput {
+  id_ASC
+  id_DESC
+  dateTime_ASC
+  dateTime_DESC
+  caloriesOutOfRange_ASC
+  caloriesOutOfRange_DESC
+  minutesOutOfRange_ASC
+  minutesOutOfRange_DESC
+  maxValueOutOfRange_ASC
+  maxValueOutOfRange_DESC
+  minValueOutOfRange_ASC
+  minValueOutOfRange_DESC
+  caloriesFatBurn_ASC
+  caloriesFatBurn_DESC
+  minutesFatBurn_ASC
+  minutesFatBurn_DESC
+  maxValueFatBurn_ASC
+  maxValueFatBurn_DESC
+  minValueFatBurn_ASC
+  minValueFatBurn_DESC
+  caloriesCardio_ASC
+  caloriesCardio_DESC
+  minutesCardio_ASC
+  minutesCardio_DESC
+  maxValueCardio_ASC
+  maxValueCardio_DESC
+  minValueCardio_ASC
+  minValueCardio_DESC
+  caloriesPeak_ASC
+  caloriesPeak_DESC
+  minutesPeak_ASC
+  minutesPeak_DESC
+  maxValuePeak_ASC
+  maxValuePeak_DESC
+  minValuePeak_ASC
+  minValuePeak_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type HeartLogPreviousValues {
+  id: ID!
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+}
+
+type HeartLogSubscriptionPayload {
+  mutation: MutationType!
+  node: HeartLog
+  updatedFields: [String!]
+  previousValues: HeartLogPreviousValues
+}
+
+input HeartLogSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HeartLogWhereInput
+  AND: [HeartLogSubscriptionWhereInput!]
+  OR: [HeartLogSubscriptionWhereInput!]
+  NOT: [HeartLogSubscriptionWhereInput!]
+}
+
+input HeartLogUpdateInput {
+  dateTime: DateTime
+  caloriesOutOfRange: Int
+  minutesOutOfRange: Int
+  maxValueOutOfRange: Int
+  minValueOutOfRange: Int
+  caloriesFatBurn: Int
+  minutesFatBurn: Int
+  maxValueFatBurn: Int
+  minValueFatBurn: Int
+  caloriesCardio: Int
+  minutesCardio: Int
+  maxValueCardio: Int
+  minValueCardio: Int
+  caloriesPeak: Int
+  minutesPeak: Int
+  maxValuePeak: Int
+  minValuePeak: Int
+  intradayData: HeartDataUpdateManyInput
+}
+
+input HeartLogWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  caloriesOutOfRange: Int
+  caloriesOutOfRange_not: Int
+  caloriesOutOfRange_in: [Int!]
+  caloriesOutOfRange_not_in: [Int!]
+  caloriesOutOfRange_lt: Int
+  caloriesOutOfRange_lte: Int
+  caloriesOutOfRange_gt: Int
+  caloriesOutOfRange_gte: Int
+  minutesOutOfRange: Int
+  minutesOutOfRange_not: Int
+  minutesOutOfRange_in: [Int!]
+  minutesOutOfRange_not_in: [Int!]
+  minutesOutOfRange_lt: Int
+  minutesOutOfRange_lte: Int
+  minutesOutOfRange_gt: Int
+  minutesOutOfRange_gte: Int
+  maxValueOutOfRange: Int
+  maxValueOutOfRange_not: Int
+  maxValueOutOfRange_in: [Int!]
+  maxValueOutOfRange_not_in: [Int!]
+  maxValueOutOfRange_lt: Int
+  maxValueOutOfRange_lte: Int
+  maxValueOutOfRange_gt: Int
+  maxValueOutOfRange_gte: Int
+  minValueOutOfRange: Int
+  minValueOutOfRange_not: Int
+  minValueOutOfRange_in: [Int!]
+  minValueOutOfRange_not_in: [Int!]
+  minValueOutOfRange_lt: Int
+  minValueOutOfRange_lte: Int
+  minValueOutOfRange_gt: Int
+  minValueOutOfRange_gte: Int
+  caloriesFatBurn: Int
+  caloriesFatBurn_not: Int
+  caloriesFatBurn_in: [Int!]
+  caloriesFatBurn_not_in: [Int!]
+  caloriesFatBurn_lt: Int
+  caloriesFatBurn_lte: Int
+  caloriesFatBurn_gt: Int
+  caloriesFatBurn_gte: Int
+  minutesFatBurn: Int
+  minutesFatBurn_not: Int
+  minutesFatBurn_in: [Int!]
+  minutesFatBurn_not_in: [Int!]
+  minutesFatBurn_lt: Int
+  minutesFatBurn_lte: Int
+  minutesFatBurn_gt: Int
+  minutesFatBurn_gte: Int
+  maxValueFatBurn: Int
+  maxValueFatBurn_not: Int
+  maxValueFatBurn_in: [Int!]
+  maxValueFatBurn_not_in: [Int!]
+  maxValueFatBurn_lt: Int
+  maxValueFatBurn_lte: Int
+  maxValueFatBurn_gt: Int
+  maxValueFatBurn_gte: Int
+  minValueFatBurn: Int
+  minValueFatBurn_not: Int
+  minValueFatBurn_in: [Int!]
+  minValueFatBurn_not_in: [Int!]
+  minValueFatBurn_lt: Int
+  minValueFatBurn_lte: Int
+  minValueFatBurn_gt: Int
+  minValueFatBurn_gte: Int
+  caloriesCardio: Int
+  caloriesCardio_not: Int
+  caloriesCardio_in: [Int!]
+  caloriesCardio_not_in: [Int!]
+  caloriesCardio_lt: Int
+  caloriesCardio_lte: Int
+  caloriesCardio_gt: Int
+  caloriesCardio_gte: Int
+  minutesCardio: Int
+  minutesCardio_not: Int
+  minutesCardio_in: [Int!]
+  minutesCardio_not_in: [Int!]
+  minutesCardio_lt: Int
+  minutesCardio_lte: Int
+  minutesCardio_gt: Int
+  minutesCardio_gte: Int
+  maxValueCardio: Int
+  maxValueCardio_not: Int
+  maxValueCardio_in: [Int!]
+  maxValueCardio_not_in: [Int!]
+  maxValueCardio_lt: Int
+  maxValueCardio_lte: Int
+  maxValueCardio_gt: Int
+  maxValueCardio_gte: Int
+  minValueCardio: Int
+  minValueCardio_not: Int
+  minValueCardio_in: [Int!]
+  minValueCardio_not_in: [Int!]
+  minValueCardio_lt: Int
+  minValueCardio_lte: Int
+  minValueCardio_gt: Int
+  minValueCardio_gte: Int
+  caloriesPeak: Int
+  caloriesPeak_not: Int
+  caloriesPeak_in: [Int!]
+  caloriesPeak_not_in: [Int!]
+  caloriesPeak_lt: Int
+  caloriesPeak_lte: Int
+  caloriesPeak_gt: Int
+  caloriesPeak_gte: Int
+  minutesPeak: Int
+  minutesPeak_not: Int
+  minutesPeak_in: [Int!]
+  minutesPeak_not_in: [Int!]
+  minutesPeak_lt: Int
+  minutesPeak_lte: Int
+  minutesPeak_gt: Int
+  minutesPeak_gte: Int
+  maxValuePeak: Int
+  maxValuePeak_not: Int
+  maxValuePeak_in: [Int!]
+  maxValuePeak_not_in: [Int!]
+  maxValuePeak_lt: Int
+  maxValuePeak_lte: Int
+  maxValuePeak_gt: Int
+  maxValuePeak_gte: Int
+  minValuePeak: Int
+  minValuePeak_not: Int
+  minValuePeak_in: [Int!]
+  minValuePeak_not_in: [Int!]
+  minValuePeak_lt: Int
+  minValuePeak_lte: Int
+  minValuePeak_gt: Int
+  minValuePeak_gte: Int
+  intradayData_every: HeartDataWhereInput
+  intradayData_some: HeartDataWhereInput
+  intradayData_none: HeartDataWhereInput
+  AND: [HeartLogWhereInput!]
+  OR: [HeartLogWhereInput!]
+  NOT: [HeartLogWhereInput!]
+}
+
+input HeartLogWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
+  createCalorieData(data: CalorieDataCreateInput!): CalorieData!
+  updateCalorieData(data: CalorieDataUpdateInput!, where: CalorieDataWhereUniqueInput!): CalorieData
+  updateManyCalorieDatas(data: CalorieDataUpdateInput!, where: CalorieDataWhereInput): BatchPayload!
+  upsertCalorieData(where: CalorieDataWhereUniqueInput!, create: CalorieDataCreateInput!, update: CalorieDataUpdateInput!): CalorieData!
+  deleteCalorieData(where: CalorieDataWhereUniqueInput!): CalorieData
+  deleteManyCalorieDatas(where: CalorieDataWhereInput): BatchPayload!
+  createCalorieLog(data: CalorieLogCreateInput!): CalorieLog!
+  updateCalorieLog(data: CalorieLogUpdateInput!, where: CalorieLogWhereUniqueInput!): CalorieLog
+  updateManyCalorieLogs(data: CalorieLogUpdateInput!, where: CalorieLogWhereInput): BatchPayload!
+  upsertCalorieLog(where: CalorieLogWhereUniqueInput!, create: CalorieLogCreateInput!, update: CalorieLogUpdateInput!): CalorieLog!
+  deleteCalorieLog(where: CalorieLogWhereUniqueInput!): CalorieLog
+  deleteManyCalorieLogs(where: CalorieLogWhereInput): BatchPayload!
+  createDistanceData(data: DistanceDataCreateInput!): DistanceData!
+  updateDistanceData(data: DistanceDataUpdateInput!, where: DistanceDataWhereUniqueInput!): DistanceData
+  updateManyDistanceDatas(data: DistanceDataUpdateInput!, where: DistanceDataWhereInput): BatchPayload!
+  upsertDistanceData(where: DistanceDataWhereUniqueInput!, create: DistanceDataCreateInput!, update: DistanceDataUpdateInput!): DistanceData!
+  deleteDistanceData(where: DistanceDataWhereUniqueInput!): DistanceData
+  deleteManyDistanceDatas(where: DistanceDataWhereInput): BatchPayload!
+  createDistanceLog(data: DistanceLogCreateInput!): DistanceLog!
+  updateDistanceLog(data: DistanceLogUpdateInput!, where: DistanceLogWhereUniqueInput!): DistanceLog
+  updateManyDistanceLogs(data: DistanceLogUpdateInput!, where: DistanceLogWhereInput): BatchPayload!
+  upsertDistanceLog(where: DistanceLogWhereUniqueInput!, create: DistanceLogCreateInput!, update: DistanceLogUpdateInput!): DistanceLog!
+  deleteDistanceLog(where: DistanceLogWhereUniqueInput!): DistanceLog
+  deleteManyDistanceLogs(where: DistanceLogWhereInput): BatchPayload!
   createFitbitAccount(data: FitbitAccountCreateInput!): FitbitAccount!
   updateFitbitAccount(data: FitbitAccountUpdateInput!, where: FitbitAccountWhereUniqueInput!): FitbitAccount
   updateManyFitbitAccounts(data: FitbitAccountUpdateInput!, where: FitbitAccountWhereInput): BatchPayload!
@@ -414,6 +1475,18 @@ type Mutation {
   upsertGoogleFitAccount(where: GoogleFitAccountWhereUniqueInput!, create: GoogleFitAccountCreateInput!, update: GoogleFitAccountUpdateInput!): GoogleFitAccount!
   deleteGoogleFitAccount(where: GoogleFitAccountWhereUniqueInput!): GoogleFitAccount
   deleteManyGoogleFitAccounts(where: GoogleFitAccountWhereInput): BatchPayload!
+  createHeartData(data: HeartDataCreateInput!): HeartData!
+  updateHeartData(data: HeartDataUpdateInput!, where: HeartDataWhereUniqueInput!): HeartData
+  updateManyHeartDatas(data: HeartDataUpdateInput!, where: HeartDataWhereInput): BatchPayload!
+  upsertHeartData(where: HeartDataWhereUniqueInput!, create: HeartDataCreateInput!, update: HeartDataUpdateInput!): HeartData!
+  deleteHeartData(where: HeartDataWhereUniqueInput!): HeartData
+  deleteManyHeartDatas(where: HeartDataWhereInput): BatchPayload!
+  createHeartLog(data: HeartLogCreateInput!): HeartLog!
+  updateHeartLog(data: HeartLogUpdateInput!, where: HeartLogWhereUniqueInput!): HeartLog
+  updateManyHeartLogs(data: HeartLogUpdateInput!, where: HeartLogWhereInput): BatchPayload!
+  upsertHeartLog(where: HeartLogWhereUniqueInput!, create: HeartLogCreateInput!, update: HeartLogUpdateInput!): HeartLog!
+  deleteHeartLog(where: HeartLogWhereUniqueInput!): HeartLog
+  deleteManyHeartLogs(where: HeartLogWhereInput): BatchPayload!
   createSleepData(data: SleepDataCreateInput!): SleepData!
   updateSleepData(data: SleepDataUpdateInput!, where: SleepDataWhereUniqueInput!): SleepData
   updateManySleepDatas(data: SleepDataUpdateInput!, where: SleepDataWhereInput): BatchPayload!
@@ -426,6 +1499,18 @@ type Mutation {
   upsertSleepLog(where: SleepLogWhereUniqueInput!, create: SleepLogCreateInput!, update: SleepLogUpdateInput!): SleepLog!
   deleteSleepLog(where: SleepLogWhereUniqueInput!): SleepLog
   deleteManySleepLogs(where: SleepLogWhereInput): BatchPayload!
+  createStepData(data: StepDataCreateInput!): StepData!
+  updateStepData(data: StepDataUpdateInput!, where: StepDataWhereUniqueInput!): StepData
+  updateManyStepDatas(data: StepDataUpdateInput!, where: StepDataWhereInput): BatchPayload!
+  upsertStepData(where: StepDataWhereUniqueInput!, create: StepDataCreateInput!, update: StepDataUpdateInput!): StepData!
+  deleteStepData(where: StepDataWhereUniqueInput!): StepData
+  deleteManyStepDatas(where: StepDataWhereInput): BatchPayload!
+  createStepLog(data: StepLogCreateInput!): StepLog!
+  updateStepLog(data: StepLogUpdateInput!, where: StepLogWhereUniqueInput!): StepLog
+  updateManyStepLogs(data: StepLogUpdateInput!, where: StepLogWhereInput): BatchPayload!
+  upsertStepLog(where: StepLogWhereUniqueInput!, create: StepLogCreateInput!, update: StepLogUpdateInput!): StepLog!
+  deleteStepLog(where: StepLogWhereUniqueInput!): StepLog
+  deleteManyStepLogs(where: StepLogWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
@@ -452,18 +1537,42 @@ type PageInfo {
 }
 
 type Query {
+  calorieData(where: CalorieDataWhereUniqueInput!): CalorieData
+  calorieDatas(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieData]!
+  calorieDatasConnection(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CalorieDataConnection!
+  calorieLog(where: CalorieLogWhereUniqueInput!): CalorieLog
+  calorieLogs(where: CalorieLogWhereInput, orderBy: CalorieLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieLog]!
+  calorieLogsConnection(where: CalorieLogWhereInput, orderBy: CalorieLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CalorieLogConnection!
+  distanceData(where: DistanceDataWhereUniqueInput!): DistanceData
+  distanceDatas(where: DistanceDataWhereInput, orderBy: DistanceDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceData]!
+  distanceDatasConnection(where: DistanceDataWhereInput, orderBy: DistanceDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DistanceDataConnection!
+  distanceLog(where: DistanceLogWhereUniqueInput!): DistanceLog
+  distanceLogs(where: DistanceLogWhereInput, orderBy: DistanceLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceLog]!
+  distanceLogsConnection(where: DistanceLogWhereInput, orderBy: DistanceLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DistanceLogConnection!
   fitbitAccount(where: FitbitAccountWhereUniqueInput!): FitbitAccount
   fitbitAccounts(where: FitbitAccountWhereInput, orderBy: FitbitAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [FitbitAccount]!
   fitbitAccountsConnection(where: FitbitAccountWhereInput, orderBy: FitbitAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FitbitAccountConnection!
   googleFitAccount(where: GoogleFitAccountWhereUniqueInput!): GoogleFitAccount
   googleFitAccounts(where: GoogleFitAccountWhereInput, orderBy: GoogleFitAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [GoogleFitAccount]!
   googleFitAccountsConnection(where: GoogleFitAccountWhereInput, orderBy: GoogleFitAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GoogleFitAccountConnection!
+  heartData(where: HeartDataWhereUniqueInput!): HeartData
+  heartDatas(where: HeartDataWhereInput, orderBy: HeartDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartData]!
+  heartDatasConnection(where: HeartDataWhereInput, orderBy: HeartDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeartDataConnection!
+  heartLog(where: HeartLogWhereUniqueInput!): HeartLog
+  heartLogs(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartLog]!
+  heartLogsConnection(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeartLogConnection!
   sleepData(where: SleepDataWhereUniqueInput!): SleepData
   sleepDatas(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepData]!
   sleepDatasConnection(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SleepDataConnection!
   sleepLog(where: SleepLogWhereUniqueInput!): SleepLog
   sleepLogs(where: SleepLogWhereInput, orderBy: SleepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepLog]!
   sleepLogsConnection(where: SleepLogWhereInput, orderBy: SleepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SleepLogConnection!
+  stepData(where: StepDataWhereUniqueInput!): StepData
+  stepDatas(where: StepDataWhereInput, orderBy: StepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepData]!
+  stepDatasConnection(where: StepDataWhereInput, orderBy: StepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StepDataConnection!
+  stepLog(where: StepLogWhereUniqueInput!): StepLog
+  stepLogs(where: StepLogWhereInput, orderBy: StepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepLog]!
+  stepLogsConnection(where: StepLogWhereInput, orderBy: StepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StepLogConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -1235,11 +2344,284 @@ input SleepLogWhereUniqueInput {
   logId: Float
 }
 
+type StepData {
+  id: ID!
+  stepLogId: ID!
+  dateTime: DateTime!
+  steps: Int!
+}
+
+type StepDataConnection {
+  pageInfo: PageInfo!
+  edges: [StepDataEdge]!
+  aggregate: AggregateStepData!
+}
+
+input StepDataCreateInput {
+  stepLogId: ID!
+  dateTime: DateTime!
+  steps: Int!
+}
+
+input StepDataCreateManyInput {
+  create: [StepDataCreateInput!]
+  connect: [StepDataWhereUniqueInput!]
+}
+
+type StepDataEdge {
+  node: StepData!
+  cursor: String!
+}
+
+enum StepDataOrderByInput {
+  id_ASC
+  id_DESC
+  stepLogId_ASC
+  stepLogId_DESC
+  dateTime_ASC
+  dateTime_DESC
+  steps_ASC
+  steps_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type StepDataPreviousValues {
+  id: ID!
+  stepLogId: ID!
+  dateTime: DateTime!
+  steps: Int!
+}
+
+type StepDataSubscriptionPayload {
+  mutation: MutationType!
+  node: StepData
+  updatedFields: [String!]
+  previousValues: StepDataPreviousValues
+}
+
+input StepDataSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StepDataWhereInput
+  AND: [StepDataSubscriptionWhereInput!]
+  OR: [StepDataSubscriptionWhereInput!]
+  NOT: [StepDataSubscriptionWhereInput!]
+}
+
+input StepDataUpdateDataInput {
+  stepLogId: ID
+  dateTime: DateTime
+  steps: Int
+}
+
+input StepDataUpdateInput {
+  stepLogId: ID
+  dateTime: DateTime
+  steps: Int
+}
+
+input StepDataUpdateManyInput {
+  create: [StepDataCreateInput!]
+  update: [StepDataUpdateWithWhereUniqueNestedInput!]
+  upsert: [StepDataUpsertWithWhereUniqueNestedInput!]
+  delete: [StepDataWhereUniqueInput!]
+  connect: [StepDataWhereUniqueInput!]
+  disconnect: [StepDataWhereUniqueInput!]
+}
+
+input StepDataUpdateWithWhereUniqueNestedInput {
+  where: StepDataWhereUniqueInput!
+  data: StepDataUpdateDataInput!
+}
+
+input StepDataUpsertWithWhereUniqueNestedInput {
+  where: StepDataWhereUniqueInput!
+  update: StepDataUpdateDataInput!
+  create: StepDataCreateInput!
+}
+
+input StepDataWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  stepLogId: ID
+  stepLogId_not: ID
+  stepLogId_in: [ID!]
+  stepLogId_not_in: [ID!]
+  stepLogId_lt: ID
+  stepLogId_lte: ID
+  stepLogId_gt: ID
+  stepLogId_gte: ID
+  stepLogId_contains: ID
+  stepLogId_not_contains: ID
+  stepLogId_starts_with: ID
+  stepLogId_not_starts_with: ID
+  stepLogId_ends_with: ID
+  stepLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  steps: Int
+  steps_not: Int
+  steps_in: [Int!]
+  steps_not_in: [Int!]
+  steps_lt: Int
+  steps_lte: Int
+  steps_gt: Int
+  steps_gte: Int
+  AND: [StepDataWhereInput!]
+  OR: [StepDataWhereInput!]
+  NOT: [StepDataWhereInput!]
+}
+
+input StepDataWhereUniqueInput {
+  id: ID
+}
+
+type StepLog {
+  id: ID!
+  date: DateTime!
+  totalSteps: Int!
+  intradayData(where: StepDataWhereInput, orderBy: StepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepData!]
+}
+
+type StepLogConnection {
+  pageInfo: PageInfo!
+  edges: [StepLogEdge]!
+  aggregate: AggregateStepLog!
+}
+
+input StepLogCreateInput {
+  date: DateTime!
+  totalSteps: Int!
+  intradayData: StepDataCreateManyInput
+}
+
+type StepLogEdge {
+  node: StepLog!
+  cursor: String!
+}
+
+enum StepLogOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  totalSteps_ASC
+  totalSteps_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type StepLogPreviousValues {
+  id: ID!
+  date: DateTime!
+  totalSteps: Int!
+}
+
+type StepLogSubscriptionPayload {
+  mutation: MutationType!
+  node: StepLog
+  updatedFields: [String!]
+  previousValues: StepLogPreviousValues
+}
+
+input StepLogSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StepLogWhereInput
+  AND: [StepLogSubscriptionWhereInput!]
+  OR: [StepLogSubscriptionWhereInput!]
+  NOT: [StepLogSubscriptionWhereInput!]
+}
+
+input StepLogUpdateInput {
+  date: DateTime
+  totalSteps: Int
+  intradayData: StepDataUpdateManyInput
+}
+
+input StepLogWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
+  totalSteps: Int
+  totalSteps_not: Int
+  totalSteps_in: [Int!]
+  totalSteps_not_in: [Int!]
+  totalSteps_lt: Int
+  totalSteps_lte: Int
+  totalSteps_gt: Int
+  totalSteps_gte: Int
+  intradayData_every: StepDataWhereInput
+  intradayData_some: StepDataWhereInput
+  intradayData_none: StepDataWhereInput
+  AND: [StepLogWhereInput!]
+  OR: [StepLogWhereInput!]
+  NOT: [StepLogWhereInput!]
+}
+
+input StepLogWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
+  calorieData(where: CalorieDataSubscriptionWhereInput): CalorieDataSubscriptionPayload
+  calorieLog(where: CalorieLogSubscriptionWhereInput): CalorieLogSubscriptionPayload
+  distanceData(where: DistanceDataSubscriptionWhereInput): DistanceDataSubscriptionPayload
+  distanceLog(where: DistanceLogSubscriptionWhereInput): DistanceLogSubscriptionPayload
   fitbitAccount(where: FitbitAccountSubscriptionWhereInput): FitbitAccountSubscriptionPayload
   googleFitAccount(where: GoogleFitAccountSubscriptionWhereInput): GoogleFitAccountSubscriptionPayload
+  heartData(where: HeartDataSubscriptionWhereInput): HeartDataSubscriptionPayload
+  heartLog(where: HeartLogSubscriptionWhereInput): HeartLogSubscriptionPayload
   sleepData(where: SleepDataSubscriptionWhereInput): SleepDataSubscriptionPayload
   sleepLog(where: SleepLogSubscriptionWhereInput): SleepLogSubscriptionPayload
+  stepData(where: StepDataSubscriptionWhereInput): StepDataSubscriptionPayload
+  stepLog(where: StepLogSubscriptionWhereInput): StepLogSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 

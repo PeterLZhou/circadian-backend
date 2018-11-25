@@ -87,3 +87,74 @@ type SleepData {
   level: String!
   second: Int!
 }
+
+type HeartLog {
+  id: ID!
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+  intradayData: [HeartData!]!
+}
+
+type HeartData {
+  id: ID!
+  heartLogId: ID!
+  dateTime: DateTime!
+  heartRate: Float!
+}
+
+type StepLog {
+  id: ID!
+  date: DateTime!
+  totalSteps: Int!
+  intradayData: [StepData!]!
+}
+
+type StepData {
+  id: ID!
+  stepLogId: ID!
+  dateTime: DateTime!
+  steps: Int!
+}
+
+type CalorieLog {
+  id: ID!
+  date: DateTime!
+  totalCalories: Float!
+  intradayData: [CalorieData!]!
+}
+
+type CalorieData {
+  id: ID!
+  calorieLogId: ID!
+  dateTime: DateTime!
+  calories: Float!
+}
+
+type DistanceLog {
+  id: ID!
+  date: DateTime!
+  totalDistance: Float!
+  intradayData: [DistanceData!]!
+}
+
+type DistanceData {
+  id: ID!
+  distanceLogId: ID!
+  dateTime: DateTime!
+  distance: Float!
+}

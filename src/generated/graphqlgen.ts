@@ -8,6 +8,14 @@ import { GoogleFitAccountNode } from "./prisma-client";
 import { FitbitAccountNode } from "./prisma-client";
 import { SleepLogNode } from "./prisma-client";
 import { SleepDataNode } from "./prisma-client";
+import { HeartLogNode } from "./prisma-client";
+import { HeartDataNode } from "./prisma-client";
+import { StepLogNode } from "./prisma-client";
+import { StepDataNode } from "./prisma-client";
+import { CalorieLogNode } from "./prisma-client";
+import { CalorieDataNode } from "./prisma-client";
+import { DistanceLogNode } from "./prisma-client";
+import { DistanceDataNode } from "./prisma-client";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -1074,6 +1082,763 @@ export namespace SleepDataResolvers {
   }
 }
 
+export namespace HeartLogResolvers {
+  export const defaultResolvers = {
+    id: (parent: HeartLogNode) => parent.id,
+    dateTime: (parent: HeartLogNode) => parent.dateTime,
+    caloriesOutOfRange: (parent: HeartLogNode) => parent.caloriesOutOfRange,
+    minutesOutOfRange: (parent: HeartLogNode) => parent.minutesOutOfRange,
+    maxValueOutOfRange: (parent: HeartLogNode) => parent.maxValueOutOfRange,
+    minValueOutOfRange: (parent: HeartLogNode) => parent.minValueOutOfRange,
+    caloriesFatBurn: (parent: HeartLogNode) => parent.caloriesFatBurn,
+    minutesFatBurn: (parent: HeartLogNode) => parent.minutesFatBurn,
+    maxValueFatBurn: (parent: HeartLogNode) => parent.maxValueFatBurn,
+    minValueFatBurn: (parent: HeartLogNode) => parent.minValueFatBurn,
+    caloriesCardio: (parent: HeartLogNode) => parent.caloriesCardio,
+    minutesCardio: (parent: HeartLogNode) => parent.minutesCardio,
+    maxValueCardio: (parent: HeartLogNode) => parent.maxValueCardio,
+    minValueCardio: (parent: HeartLogNode) => parent.minValueCardio,
+    caloriesPeak: (parent: HeartLogNode) => parent.caloriesPeak,
+    minutesPeak: (parent: HeartLogNode) => parent.minutesPeak,
+    maxValuePeak: (parent: HeartLogNode) => parent.maxValuePeak,
+    minValuePeak: (parent: HeartLogNode) => parent.minValuePeak
+  };
+
+  export type IdResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type CaloriesOutOfRangeResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesOutOfRangeResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MaxValueOutOfRangeResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinValueOutOfRangeResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type CaloriesFatBurnResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesFatBurnResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MaxValueFatBurnResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinValueFatBurnResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type CaloriesCardioResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesCardioResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MaxValueCardioResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinValueCardioResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type CaloriesPeakResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinutesPeakResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MaxValuePeakResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type MinValuePeakResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type IntradayDataResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => HeartDataNode[] | Promise<HeartDataNode[]>;
+
+  export interface Type {
+    id: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    caloriesOutOfRange: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesOutOfRange: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    maxValueOutOfRange: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minValueOutOfRange: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    caloriesFatBurn: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesFatBurn: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    maxValueFatBurn: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minValueFatBurn: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    caloriesCardio: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesCardio: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    maxValueCardio: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minValueCardio: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    caloriesPeak: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minutesPeak: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    maxValuePeak: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    minValuePeak: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    intradayData: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => HeartDataNode[] | Promise<HeartDataNode[]>;
+  }
+}
+
+export namespace HeartDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: HeartDataNode) => parent.id,
+    heartLogId: (parent: HeartDataNode) => parent.heartLogId,
+    dateTime: (parent: HeartDataNode) => parent.dateTime,
+    heartRate: (parent: HeartDataNode) => parent.heartRate
+  };
+
+  export type IdResolver = (
+    parent: HeartDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type HeartLogIdResolver = (
+    parent: HeartDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: HeartDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type HeartRateResolver = (
+    parent: HeartDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: HeartDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    heartLogId: (
+      parent: HeartDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: HeartDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    heartRate: (
+      parent: HeartDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+  }
+}
+
+export namespace StepLogResolvers {
+  export const defaultResolvers = {
+    id: (parent: StepLogNode) => parent.id,
+    date: (parent: StepLogNode) => parent.date,
+    totalSteps: (parent: StepLogNode) => parent.totalSteps
+  };
+
+  export type IdResolver = (
+    parent: StepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateResolver = (
+    parent: StepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type TotalStepsResolver = (
+    parent: StepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type IntradayDataResolver = (
+    parent: StepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => StepDataNode[] | Promise<StepDataNode[]>;
+
+  export interface Type {
+    id: (
+      parent: StepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    date: (
+      parent: StepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    totalSteps: (
+      parent: StepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    intradayData: (
+      parent: StepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => StepDataNode[] | Promise<StepDataNode[]>;
+  }
+}
+
+export namespace StepDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: StepDataNode) => parent.id,
+    stepLogId: (parent: StepDataNode) => parent.stepLogId,
+    dateTime: (parent: StepDataNode) => parent.dateTime,
+    steps: (parent: StepDataNode) => parent.steps
+  };
+
+  export type IdResolver = (
+    parent: StepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type StepLogIdResolver = (
+    parent: StepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: StepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type StepsResolver = (
+    parent: StepDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: StepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    stepLogId: (
+      parent: StepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: StepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    steps: (
+      parent: StepDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+  }
+}
+
+export namespace CalorieLogResolvers {
+  export const defaultResolvers = {
+    id: (parent: CalorieLogNode) => parent.id,
+    date: (parent: CalorieLogNode) => parent.date,
+    totalCalories: (parent: CalorieLogNode) => parent.totalCalories
+  };
+
+  export type IdResolver = (
+    parent: CalorieLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateResolver = (
+    parent: CalorieLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type TotalCaloriesResolver = (
+    parent: CalorieLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type IntradayDataResolver = (
+    parent: CalorieLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => CalorieDataNode[] | Promise<CalorieDataNode[]>;
+
+  export interface Type {
+    id: (
+      parent: CalorieLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    date: (
+      parent: CalorieLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    totalCalories: (
+      parent: CalorieLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    intradayData: (
+      parent: CalorieLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => CalorieDataNode[] | Promise<CalorieDataNode[]>;
+  }
+}
+
+export namespace CalorieDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: CalorieDataNode) => parent.id,
+    calorieLogId: (parent: CalorieDataNode) => parent.calorieLogId,
+    dateTime: (parent: CalorieDataNode) => parent.dateTime,
+    calories: (parent: CalorieDataNode) => parent.calories
+  };
+
+  export type IdResolver = (
+    parent: CalorieDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type CalorieLogIdResolver = (
+    parent: CalorieDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: CalorieDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type CaloriesResolver = (
+    parent: CalorieDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: CalorieDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    calorieLogId: (
+      parent: CalorieDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: CalorieDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    calories: (
+      parent: CalorieDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+  }
+}
+
+export namespace DistanceLogResolvers {
+  export const defaultResolvers = {
+    id: (parent: DistanceLogNode) => parent.id,
+    date: (parent: DistanceLogNode) => parent.date,
+    totalDistance: (parent: DistanceLogNode) => parent.totalDistance
+  };
+
+  export type IdResolver = (
+    parent: DistanceLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateResolver = (
+    parent: DistanceLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type TotalDistanceResolver = (
+    parent: DistanceLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type IntradayDataResolver = (
+    parent: DistanceLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => DistanceDataNode[] | Promise<DistanceDataNode[]>;
+
+  export interface Type {
+    id: (
+      parent: DistanceLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    date: (
+      parent: DistanceLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    totalDistance: (
+      parent: DistanceLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    intradayData: (
+      parent: DistanceLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => DistanceDataNode[] | Promise<DistanceDataNode[]>;
+  }
+}
+
+export namespace DistanceDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: DistanceDataNode) => parent.id,
+    distanceLogId: (parent: DistanceDataNode) => parent.distanceLogId,
+    dateTime: (parent: DistanceDataNode) => parent.dateTime,
+    distance: (parent: DistanceDataNode) => parent.distance
+  };
+
+  export type IdResolver = (
+    parent: DistanceDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DistanceLogIdResolver = (
+    parent: DistanceDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DateTimeResolver = (
+    parent: DistanceDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DistanceResolver = (
+    parent: DistanceDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: DistanceDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    distanceLogId: (
+      parent: DistanceDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    dateTime: (
+      parent: DistanceDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    distance: (
+      parent: DistanceDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+  }
+}
+
 export interface Resolvers {
   Query: QueryResolvers.Type;
   Mutation: MutationResolvers.Type;
@@ -1083,4 +1848,12 @@ export interface Resolvers {
   FitbitAccount: FitbitAccountResolvers.Type;
   SleepLog: SleepLogResolvers.Type;
   SleepData: SleepDataResolvers.Type;
+  HeartLog: HeartLogResolvers.Type;
+  HeartData: HeartDataResolvers.Type;
+  StepLog: StepLogResolvers.Type;
+  StepData: StepDataResolvers.Type;
+  CalorieLog: CalorieLogResolvers.Type;
+  CalorieData: CalorieDataResolvers.Type;
+  DistanceLog: DistanceLogResolvers.Type;
+  DistanceData: DistanceDataResolvers.Type;
 }
