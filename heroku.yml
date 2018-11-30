@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: ts-node -r dotenv/config src/index.ts
+  web: node -r dotenv/config dist/index.ts
