@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
-    "prod": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
+    "start": "yarn && concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
+    "prod": "yarn && concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
     "generate": "graphqlgen"
   },
   "dependencies": {
