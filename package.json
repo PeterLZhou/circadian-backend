@@ -5,8 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node -r dotenv/config src/index.ts",
-    "prod": "ts-node -r dotenv/config src/index.ts",
-    "generate": "graphqlgen"
+    "prod": "node -r dotenv/config build/index.js",
+    "build": "tsc",
+    "generate": "graphqlgen",
+    "heroku-postinstall": "yarn build"
   },
   "dependencies": {
     "@types/btoa": "^1.2.0",
@@ -17,6 +19,7 @@
     "btoa": "^1.2.1",
     "concur": "^3.2.0",
     "dotenv": "^6.1.0",
+    "global": "^4.3.2",
     "googleapis": "^34.0.0",
     "graphql": "^14.0.2",
     "graphql-shield": "^3.2.5",
@@ -31,6 +34,6 @@
     "@types/bcrypt": "3.0.0",
     "@types/jsonwebtoken": "7.2.8",
     "graphqlgen": "0.2.12",
-    "typescript": "3.1.6"
+    "typescript": "^3.2.1"
   }
 }
