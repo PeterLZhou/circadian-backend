@@ -8,17 +8,16 @@ import { GoogleFitAccount } from './GoogleFitAccount';
 import { HeartData } from './HeartData';
 import { HeartLog } from './HeartLog';
 import { Mutation } from './Mutation';
-
 import { Resolvers } from '../generated/graphqlgen';
 import { SleepData } from './SleepData';
 import { SleepLog } from './SleepLog';
 import { StepData } from './StepData';
 import { StepLog } from './StepLog';
 import { User } from './User';
-import { Query } from './Query';
+// import { Query } from './Query';
 
 export const resolvers: Resolvers = {
-  Query,
+  // Query,
   Mutation,
   AuthPayload,
   User,
