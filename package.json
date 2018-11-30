@@ -5,9 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
-    "prod": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
-    "generate": "graphqlgen",
-    "heroku-postinstall": "yarn"
+    "prod": "yarn add global concurrently && concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
+    "generate": "graphqlgen"
   },
   "dependencies": {
     "@types/btoa": "^1.2.0",
@@ -25,13 +24,13 @@
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "prisma-client-lib": "^0.2.59",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "ts-node": "7.0.1"
   },
   "devDependencies": {
     "@types/bcrypt": "3.0.0",
     "@types/jsonwebtoken": "7.2.8",
     "graphqlgen": "0.2.12",
-    "ts-node": "7.0.1",
     "typescript": "3.1.6"
   }
 }
