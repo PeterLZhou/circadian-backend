@@ -5,4 +5,4 @@ RUN tsc
 ADD . /server
 WORKDIR /server
 EXPOSE 4000
-CMD [ "node", "-r", "dotenv/config", "dist/index.ts"]
+CMD [ "node", "dist/index.ts"]
