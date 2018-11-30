@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn && concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
-    "prod": "yarn && concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
-    "generate": "graphqlgen"
+    "start": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
+    "prod": "concurrently \"docker-compose up\" \"ts-node -r dotenv/config src/index.ts\"",
+    "generate": "graphqlgen",
+    "heroku-postinstall": "yarn"
   },
   "dependencies": {
     "@types/btoa": "^1.2.0",
