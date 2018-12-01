@@ -6,5 +6,4 @@ RUN yarn
 RUN tsc
 # Add bash so we can ps:exec
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-EXPOSE 4000 4466
-CMD [ "node", "dist/index.js"]
+EXPOSE 4000
