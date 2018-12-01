@@ -1,6 +1,7 @@
 FROM node:8-slim
 WORKDIR /server
 ADD . /server
+ADD ./.profile.d /app/.profile.d
 RUN npm install -g typescript
 RUN yarn
 RUN tsc
