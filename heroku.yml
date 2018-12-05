@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: "node dist/index.js"
+  web: "prisma deploy && node dist/index.js"

@@ -3,6 +3,7 @@ WORKDIR /server
 ADD . /server
 ADD ./.profile.d /app/.profile.d
 RUN npm install -g typescript
+RUN npm install -g prisma
 RUN yarn
 RUN tsc
 # Add bash so we can ps:exec
