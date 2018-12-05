@@ -1,6 +1,5 @@
 build:
   docker:
     web: Dockerfile
-    prisma: prisma/Dockerfile
 run:
   web: "node dist/index.js"
