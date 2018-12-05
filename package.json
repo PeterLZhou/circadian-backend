@@ -8,7 +8,8 @@
     "prod": "node -r dotenv/config dist/index.js",
     "build": "tsc",
     "generate": "graphqlgen",
-    "heroku-postinstall": "yarn build"
+    "heroku-postinstall": "yarn build",
+    "heroku-postbuild": "echo 'postbuild' && prisma deploy && prisma generate"
   },
   "dependencies": {
     "@types/aws-lambda": "^8.10.15",
