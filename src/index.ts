@@ -1,7 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as querystring from 'querystring';
 import axios from 'axios';
-import { base64Hash } from './utils';
+import { base64Hash, getFrontendUrl } from './utils';
 import { fetchAggregateSteps } from './api/googlefit/aggregate';
 import { getAllSleepLogs, getSleepLogs } from './api/fitbit/sleep';
 import { GraphQLServer } from 'graphql-yoga';
@@ -59,7 +59,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         grant_type: "authorization_code",
         code: oneTimeCode,
         client_id: process.env.FITBIT_CLIENT_ID,
-        redirect_uri: "http://localhost:3000/auth/fitbit"
+        redirect_uri: getFrontendUrl() + "/auth/fitbit"
       }),
     data: {},
     headers: {

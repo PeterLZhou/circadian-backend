@@ -1,6 +1,6 @@
 import * as querystring from 'querystring';
 import axios from 'axios';
-import { base64Hash } from '../../utils';
+import { base64Hash, getFrontendUrl } from '../../utils';
 import { FitbitAccount } from '../../resolvers/FitbitAccount';
 import { prisma } from '../../generated/prisma-client';
 
@@ -24,7 +24,7 @@ export const refreshToken = async (
         querystring.stringify({
           grant_type: "refresh_token",
           refresh_token: refreshToken,
-          redirect_uri: "http://localhost:3000/auth/fitbit"
+          redirect_uri: getFrontendUrl() + "/auth/fitbit"
         }),
       data: {},
       headers: {
