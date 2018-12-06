@@ -48,6 +48,7 @@ server.express.post("/user/:id/googlefitauthenticate", (req, res) => {
 });
 
 server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
+  console.log(process.env);
   const userId = req.params.id;
   const oneTimeCode = req.body.code;
 
