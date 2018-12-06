@@ -105,6 +105,56 @@ type CalorieDataPreviousValues {
   calories: Float!
 }
 
+input CalorieDataScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  calorieLogId: ID
+  calorieLogId_not: ID
+  calorieLogId_in: [ID!]
+  calorieLogId_not_in: [ID!]
+  calorieLogId_lt: ID
+  calorieLogId_lte: ID
+  calorieLogId_gt: ID
+  calorieLogId_gte: ID
+  calorieLogId_contains: ID
+  calorieLogId_not_contains: ID
+  calorieLogId_starts_with: ID
+  calorieLogId_not_starts_with: ID
+  calorieLogId_ends_with: ID
+  calorieLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  calories: Float
+  calories_not: Float
+  calories_in: [Float!]
+  calories_not_in: [Float!]
+  calories_lt: Float
+  calories_lte: Float
+  calories_gt: Float
+  calories_gte: Float
+  AND: [CalorieDataScalarWhereInput!]
+  OR: [CalorieDataScalarWhereInput!]
+  NOT: [CalorieDataScalarWhereInput!]
+}
+
 type CalorieDataSubscriptionPayload {
   mutation: MutationType!
   node: CalorieData
@@ -135,6 +185,12 @@ input CalorieDataUpdateInput {
   calories: Float
 }
 
+input CalorieDataUpdateManyDataInput {
+  calorieLogId: ID
+  dateTime: DateTime
+  calories: Float
+}
+
 input CalorieDataUpdateManyInput {
   create: [CalorieDataCreateInput!]
   update: [CalorieDataUpdateWithWhereUniqueNestedInput!]
@@ -142,6 +198,19 @@ input CalorieDataUpdateManyInput {
   delete: [CalorieDataWhereUniqueInput!]
   connect: [CalorieDataWhereUniqueInput!]
   disconnect: [CalorieDataWhereUniqueInput!]
+  deleteMany: [CalorieDataScalarWhereInput!]
+  updateMany: [CalorieDataUpdateManyWithWhereNestedInput!]
+}
+
+input CalorieDataUpdateManyMutationInput {
+  calorieLogId: ID
+  dateTime: DateTime
+  calories: Float
+}
+
+input CalorieDataUpdateManyWithWhereNestedInput {
+  where: CalorieDataScalarWhereInput!
+  data: CalorieDataUpdateManyDataInput!
 }
 
 input CalorieDataUpdateWithWhereUniqueNestedInput {
@@ -276,6 +345,11 @@ input CalorieLogUpdateInput {
   intradayData: CalorieDataUpdateManyInput
 }
 
+input CalorieLogUpdateManyMutationInput {
+  date: DateTime
+  totalCalories: Float
+}
+
 input CalorieLogWhereInput {
   id: ID
   id_not: ID
@@ -372,6 +446,56 @@ type DistanceDataPreviousValues {
   distance: Float!
 }
 
+input DistanceDataScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  distanceLogId: ID
+  distanceLogId_not: ID
+  distanceLogId_in: [ID!]
+  distanceLogId_not_in: [ID!]
+  distanceLogId_lt: ID
+  distanceLogId_lte: ID
+  distanceLogId_gt: ID
+  distanceLogId_gte: ID
+  distanceLogId_contains: ID
+  distanceLogId_not_contains: ID
+  distanceLogId_starts_with: ID
+  distanceLogId_not_starts_with: ID
+  distanceLogId_ends_with: ID
+  distanceLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  distance: Float
+  distance_not: Float
+  distance_in: [Float!]
+  distance_not_in: [Float!]
+  distance_lt: Float
+  distance_lte: Float
+  distance_gt: Float
+  distance_gte: Float
+  AND: [DistanceDataScalarWhereInput!]
+  OR: [DistanceDataScalarWhereInput!]
+  NOT: [DistanceDataScalarWhereInput!]
+}
+
 type DistanceDataSubscriptionPayload {
   mutation: MutationType!
   node: DistanceData
@@ -402,6 +526,12 @@ input DistanceDataUpdateInput {
   distance: Float
 }
 
+input DistanceDataUpdateManyDataInput {
+  distanceLogId: ID
+  dateTime: DateTime
+  distance: Float
+}
+
 input DistanceDataUpdateManyInput {
   create: [DistanceDataCreateInput!]
   update: [DistanceDataUpdateWithWhereUniqueNestedInput!]
@@ -409,6 +539,19 @@ input DistanceDataUpdateManyInput {
   delete: [DistanceDataWhereUniqueInput!]
   connect: [DistanceDataWhereUniqueInput!]
   disconnect: [DistanceDataWhereUniqueInput!]
+  deleteMany: [DistanceDataScalarWhereInput!]
+  updateMany: [DistanceDataUpdateManyWithWhereNestedInput!]
+}
+
+input DistanceDataUpdateManyMutationInput {
+  distanceLogId: ID
+  dateTime: DateTime
+  distance: Float
+}
+
+input DistanceDataUpdateManyWithWhereNestedInput {
+  where: DistanceDataScalarWhereInput!
+  data: DistanceDataUpdateManyDataInput!
 }
 
 input DistanceDataUpdateWithWhereUniqueNestedInput {
@@ -543,6 +686,11 @@ input DistanceLogUpdateInput {
   intradayData: DistanceDataUpdateManyInput
 }
 
+input DistanceLogUpdateManyMutationInput {
+  date: DateTime
+  totalDistance: Float
+}
+
 input DistanceLogWhereInput {
   id: ID
   id_not: ID
@@ -674,6 +822,14 @@ input FitbitAccountUpdateDataInput {
 }
 
 input FitbitAccountUpdateInput {
+  userId: ID
+  fitbitUserId: String
+  refreshToken: String
+  accessToken: String
+  expiration: DateTime
+}
+
+input FitbitAccountUpdateManyMutationInput {
   userId: ID
   fitbitUserId: String
   refreshToken: String
@@ -872,6 +1028,13 @@ input GoogleFitAccountUpdateInput {
   expiration: DateTime
 }
 
+input GoogleFitAccountUpdateManyMutationInput {
+  userId: ID
+  refreshToken: String
+  accessToken: String
+  expiration: DateTime
+}
+
 input GoogleFitAccountUpdateOneInput {
   create: GoogleFitAccountCreateInput
   update: GoogleFitAccountUpdateDataInput
@@ -1012,6 +1175,56 @@ type HeartDataPreviousValues {
   heartRate: Float!
 }
 
+input HeartDataScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  heartLogId: ID
+  heartLogId_not: ID
+  heartLogId_in: [ID!]
+  heartLogId_not_in: [ID!]
+  heartLogId_lt: ID
+  heartLogId_lte: ID
+  heartLogId_gt: ID
+  heartLogId_gte: ID
+  heartLogId_contains: ID
+  heartLogId_not_contains: ID
+  heartLogId_starts_with: ID
+  heartLogId_not_starts_with: ID
+  heartLogId_ends_with: ID
+  heartLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  heartRate: Float
+  heartRate_not: Float
+  heartRate_in: [Float!]
+  heartRate_not_in: [Float!]
+  heartRate_lt: Float
+  heartRate_lte: Float
+  heartRate_gt: Float
+  heartRate_gte: Float
+  AND: [HeartDataScalarWhereInput!]
+  OR: [HeartDataScalarWhereInput!]
+  NOT: [HeartDataScalarWhereInput!]
+}
+
 type HeartDataSubscriptionPayload {
   mutation: MutationType!
   node: HeartData
@@ -1042,6 +1255,12 @@ input HeartDataUpdateInput {
   heartRate: Float
 }
 
+input HeartDataUpdateManyDataInput {
+  heartLogId: ID
+  dateTime: DateTime
+  heartRate: Float
+}
+
 input HeartDataUpdateManyInput {
   create: [HeartDataCreateInput!]
   update: [HeartDataUpdateWithWhereUniqueNestedInput!]
@@ -1049,6 +1268,19 @@ input HeartDataUpdateManyInput {
   delete: [HeartDataWhereUniqueInput!]
   connect: [HeartDataWhereUniqueInput!]
   disconnect: [HeartDataWhereUniqueInput!]
+  deleteMany: [HeartDataScalarWhereInput!]
+  updateMany: [HeartDataUpdateManyWithWhereNestedInput!]
+}
+
+input HeartDataUpdateManyMutationInput {
+  heartLogId: ID
+  dateTime: DateTime
+  heartRate: Float
+}
+
+input HeartDataUpdateManyWithWhereNestedInput {
+  where: HeartDataScalarWhereInput!
+  data: HeartDataUpdateManyDataInput!
 }
 
 input HeartDataUpdateWithWhereUniqueNestedInput {
@@ -1273,6 +1505,26 @@ input HeartLogUpdateInput {
   intradayData: HeartDataUpdateManyInput
 }
 
+input HeartLogUpdateManyMutationInput {
+  dateTime: DateTime
+  caloriesOutOfRange: Int
+  minutesOutOfRange: Int
+  maxValueOutOfRange: Int
+  minValueOutOfRange: Int
+  caloriesFatBurn: Int
+  minutesFatBurn: Int
+  maxValueFatBurn: Int
+  minValueFatBurn: Int
+  caloriesCardio: Int
+  minutesCardio: Int
+  maxValueCardio: Int
+  minValueCardio: Int
+  caloriesPeak: Int
+  minutesPeak: Int
+  maxValuePeak: Int
+  minValuePeak: Int
+}
+
 input HeartLogWhereInput {
   id: ID
   id_not: ID
@@ -1441,79 +1693,79 @@ scalar Long
 type Mutation {
   createCalorieData(data: CalorieDataCreateInput!): CalorieData!
   updateCalorieData(data: CalorieDataUpdateInput!, where: CalorieDataWhereUniqueInput!): CalorieData
-  updateManyCalorieDatas(data: CalorieDataUpdateInput!, where: CalorieDataWhereInput): BatchPayload!
+  updateManyCalorieDatas(data: CalorieDataUpdateManyMutationInput!, where: CalorieDataWhereInput): BatchPayload!
   upsertCalorieData(where: CalorieDataWhereUniqueInput!, create: CalorieDataCreateInput!, update: CalorieDataUpdateInput!): CalorieData!
   deleteCalorieData(where: CalorieDataWhereUniqueInput!): CalorieData
   deleteManyCalorieDatas(where: CalorieDataWhereInput): BatchPayload!
   createCalorieLog(data: CalorieLogCreateInput!): CalorieLog!
   updateCalorieLog(data: CalorieLogUpdateInput!, where: CalorieLogWhereUniqueInput!): CalorieLog
-  updateManyCalorieLogs(data: CalorieLogUpdateInput!, where: CalorieLogWhereInput): BatchPayload!
+  updateManyCalorieLogs(data: CalorieLogUpdateManyMutationInput!, where: CalorieLogWhereInput): BatchPayload!
   upsertCalorieLog(where: CalorieLogWhereUniqueInput!, create: CalorieLogCreateInput!, update: CalorieLogUpdateInput!): CalorieLog!
   deleteCalorieLog(where: CalorieLogWhereUniqueInput!): CalorieLog
   deleteManyCalorieLogs(where: CalorieLogWhereInput): BatchPayload!
   createDistanceData(data: DistanceDataCreateInput!): DistanceData!
   updateDistanceData(data: DistanceDataUpdateInput!, where: DistanceDataWhereUniqueInput!): DistanceData
-  updateManyDistanceDatas(data: DistanceDataUpdateInput!, where: DistanceDataWhereInput): BatchPayload!
+  updateManyDistanceDatas(data: DistanceDataUpdateManyMutationInput!, where: DistanceDataWhereInput): BatchPayload!
   upsertDistanceData(where: DistanceDataWhereUniqueInput!, create: DistanceDataCreateInput!, update: DistanceDataUpdateInput!): DistanceData!
   deleteDistanceData(where: DistanceDataWhereUniqueInput!): DistanceData
   deleteManyDistanceDatas(where: DistanceDataWhereInput): BatchPayload!
   createDistanceLog(data: DistanceLogCreateInput!): DistanceLog!
   updateDistanceLog(data: DistanceLogUpdateInput!, where: DistanceLogWhereUniqueInput!): DistanceLog
-  updateManyDistanceLogs(data: DistanceLogUpdateInput!, where: DistanceLogWhereInput): BatchPayload!
+  updateManyDistanceLogs(data: DistanceLogUpdateManyMutationInput!, where: DistanceLogWhereInput): BatchPayload!
   upsertDistanceLog(where: DistanceLogWhereUniqueInput!, create: DistanceLogCreateInput!, update: DistanceLogUpdateInput!): DistanceLog!
   deleteDistanceLog(where: DistanceLogWhereUniqueInput!): DistanceLog
   deleteManyDistanceLogs(where: DistanceLogWhereInput): BatchPayload!
   createFitbitAccount(data: FitbitAccountCreateInput!): FitbitAccount!
   updateFitbitAccount(data: FitbitAccountUpdateInput!, where: FitbitAccountWhereUniqueInput!): FitbitAccount
-  updateManyFitbitAccounts(data: FitbitAccountUpdateInput!, where: FitbitAccountWhereInput): BatchPayload!
+  updateManyFitbitAccounts(data: FitbitAccountUpdateManyMutationInput!, where: FitbitAccountWhereInput): BatchPayload!
   upsertFitbitAccount(where: FitbitAccountWhereUniqueInput!, create: FitbitAccountCreateInput!, update: FitbitAccountUpdateInput!): FitbitAccount!
   deleteFitbitAccount(where: FitbitAccountWhereUniqueInput!): FitbitAccount
   deleteManyFitbitAccounts(where: FitbitAccountWhereInput): BatchPayload!
   createGoogleFitAccount(data: GoogleFitAccountCreateInput!): GoogleFitAccount!
   updateGoogleFitAccount(data: GoogleFitAccountUpdateInput!, where: GoogleFitAccountWhereUniqueInput!): GoogleFitAccount
-  updateManyGoogleFitAccounts(data: GoogleFitAccountUpdateInput!, where: GoogleFitAccountWhereInput): BatchPayload!
+  updateManyGoogleFitAccounts(data: GoogleFitAccountUpdateManyMutationInput!, where: GoogleFitAccountWhereInput): BatchPayload!
   upsertGoogleFitAccount(where: GoogleFitAccountWhereUniqueInput!, create: GoogleFitAccountCreateInput!, update: GoogleFitAccountUpdateInput!): GoogleFitAccount!
   deleteGoogleFitAccount(where: GoogleFitAccountWhereUniqueInput!): GoogleFitAccount
   deleteManyGoogleFitAccounts(where: GoogleFitAccountWhereInput): BatchPayload!
   createHeartData(data: HeartDataCreateInput!): HeartData!
   updateHeartData(data: HeartDataUpdateInput!, where: HeartDataWhereUniqueInput!): HeartData
-  updateManyHeartDatas(data: HeartDataUpdateInput!, where: HeartDataWhereInput): BatchPayload!
+  updateManyHeartDatas(data: HeartDataUpdateManyMutationInput!, where: HeartDataWhereInput): BatchPayload!
   upsertHeartData(where: HeartDataWhereUniqueInput!, create: HeartDataCreateInput!, update: HeartDataUpdateInput!): HeartData!
   deleteHeartData(where: HeartDataWhereUniqueInput!): HeartData
   deleteManyHeartDatas(where: HeartDataWhereInput): BatchPayload!
   createHeartLog(data: HeartLogCreateInput!): HeartLog!
   updateHeartLog(data: HeartLogUpdateInput!, where: HeartLogWhereUniqueInput!): HeartLog
-  updateManyHeartLogs(data: HeartLogUpdateInput!, where: HeartLogWhereInput): BatchPayload!
+  updateManyHeartLogs(data: HeartLogUpdateManyMutationInput!, where: HeartLogWhereInput): BatchPayload!
   upsertHeartLog(where: HeartLogWhereUniqueInput!, create: HeartLogCreateInput!, update: HeartLogUpdateInput!): HeartLog!
   deleteHeartLog(where: HeartLogWhereUniqueInput!): HeartLog
   deleteManyHeartLogs(where: HeartLogWhereInput): BatchPayload!
   createSleepData(data: SleepDataCreateInput!): SleepData!
   updateSleepData(data: SleepDataUpdateInput!, where: SleepDataWhereUniqueInput!): SleepData
-  updateManySleepDatas(data: SleepDataUpdateInput!, where: SleepDataWhereInput): BatchPayload!
+  updateManySleepDatas(data: SleepDataUpdateManyMutationInput!, where: SleepDataWhereInput): BatchPayload!
   upsertSleepData(where: SleepDataWhereUniqueInput!, create: SleepDataCreateInput!, update: SleepDataUpdateInput!): SleepData!
   deleteSleepData(where: SleepDataWhereUniqueInput!): SleepData
   deleteManySleepDatas(where: SleepDataWhereInput): BatchPayload!
   createSleepLog(data: SleepLogCreateInput!): SleepLog!
   updateSleepLog(data: SleepLogUpdateInput!, where: SleepLogWhereUniqueInput!): SleepLog
-  updateManySleepLogs(data: SleepLogUpdateInput!, where: SleepLogWhereInput): BatchPayload!
+  updateManySleepLogs(data: SleepLogUpdateManyMutationInput!, where: SleepLogWhereInput): BatchPayload!
   upsertSleepLog(where: SleepLogWhereUniqueInput!, create: SleepLogCreateInput!, update: SleepLogUpdateInput!): SleepLog!
   deleteSleepLog(where: SleepLogWhereUniqueInput!): SleepLog
   deleteManySleepLogs(where: SleepLogWhereInput): BatchPayload!
   createStepData(data: StepDataCreateInput!): StepData!
   updateStepData(data: StepDataUpdateInput!, where: StepDataWhereUniqueInput!): StepData
-  updateManyStepDatas(data: StepDataUpdateInput!, where: StepDataWhereInput): BatchPayload!
+  updateManyStepDatas(data: StepDataUpdateManyMutationInput!, where: StepDataWhereInput): BatchPayload!
   upsertStepData(where: StepDataWhereUniqueInput!, create: StepDataCreateInput!, update: StepDataUpdateInput!): StepData!
   deleteStepData(where: StepDataWhereUniqueInput!): StepData
   deleteManyStepDatas(where: StepDataWhereInput): BatchPayload!
   createStepLog(data: StepLogCreateInput!): StepLog!
   updateStepLog(data: StepLogUpdateInput!, where: StepLogWhereUniqueInput!): StepLog
-  updateManyStepLogs(data: StepLogUpdateInput!, where: StepLogWhereInput): BatchPayload!
+  updateManyStepLogs(data: StepLogUpdateManyMutationInput!, where: StepLogWhereInput): BatchPayload!
   upsertStepLog(where: StepLogWhereUniqueInput!, create: StepLogCreateInput!, update: StepLogUpdateInput!): StepLog!
   deleteStepLog(where: StepLogWhereUniqueInput!): StepLog
   deleteManyStepLogs(where: StepLogWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
@@ -1635,6 +1887,70 @@ type SleepDataPreviousValues {
   second: Int!
 }
 
+input SleepDataScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  sleepLogId: ID
+  sleepLogId_not: ID
+  sleepLogId_in: [ID!]
+  sleepLogId_not_in: [ID!]
+  sleepLogId_lt: ID
+  sleepLogId_lte: ID
+  sleepLogId_gt: ID
+  sleepLogId_gte: ID
+  sleepLogId_contains: ID
+  sleepLogId_not_contains: ID
+  sleepLogId_starts_with: ID
+  sleepLogId_not_starts_with: ID
+  sleepLogId_ends_with: ID
+  sleepLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  level: String
+  level_not: String
+  level_in: [String!]
+  level_not_in: [String!]
+  level_lt: String
+  level_lte: String
+  level_gt: String
+  level_gte: String
+  level_contains: String
+  level_not_contains: String
+  level_starts_with: String
+  level_not_starts_with: String
+  level_ends_with: String
+  level_not_ends_with: String
+  second: Int
+  second_not: Int
+  second_in: [Int!]
+  second_not_in: [Int!]
+  second_lt: Int
+  second_lte: Int
+  second_gt: Int
+  second_gte: Int
+  AND: [SleepDataScalarWhereInput!]
+  OR: [SleepDataScalarWhereInput!]
+  NOT: [SleepDataScalarWhereInput!]
+}
+
 type SleepDataSubscriptionPayload {
   mutation: MutationType!
   node: SleepData
@@ -1667,6 +1983,13 @@ input SleepDataUpdateInput {
   second: Int
 }
 
+input SleepDataUpdateManyDataInput {
+  sleepLogId: ID
+  dateTime: DateTime
+  level: String
+  second: Int
+}
+
 input SleepDataUpdateManyInput {
   create: [SleepDataCreateInput!]
   update: [SleepDataUpdateWithWhereUniqueNestedInput!]
@@ -1674,6 +1997,20 @@ input SleepDataUpdateManyInput {
   delete: [SleepDataWhereUniqueInput!]
   connect: [SleepDataWhereUniqueInput!]
   disconnect: [SleepDataWhereUniqueInput!]
+  deleteMany: [SleepDataScalarWhereInput!]
+  updateMany: [SleepDataUpdateManyWithWhereNestedInput!]
+}
+
+input SleepDataUpdateManyMutationInput {
+  sleepLogId: ID
+  dateTime: DateTime
+  level: String
+  second: Int
+}
+
+input SleepDataUpdateManyWithWhereNestedInput {
+  where: SleepDataScalarWhereInput!
+  data: SleepDataUpdateManyDataInput!
 }
 
 input SleepDataUpdateWithWhereUniqueNestedInput {
@@ -1948,6 +2285,286 @@ type SleepLogPreviousValues {
   summaryRestlessMinutes: Int
 }
 
+input SleepLogScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  userId: ID
+  userId_not: ID
+  userId_in: [ID!]
+  userId_not_in: [ID!]
+  userId_lt: ID
+  userId_lte: ID
+  userId_gt: ID
+  userId_gte: ID
+  userId_contains: ID
+  userId_not_contains: ID
+  userId_starts_with: ID
+  userId_not_starts_with: ID
+  userId_ends_with: ID
+  userId_not_ends_with: ID
+  dateOfSleep: String
+  dateOfSleep_not: String
+  dateOfSleep_in: [String!]
+  dateOfSleep_not_in: [String!]
+  dateOfSleep_lt: String
+  dateOfSleep_lte: String
+  dateOfSleep_gt: String
+  dateOfSleep_gte: String
+  dateOfSleep_contains: String
+  dateOfSleep_not_contains: String
+  dateOfSleep_starts_with: String
+  dateOfSleep_not_starts_with: String
+  dateOfSleep_ends_with: String
+  dateOfSleep_not_ends_with: String
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  efficiency: Int
+  efficiency_not: Int
+  efficiency_in: [Int!]
+  efficiency_not_in: [Int!]
+  efficiency_lt: Int
+  efficiency_lte: Int
+  efficiency_gt: Int
+  efficiency_gte: Int
+  isMainSleep: Boolean
+  isMainSleep_not: Boolean
+  logId: Float
+  logId_not: Float
+  logId_in: [Float!]
+  logId_not_in: [Float!]
+  logId_lt: Float
+  logId_lte: Float
+  logId_gt: Float
+  logId_gte: Float
+  minutesAfterWakeup: Int
+  minutesAfterWakeup_not: Int
+  minutesAfterWakeup_in: [Int!]
+  minutesAfterWakeup_not_in: [Int!]
+  minutesAfterWakeup_lt: Int
+  minutesAfterWakeup_lte: Int
+  minutesAfterWakeup_gt: Int
+  minutesAfterWakeup_gte: Int
+  minutesAsleep: Int
+  minutesAsleep_not: Int
+  minutesAsleep_in: [Int!]
+  minutesAsleep_not_in: [Int!]
+  minutesAsleep_lt: Int
+  minutesAsleep_lte: Int
+  minutesAsleep_gt: Int
+  minutesAsleep_gte: Int
+  minutesAwake: Int
+  minutesAwake_not: Int
+  minutesAwake_in: [Int!]
+  minutesAwake_not_in: [Int!]
+  minutesAwake_lt: Int
+  minutesAwake_lte: Int
+  minutesAwake_gt: Int
+  minutesAwake_gte: Int
+  minutesToFallAsleep: Int
+  minutesToFallAsleep_not: Int
+  minutesToFallAsleep_in: [Int!]
+  minutesToFallAsleep_not_in: [Int!]
+  minutesToFallAsleep_lt: Int
+  minutesToFallAsleep_lte: Int
+  minutesToFallAsleep_gt: Int
+  minutesToFallAsleep_gte: Int
+  startTime: DateTime
+  startTime_not: DateTime
+  startTime_in: [DateTime!]
+  startTime_not_in: [DateTime!]
+  startTime_lt: DateTime
+  startTime_lte: DateTime
+  startTime_gt: DateTime
+  startTime_gte: DateTime
+  timeInBed: Int
+  timeInBed_not: Int
+  timeInBed_in: [Int!]
+  timeInBed_not_in: [Int!]
+  timeInBed_lt: Int
+  timeInBed_lte: Int
+  timeInBed_gt: Int
+  timeInBed_gte: Int
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  summaryDeepCount: Int
+  summaryDeepCount_not: Int
+  summaryDeepCount_in: [Int!]
+  summaryDeepCount_not_in: [Int!]
+  summaryDeepCount_lt: Int
+  summaryDeepCount_lte: Int
+  summaryDeepCount_gt: Int
+  summaryDeepCount_gte: Int
+  summaryDeepMinutes: Int
+  summaryDeepMinutes_not: Int
+  summaryDeepMinutes_in: [Int!]
+  summaryDeepMinutes_not_in: [Int!]
+  summaryDeepMinutes_lt: Int
+  summaryDeepMinutes_lte: Int
+  summaryDeepMinutes_gt: Int
+  summaryDeepMinutes_gte: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryDeepThirtyDayAvgMinutes_not: Int
+  summaryDeepThirtyDayAvgMinutes_in: [Int!]
+  summaryDeepThirtyDayAvgMinutes_not_in: [Int!]
+  summaryDeepThirtyDayAvgMinutes_lt: Int
+  summaryDeepThirtyDayAvgMinutes_lte: Int
+  summaryDeepThirtyDayAvgMinutes_gt: Int
+  summaryDeepThirtyDayAvgMinutes_gte: Int
+  summaryLightCount: Int
+  summaryLightCount_not: Int
+  summaryLightCount_in: [Int!]
+  summaryLightCount_not_in: [Int!]
+  summaryLightCount_lt: Int
+  summaryLightCount_lte: Int
+  summaryLightCount_gt: Int
+  summaryLightCount_gte: Int
+  summaryLightMinutes: Int
+  summaryLightMinutes_not: Int
+  summaryLightMinutes_in: [Int!]
+  summaryLightMinutes_not_in: [Int!]
+  summaryLightMinutes_lt: Int
+  summaryLightMinutes_lte: Int
+  summaryLightMinutes_gt: Int
+  summaryLightMinutes_gte: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryLightThirtyDayAvgMinutes_not: Int
+  summaryLightThirtyDayAvgMinutes_in: [Int!]
+  summaryLightThirtyDayAvgMinutes_not_in: [Int!]
+  summaryLightThirtyDayAvgMinutes_lt: Int
+  summaryLightThirtyDayAvgMinutes_lte: Int
+  summaryLightThirtyDayAvgMinutes_gt: Int
+  summaryLightThirtyDayAvgMinutes_gte: Int
+  summaryRemCount: Int
+  summaryRemCount_not: Int
+  summaryRemCount_in: [Int!]
+  summaryRemCount_not_in: [Int!]
+  summaryRemCount_lt: Int
+  summaryRemCount_lte: Int
+  summaryRemCount_gt: Int
+  summaryRemCount_gte: Int
+  summaryRemMinutes: Int
+  summaryRemMinutes_not: Int
+  summaryRemMinutes_in: [Int!]
+  summaryRemMinutes_not_in: [Int!]
+  summaryRemMinutes_lt: Int
+  summaryRemMinutes_lte: Int
+  summaryRemMinutes_gt: Int
+  summaryRemMinutes_gte: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryRemThirtyDayAvgMinutes_not: Int
+  summaryRemThirtyDayAvgMinutes_in: [Int!]
+  summaryRemThirtyDayAvgMinutes_not_in: [Int!]
+  summaryRemThirtyDayAvgMinutes_lt: Int
+  summaryRemThirtyDayAvgMinutes_lte: Int
+  summaryRemThirtyDayAvgMinutes_gt: Int
+  summaryRemThirtyDayAvgMinutes_gte: Int
+  summaryWakeCount: Int
+  summaryWakeCount_not: Int
+  summaryWakeCount_in: [Int!]
+  summaryWakeCount_not_in: [Int!]
+  summaryWakeCount_lt: Int
+  summaryWakeCount_lte: Int
+  summaryWakeCount_gt: Int
+  summaryWakeCount_gte: Int
+  summaryWakeMinutes: Int
+  summaryWakeMinutes_not: Int
+  summaryWakeMinutes_in: [Int!]
+  summaryWakeMinutes_not_in: [Int!]
+  summaryWakeMinutes_lt: Int
+  summaryWakeMinutes_lte: Int
+  summaryWakeMinutes_gt: Int
+  summaryWakeMinutes_gte: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryWakeThirtyDayAvgMinutes_not: Int
+  summaryWakeThirtyDayAvgMinutes_in: [Int!]
+  summaryWakeThirtyDayAvgMinutes_not_in: [Int!]
+  summaryWakeThirtyDayAvgMinutes_lt: Int
+  summaryWakeThirtyDayAvgMinutes_lte: Int
+  summaryWakeThirtyDayAvgMinutes_gt: Int
+  summaryWakeThirtyDayAvgMinutes_gte: Int
+  summaryAsleepCount: Int
+  summaryAsleepCount_not: Int
+  summaryAsleepCount_in: [Int!]
+  summaryAsleepCount_not_in: [Int!]
+  summaryAsleepCount_lt: Int
+  summaryAsleepCount_lte: Int
+  summaryAsleepCount_gt: Int
+  summaryAsleepCount_gte: Int
+  summaryAsleepMinutes: Int
+  summaryAsleepMinutes_not: Int
+  summaryAsleepMinutes_in: [Int!]
+  summaryAsleepMinutes_not_in: [Int!]
+  summaryAsleepMinutes_lt: Int
+  summaryAsleepMinutes_lte: Int
+  summaryAsleepMinutes_gt: Int
+  summaryAsleepMinutes_gte: Int
+  summaryAwakeCount: Int
+  summaryAwakeCount_not: Int
+  summaryAwakeCount_in: [Int!]
+  summaryAwakeCount_not_in: [Int!]
+  summaryAwakeCount_lt: Int
+  summaryAwakeCount_lte: Int
+  summaryAwakeCount_gt: Int
+  summaryAwakeCount_gte: Int
+  summaryAwakeMinutes: Int
+  summaryAwakeMinutes_not: Int
+  summaryAwakeMinutes_in: [Int!]
+  summaryAwakeMinutes_not_in: [Int!]
+  summaryAwakeMinutes_lt: Int
+  summaryAwakeMinutes_lte: Int
+  summaryAwakeMinutes_gt: Int
+  summaryAwakeMinutes_gte: Int
+  summaryRestlessCount: Int
+  summaryRestlessCount_not: Int
+  summaryRestlessCount_in: [Int!]
+  summaryRestlessCount_not_in: [Int!]
+  summaryRestlessCount_lt: Int
+  summaryRestlessCount_lte: Int
+  summaryRestlessCount_gt: Int
+  summaryRestlessCount_gte: Int
+  summaryRestlessMinutes: Int
+  summaryRestlessMinutes_not: Int
+  summaryRestlessMinutes_in: [Int!]
+  summaryRestlessMinutes_not_in: [Int!]
+  summaryRestlessMinutes_lt: Int
+  summaryRestlessMinutes_lte: Int
+  summaryRestlessMinutes_gt: Int
+  summaryRestlessMinutes_gte: Int
+  AND: [SleepLogScalarWhereInput!]
+  OR: [SleepLogScalarWhereInput!]
+  NOT: [SleepLogScalarWhereInput!]
+}
+
 type SleepLogSubscriptionPayload {
   mutation: MutationType!
   node: SleepLog
@@ -2036,6 +2653,40 @@ input SleepLogUpdateInput {
   summaryRestlessMinutes: Int
 }
 
+input SleepLogUpdateManyDataInput {
+  userId: ID
+  dateOfSleep: String
+  duration: Int
+  efficiency: Int
+  isMainSleep: Boolean
+  logId: Float
+  minutesAfterWakeup: Int
+  minutesAsleep: Int
+  minutesAwake: Int
+  minutesToFallAsleep: Int
+  startTime: DateTime
+  timeInBed: Int
+  type: String
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
 input SleepLogUpdateManyInput {
   create: [SleepLogCreateInput!]
   update: [SleepLogUpdateWithWhereUniqueNestedInput!]
@@ -2043,6 +2694,47 @@ input SleepLogUpdateManyInput {
   delete: [SleepLogWhereUniqueInput!]
   connect: [SleepLogWhereUniqueInput!]
   disconnect: [SleepLogWhereUniqueInput!]
+  deleteMany: [SleepLogScalarWhereInput!]
+  updateMany: [SleepLogUpdateManyWithWhereNestedInput!]
+}
+
+input SleepLogUpdateManyMutationInput {
+  userId: ID
+  dateOfSleep: String
+  duration: Int
+  efficiency: Int
+  isMainSleep: Boolean
+  logId: Float
+  minutesAfterWakeup: Int
+  minutesAsleep: Int
+  minutesAwake: Int
+  minutesToFallAsleep: Int
+  startTime: DateTime
+  timeInBed: Int
+  type: String
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+input SleepLogUpdateManyWithWhereNestedInput {
+  where: SleepLogScalarWhereInput!
+  data: SleepLogUpdateManyDataInput!
 }
 
 input SleepLogUpdateWithWhereUniqueNestedInput {
@@ -2395,6 +3087,56 @@ type StepDataPreviousValues {
   steps: Int!
 }
 
+input StepDataScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  stepLogId: ID
+  stepLogId_not: ID
+  stepLogId_in: [ID!]
+  stepLogId_not_in: [ID!]
+  stepLogId_lt: ID
+  stepLogId_lte: ID
+  stepLogId_gt: ID
+  stepLogId_gte: ID
+  stepLogId_contains: ID
+  stepLogId_not_contains: ID
+  stepLogId_starts_with: ID
+  stepLogId_not_starts_with: ID
+  stepLogId_ends_with: ID
+  stepLogId_not_ends_with: ID
+  dateTime: DateTime
+  dateTime_not: DateTime
+  dateTime_in: [DateTime!]
+  dateTime_not_in: [DateTime!]
+  dateTime_lt: DateTime
+  dateTime_lte: DateTime
+  dateTime_gt: DateTime
+  dateTime_gte: DateTime
+  steps: Int
+  steps_not: Int
+  steps_in: [Int!]
+  steps_not_in: [Int!]
+  steps_lt: Int
+  steps_lte: Int
+  steps_gt: Int
+  steps_gte: Int
+  AND: [StepDataScalarWhereInput!]
+  OR: [StepDataScalarWhereInput!]
+  NOT: [StepDataScalarWhereInput!]
+}
+
 type StepDataSubscriptionPayload {
   mutation: MutationType!
   node: StepData
@@ -2425,6 +3167,12 @@ input StepDataUpdateInput {
   steps: Int
 }
 
+input StepDataUpdateManyDataInput {
+  stepLogId: ID
+  dateTime: DateTime
+  steps: Int
+}
+
 input StepDataUpdateManyInput {
   create: [StepDataCreateInput!]
   update: [StepDataUpdateWithWhereUniqueNestedInput!]
@@ -2432,6 +3180,19 @@ input StepDataUpdateManyInput {
   delete: [StepDataWhereUniqueInput!]
   connect: [StepDataWhereUniqueInput!]
   disconnect: [StepDataWhereUniqueInput!]
+  deleteMany: [StepDataScalarWhereInput!]
+  updateMany: [StepDataUpdateManyWithWhereNestedInput!]
+}
+
+input StepDataUpdateManyMutationInput {
+  stepLogId: ID
+  dateTime: DateTime
+  steps: Int
+}
+
+input StepDataUpdateManyWithWhereNestedInput {
+  where: StepDataScalarWhereInput!
+  data: StepDataUpdateManyDataInput!
 }
 
 input StepDataUpdateWithWhereUniqueNestedInput {
@@ -2564,6 +3325,11 @@ input StepLogUpdateInput {
   date: DateTime
   totalSteps: Int
   intradayData: StepDataUpdateManyInput
+}
+
+input StepLogUpdateManyMutationInput {
+  date: DateTime
+  totalSteps: Int
 }
 
 input StepLogWhereInput {
@@ -2700,6 +3466,11 @@ input UserUpdateInput {
   googleFitAccount: GoogleFitAccountUpdateOneInput
   fitbitAccount: FitbitAccountUpdateOneInput
   sleepLogs: SleepLogUpdateManyInput
+}
+
+input UserUpdateManyMutationInput {
+  email: String
+  password: String
 }
 
 input UserWhereInput {

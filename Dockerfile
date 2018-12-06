@@ -1,14 +1,10 @@
 FROM node:8-slim
-WORKDIR /server
-ADD . /server
-ADD ./.profile.d /app/.profile.d
+WORKDIR /app
+ADD . /app
 RUN npm install -g typescript
-RUN npm install -g prisma
+RUN npm install -g prisma@1.19.3
 RUN npm install -g graphqlgen
 RUN yarn
 ENV PRISMA_ENDPOINT https://circadian-backend-301139419b.herokuapp.com/
 ENV PRISMA_MANAGEMENT_API_SECRET ee1ef00cac86fbe6071172af3175f799cefac376
-RUN prisma deploy && prisma generate && graphqlgen
-RUN tsc
-# Add bash so we can ps:exec
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN prisma generate && prisma deploy && graphqlgen && tsc
