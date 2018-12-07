@@ -4,7 +4,9 @@ type User {
   password: String!
   googleFitAccount: GoogleFitAccount
   fitbitAccount: FitbitAccount @relation(name: "UserFitbitAccount", onDelete: CASCADE)
+  rescueTimeAcccount: RescueTimeAccount
   sleepLogs: [SleepLog!]! @relation(name: "UserSleepLogs", onDelete: CASCADE)
+  sleepLogLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -26,6 +28,13 @@ type FitbitAccount {
   expiration: DateTime!
 }
 
+type RescueTimeAccount {
+  id: ID! @unique
+  userId: ID! @unique
+  accessToken: String!
+  scope: String!
+}
+
 type SleepLog {
   id: ID! @unique
   userId: ID!
@@ -33,7 +42,7 @@ type SleepLog {
   duration: Int!
   efficiency: Int!
   isMainSleep: Boolean!
-  logId: Float! @unique
+  logId: Float!
   minutesAfterWakeup: Int!
   minutesAsleep: Int!
   minutesAwake: Int!

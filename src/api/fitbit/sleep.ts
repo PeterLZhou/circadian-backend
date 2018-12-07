@@ -2,16 +2,11 @@ import * as moment from 'moment';
 import * as querystring from 'querystring';
 import axios from 'axios';
 import { access } from 'fs';
-import { Context } from '../../types';
 import { prisma } from '../../generated/prisma-client';
 import { refreshToken } from './refresh';
 
 // Date is yyyy-MM-dd
-export const getSleepLogs = async (
-  ctx: Context,
-  userId: string,
-  date: string
-) => {
+export const getSleepLogs = async (userId: string, date: string) => {
   // const id = await user.id();
   // console.log(id);
   const fitbitAccount = await prisma.fitbitAccount({ userId: userId });
@@ -42,8 +37,11 @@ export const getSleepLogs = async (
   return response;
 };
 
-export const getAllSleepLogs = async (ctx: Context, userId: string) => {
+export const getAllUpdatedSleepLogs = async (userId: string) => {
   const fitbitAccount = await prisma.fitbitAccount({ userId: userId });
+  const sleepLogLastUpdatedDate = await prisma
+    .user({ id: userId })
+    .sleepLogLastUpdatedDate();
   const fitbitUserId = fitbitAccount.fitbitUserId;
   let accessToken = fitbitAccount.accessToken;
   if (new Date(fitbitAccount.expiration).getTime() < new Date().getTime()) {
@@ -53,24 +51,32 @@ export const getAllSleepLogs = async (ctx: Context, userId: string) => {
     );
     accessToken = newTokens.accessToken;
   }
-  const earliestDate = "2007-03-26";
+  const earliestDate =
+    moment(sleepLogLastUpdatedDate).format("YYYY-MM-DDTHH:mm:ss") ||
+    "2007-03-26";
 
   // TODO will only get 100, need to get everything
-  const response = await axios.get(
-    `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`,
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
+  try {
+    const response = await axios.get(
+      `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
       }
-    }
-  );
-  // .catch(error => {
-  //   console.log(error.response.data.errors);
-  // });
+    );
 
-  response.data.sleep.forEach((sleepLog: any) => {
-    createSleepLog(userId, sleepLog);
-  });
+    response.data.sleep.forEach((sleepLog: any) => {
+      createSleepLog(userId, sleepLog);
+    });
+
+    await prisma.updateUser({
+      where: { id: userId },
+      data: { sleepLogLastUpdatedDate: moment().format("YYYY-MM-DDTHH:mm:ss") }
+    });
+  } catch (error) {
+    console.log(error.response.data.errors);
+  }
 };
 
 export const createSleepLog = async (userId: string, sleepLog: any) => {
@@ -134,30 +140,32 @@ export const createSleepLog = async (userId: string, sleepLog: any) => {
       sleepLog.type == "classic" ? sleepLog.levels.summary.restless.minutes : 0
   });
 
-  sleepLog.levels.data.forEach((data: any) => {
-    prisma
-      .createSleepData({
-        sleepLogId: dbSleepLog.id,
-        dateTime: data.dateTime,
-        level: data.level,
-        second: data.seconds
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  await prisma.updateSleepLog({
+    where: { id: dbSleepLog.id },
+    data: {
+      data: {
+        create: sleepLog.levels.data
+          .map((data: any) => {
+            return {
+              sleepLogId: dbSleepLog.id,
+              dateTime: data.dateTime,
+              level: data.level,
+              second: data.seconds
+            };
+          })
+          .concat(
+            sleepLog.levels.shortData
+              ? sleepLog.levels.shortData.map((data: any) => {
+                  return {
+                    sleepLogId: dbSleepLog.id,
+                    dateTime: data.dateTime,
+                    level: data.level,
+                    second: data.seconds
+                  };
+                })
+              : []
+          )
+      }
+    }
   });
-  if (sleepLog.levels.shortData) {
-    sleepLog.levels.shortData.forEach((data: any) => {
-      prisma
-        .createSleepData({
-          sleepLogId: dbSleepLog.id,
-          dateTime: data.dateTime,
-          level: data.level,
-          second: data.seconds
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    });
-  }
 };

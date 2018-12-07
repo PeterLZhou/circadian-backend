@@ -39,6 +39,6 @@ export const getFrontendUrl = () => {
   } else if (process.env.ENVIRONMENT == "staging") {
     return "";
   } else if (process.env.ENVIRONMENT == "development") {
-    return "http://localhost:3000";
+    return "https://localhost:3000";
   }
 };

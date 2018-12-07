@@ -4,6 +4,7 @@ import { GraphQLResolveInfo } from "graphql";
 import { Context } from "../types";
 import { AuthPayload } from "../types";
 import { UserNode } from "./prisma-client";
+import { RescueTimeAccountNode } from "./prisma-client";
 import { GoogleFitAccountNode } from "./prisma-client";
 import { FitbitAccountNode } from "./prisma-client";
 import { SleepLogNode } from "./prisma-client";
@@ -27,6 +28,13 @@ export namespace QueryResolvers {
     info: GraphQLResolveInfo
   ) => UserNode | null | Promise<UserNode | null>;
 
+  export type UsersResolver = (
+    parent: {},
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode[] | Promise<UserNode[]>;
+
   export type FitbitAccountsResolver = (
     parent: {},
     args: {},
@@ -48,6 +56,13 @@ export namespace QueryResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => UserNode | null | Promise<UserNode | null>;
+
+    users: (
+      parent: {},
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode[] | Promise<UserNode[]>;
 
     fitbitAccounts: (
       parent: {},
@@ -87,6 +102,15 @@ export namespace MutationResolvers {
     userId: string;
   }
 
+  export interface ArgsDeleteUser {
+    userId: string;
+  }
+
+  export interface ArgsCreateRescueTimeAccount {
+    userId: string;
+    oneTimeCode: string;
+  }
+
   export type SignupResolver = (
     parent: {},
     args: ArgsSignup,
@@ -111,6 +135,20 @@ export namespace MutationResolvers {
   export type DeleteAllSleepLogsResolver = (
     parent: {},
     args: ArgsDeleteAllSleepLogs,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DeleteUserResolver = (
+    parent: {},
+    args: ArgsDeleteUser,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | null | Promise<UserNode | null>;
+
+  export type CreateRescueTimeAccountResolver = (
+    parent: {},
+    args: ArgsCreateRescueTimeAccount,
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
@@ -140,6 +178,20 @@ export namespace MutationResolvers {
     deleteAllSleepLogs: (
       parent: {},
       args: ArgsDeleteAllSleepLogs,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    deleteUser: (
+      parent: {},
+      args: ArgsDeleteUser,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | null | Promise<UserNode | null>;
+
+    createRescueTimeAccount: (
+      parent: {},
+      args: ArgsCreateRescueTimeAccount,
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
@@ -187,6 +239,10 @@ export namespace UserResolvers {
   export const defaultResolvers = {
     id: (parent: UserNode) => parent.id,
     email: (parent: UserNode) => parent.email,
+    sleepLogLastUpdatedDate: (parent: UserNode) =>
+      parent.sleepLogLastUpdatedDate === undefined
+        ? null
+        : parent.sleepLogLastUpdatedDate,
     createdAt: (parent: UserNode) => parent.createdAt
   };
 
@@ -218,12 +274,26 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
+  export type RescueTimeAcccountResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => RescueTimeAccountNode | null | Promise<RescueTimeAccountNode | null>;
+
   export type SleepLogsResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
   ) => SleepLogNode[] | Promise<SleepLogNode[]>;
+
+  export type SleepLogLastUpdatedDateResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | null | Promise<string | null>;
 
   export type CreatedAtResolver = (
     parent: UserNode,
@@ -261,6 +331,13 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
+    rescueTimeAcccount: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => RescueTimeAccountNode | null | Promise<RescueTimeAccountNode | null>;
+
     sleepLogs: (
       parent: UserNode,
       args: {},
@@ -268,8 +345,82 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => SleepLogNode[] | Promise<SleepLogNode[]>;
 
+    sleepLogLastUpdatedDate: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | null | Promise<string | null>;
+
     createdAt: (
       parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+  }
+}
+
+export namespace RescueTimeAccountResolvers {
+  export const defaultResolvers = {
+    id: (parent: RescueTimeAccountNode) => parent.id,
+    userId: (parent: RescueTimeAccountNode) => parent.userId,
+    accessToken: (parent: RescueTimeAccountNode) => parent.accessToken,
+    scope: (parent: RescueTimeAccountNode) => parent.scope
+  };
+
+  export type IdResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type UserIdResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type AccessTokenResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type ScopeResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export interface Type {
+    id: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    userId: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    accessToken: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    scope: (
+      parent: RescueTimeAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
@@ -1844,6 +1995,7 @@ export interface Resolvers {
   Mutation: MutationResolvers.Type;
   AuthPayload: AuthPayloadResolvers.Type;
   User: UserResolvers.Type;
+  RescueTimeAccount: RescueTimeAccountResolvers.Type;
   GoogleFitAccount: GoogleFitAccountResolvers.Type;
   FitbitAccount: FitbitAccountResolvers.Type;
   SleepLog: SleepLogResolvers.Type;

@@ -1,3 +1,4 @@
+import { getAllUpdatedSleepLogs } from '../api/fitbit/sleep';
 import { prisma } from '../generated/prisma-client';
 import { UserResolvers } from '../generated/graphqlgen';
 
@@ -12,7 +13,13 @@ export const User: UserResolvers.Type = {
       userId: parent.id
     });
   },
-  sleepLogs: parent => {
+  rescueTimeAcccount: parent => {
+    return prisma.rescueTimeAccount({
+      userId: parent.id
+    });
+  },
+  sleepLogs: async parent => {
+    await getAllUpdatedSleepLogs(parent.id);
     return prisma.sleepLogs({
       where: {
         userId: parent.id

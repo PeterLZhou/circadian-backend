@@ -30,6 +30,10 @@ type AggregateHeartLog {
   count: Int!
 }
 
+type AggregateRescueTimeAccount {
+  count: Int!
+}
+
 type AggregateSleepData {
   count: Int!
 }
@@ -1487,6 +1491,12 @@ type Mutation {
   upsertHeartLog(where: HeartLogWhereUniqueInput!, create: HeartLogCreateInput!, update: HeartLogUpdateInput!): HeartLog!
   deleteHeartLog(where: HeartLogWhereUniqueInput!): HeartLog
   deleteManyHeartLogs(where: HeartLogWhereInput): BatchPayload!
+  createRescueTimeAccount(data: RescueTimeAccountCreateInput!): RescueTimeAccount!
+  updateRescueTimeAccount(data: RescueTimeAccountUpdateInput!, where: RescueTimeAccountWhereUniqueInput!): RescueTimeAccount
+  updateManyRescueTimeAccounts(data: RescueTimeAccountUpdateInput!, where: RescueTimeAccountWhereInput): BatchPayload!
+  upsertRescueTimeAccount(where: RescueTimeAccountWhereUniqueInput!, create: RescueTimeAccountCreateInput!, update: RescueTimeAccountUpdateInput!): RescueTimeAccount!
+  deleteRescueTimeAccount(where: RescueTimeAccountWhereUniqueInput!): RescueTimeAccount
+  deleteManyRescueTimeAccounts(where: RescueTimeAccountWhereInput): BatchPayload!
   createSleepData(data: SleepDataCreateInput!): SleepData!
   updateSleepData(data: SleepDataUpdateInput!, where: SleepDataWhereUniqueInput!): SleepData
   updateManySleepDatas(data: SleepDataUpdateInput!, where: SleepDataWhereInput): BatchPayload!
@@ -1561,6 +1571,9 @@ type Query {
   heartLog(where: HeartLogWhereUniqueInput!): HeartLog
   heartLogs(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartLog]!
   heartLogsConnection(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeartLogConnection!
+  rescueTimeAccount(where: RescueTimeAccountWhereUniqueInput!): RescueTimeAccount
+  rescueTimeAccounts(where: RescueTimeAccountWhereInput, orderBy: RescueTimeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [RescueTimeAccount]!
+  rescueTimeAccountsConnection(where: RescueTimeAccountWhereInput, orderBy: RescueTimeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RescueTimeAccountConnection!
   sleepData(where: SleepDataWhereUniqueInput!): SleepData
   sleepDatas(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepData]!
   sleepDatasConnection(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SleepDataConnection!
@@ -1577,6 +1590,168 @@ type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
+}
+
+type RescueTimeAccount {
+  id: ID!
+  userId: ID!
+  accessToken: String!
+  scope: String!
+}
+
+type RescueTimeAccountConnection {
+  pageInfo: PageInfo!
+  edges: [RescueTimeAccountEdge]!
+  aggregate: AggregateRescueTimeAccount!
+}
+
+input RescueTimeAccountCreateInput {
+  userId: ID!
+  accessToken: String!
+  scope: String!
+}
+
+input RescueTimeAccountCreateOneInput {
+  create: RescueTimeAccountCreateInput
+  connect: RescueTimeAccountWhereUniqueInput
+}
+
+type RescueTimeAccountEdge {
+  node: RescueTimeAccount!
+  cursor: String!
+}
+
+enum RescueTimeAccountOrderByInput {
+  id_ASC
+  id_DESC
+  userId_ASC
+  userId_DESC
+  accessToken_ASC
+  accessToken_DESC
+  scope_ASC
+  scope_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type RescueTimeAccountPreviousValues {
+  id: ID!
+  userId: ID!
+  accessToken: String!
+  scope: String!
+}
+
+type RescueTimeAccountSubscriptionPayload {
+  mutation: MutationType!
+  node: RescueTimeAccount
+  updatedFields: [String!]
+  previousValues: RescueTimeAccountPreviousValues
+}
+
+input RescueTimeAccountSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: RescueTimeAccountWhereInput
+  AND: [RescueTimeAccountSubscriptionWhereInput!]
+  OR: [RescueTimeAccountSubscriptionWhereInput!]
+  NOT: [RescueTimeAccountSubscriptionWhereInput!]
+}
+
+input RescueTimeAccountUpdateDataInput {
+  userId: ID
+  accessToken: String
+  scope: String
+}
+
+input RescueTimeAccountUpdateInput {
+  userId: ID
+  accessToken: String
+  scope: String
+}
+
+input RescueTimeAccountUpdateOneInput {
+  create: RescueTimeAccountCreateInput
+  update: RescueTimeAccountUpdateDataInput
+  upsert: RescueTimeAccountUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: RescueTimeAccountWhereUniqueInput
+}
+
+input RescueTimeAccountUpsertNestedInput {
+  update: RescueTimeAccountUpdateDataInput!
+  create: RescueTimeAccountCreateInput!
+}
+
+input RescueTimeAccountWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  userId: ID
+  userId_not: ID
+  userId_in: [ID!]
+  userId_not_in: [ID!]
+  userId_lt: ID
+  userId_lte: ID
+  userId_gt: ID
+  userId_gte: ID
+  userId_contains: ID
+  userId_not_contains: ID
+  userId_starts_with: ID
+  userId_not_starts_with: ID
+  userId_ends_with: ID
+  userId_not_ends_with: ID
+  accessToken: String
+  accessToken_not: String
+  accessToken_in: [String!]
+  accessToken_not_in: [String!]
+  accessToken_lt: String
+  accessToken_lte: String
+  accessToken_gt: String
+  accessToken_gte: String
+  accessToken_contains: String
+  accessToken_not_contains: String
+  accessToken_starts_with: String
+  accessToken_not_starts_with: String
+  accessToken_ends_with: String
+  accessToken_not_ends_with: String
+  scope: String
+  scope_not: String
+  scope_in: [String!]
+  scope_not_in: [String!]
+  scope_lt: String
+  scope_lte: String
+  scope_gt: String
+  scope_gte: String
+  scope_contains: String
+  scope_not_contains: String
+  scope_starts_with: String
+  scope_not_starts_with: String
+  scope_ends_with: String
+  scope_not_ends_with: String
+  AND: [RescueTimeAccountWhereInput!]
+  OR: [RescueTimeAccountWhereInput!]
+  NOT: [RescueTimeAccountWhereInput!]
+}
+
+input RescueTimeAccountWhereUniqueInput {
+  id: ID
+  userId: ID
 }
 
 type SleepData {
@@ -2341,7 +2516,6 @@ input SleepLogWhereInput {
 
 input SleepLogWhereUniqueInput {
   id: ID
-  logId: Float
 }
 
 type StepData {
@@ -2618,6 +2792,7 @@ type Subscription {
   googleFitAccount(where: GoogleFitAccountSubscriptionWhereInput): GoogleFitAccountSubscriptionPayload
   heartData(where: HeartDataSubscriptionWhereInput): HeartDataSubscriptionPayload
   heartLog(where: HeartLogSubscriptionWhereInput): HeartLogSubscriptionPayload
+  rescueTimeAccount(where: RescueTimeAccountSubscriptionWhereInput): RescueTimeAccountSubscriptionPayload
   sleepData(where: SleepDataSubscriptionWhereInput): SleepDataSubscriptionPayload
   sleepLog(where: SleepLogSubscriptionWhereInput): SleepLogSubscriptionPayload
   stepData(where: StepDataSubscriptionWhereInput): StepDataSubscriptionPayload
@@ -2631,7 +2806,9 @@ type User {
   password: String!
   googleFitAccount: GoogleFitAccount
   fitbitAccount: FitbitAccount
+  rescueTimeAcccount: RescueTimeAccount
   sleepLogs(where: SleepLogWhereInput, orderBy: SleepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepLog!]
+  sleepLogLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2647,7 +2824,9 @@ input UserCreateInput {
   password: String!
   googleFitAccount: GoogleFitAccountCreateOneInput
   fitbitAccount: FitbitAccountCreateOneInput
+  rescueTimeAcccount: RescueTimeAccountCreateOneInput
   sleepLogs: SleepLogCreateManyInput
+  sleepLogLastUpdatedDate: DateTime
 }
 
 type UserEdge {
@@ -2662,6 +2841,8 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  sleepLogLastUpdatedDate_ASC
+  sleepLogLastUpdatedDate_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2672,6 +2853,7 @@ type UserPreviousValues {
   id: ID!
   email: String!
   password: String!
+  sleepLogLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2699,7 +2881,9 @@ input UserUpdateInput {
   password: String
   googleFitAccount: GoogleFitAccountUpdateOneInput
   fitbitAccount: FitbitAccountUpdateOneInput
+  rescueTimeAcccount: RescueTimeAccountUpdateOneInput
   sleepLogs: SleepLogUpdateManyInput
+  sleepLogLastUpdatedDate: DateTime
 }
 
 input UserWhereInput {
@@ -2747,9 +2931,18 @@ input UserWhereInput {
   password_not_ends_with: String
   googleFitAccount: GoogleFitAccountWhereInput
   fitbitAccount: FitbitAccountWhereInput
+  rescueTimeAcccount: RescueTimeAccountWhereInput
   sleepLogs_every: SleepLogWhereInput
   sleepLogs_some: SleepLogWhereInput
   sleepLogs_none: SleepLogWhereInput
+  sleepLogLastUpdatedDate: DateTime
+  sleepLogLastUpdatedDate_not: DateTime
+  sleepLogLastUpdatedDate_in: [DateTime!]
+  sleepLogLastUpdatedDate_not_in: [DateTime!]
+  sleepLogLastUpdatedDate_lt: DateTime
+  sleepLogLastUpdatedDate_lte: DateTime
+  sleepLogLastUpdatedDate_gt: DateTime
+  sleepLogLastUpdatedDate_gte: DateTime
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

@@ -2,6 +2,7 @@ scalar DateTime
 
 type Query {
   me: User
+  users: [User!]!
   fitbitAccounts: [FitbitAccount!]!
   sleepDatas: [SleepData!]!
 }
@@ -11,6 +12,8 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload!
   getSleepLogs(userId: ID!, date: String!): String!
   deleteAllSleepLogs(userId: ID!): String!
+  deleteUser(userId: ID!): User
+  createRescueTimeAccount(userId: ID!, oneTimeCode: String!): String!
 }
 
 type AuthPayload {
@@ -23,8 +26,17 @@ type User {
   email: String!
   googleFitAccount: GoogleFitAccount
   fitbitAccount: FitbitAccount
+  rescueTimeAcccount: RescueTimeAccount
   sleepLogs: [SleepLog!]!
+  sleepLogLastUpdatedDate: DateTime
   createdAt: DateTime!
+}
+
+type RescueTimeAccount {
+  id: ID!
+  userId: ID!
+  accessToken: String!
+  scope: String!
 }
 
 type GoogleFitAccount {

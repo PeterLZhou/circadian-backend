@@ -8,7 +8,6 @@ export const SleepLog: SleepLogResolvers.Type = {
   ...SleepLogResolvers.defaultResolvers,
 
   data: parent => {
-    console.log(parent.id);
     return prisma.sleepDatas({
       where: {
         sleepLogId: parent.id

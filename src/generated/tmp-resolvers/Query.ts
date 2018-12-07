@@ -6,6 +6,9 @@ import { QueryResolvers } from "../graphqlgen";
 export const Query: QueryResolvers.Type = {
   ...QueryResolvers.defaultResolvers,
   me: parent => null,
+  users: parent => {
+    throw new Error("Resolver not implemented");
+  },
   fitbitAccounts: parent => {
     throw new Error("Resolver not implemented");
   },

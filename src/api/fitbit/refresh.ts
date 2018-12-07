@@ -12,6 +12,7 @@ export const refreshToken = async (
   refreshToken: string;
   expiration: string;
 }> => {
+  console.log("expired getting new");
   return new Promise<{
     accessToken: string;
     refreshToken: string;

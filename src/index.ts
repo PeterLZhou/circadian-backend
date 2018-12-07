@@ -3,7 +3,7 @@ import * as querystring from 'querystring';
 import axios from 'axios';
 import { base64Hash, getFrontendUrl } from './utils';
 import { fetchAggregateSteps } from './api/googlefit/aggregate';
-import { getAllSleepLogs, getSleepLogs } from './api/fitbit/sleep';
+import { getAllUpdatedSleepLogs, getSleepLogs } from './api/fitbit/sleep';
 import { GraphQLServer } from 'graphql-yoga';
 import { permissions } from './permissions';
 import { prisma } from './generated/prisma-client';
@@ -48,7 +48,6 @@ server.express.post("/user/:id/googlefitauthenticate", (req, res) => {
 });
 
 server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
-  console.log(process.env);
   const userId = req.params.id;
   const oneTimeCode = req.body.code;
 
@@ -77,10 +76,12 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         expirationDate.getSeconds() + payload.expires_in
       );
 
-      const existingAccount = prisma.fitbitAccount({
-        userId: userId
-      });
-      if (!existingAccount) {
+      const existingAccountId = await prisma
+        .fitbitAccount({
+          userId: userId
+        })
+        .id();
+      if (!existingAccountId) {
         prisma
           .createFitbitAccount({
             userId: userId,
@@ -105,7 +106,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
             },
             where: {
               userId: userId,
-              id: await existingAccount.id()
+              id: existingAccountId
             }
           })
           .then(ok => {})
@@ -116,12 +117,10 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
     })
     .catch(error => {
       // console.log(error);
-      console.log(error);
+      console.log("fucked up");
       console.log(error.response.data.errors);
     });
-  // console.log("OK");
-  // console.log(response.data);
-  // WE ARE HERE, NOW TO REFRESH THE TOKEN!
+  res.send(200);
 });
 
 server.start(() => console.log("Server is running on http://localhost:4000"));
