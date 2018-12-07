@@ -9,6 +9,7 @@ import { HeartData } from './HeartData';
 import { HeartLog } from './HeartLog';
 import { Mutation } from './Mutation';
 import { Query } from './Query';
+import { RescueTimeAccount } from './RescueTimeAccount';
 import { Resolvers } from '../generated/graphqlgen';
 import { SleepData } from './SleepData';
 import { SleepLog } from './SleepLog';
@@ -32,5 +33,6 @@ export const resolvers: Resolvers = {
   StepData,
   StepLog,
   CalorieData,
-  CalorieLog
+  CalorieLog,
+  RescueTimeAccount
 };
