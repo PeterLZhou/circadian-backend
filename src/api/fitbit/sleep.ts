@@ -1,9 +1,9 @@
-import * as moment from 'moment';
-import * as querystring from 'querystring';
-import axios from 'axios';
-import { access } from 'fs';
-import { prisma } from '../../generated/prisma-client';
-import { refreshToken } from './refresh';
+import * as moment from "moment";
+import * as querystring from "querystring";
+import axios from "axios";
+import { access } from "fs";
+import { prisma } from "../../generated/prisma-client";
+import { refreshToken } from "./refresh";
 
 // Date is yyyy-MM-dd
 export const getSleepLogs = async (userId: string, date: string) => {
@@ -54,9 +54,9 @@ export const getAllUpdatedSleepLogs = async (userId: string) => {
     );
     accessToken = newTokens.accessToken;
   }
-  const earliestDate =
-    moment(sleepLogLastUpdatedDate).format("YYYY-MM-DDTHH:mm:ss") ||
-    "2007-03-26";
+  const earliestDate = sleepLogLastUpdatedDate
+    ? moment(sleepLogLastUpdatedDate).format("YYYY-MM-DDTHH:mm:ss")
+    : "2007-03-26";
 
   // TODO will only get 100, need to get everything
   try {
