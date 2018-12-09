@@ -111,6 +111,10 @@ export namespace MutationResolvers {
     oneTimeCode: string;
   }
 
+  export interface ArgsDeleteFitbitAccount {
+    id: string;
+  }
+
   export type SignupResolver = (
     parent: {},
     args: ArgsSignup,
@@ -152,6 +156,13 @@ export namespace MutationResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
+
+  export type DeleteFitbitAccountResolver = (
+    parent: {},
+    args: ArgsDeleteFitbitAccount,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
   export interface Type {
     signup: (
@@ -195,6 +206,13 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+
+    deleteFitbitAccount: (
+      parent: {},
+      args: ArgsDeleteFitbitAccount,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
   }
 }
 

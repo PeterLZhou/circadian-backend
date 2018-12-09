@@ -62,12 +62,24 @@ export const Mutation: MutationResolvers.Type = {
     console.log("rescue me");
     const payload = await getAccessToken(oneTimeCode);
     if (payload) {
-      await ctx.db.createRescueTimeAccount({
-        userId: userId,
-        accessToken: payload.access_token,
-        scope: payload.scope
+      await ctx.db.upsertRescueTimeAccount({
+        where: {
+          userId: userId
+        },
+        create: {
+          userId: userId,
+          accessToken: payload.access_token,
+          scope: payload.scope
+        },
+        update: {
+          accessToken: payload.access_token,
+          scope: payload.scope
+        }
       });
     }
     return "OK";
+  },
+  deleteFitbitAccount: async (_parent, { id }, ctx) => {
+    return await ctx.db.deleteFitbitAccount({ id: id });
   }
 };

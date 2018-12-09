@@ -13,7 +13,7 @@ export const refreshToken = async (
   expiration: string;
 }> => {
   console.log("expired getting new");
-  return new Promise<{
+  return await new Promise<{
     accessToken: string;
     refreshToken: string;
     expiration: string;
@@ -40,6 +40,10 @@ export const refreshToken = async (
         expirationDate.setSeconds(
           expirationDate.getSeconds() + response.data.expires_in
         );
+        console.log("got new token");
+        console.log(response.data.access_token);
+        console.log(response.data.refresh_token);
+
         prisma.updateFitbitAccount({
           data: {
             accessToken: response.data.access_token,

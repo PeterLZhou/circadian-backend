@@ -14,5 +14,6 @@ export const Mutation: MutationResolvers.Type = {
   getSleepLogs: (parent, args) => "",
   deleteAllSleepLogs: (parent, args) => "",
   deleteUser: (parent, args) => null,
-  createRescueTimeAccount: (parent, args) => ""
+  createRescueTimeAccount: (parent, args) => "",
+  deleteFitbitAccount: (parent, args) => null
 };

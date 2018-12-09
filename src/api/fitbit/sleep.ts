@@ -39,6 +39,9 @@ export const getSleepLogs = async (userId: string, date: string) => {
 
 export const getAllUpdatedSleepLogs = async (userId: string) => {
   const fitbitAccount = await prisma.fitbitAccount({ userId: userId });
+  if (!fitbitAccount) {
+    return;
+  }
   const sleepLogLastUpdatedDate = await prisma
     .user({ id: userId })
     .sleepLogLastUpdatedDate();
