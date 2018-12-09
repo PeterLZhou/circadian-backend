@@ -5,15 +5,15 @@ import { prisma } from '../../generated/prisma-client';
 export const getAllUpdatedProductivityLogs = async (userId: string) => {
   const rescueTimeAccount = await prisma.rescueTimeAccount({ userId: userId });
   const productivityLogLastUpdatedDate = await prisma
-  .user({ id: userId })
-  .productivityLogLastUpdatedDate();
+    .user({ id: userId })
+    .productivityLogLastUpdatedDate();
   const rescueTimeAccessToken = rescueTimeAccount.accessToken;
-  const earliestDate = moment(productivityLogLastUpdatedDate).format("YYYY-MM-DD") || "2007-03-26";
-  
+  const earliestDate =
+    moment(productivityLogLastUpdatedDate).format("YYYY-MM-DD") || "2007-03-26";
+
   axios.post("https://www.rescuetime.com/anapi/data", {
     access_token: rescueTimeAccessToken,
     rs: "minute",
-    rb: 
+    rb: "2018-01-01"
   });
-
 };

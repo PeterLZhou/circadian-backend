@@ -767,6 +767,8 @@ export type UserOrderByInput =
   | "password_DESC"
   | "sleepLogLastUpdatedDate_ASC"
   | "sleepLogLastUpdatedDate_DESC"
+  | "productivityLogLastUpdatedDate_ASC"
+  | "productivityLogLastUpdatedDate_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -2106,6 +2108,7 @@ export interface UserCreateInput {
   rescueTimeAcccount?: RescueTimeAccountCreateOneInput;
   sleepLogs?: SleepLogCreateManyInput;
   sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
 }
 
 export interface UserWhereInput {
@@ -2165,6 +2168,14 @@ export interface UserWhereInput {
   sleepLogLastUpdatedDate_lte?: DateTimeInput;
   sleepLogLastUpdatedDate_gt?: DateTimeInput;
   sleepLogLastUpdatedDate_gte?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate_not?: DateTimeInput;
+  productivityLogLastUpdatedDate_in?: DateTimeInput[] | DateTimeInput;
+  productivityLogLastUpdatedDate_not_in?: DateTimeInput[] | DateTimeInput;
+  productivityLogLastUpdatedDate_lt?: DateTimeInput;
+  productivityLogLastUpdatedDate_lte?: DateTimeInput;
+  productivityLogLastUpdatedDate_gt?: DateTimeInput;
+  productivityLogLastUpdatedDate_gte?: DateTimeInput;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -2543,6 +2554,7 @@ export interface UserUpdateInput {
   rescueTimeAcccount?: RescueTimeAccountUpdateOneInput;
   sleepLogs?: SleepLogUpdateManyInput;
   sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
 }
 
 export interface CalorieLogUpdateInput {
@@ -2928,6 +2940,7 @@ export interface UserPreviousValuesNode {
   email: String;
   password: String;
   sleepLogLastUpdatedDate?: DateTimeOutput;
+  productivityLogLastUpdatedDate?: DateTimeOutput;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -2939,6 +2952,7 @@ export interface UserPreviousValues
   email: () => Promise<String>;
   password: () => Promise<String>;
   sleepLogLastUpdatedDate: () => Promise<DateTimeOutput>;
+  productivityLogLastUpdatedDate: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -2950,6 +2964,7 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   sleepLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  productivityLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -3243,6 +3258,7 @@ export interface UserNode {
   email: String;
   password: String;
   sleepLogLastUpdatedDate?: DateTimeOutput;
+  productivityLogLastUpdatedDate?: DateTimeOutput;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -3266,6 +3282,7 @@ export interface User extends Promise<UserNode>, Fragmentable {
     }
   ) => T;
   sleepLogLastUpdatedDate: () => Promise<DateTimeOutput>;
+  productivityLogLastUpdatedDate: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -3291,6 +3308,7 @@ export interface UserSubscription
     }
   ) => T;
   sleepLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  productivityLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }

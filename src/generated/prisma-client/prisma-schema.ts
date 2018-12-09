@@ -2809,6 +2809,7 @@ type User {
   rescueTimeAcccount: RescueTimeAccount
   sleepLogs(where: SleepLogWhereInput, orderBy: SleepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepLog!]
   sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2827,6 +2828,7 @@ input UserCreateInput {
   rescueTimeAcccount: RescueTimeAccountCreateOneInput
   sleepLogs: SleepLogCreateManyInput
   sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
 }
 
 type UserEdge {
@@ -2843,6 +2845,8 @@ enum UserOrderByInput {
   password_DESC
   sleepLogLastUpdatedDate_ASC
   sleepLogLastUpdatedDate_DESC
+  productivityLogLastUpdatedDate_ASC
+  productivityLogLastUpdatedDate_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2854,6 +2858,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2884,6 +2889,7 @@ input UserUpdateInput {
   rescueTimeAcccount: RescueTimeAccountUpdateOneInput
   sleepLogs: SleepLogUpdateManyInput
   sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
 }
 
 input UserWhereInput {
@@ -2943,6 +2949,14 @@ input UserWhereInput {
   sleepLogLastUpdatedDate_lte: DateTime
   sleepLogLastUpdatedDate_gt: DateTime
   sleepLogLastUpdatedDate_gte: DateTime
+  productivityLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate_not: DateTime
+  productivityLogLastUpdatedDate_in: [DateTime!]
+  productivityLogLastUpdatedDate_not_in: [DateTime!]
+  productivityLogLastUpdatedDate_lt: DateTime
+  productivityLogLastUpdatedDate_lte: DateTime
+  productivityLogLastUpdatedDate_gt: DateTime
+  productivityLogLastUpdatedDate_gte: DateTime
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

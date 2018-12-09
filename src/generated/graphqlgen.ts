@@ -261,6 +261,10 @@ export namespace UserResolvers {
       parent.sleepLogLastUpdatedDate === undefined
         ? null
         : parent.sleepLogLastUpdatedDate,
+    productivityLogLastUpdatedDate: (parent: UserNode) =>
+      parent.productivityLogLastUpdatedDate === undefined
+        ? null
+        : parent.productivityLogLastUpdatedDate,
     createdAt: (parent: UserNode) => parent.createdAt
   };
 
@@ -307,6 +311,13 @@ export namespace UserResolvers {
   ) => SleepLogNode[] | Promise<SleepLogNode[]>;
 
   export type SleepLogLastUpdatedDateResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | null | Promise<string | null>;
+
+  export type ProductivityLogLastUpdatedDateResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
@@ -364,6 +375,13 @@ export namespace UserResolvers {
     ) => SleepLogNode[] | Promise<SleepLogNode[]>;
 
     sleepLogLastUpdatedDate: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | null | Promise<string | null>;
+
+    productivityLogLastUpdatedDate: (
       parent: UserNode,
       args: {},
       ctx: Context,
