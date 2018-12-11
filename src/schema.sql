@@ -63,3 +63,13 @@ create table SleepData (
 	PRIMARY KEY(id),
   	FOREIGN KEY (sleepLogId) REFERENCES SleepLog(id)
 );
+
+create table FitbitAccount {
+  id int unsigned not null,
+  userId int unsigned not null,
+  fitbitUserId varchar(255) not null,
+  refreshToken varchar(255) not null,
+  accessToken varchar(255) not null,
+  expiration datetime not null,
+  PRIMARY KEY(id),
+}
