@@ -1,13 +1,13 @@
-import * as bodyParser from 'body-parser';
-import * as querystring from 'querystring';
-import axios from 'axios';
-import { base64Hash, getFrontendUrl } from './utils';
-import { fetchAggregateSteps } from './api/googlefit/aggregate';
-import { getAllUpdatedSleepLogs, getSleepLogs } from './api/fitbit/sleep';
-import { GraphQLServer } from 'graphql-yoga';
-import { permissions } from './permissions';
-import { prisma } from './generated/prisma-client';
-import { resolvers } from './resolvers';
+import * as bodyParser from "body-parser";
+import * as querystring from "querystring";
+import axios from "axios";
+import { base64Hash, getFrontendUrl } from "./utils";
+import { fetchAggregateSteps } from "./api/googlefit/aggregate";
+import { getAllUpdatedSleepLogs, getSleepLogs } from "./api/fitbit/sleep";
+import { GraphQLServer } from "graphql-yoga";
+import { permissions } from "./permissions";
+import { prisma } from "./generated/prisma-client";
+import { resolvers } from "./resolvers";
 
 const server = new GraphQLServer({
   typeDefs: "src/schema.graphql",
