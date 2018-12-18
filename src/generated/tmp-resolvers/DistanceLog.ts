@@ -6,7 +6,10 @@ import { DistanceLogResolvers } from "../graphqlgen";
 export const DistanceLog: DistanceLogResolvers.Type = {
   ...DistanceLogResolvers.defaultResolvers,
 
-  intradayData: parent => {
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  distanceData: parent => {
     throw new Error("Resolver not implemented");
   }
 };

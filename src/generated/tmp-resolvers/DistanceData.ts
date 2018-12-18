@@ -4,5 +4,9 @@
 import { DistanceDataResolvers } from "../graphqlgen";
 
 export const DistanceData: DistanceDataResolvers.Type = {
-  ...DistanceDataResolvers.defaultResolvers
+  ...DistanceDataResolvers.defaultResolvers,
+
+  distanceLog: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

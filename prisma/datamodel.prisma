@@ -2,10 +2,14 @@ type User {
   id: ID! @unique
   email: String! @unique
   password: String!
-  googleFitAccount: GoogleFitAccount
-  fitbitAccount: FitbitAccount @relation(name: "UserFitbitAccount", onDelete: CASCADE)
-  rescueTimeAcccount: RescueTimeAccount
-  sleepLogs: [SleepLog!]! @relation(name: "UserSleepLogs", onDelete: CASCADE)
+  googleFitAccount: GoogleFitAccount @relation(name: "GoogleFitAccountOnUser", onDelete: CASCADE)
+  fitbitAccount: FitbitAccount @relation(name: "FitbitAccountOnUser", onDelete: CASCADE)
+  rescueTimeAccount: RescueTimeAccount @relation(name:"RescueTimeAccountOnUser", onDelete: CASCADE)
+  sleepLogs: [SleepLog!]! @relation(name: "SleepLogOnUser", onDelete: CASCADE)
+  heartLogs: [HeartLog!]! @relation(name: "HeartLogOnUser", onDelete: CASCADE)
+  stepLogs: [StepLog!]! @relation(name: "StepLogOnUser", onDelete: CASCADE)
+  calorieLogs: [CalorieLog!]! @relation(name: "CalorieLogOnUser", onDelete: CASCADE)
+  distanceLogs: [DistanceLog!]! @relation(name: "DistanceLogOnUser", onDelete: CASCADE)
   sleepLogLastUpdatedDate: DateTime
   productivityLogLastUpdatedDate: DateTime
   createdAt: DateTime!
@@ -14,7 +18,7 @@ type User {
 
 type GoogleFitAccount {
   id: ID! @unique
-  userId: ID! @unique
+  user: User! @relation(name: "GoogleFitAccountOnUser")
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
@@ -22,7 +26,7 @@ type GoogleFitAccount {
 
 type FitbitAccount {
   id: ID! @unique
-  userId: ID! @unique
+  user: User! @relation(name: "FitbitAccountOnUser")
   fitbitUserId: String!
   refreshToken: String!
   accessToken: String!
@@ -31,14 +35,14 @@ type FitbitAccount {
 
 type RescueTimeAccount {
   id: ID! @unique
-  userId: ID! @unique
+  user: User! @relation(name: "RescueTimeAccountOnUser")
   accessToken: String!
   scope: String!
 }
 
 type SleepLog {
   id: ID! @unique
-  userId: ID!
+  user: User! @relation(name: "SleepLogOnUser")
   dateOfSleep: String!
   duration: Int!
   efficiency: Int!
@@ -51,7 +55,7 @@ type SleepLog {
   startTime: DateTime!
   timeInBed: Int!
   type: String
-  data: [SleepData!]! @relation(name: "SleepLogSleepData", onDelete: CASCADE)
+  sleepData: [SleepData!]! @relation(name: "SleepDataOnSleepLog", onDelete: CASCADE)
   summaryDeepCount: Int
   summaryDeepMinutes: Int
   summaryDeepThirtyDayAvgMinutes: Int
@@ -74,7 +78,7 @@ type SleepLog {
 
 type SleepData {
   id: ID! @unique
-  sleepLogId: ID!
+  sleepLog: SleepLog! @relation(name: "SleepDataOnSleepLog")
   dateTime: DateTime!
   level: String!
   second: Int!
@@ -82,6 +86,7 @@ type SleepData {
 
 type HeartLog {
   id: ID! @unique
+  user: User! @relation(name: "HeartLogOnUser")
   dateTime: DateTime!
   caloriesOutOfRange: Int!
   minutesOutOfRange: Int!
@@ -99,54 +104,57 @@ type HeartLog {
   minutesPeak: Int!
   maxValuePeak: Int!
   minValuePeak: Int!
-  intradayData: [HeartData!]!
+  heartData: [HeartData!]! @relation(name: "HeartDataOnHeartLog", onDelete: CASCADE)
 }
 
 type HeartData {
   id: ID! @unique
-  heartLogId: ID!
+  heartLog: HeartLog! @relation(name: "HeartDataOnHeartLog")
   dateTime: DateTime!
   heartRate: Float!
 }
 
 type StepLog {
   id: ID! @unique
+  user: User! @relation(name: "StepLogOnUser")
   date: DateTime!
   totalSteps: Int!
-  intradayData: [StepData!]!
+  stepData: [StepData!]! @relation(name: "StepDataOnStepLog", onDelete: CASCADE)
 }
 
 type StepData {
   id: ID! @unique
-  stepLogId: ID!
+  stepLog: StepLog! @relation(name: "StepDataOnStepLog")
   dateTime: DateTime!
   steps: Int!
 }
 
 type CalorieLog {
   id: ID! @unique
+  user: User! @relation(name: "CalorieLogOnUser")
   date: DateTime!
   totalCalories: Float!
-  intradayData: [CalorieData!]!
+  calorieData: [CalorieData!]! @relation(name: "CalorieDataOnCalorieLog", onDelete: CASCADE)
 }
 
 type CalorieData {
   id: ID! @unique
-  calorieLogId: ID!
+  calorieLog: CalorieLog! @relation(name: "CalorieDataOnCalorieLog")
   dateTime: DateTime!
   calories: Float!
 }
 
 type DistanceLog {
   id: ID! @unique
+  user: User! @relation(name: "DistanceLogOnUser")
   date: DateTime!
   totalDistance: Float!
-  intradayData: [DistanceData!]!
+  distanceData: [DistanceData!]! @relation(name: "DistanceDataOnDistanceLog", onDelete: CASCADE)
 }
 
 type DistanceData {
   id: ID! @unique
-  distanceLogId: ID!
+  distanceLog: DistanceLog! @relation(name: "DistanceDataOnDistanceLog")
   dateTime: DateTime!
   distance: Float!
 }

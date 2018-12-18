@@ -4,5 +4,9 @@
 import { GoogleFitAccountResolvers } from "../graphqlgen";
 
 export const GoogleFitAccount: GoogleFitAccountResolvers.Type = {
-  ...GoogleFitAccountResolvers.defaultResolvers
+  ...GoogleFitAccountResolvers.defaultResolvers,
+
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

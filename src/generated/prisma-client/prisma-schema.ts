@@ -60,7 +60,7 @@ type BatchPayload {
 
 type CalorieData {
   id: ID!
-  calorieLogId: ID!
+  calorieLog: CalorieLog!
   dateTime: DateTime!
   calories: Float!
 }
@@ -72,14 +72,19 @@ type CalorieDataConnection {
 }
 
 input CalorieDataCreateInput {
-  calorieLogId: ID!
+  calorieLog: CalorieLogCreateOneWithoutCalorieDataInput!
   dateTime: DateTime!
   calories: Float!
 }
 
-input CalorieDataCreateManyInput {
-  create: [CalorieDataCreateInput!]
+input CalorieDataCreateManyWithoutCalorieLogInput {
+  create: [CalorieDataCreateWithoutCalorieLogInput!]
   connect: [CalorieDataWhereUniqueInput!]
+}
+
+input CalorieDataCreateWithoutCalorieLogInput {
+  dateTime: DateTime!
+  calories: Float!
 }
 
 type CalorieDataEdge {
@@ -90,8 +95,6 @@ type CalorieDataEdge {
 enum CalorieDataOrderByInput {
   id_ASC
   id_DESC
-  calorieLogId_ASC
-  calorieLogId_DESC
   dateTime_ASC
   dateTime_DESC
   calories_ASC
@@ -104,7 +107,6 @@ enum CalorieDataOrderByInput {
 
 type CalorieDataPreviousValues {
   id: ID!
-  calorieLogId: ID!
   dateTime: DateTime!
   calories: Float!
 }
@@ -127,36 +129,35 @@ input CalorieDataSubscriptionWhereInput {
   NOT: [CalorieDataSubscriptionWhereInput!]
 }
 
-input CalorieDataUpdateDataInput {
-  calorieLogId: ID
-  dateTime: DateTime
-  calories: Float
-}
-
 input CalorieDataUpdateInput {
-  calorieLogId: ID
+  calorieLog: CalorieLogUpdateOneRequiredWithoutCalorieDataInput
   dateTime: DateTime
   calories: Float
 }
 
-input CalorieDataUpdateManyInput {
-  create: [CalorieDataCreateInput!]
-  update: [CalorieDataUpdateWithWhereUniqueNestedInput!]
-  upsert: [CalorieDataUpsertWithWhereUniqueNestedInput!]
+input CalorieDataUpdateManyWithoutCalorieLogInput {
+  create: [CalorieDataCreateWithoutCalorieLogInput!]
   delete: [CalorieDataWhereUniqueInput!]
   connect: [CalorieDataWhereUniqueInput!]
   disconnect: [CalorieDataWhereUniqueInput!]
+  update: [CalorieDataUpdateWithWhereUniqueWithoutCalorieLogInput!]
+  upsert: [CalorieDataUpsertWithWhereUniqueWithoutCalorieLogInput!]
 }
 
-input CalorieDataUpdateWithWhereUniqueNestedInput {
-  where: CalorieDataWhereUniqueInput!
-  data: CalorieDataUpdateDataInput!
+input CalorieDataUpdateWithoutCalorieLogDataInput {
+  dateTime: DateTime
+  calories: Float
 }
 
-input CalorieDataUpsertWithWhereUniqueNestedInput {
+input CalorieDataUpdateWithWhereUniqueWithoutCalorieLogInput {
   where: CalorieDataWhereUniqueInput!
-  update: CalorieDataUpdateDataInput!
-  create: CalorieDataCreateInput!
+  data: CalorieDataUpdateWithoutCalorieLogDataInput!
+}
+
+input CalorieDataUpsertWithWhereUniqueWithoutCalorieLogInput {
+  where: CalorieDataWhereUniqueInput!
+  update: CalorieDataUpdateWithoutCalorieLogDataInput!
+  create: CalorieDataCreateWithoutCalorieLogInput!
 }
 
 input CalorieDataWhereInput {
@@ -174,20 +175,7 @@ input CalorieDataWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  calorieLogId: ID
-  calorieLogId_not: ID
-  calorieLogId_in: [ID!]
-  calorieLogId_not_in: [ID!]
-  calorieLogId_lt: ID
-  calorieLogId_lte: ID
-  calorieLogId_gt: ID
-  calorieLogId_gte: ID
-  calorieLogId_contains: ID
-  calorieLogId_not_contains: ID
-  calorieLogId_starts_with: ID
-  calorieLogId_not_starts_with: ID
-  calorieLogId_ends_with: ID
-  calorieLogId_not_ends_with: ID
+  calorieLog: CalorieLogWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -215,9 +203,10 @@ input CalorieDataWhereUniqueInput {
 
 type CalorieLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalCalories: Float!
-  intradayData(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieData!]
+  calorieData(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieData!]
 }
 
 type CalorieLogConnection {
@@ -227,9 +216,32 @@ type CalorieLogConnection {
 }
 
 input CalorieLogCreateInput {
+  user: UserCreateOneWithoutCalorieLogsInput!
   date: DateTime!
   totalCalories: Float!
-  intradayData: CalorieDataCreateManyInput
+  calorieData: CalorieDataCreateManyWithoutCalorieLogInput
+}
+
+input CalorieLogCreateManyWithoutUserInput {
+  create: [CalorieLogCreateWithoutUserInput!]
+  connect: [CalorieLogWhereUniqueInput!]
+}
+
+input CalorieLogCreateOneWithoutCalorieDataInput {
+  create: CalorieLogCreateWithoutCalorieDataInput
+  connect: CalorieLogWhereUniqueInput
+}
+
+input CalorieLogCreateWithoutCalorieDataInput {
+  user: UserCreateOneWithoutCalorieLogsInput!
+  date: DateTime!
+  totalCalories: Float!
+}
+
+input CalorieLogCreateWithoutUserInput {
+  date: DateTime!
+  totalCalories: Float!
+  calorieData: CalorieDataCreateManyWithoutCalorieLogInput
 }
 
 type CalorieLogEdge {
@@ -275,9 +287,54 @@ input CalorieLogSubscriptionWhereInput {
 }
 
 input CalorieLogUpdateInput {
+  user: UserUpdateOneRequiredWithoutCalorieLogsInput
   date: DateTime
   totalCalories: Float
-  intradayData: CalorieDataUpdateManyInput
+  calorieData: CalorieDataUpdateManyWithoutCalorieLogInput
+}
+
+input CalorieLogUpdateManyWithoutUserInput {
+  create: [CalorieLogCreateWithoutUserInput!]
+  delete: [CalorieLogWhereUniqueInput!]
+  connect: [CalorieLogWhereUniqueInput!]
+  disconnect: [CalorieLogWhereUniqueInput!]
+  update: [CalorieLogUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [CalorieLogUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input CalorieLogUpdateOneRequiredWithoutCalorieDataInput {
+  create: CalorieLogCreateWithoutCalorieDataInput
+  update: CalorieLogUpdateWithoutCalorieDataDataInput
+  upsert: CalorieLogUpsertWithoutCalorieDataInput
+  connect: CalorieLogWhereUniqueInput
+}
+
+input CalorieLogUpdateWithoutCalorieDataDataInput {
+  user: UserUpdateOneRequiredWithoutCalorieLogsInput
+  date: DateTime
+  totalCalories: Float
+}
+
+input CalorieLogUpdateWithoutUserDataInput {
+  date: DateTime
+  totalCalories: Float
+  calorieData: CalorieDataUpdateManyWithoutCalorieLogInput
+}
+
+input CalorieLogUpdateWithWhereUniqueWithoutUserInput {
+  where: CalorieLogWhereUniqueInput!
+  data: CalorieLogUpdateWithoutUserDataInput!
+}
+
+input CalorieLogUpsertWithoutCalorieDataInput {
+  update: CalorieLogUpdateWithoutCalorieDataDataInput!
+  create: CalorieLogCreateWithoutCalorieDataInput!
+}
+
+input CalorieLogUpsertWithWhereUniqueWithoutUserInput {
+  where: CalorieLogWhereUniqueInput!
+  update: CalorieLogUpdateWithoutUserDataInput!
+  create: CalorieLogCreateWithoutUserInput!
 }
 
 input CalorieLogWhereInput {
@@ -295,6 +352,7 @@ input CalorieLogWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  user: UserWhereInput
   date: DateTime
   date_not: DateTime
   date_in: [DateTime!]
@@ -311,9 +369,9 @@ input CalorieLogWhereInput {
   totalCalories_lte: Float
   totalCalories_gt: Float
   totalCalories_gte: Float
-  intradayData_every: CalorieDataWhereInput
-  intradayData_some: CalorieDataWhereInput
-  intradayData_none: CalorieDataWhereInput
+  calorieData_every: CalorieDataWhereInput
+  calorieData_some: CalorieDataWhereInput
+  calorieData_none: CalorieDataWhereInput
   AND: [CalorieLogWhereInput!]
   OR: [CalorieLogWhereInput!]
   NOT: [CalorieLogWhereInput!]
@@ -327,7 +385,7 @@ scalar DateTime
 
 type DistanceData {
   id: ID!
-  distanceLogId: ID!
+  distanceLog: DistanceLog!
   dateTime: DateTime!
   distance: Float!
 }
@@ -339,14 +397,19 @@ type DistanceDataConnection {
 }
 
 input DistanceDataCreateInput {
-  distanceLogId: ID!
+  distanceLog: DistanceLogCreateOneWithoutDistanceDataInput!
   dateTime: DateTime!
   distance: Float!
 }
 
-input DistanceDataCreateManyInput {
-  create: [DistanceDataCreateInput!]
+input DistanceDataCreateManyWithoutDistanceLogInput {
+  create: [DistanceDataCreateWithoutDistanceLogInput!]
   connect: [DistanceDataWhereUniqueInput!]
+}
+
+input DistanceDataCreateWithoutDistanceLogInput {
+  dateTime: DateTime!
+  distance: Float!
 }
 
 type DistanceDataEdge {
@@ -357,8 +420,6 @@ type DistanceDataEdge {
 enum DistanceDataOrderByInput {
   id_ASC
   id_DESC
-  distanceLogId_ASC
-  distanceLogId_DESC
   dateTime_ASC
   dateTime_DESC
   distance_ASC
@@ -371,7 +432,6 @@ enum DistanceDataOrderByInput {
 
 type DistanceDataPreviousValues {
   id: ID!
-  distanceLogId: ID!
   dateTime: DateTime!
   distance: Float!
 }
@@ -394,36 +454,35 @@ input DistanceDataSubscriptionWhereInput {
   NOT: [DistanceDataSubscriptionWhereInput!]
 }
 
-input DistanceDataUpdateDataInput {
-  distanceLogId: ID
-  dateTime: DateTime
-  distance: Float
-}
-
 input DistanceDataUpdateInput {
-  distanceLogId: ID
+  distanceLog: DistanceLogUpdateOneRequiredWithoutDistanceDataInput
   dateTime: DateTime
   distance: Float
 }
 
-input DistanceDataUpdateManyInput {
-  create: [DistanceDataCreateInput!]
-  update: [DistanceDataUpdateWithWhereUniqueNestedInput!]
-  upsert: [DistanceDataUpsertWithWhereUniqueNestedInput!]
+input DistanceDataUpdateManyWithoutDistanceLogInput {
+  create: [DistanceDataCreateWithoutDistanceLogInput!]
   delete: [DistanceDataWhereUniqueInput!]
   connect: [DistanceDataWhereUniqueInput!]
   disconnect: [DistanceDataWhereUniqueInput!]
+  update: [DistanceDataUpdateWithWhereUniqueWithoutDistanceLogInput!]
+  upsert: [DistanceDataUpsertWithWhereUniqueWithoutDistanceLogInput!]
 }
 
-input DistanceDataUpdateWithWhereUniqueNestedInput {
-  where: DistanceDataWhereUniqueInput!
-  data: DistanceDataUpdateDataInput!
+input DistanceDataUpdateWithoutDistanceLogDataInput {
+  dateTime: DateTime
+  distance: Float
 }
 
-input DistanceDataUpsertWithWhereUniqueNestedInput {
+input DistanceDataUpdateWithWhereUniqueWithoutDistanceLogInput {
   where: DistanceDataWhereUniqueInput!
-  update: DistanceDataUpdateDataInput!
-  create: DistanceDataCreateInput!
+  data: DistanceDataUpdateWithoutDistanceLogDataInput!
+}
+
+input DistanceDataUpsertWithWhereUniqueWithoutDistanceLogInput {
+  where: DistanceDataWhereUniqueInput!
+  update: DistanceDataUpdateWithoutDistanceLogDataInput!
+  create: DistanceDataCreateWithoutDistanceLogInput!
 }
 
 input DistanceDataWhereInput {
@@ -441,20 +500,7 @@ input DistanceDataWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  distanceLogId: ID
-  distanceLogId_not: ID
-  distanceLogId_in: [ID!]
-  distanceLogId_not_in: [ID!]
-  distanceLogId_lt: ID
-  distanceLogId_lte: ID
-  distanceLogId_gt: ID
-  distanceLogId_gte: ID
-  distanceLogId_contains: ID
-  distanceLogId_not_contains: ID
-  distanceLogId_starts_with: ID
-  distanceLogId_not_starts_with: ID
-  distanceLogId_ends_with: ID
-  distanceLogId_not_ends_with: ID
+  distanceLog: DistanceLogWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -482,9 +528,10 @@ input DistanceDataWhereUniqueInput {
 
 type DistanceLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalDistance: Float!
-  intradayData(where: DistanceDataWhereInput, orderBy: DistanceDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceData!]
+  distanceData(where: DistanceDataWhereInput, orderBy: DistanceDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceData!]
 }
 
 type DistanceLogConnection {
@@ -494,9 +541,32 @@ type DistanceLogConnection {
 }
 
 input DistanceLogCreateInput {
+  user: UserCreateOneWithoutDistanceLogsInput!
   date: DateTime!
   totalDistance: Float!
-  intradayData: DistanceDataCreateManyInput
+  distanceData: DistanceDataCreateManyWithoutDistanceLogInput
+}
+
+input DistanceLogCreateManyWithoutUserInput {
+  create: [DistanceLogCreateWithoutUserInput!]
+  connect: [DistanceLogWhereUniqueInput!]
+}
+
+input DistanceLogCreateOneWithoutDistanceDataInput {
+  create: DistanceLogCreateWithoutDistanceDataInput
+  connect: DistanceLogWhereUniqueInput
+}
+
+input DistanceLogCreateWithoutDistanceDataInput {
+  user: UserCreateOneWithoutDistanceLogsInput!
+  date: DateTime!
+  totalDistance: Float!
+}
+
+input DistanceLogCreateWithoutUserInput {
+  date: DateTime!
+  totalDistance: Float!
+  distanceData: DistanceDataCreateManyWithoutDistanceLogInput
 }
 
 type DistanceLogEdge {
@@ -542,9 +612,54 @@ input DistanceLogSubscriptionWhereInput {
 }
 
 input DistanceLogUpdateInput {
+  user: UserUpdateOneRequiredWithoutDistanceLogsInput
   date: DateTime
   totalDistance: Float
-  intradayData: DistanceDataUpdateManyInput
+  distanceData: DistanceDataUpdateManyWithoutDistanceLogInput
+}
+
+input DistanceLogUpdateManyWithoutUserInput {
+  create: [DistanceLogCreateWithoutUserInput!]
+  delete: [DistanceLogWhereUniqueInput!]
+  connect: [DistanceLogWhereUniqueInput!]
+  disconnect: [DistanceLogWhereUniqueInput!]
+  update: [DistanceLogUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [DistanceLogUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input DistanceLogUpdateOneRequiredWithoutDistanceDataInput {
+  create: DistanceLogCreateWithoutDistanceDataInput
+  update: DistanceLogUpdateWithoutDistanceDataDataInput
+  upsert: DistanceLogUpsertWithoutDistanceDataInput
+  connect: DistanceLogWhereUniqueInput
+}
+
+input DistanceLogUpdateWithoutDistanceDataDataInput {
+  user: UserUpdateOneRequiredWithoutDistanceLogsInput
+  date: DateTime
+  totalDistance: Float
+}
+
+input DistanceLogUpdateWithoutUserDataInput {
+  date: DateTime
+  totalDistance: Float
+  distanceData: DistanceDataUpdateManyWithoutDistanceLogInput
+}
+
+input DistanceLogUpdateWithWhereUniqueWithoutUserInput {
+  where: DistanceLogWhereUniqueInput!
+  data: DistanceLogUpdateWithoutUserDataInput!
+}
+
+input DistanceLogUpsertWithoutDistanceDataInput {
+  update: DistanceLogUpdateWithoutDistanceDataDataInput!
+  create: DistanceLogCreateWithoutDistanceDataInput!
+}
+
+input DistanceLogUpsertWithWhereUniqueWithoutUserInput {
+  where: DistanceLogWhereUniqueInput!
+  update: DistanceLogUpdateWithoutUserDataInput!
+  create: DistanceLogCreateWithoutUserInput!
 }
 
 input DistanceLogWhereInput {
@@ -562,6 +677,7 @@ input DistanceLogWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  user: UserWhereInput
   date: DateTime
   date_not: DateTime
   date_in: [DateTime!]
@@ -578,9 +694,9 @@ input DistanceLogWhereInput {
   totalDistance_lte: Float
   totalDistance_gt: Float
   totalDistance_gte: Float
-  intradayData_every: DistanceDataWhereInput
-  intradayData_some: DistanceDataWhereInput
-  intradayData_none: DistanceDataWhereInput
+  distanceData_every: DistanceDataWhereInput
+  distanceData_some: DistanceDataWhereInput
+  distanceData_none: DistanceDataWhereInput
   AND: [DistanceLogWhereInput!]
   OR: [DistanceLogWhereInput!]
   NOT: [DistanceLogWhereInput!]
@@ -592,7 +708,7 @@ input DistanceLogWhereUniqueInput {
 
 type FitbitAccount {
   id: ID!
-  userId: ID!
+  user: User!
   fitbitUserId: String!
   refreshToken: String!
   accessToken: String!
@@ -606,16 +722,23 @@ type FitbitAccountConnection {
 }
 
 input FitbitAccountCreateInput {
-  userId: ID!
+  user: UserCreateOneWithoutFitbitAccountInput!
   fitbitUserId: String!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
 }
 
-input FitbitAccountCreateOneInput {
-  create: FitbitAccountCreateInput
+input FitbitAccountCreateOneWithoutUserInput {
+  create: FitbitAccountCreateWithoutUserInput
   connect: FitbitAccountWhereUniqueInput
+}
+
+input FitbitAccountCreateWithoutUserInput {
+  fitbitUserId: String!
+  refreshToken: String!
+  accessToken: String!
+  expiration: DateTime!
 }
 
 type FitbitAccountEdge {
@@ -626,8 +749,6 @@ type FitbitAccountEdge {
 enum FitbitAccountOrderByInput {
   id_ASC
   id_DESC
-  userId_ASC
-  userId_DESC
   fitbitUserId_ASC
   fitbitUserId_DESC
   refreshToken_ASC
@@ -644,7 +765,6 @@ enum FitbitAccountOrderByInput {
 
 type FitbitAccountPreviousValues {
   id: ID!
-  userId: ID!
   fitbitUserId: String!
   refreshToken: String!
   accessToken: String!
@@ -669,34 +789,33 @@ input FitbitAccountSubscriptionWhereInput {
   NOT: [FitbitAccountSubscriptionWhereInput!]
 }
 
-input FitbitAccountUpdateDataInput {
-  userId: ID
-  fitbitUserId: String
-  refreshToken: String
-  accessToken: String
-  expiration: DateTime
-}
-
 input FitbitAccountUpdateInput {
-  userId: ID
+  user: UserUpdateOneRequiredWithoutFitbitAccountInput
   fitbitUserId: String
   refreshToken: String
   accessToken: String
   expiration: DateTime
 }
 
-input FitbitAccountUpdateOneInput {
-  create: FitbitAccountCreateInput
-  update: FitbitAccountUpdateDataInput
-  upsert: FitbitAccountUpsertNestedInput
+input FitbitAccountUpdateOneWithoutUserInput {
+  create: FitbitAccountCreateWithoutUserInput
+  update: FitbitAccountUpdateWithoutUserDataInput
+  upsert: FitbitAccountUpsertWithoutUserInput
   delete: Boolean
   disconnect: Boolean
   connect: FitbitAccountWhereUniqueInput
 }
 
-input FitbitAccountUpsertNestedInput {
-  update: FitbitAccountUpdateDataInput!
-  create: FitbitAccountCreateInput!
+input FitbitAccountUpdateWithoutUserDataInput {
+  fitbitUserId: String
+  refreshToken: String
+  accessToken: String
+  expiration: DateTime
+}
+
+input FitbitAccountUpsertWithoutUserInput {
+  update: FitbitAccountUpdateWithoutUserDataInput!
+  create: FitbitAccountCreateWithoutUserInput!
 }
 
 input FitbitAccountWhereInput {
@@ -714,20 +833,7 @@ input FitbitAccountWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  userId: ID
-  userId_not: ID
-  userId_in: [ID!]
-  userId_not_in: [ID!]
-  userId_lt: ID
-  userId_lte: ID
-  userId_gt: ID
-  userId_gte: ID
-  userId_contains: ID
-  userId_not_contains: ID
-  userId_starts_with: ID
-  userId_not_starts_with: ID
-  userId_ends_with: ID
-  userId_not_ends_with: ID
+  user: UserWhereInput
   fitbitUserId: String
   fitbitUserId_not: String
   fitbitUserId_in: [String!]
@@ -785,12 +891,11 @@ input FitbitAccountWhereInput {
 
 input FitbitAccountWhereUniqueInput {
   id: ID
-  userId: ID
 }
 
 type GoogleFitAccount {
   id: ID!
-  userId: ID!
+  user: User!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
@@ -803,15 +908,21 @@ type GoogleFitAccountConnection {
 }
 
 input GoogleFitAccountCreateInput {
-  userId: ID!
+  user: UserCreateOneWithoutGoogleFitAccountInput!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
 }
 
-input GoogleFitAccountCreateOneInput {
-  create: GoogleFitAccountCreateInput
+input GoogleFitAccountCreateOneWithoutUserInput {
+  create: GoogleFitAccountCreateWithoutUserInput
   connect: GoogleFitAccountWhereUniqueInput
+}
+
+input GoogleFitAccountCreateWithoutUserInput {
+  refreshToken: String!
+  accessToken: String!
+  expiration: DateTime!
 }
 
 type GoogleFitAccountEdge {
@@ -822,8 +933,6 @@ type GoogleFitAccountEdge {
 enum GoogleFitAccountOrderByInput {
   id_ASC
   id_DESC
-  userId_ASC
-  userId_DESC
   refreshToken_ASC
   refreshToken_DESC
   accessToken_ASC
@@ -838,7 +947,6 @@ enum GoogleFitAccountOrderByInput {
 
 type GoogleFitAccountPreviousValues {
   id: ID!
-  userId: ID!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
@@ -862,32 +970,31 @@ input GoogleFitAccountSubscriptionWhereInput {
   NOT: [GoogleFitAccountSubscriptionWhereInput!]
 }
 
-input GoogleFitAccountUpdateDataInput {
-  userId: ID
-  refreshToken: String
-  accessToken: String
-  expiration: DateTime
-}
-
 input GoogleFitAccountUpdateInput {
-  userId: ID
+  user: UserUpdateOneRequiredWithoutGoogleFitAccountInput
   refreshToken: String
   accessToken: String
   expiration: DateTime
 }
 
-input GoogleFitAccountUpdateOneInput {
-  create: GoogleFitAccountCreateInput
-  update: GoogleFitAccountUpdateDataInput
-  upsert: GoogleFitAccountUpsertNestedInput
+input GoogleFitAccountUpdateOneWithoutUserInput {
+  create: GoogleFitAccountCreateWithoutUserInput
+  update: GoogleFitAccountUpdateWithoutUserDataInput
+  upsert: GoogleFitAccountUpsertWithoutUserInput
   delete: Boolean
   disconnect: Boolean
   connect: GoogleFitAccountWhereUniqueInput
 }
 
-input GoogleFitAccountUpsertNestedInput {
-  update: GoogleFitAccountUpdateDataInput!
-  create: GoogleFitAccountCreateInput!
+input GoogleFitAccountUpdateWithoutUserDataInput {
+  refreshToken: String
+  accessToken: String
+  expiration: DateTime
+}
+
+input GoogleFitAccountUpsertWithoutUserInput {
+  update: GoogleFitAccountUpdateWithoutUserDataInput!
+  create: GoogleFitAccountCreateWithoutUserInput!
 }
 
 input GoogleFitAccountWhereInput {
@@ -905,20 +1012,7 @@ input GoogleFitAccountWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  userId: ID
-  userId_not: ID
-  userId_in: [ID!]
-  userId_not_in: [ID!]
-  userId_lt: ID
-  userId_lte: ID
-  userId_gt: ID
-  userId_gte: ID
-  userId_contains: ID
-  userId_not_contains: ID
-  userId_starts_with: ID
-  userId_not_starts_with: ID
-  userId_ends_with: ID
-  userId_not_ends_with: ID
+  user: UserWhereInput
   refreshToken: String
   refreshToken_not: String
   refreshToken_in: [String!]
@@ -962,12 +1056,11 @@ input GoogleFitAccountWhereInput {
 
 input GoogleFitAccountWhereUniqueInput {
   id: ID
-  userId: ID
 }
 
 type HeartData {
   id: ID!
-  heartLogId: ID!
+  heartLog: HeartLog!
   dateTime: DateTime!
   heartRate: Float!
 }
@@ -979,14 +1072,19 @@ type HeartDataConnection {
 }
 
 input HeartDataCreateInput {
-  heartLogId: ID!
+  heartLog: HeartLogCreateOneWithoutHeartDataInput!
   dateTime: DateTime!
   heartRate: Float!
 }
 
-input HeartDataCreateManyInput {
-  create: [HeartDataCreateInput!]
+input HeartDataCreateManyWithoutHeartLogInput {
+  create: [HeartDataCreateWithoutHeartLogInput!]
   connect: [HeartDataWhereUniqueInput!]
+}
+
+input HeartDataCreateWithoutHeartLogInput {
+  dateTime: DateTime!
+  heartRate: Float!
 }
 
 type HeartDataEdge {
@@ -997,8 +1095,6 @@ type HeartDataEdge {
 enum HeartDataOrderByInput {
   id_ASC
   id_DESC
-  heartLogId_ASC
-  heartLogId_DESC
   dateTime_ASC
   dateTime_DESC
   heartRate_ASC
@@ -1011,7 +1107,6 @@ enum HeartDataOrderByInput {
 
 type HeartDataPreviousValues {
   id: ID!
-  heartLogId: ID!
   dateTime: DateTime!
   heartRate: Float!
 }
@@ -1034,36 +1129,35 @@ input HeartDataSubscriptionWhereInput {
   NOT: [HeartDataSubscriptionWhereInput!]
 }
 
-input HeartDataUpdateDataInput {
-  heartLogId: ID
-  dateTime: DateTime
-  heartRate: Float
-}
-
 input HeartDataUpdateInput {
-  heartLogId: ID
+  heartLog: HeartLogUpdateOneRequiredWithoutHeartDataInput
   dateTime: DateTime
   heartRate: Float
 }
 
-input HeartDataUpdateManyInput {
-  create: [HeartDataCreateInput!]
-  update: [HeartDataUpdateWithWhereUniqueNestedInput!]
-  upsert: [HeartDataUpsertWithWhereUniqueNestedInput!]
+input HeartDataUpdateManyWithoutHeartLogInput {
+  create: [HeartDataCreateWithoutHeartLogInput!]
   delete: [HeartDataWhereUniqueInput!]
   connect: [HeartDataWhereUniqueInput!]
   disconnect: [HeartDataWhereUniqueInput!]
+  update: [HeartDataUpdateWithWhereUniqueWithoutHeartLogInput!]
+  upsert: [HeartDataUpsertWithWhereUniqueWithoutHeartLogInput!]
 }
 
-input HeartDataUpdateWithWhereUniqueNestedInput {
-  where: HeartDataWhereUniqueInput!
-  data: HeartDataUpdateDataInput!
+input HeartDataUpdateWithoutHeartLogDataInput {
+  dateTime: DateTime
+  heartRate: Float
 }
 
-input HeartDataUpsertWithWhereUniqueNestedInput {
+input HeartDataUpdateWithWhereUniqueWithoutHeartLogInput {
   where: HeartDataWhereUniqueInput!
-  update: HeartDataUpdateDataInput!
-  create: HeartDataCreateInput!
+  data: HeartDataUpdateWithoutHeartLogDataInput!
+}
+
+input HeartDataUpsertWithWhereUniqueWithoutHeartLogInput {
+  where: HeartDataWhereUniqueInput!
+  update: HeartDataUpdateWithoutHeartLogDataInput!
+  create: HeartDataCreateWithoutHeartLogInput!
 }
 
 input HeartDataWhereInput {
@@ -1081,20 +1175,7 @@ input HeartDataWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  heartLogId: ID
-  heartLogId_not: ID
-  heartLogId_in: [ID!]
-  heartLogId_not_in: [ID!]
-  heartLogId_lt: ID
-  heartLogId_lte: ID
-  heartLogId_gt: ID
-  heartLogId_gte: ID
-  heartLogId_contains: ID
-  heartLogId_not_contains: ID
-  heartLogId_starts_with: ID
-  heartLogId_not_starts_with: ID
-  heartLogId_ends_with: ID
-  heartLogId_not_ends_with: ID
+  heartLog: HeartLogWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -1122,6 +1203,7 @@ input HeartDataWhereUniqueInput {
 
 type HeartLog {
   id: ID!
+  user: User!
   dateTime: DateTime!
   caloriesOutOfRange: Int!
   minutesOutOfRange: Int!
@@ -1139,7 +1221,7 @@ type HeartLog {
   minutesPeak: Int!
   maxValuePeak: Int!
   minValuePeak: Int!
-  intradayData(where: HeartDataWhereInput, orderBy: HeartDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartData!]
+  heartData(where: HeartDataWhereInput, orderBy: HeartDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartData!]
 }
 
 type HeartLogConnection {
@@ -1149,6 +1231,7 @@ type HeartLogConnection {
 }
 
 input HeartLogCreateInput {
+  user: UserCreateOneWithoutHeartLogsInput!
   dateTime: DateTime!
   caloriesOutOfRange: Int!
   minutesOutOfRange: Int!
@@ -1166,7 +1249,59 @@ input HeartLogCreateInput {
   minutesPeak: Int!
   maxValuePeak: Int!
   minValuePeak: Int!
-  intradayData: HeartDataCreateManyInput
+  heartData: HeartDataCreateManyWithoutHeartLogInput
+}
+
+input HeartLogCreateManyWithoutUserInput {
+  create: [HeartLogCreateWithoutUserInput!]
+  connect: [HeartLogWhereUniqueInput!]
+}
+
+input HeartLogCreateOneWithoutHeartDataInput {
+  create: HeartLogCreateWithoutHeartDataInput
+  connect: HeartLogWhereUniqueInput
+}
+
+input HeartLogCreateWithoutHeartDataInput {
+  user: UserCreateOneWithoutHeartLogsInput!
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+}
+
+input HeartLogCreateWithoutUserInput {
+  dateTime: DateTime!
+  caloriesOutOfRange: Int!
+  minutesOutOfRange: Int!
+  maxValueOutOfRange: Int!
+  minValueOutOfRange: Int!
+  caloriesFatBurn: Int!
+  minutesFatBurn: Int!
+  maxValueFatBurn: Int!
+  minValueFatBurn: Int!
+  caloriesCardio: Int!
+  minutesCardio: Int!
+  maxValueCardio: Int!
+  minValueCardio: Int!
+  caloriesPeak: Int!
+  minutesPeak: Int!
+  maxValuePeak: Int!
+  minValuePeak: Int!
+  heartData: HeartDataCreateManyWithoutHeartLogInput
 }
 
 type HeartLogEdge {
@@ -1257,6 +1392,7 @@ input HeartLogSubscriptionWhereInput {
 }
 
 input HeartLogUpdateInput {
+  user: UserUpdateOneRequiredWithoutHeartLogsInput
   dateTime: DateTime
   caloriesOutOfRange: Int
   minutesOutOfRange: Int
@@ -1274,7 +1410,81 @@ input HeartLogUpdateInput {
   minutesPeak: Int
   maxValuePeak: Int
   minValuePeak: Int
-  intradayData: HeartDataUpdateManyInput
+  heartData: HeartDataUpdateManyWithoutHeartLogInput
+}
+
+input HeartLogUpdateManyWithoutUserInput {
+  create: [HeartLogCreateWithoutUserInput!]
+  delete: [HeartLogWhereUniqueInput!]
+  connect: [HeartLogWhereUniqueInput!]
+  disconnect: [HeartLogWhereUniqueInput!]
+  update: [HeartLogUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [HeartLogUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input HeartLogUpdateOneRequiredWithoutHeartDataInput {
+  create: HeartLogCreateWithoutHeartDataInput
+  update: HeartLogUpdateWithoutHeartDataDataInput
+  upsert: HeartLogUpsertWithoutHeartDataInput
+  connect: HeartLogWhereUniqueInput
+}
+
+input HeartLogUpdateWithoutHeartDataDataInput {
+  user: UserUpdateOneRequiredWithoutHeartLogsInput
+  dateTime: DateTime
+  caloriesOutOfRange: Int
+  minutesOutOfRange: Int
+  maxValueOutOfRange: Int
+  minValueOutOfRange: Int
+  caloriesFatBurn: Int
+  minutesFatBurn: Int
+  maxValueFatBurn: Int
+  minValueFatBurn: Int
+  caloriesCardio: Int
+  minutesCardio: Int
+  maxValueCardio: Int
+  minValueCardio: Int
+  caloriesPeak: Int
+  minutesPeak: Int
+  maxValuePeak: Int
+  minValuePeak: Int
+}
+
+input HeartLogUpdateWithoutUserDataInput {
+  dateTime: DateTime
+  caloriesOutOfRange: Int
+  minutesOutOfRange: Int
+  maxValueOutOfRange: Int
+  minValueOutOfRange: Int
+  caloriesFatBurn: Int
+  minutesFatBurn: Int
+  maxValueFatBurn: Int
+  minValueFatBurn: Int
+  caloriesCardio: Int
+  minutesCardio: Int
+  maxValueCardio: Int
+  minValueCardio: Int
+  caloriesPeak: Int
+  minutesPeak: Int
+  maxValuePeak: Int
+  minValuePeak: Int
+  heartData: HeartDataUpdateManyWithoutHeartLogInput
+}
+
+input HeartLogUpdateWithWhereUniqueWithoutUserInput {
+  where: HeartLogWhereUniqueInput!
+  data: HeartLogUpdateWithoutUserDataInput!
+}
+
+input HeartLogUpsertWithoutHeartDataInput {
+  update: HeartLogUpdateWithoutHeartDataDataInput!
+  create: HeartLogCreateWithoutHeartDataInput!
+}
+
+input HeartLogUpsertWithWhereUniqueWithoutUserInput {
+  where: HeartLogWhereUniqueInput!
+  update: HeartLogUpdateWithoutUserDataInput!
+  create: HeartLogCreateWithoutUserInput!
 }
 
 input HeartLogWhereInput {
@@ -1292,6 +1502,7 @@ input HeartLogWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  user: UserWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -1428,9 +1639,9 @@ input HeartLogWhereInput {
   minValuePeak_lte: Int
   minValuePeak_gt: Int
   minValuePeak_gte: Int
-  intradayData_every: HeartDataWhereInput
-  intradayData_some: HeartDataWhereInput
-  intradayData_none: HeartDataWhereInput
+  heartData_every: HeartDataWhereInput
+  heartData_some: HeartDataWhereInput
+  heartData_none: HeartDataWhereInput
   AND: [HeartLogWhereInput!]
   OR: [HeartLogWhereInput!]
   NOT: [HeartLogWhereInput!]
@@ -1594,7 +1805,7 @@ type Query {
 
 type RescueTimeAccount {
   id: ID!
-  userId: ID!
+  user: User!
   accessToken: String!
   scope: String!
 }
@@ -1606,14 +1817,19 @@ type RescueTimeAccountConnection {
 }
 
 input RescueTimeAccountCreateInput {
-  userId: ID!
+  user: UserCreateOneWithoutRescueTimeAccountInput!
   accessToken: String!
   scope: String!
 }
 
-input RescueTimeAccountCreateOneInput {
-  create: RescueTimeAccountCreateInput
+input RescueTimeAccountCreateOneWithoutUserInput {
+  create: RescueTimeAccountCreateWithoutUserInput
   connect: RescueTimeAccountWhereUniqueInput
+}
+
+input RescueTimeAccountCreateWithoutUserInput {
+  accessToken: String!
+  scope: String!
 }
 
 type RescueTimeAccountEdge {
@@ -1624,8 +1840,6 @@ type RescueTimeAccountEdge {
 enum RescueTimeAccountOrderByInput {
   id_ASC
   id_DESC
-  userId_ASC
-  userId_DESC
   accessToken_ASC
   accessToken_DESC
   scope_ASC
@@ -1638,7 +1852,6 @@ enum RescueTimeAccountOrderByInput {
 
 type RescueTimeAccountPreviousValues {
   id: ID!
-  userId: ID!
   accessToken: String!
   scope: String!
 }
@@ -1661,30 +1874,29 @@ input RescueTimeAccountSubscriptionWhereInput {
   NOT: [RescueTimeAccountSubscriptionWhereInput!]
 }
 
-input RescueTimeAccountUpdateDataInput {
-  userId: ID
-  accessToken: String
-  scope: String
-}
-
 input RescueTimeAccountUpdateInput {
-  userId: ID
+  user: UserUpdateOneRequiredWithoutRescueTimeAccountInput
   accessToken: String
   scope: String
 }
 
-input RescueTimeAccountUpdateOneInput {
-  create: RescueTimeAccountCreateInput
-  update: RescueTimeAccountUpdateDataInput
-  upsert: RescueTimeAccountUpsertNestedInput
+input RescueTimeAccountUpdateOneWithoutUserInput {
+  create: RescueTimeAccountCreateWithoutUserInput
+  update: RescueTimeAccountUpdateWithoutUserDataInput
+  upsert: RescueTimeAccountUpsertWithoutUserInput
   delete: Boolean
   disconnect: Boolean
   connect: RescueTimeAccountWhereUniqueInput
 }
 
-input RescueTimeAccountUpsertNestedInput {
-  update: RescueTimeAccountUpdateDataInput!
-  create: RescueTimeAccountCreateInput!
+input RescueTimeAccountUpdateWithoutUserDataInput {
+  accessToken: String
+  scope: String
+}
+
+input RescueTimeAccountUpsertWithoutUserInput {
+  update: RescueTimeAccountUpdateWithoutUserDataInput!
+  create: RescueTimeAccountCreateWithoutUserInput!
 }
 
 input RescueTimeAccountWhereInput {
@@ -1702,20 +1914,7 @@ input RescueTimeAccountWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  userId: ID
-  userId_not: ID
-  userId_in: [ID!]
-  userId_not_in: [ID!]
-  userId_lt: ID
-  userId_lte: ID
-  userId_gt: ID
-  userId_gte: ID
-  userId_contains: ID
-  userId_not_contains: ID
-  userId_starts_with: ID
-  userId_not_starts_with: ID
-  userId_ends_with: ID
-  userId_not_ends_with: ID
+  user: UserWhereInput
   accessToken: String
   accessToken_not: String
   accessToken_in: [String!]
@@ -1751,12 +1950,11 @@ input RescueTimeAccountWhereInput {
 
 input RescueTimeAccountWhereUniqueInput {
   id: ID
-  userId: ID
 }
 
 type SleepData {
   id: ID!
-  sleepLogId: ID!
+  sleepLog: SleepLog!
   dateTime: DateTime!
   level: String!
   second: Int!
@@ -1769,15 +1967,21 @@ type SleepDataConnection {
 }
 
 input SleepDataCreateInput {
-  sleepLogId: ID!
+  sleepLog: SleepLogCreateOneWithoutSleepDataInput!
   dateTime: DateTime!
   level: String!
   second: Int!
 }
 
-input SleepDataCreateManyInput {
-  create: [SleepDataCreateInput!]
+input SleepDataCreateManyWithoutSleepLogInput {
+  create: [SleepDataCreateWithoutSleepLogInput!]
   connect: [SleepDataWhereUniqueInput!]
+}
+
+input SleepDataCreateWithoutSleepLogInput {
+  dateTime: DateTime!
+  level: String!
+  second: Int!
 }
 
 type SleepDataEdge {
@@ -1788,8 +1992,6 @@ type SleepDataEdge {
 enum SleepDataOrderByInput {
   id_ASC
   id_DESC
-  sleepLogId_ASC
-  sleepLogId_DESC
   dateTime_ASC
   dateTime_DESC
   level_ASC
@@ -1804,7 +2006,6 @@ enum SleepDataOrderByInput {
 
 type SleepDataPreviousValues {
   id: ID!
-  sleepLogId: ID!
   dateTime: DateTime!
   level: String!
   second: Int!
@@ -1828,38 +2029,37 @@ input SleepDataSubscriptionWhereInput {
   NOT: [SleepDataSubscriptionWhereInput!]
 }
 
-input SleepDataUpdateDataInput {
-  sleepLogId: ID
-  dateTime: DateTime
-  level: String
-  second: Int
-}
-
 input SleepDataUpdateInput {
-  sleepLogId: ID
+  sleepLog: SleepLogUpdateOneRequiredWithoutSleepDataInput
   dateTime: DateTime
   level: String
   second: Int
 }
 
-input SleepDataUpdateManyInput {
-  create: [SleepDataCreateInput!]
-  update: [SleepDataUpdateWithWhereUniqueNestedInput!]
-  upsert: [SleepDataUpsertWithWhereUniqueNestedInput!]
+input SleepDataUpdateManyWithoutSleepLogInput {
+  create: [SleepDataCreateWithoutSleepLogInput!]
   delete: [SleepDataWhereUniqueInput!]
   connect: [SleepDataWhereUniqueInput!]
   disconnect: [SleepDataWhereUniqueInput!]
+  update: [SleepDataUpdateWithWhereUniqueWithoutSleepLogInput!]
+  upsert: [SleepDataUpsertWithWhereUniqueWithoutSleepLogInput!]
 }
 
-input SleepDataUpdateWithWhereUniqueNestedInput {
-  where: SleepDataWhereUniqueInput!
-  data: SleepDataUpdateDataInput!
+input SleepDataUpdateWithoutSleepLogDataInput {
+  dateTime: DateTime
+  level: String
+  second: Int
 }
 
-input SleepDataUpsertWithWhereUniqueNestedInput {
+input SleepDataUpdateWithWhereUniqueWithoutSleepLogInput {
   where: SleepDataWhereUniqueInput!
-  update: SleepDataUpdateDataInput!
-  create: SleepDataCreateInput!
+  data: SleepDataUpdateWithoutSleepLogDataInput!
+}
+
+input SleepDataUpsertWithWhereUniqueWithoutSleepLogInput {
+  where: SleepDataWhereUniqueInput!
+  update: SleepDataUpdateWithoutSleepLogDataInput!
+  create: SleepDataCreateWithoutSleepLogInput!
 }
 
 input SleepDataWhereInput {
@@ -1877,20 +2077,7 @@ input SleepDataWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  sleepLogId: ID
-  sleepLogId_not: ID
-  sleepLogId_in: [ID!]
-  sleepLogId_not_in: [ID!]
-  sleepLogId_lt: ID
-  sleepLogId_lte: ID
-  sleepLogId_gt: ID
-  sleepLogId_gte: ID
-  sleepLogId_contains: ID
-  sleepLogId_not_contains: ID
-  sleepLogId_starts_with: ID
-  sleepLogId_not_starts_with: ID
-  sleepLogId_ends_with: ID
-  sleepLogId_not_ends_with: ID
+  sleepLog: SleepLogWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -1932,7 +2119,7 @@ input SleepDataWhereUniqueInput {
 
 type SleepLog {
   id: ID!
-  userId: ID!
+  user: User!
   dateOfSleep: String!
   duration: Int!
   efficiency: Int!
@@ -1945,7 +2132,7 @@ type SleepLog {
   startTime: DateTime!
   timeInBed: Int!
   type: String
-  data(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepData!]
+  sleepData(where: SleepDataWhereInput, orderBy: SleepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepData!]
   summaryDeepCount: Int
   summaryDeepMinutes: Int
   summaryDeepThirtyDayAvgMinutes: Int
@@ -1973,7 +2160,7 @@ type SleepLogConnection {
 }
 
 input SleepLogCreateInput {
-  userId: ID!
+  user: UserCreateOneWithoutSleepLogsInput!
   dateOfSleep: String!
   duration: Int!
   efficiency: Int!
@@ -1986,7 +2173,7 @@ input SleepLogCreateInput {
   startTime: DateTime!
   timeInBed: Int!
   type: String
-  data: SleepDataCreateManyInput
+  sleepData: SleepDataCreateManyWithoutSleepLogInput
   summaryDeepCount: Int
   summaryDeepMinutes: Int
   summaryDeepThirtyDayAvgMinutes: Int
@@ -2007,9 +2194,82 @@ input SleepLogCreateInput {
   summaryRestlessMinutes: Int
 }
 
-input SleepLogCreateManyInput {
-  create: [SleepLogCreateInput!]
+input SleepLogCreateManyWithoutUserInput {
+  create: [SleepLogCreateWithoutUserInput!]
   connect: [SleepLogWhereUniqueInput!]
+}
+
+input SleepLogCreateOneWithoutSleepDataInput {
+  create: SleepLogCreateWithoutSleepDataInput
+  connect: SleepLogWhereUniqueInput
+}
+
+input SleepLogCreateWithoutSleepDataInput {
+  user: UserCreateOneWithoutSleepLogsInput!
+  dateOfSleep: String!
+  duration: Int!
+  efficiency: Int!
+  isMainSleep: Boolean!
+  logId: Float!
+  minutesAfterWakeup: Int!
+  minutesAsleep: Int!
+  minutesAwake: Int!
+  minutesToFallAsleep: Int!
+  startTime: DateTime!
+  timeInBed: Int!
+  type: String
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+input SleepLogCreateWithoutUserInput {
+  dateOfSleep: String!
+  duration: Int!
+  efficiency: Int!
+  isMainSleep: Boolean!
+  logId: Float!
+  minutesAfterWakeup: Int!
+  minutesAsleep: Int!
+  minutesAwake: Int!
+  minutesToFallAsleep: Int!
+  startTime: DateTime!
+  timeInBed: Int!
+  type: String
+  sleepData: SleepDataCreateManyWithoutSleepLogInput
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
 }
 
 type SleepLogEdge {
@@ -2020,8 +2280,6 @@ type SleepLogEdge {
 enum SleepLogOrderByInput {
   id_ASC
   id_DESC
-  userId_ASC
-  userId_DESC
   dateOfSleep_ASC
   dateOfSleep_DESC
   duration_ASC
@@ -2090,7 +2348,6 @@ enum SleepLogOrderByInput {
 
 type SleepLogPreviousValues {
   id: ID!
-  userId: ID!
   dateOfSleep: String!
   duration: Int!
   efficiency: Int!
@@ -2141,43 +2398,8 @@ input SleepLogSubscriptionWhereInput {
   NOT: [SleepLogSubscriptionWhereInput!]
 }
 
-input SleepLogUpdateDataInput {
-  userId: ID
-  dateOfSleep: String
-  duration: Int
-  efficiency: Int
-  isMainSleep: Boolean
-  logId: Float
-  minutesAfterWakeup: Int
-  minutesAsleep: Int
-  minutesAwake: Int
-  minutesToFallAsleep: Int
-  startTime: DateTime
-  timeInBed: Int
-  type: String
-  data: SleepDataUpdateManyInput
-  summaryDeepCount: Int
-  summaryDeepMinutes: Int
-  summaryDeepThirtyDayAvgMinutes: Int
-  summaryLightCount: Int
-  summaryLightMinutes: Int
-  summaryLightThirtyDayAvgMinutes: Int
-  summaryRemCount: Int
-  summaryRemMinutes: Int
-  summaryRemThirtyDayAvgMinutes: Int
-  summaryWakeCount: Int
-  summaryWakeMinutes: Int
-  summaryWakeThirtyDayAvgMinutes: Int
-  summaryAsleepCount: Int
-  summaryAsleepMinutes: Int
-  summaryAwakeCount: Int
-  summaryAwakeMinutes: Int
-  summaryRestlessCount: Int
-  summaryRestlessMinutes: Int
-}
-
 input SleepLogUpdateInput {
-  userId: ID
+  user: UserUpdateOneRequiredWithoutSleepLogsInput
   dateOfSleep: String
   duration: Int
   efficiency: Int
@@ -2190,7 +2412,7 @@ input SleepLogUpdateInput {
   startTime: DateTime
   timeInBed: Int
   type: String
-  data: SleepDataUpdateManyInput
+  sleepData: SleepDataUpdateManyWithoutSleepLogInput
   summaryDeepCount: Int
   summaryDeepMinutes: Int
   summaryDeepThirtyDayAvgMinutes: Int
@@ -2211,24 +2433,104 @@ input SleepLogUpdateInput {
   summaryRestlessMinutes: Int
 }
 
-input SleepLogUpdateManyInput {
-  create: [SleepLogCreateInput!]
-  update: [SleepLogUpdateWithWhereUniqueNestedInput!]
-  upsert: [SleepLogUpsertWithWhereUniqueNestedInput!]
+input SleepLogUpdateManyWithoutUserInput {
+  create: [SleepLogCreateWithoutUserInput!]
   delete: [SleepLogWhereUniqueInput!]
   connect: [SleepLogWhereUniqueInput!]
   disconnect: [SleepLogWhereUniqueInput!]
+  update: [SleepLogUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [SleepLogUpsertWithWhereUniqueWithoutUserInput!]
 }
 
-input SleepLogUpdateWithWhereUniqueNestedInput {
-  where: SleepLogWhereUniqueInput!
-  data: SleepLogUpdateDataInput!
+input SleepLogUpdateOneRequiredWithoutSleepDataInput {
+  create: SleepLogCreateWithoutSleepDataInput
+  update: SleepLogUpdateWithoutSleepDataDataInput
+  upsert: SleepLogUpsertWithoutSleepDataInput
+  connect: SleepLogWhereUniqueInput
 }
 
-input SleepLogUpsertWithWhereUniqueNestedInput {
+input SleepLogUpdateWithoutSleepDataDataInput {
+  user: UserUpdateOneRequiredWithoutSleepLogsInput
+  dateOfSleep: String
+  duration: Int
+  efficiency: Int
+  isMainSleep: Boolean
+  logId: Float
+  minutesAfterWakeup: Int
+  minutesAsleep: Int
+  minutesAwake: Int
+  minutesToFallAsleep: Int
+  startTime: DateTime
+  timeInBed: Int
+  type: String
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+input SleepLogUpdateWithoutUserDataInput {
+  dateOfSleep: String
+  duration: Int
+  efficiency: Int
+  isMainSleep: Boolean
+  logId: Float
+  minutesAfterWakeup: Int
+  minutesAsleep: Int
+  minutesAwake: Int
+  minutesToFallAsleep: Int
+  startTime: DateTime
+  timeInBed: Int
+  type: String
+  sleepData: SleepDataUpdateManyWithoutSleepLogInput
+  summaryDeepCount: Int
+  summaryDeepMinutes: Int
+  summaryDeepThirtyDayAvgMinutes: Int
+  summaryLightCount: Int
+  summaryLightMinutes: Int
+  summaryLightThirtyDayAvgMinutes: Int
+  summaryRemCount: Int
+  summaryRemMinutes: Int
+  summaryRemThirtyDayAvgMinutes: Int
+  summaryWakeCount: Int
+  summaryWakeMinutes: Int
+  summaryWakeThirtyDayAvgMinutes: Int
+  summaryAsleepCount: Int
+  summaryAsleepMinutes: Int
+  summaryAwakeCount: Int
+  summaryAwakeMinutes: Int
+  summaryRestlessCount: Int
+  summaryRestlessMinutes: Int
+}
+
+input SleepLogUpdateWithWhereUniqueWithoutUserInput {
   where: SleepLogWhereUniqueInput!
-  update: SleepLogUpdateDataInput!
-  create: SleepLogCreateInput!
+  data: SleepLogUpdateWithoutUserDataInput!
+}
+
+input SleepLogUpsertWithoutSleepDataInput {
+  update: SleepLogUpdateWithoutSleepDataDataInput!
+  create: SleepLogCreateWithoutSleepDataInput!
+}
+
+input SleepLogUpsertWithWhereUniqueWithoutUserInput {
+  where: SleepLogWhereUniqueInput!
+  update: SleepLogUpdateWithoutUserDataInput!
+  create: SleepLogCreateWithoutUserInput!
 }
 
 input SleepLogWhereInput {
@@ -2246,20 +2548,7 @@ input SleepLogWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  userId: ID
-  userId_not: ID
-  userId_in: [ID!]
-  userId_not_in: [ID!]
-  userId_lt: ID
-  userId_lte: ID
-  userId_gt: ID
-  userId_gte: ID
-  userId_contains: ID
-  userId_not_contains: ID
-  userId_starts_with: ID
-  userId_not_starts_with: ID
-  userId_ends_with: ID
-  userId_not_ends_with: ID
+  user: UserWhereInput
   dateOfSleep: String
   dateOfSleep_not: String
   dateOfSleep_in: [String!]
@@ -2362,9 +2651,9 @@ input SleepLogWhereInput {
   type_not_starts_with: String
   type_ends_with: String
   type_not_ends_with: String
-  data_every: SleepDataWhereInput
-  data_some: SleepDataWhereInput
-  data_none: SleepDataWhereInput
+  sleepData_every: SleepDataWhereInput
+  sleepData_some: SleepDataWhereInput
+  sleepData_none: SleepDataWhereInput
   summaryDeepCount: Int
   summaryDeepCount_not: Int
   summaryDeepCount_in: [Int!]
@@ -2520,7 +2809,7 @@ input SleepLogWhereUniqueInput {
 
 type StepData {
   id: ID!
-  stepLogId: ID!
+  stepLog: StepLog!
   dateTime: DateTime!
   steps: Int!
 }
@@ -2532,14 +2821,19 @@ type StepDataConnection {
 }
 
 input StepDataCreateInput {
-  stepLogId: ID!
+  stepLog: StepLogCreateOneWithoutStepDataInput!
   dateTime: DateTime!
   steps: Int!
 }
 
-input StepDataCreateManyInput {
-  create: [StepDataCreateInput!]
+input StepDataCreateManyWithoutStepLogInput {
+  create: [StepDataCreateWithoutStepLogInput!]
   connect: [StepDataWhereUniqueInput!]
+}
+
+input StepDataCreateWithoutStepLogInput {
+  dateTime: DateTime!
+  steps: Int!
 }
 
 type StepDataEdge {
@@ -2550,8 +2844,6 @@ type StepDataEdge {
 enum StepDataOrderByInput {
   id_ASC
   id_DESC
-  stepLogId_ASC
-  stepLogId_DESC
   dateTime_ASC
   dateTime_DESC
   steps_ASC
@@ -2564,7 +2856,6 @@ enum StepDataOrderByInput {
 
 type StepDataPreviousValues {
   id: ID!
-  stepLogId: ID!
   dateTime: DateTime!
   steps: Int!
 }
@@ -2587,36 +2878,35 @@ input StepDataSubscriptionWhereInput {
   NOT: [StepDataSubscriptionWhereInput!]
 }
 
-input StepDataUpdateDataInput {
-  stepLogId: ID
-  dateTime: DateTime
-  steps: Int
-}
-
 input StepDataUpdateInput {
-  stepLogId: ID
+  stepLog: StepLogUpdateOneRequiredWithoutStepDataInput
   dateTime: DateTime
   steps: Int
 }
 
-input StepDataUpdateManyInput {
-  create: [StepDataCreateInput!]
-  update: [StepDataUpdateWithWhereUniqueNestedInput!]
-  upsert: [StepDataUpsertWithWhereUniqueNestedInput!]
+input StepDataUpdateManyWithoutStepLogInput {
+  create: [StepDataCreateWithoutStepLogInput!]
   delete: [StepDataWhereUniqueInput!]
   connect: [StepDataWhereUniqueInput!]
   disconnect: [StepDataWhereUniqueInput!]
+  update: [StepDataUpdateWithWhereUniqueWithoutStepLogInput!]
+  upsert: [StepDataUpsertWithWhereUniqueWithoutStepLogInput!]
 }
 
-input StepDataUpdateWithWhereUniqueNestedInput {
-  where: StepDataWhereUniqueInput!
-  data: StepDataUpdateDataInput!
+input StepDataUpdateWithoutStepLogDataInput {
+  dateTime: DateTime
+  steps: Int
 }
 
-input StepDataUpsertWithWhereUniqueNestedInput {
+input StepDataUpdateWithWhereUniqueWithoutStepLogInput {
   where: StepDataWhereUniqueInput!
-  update: StepDataUpdateDataInput!
-  create: StepDataCreateInput!
+  data: StepDataUpdateWithoutStepLogDataInput!
+}
+
+input StepDataUpsertWithWhereUniqueWithoutStepLogInput {
+  where: StepDataWhereUniqueInput!
+  update: StepDataUpdateWithoutStepLogDataInput!
+  create: StepDataCreateWithoutStepLogInput!
 }
 
 input StepDataWhereInput {
@@ -2634,20 +2924,7 @@ input StepDataWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  stepLogId: ID
-  stepLogId_not: ID
-  stepLogId_in: [ID!]
-  stepLogId_not_in: [ID!]
-  stepLogId_lt: ID
-  stepLogId_lte: ID
-  stepLogId_gt: ID
-  stepLogId_gte: ID
-  stepLogId_contains: ID
-  stepLogId_not_contains: ID
-  stepLogId_starts_with: ID
-  stepLogId_not_starts_with: ID
-  stepLogId_ends_with: ID
-  stepLogId_not_ends_with: ID
+  stepLog: StepLogWhereInput
   dateTime: DateTime
   dateTime_not: DateTime
   dateTime_in: [DateTime!]
@@ -2675,9 +2952,10 @@ input StepDataWhereUniqueInput {
 
 type StepLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalSteps: Int!
-  intradayData(where: StepDataWhereInput, orderBy: StepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepData!]
+  stepData(where: StepDataWhereInput, orderBy: StepDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepData!]
 }
 
 type StepLogConnection {
@@ -2687,9 +2965,32 @@ type StepLogConnection {
 }
 
 input StepLogCreateInput {
+  user: UserCreateOneWithoutStepLogsInput!
   date: DateTime!
   totalSteps: Int!
-  intradayData: StepDataCreateManyInput
+  stepData: StepDataCreateManyWithoutStepLogInput
+}
+
+input StepLogCreateManyWithoutUserInput {
+  create: [StepLogCreateWithoutUserInput!]
+  connect: [StepLogWhereUniqueInput!]
+}
+
+input StepLogCreateOneWithoutStepDataInput {
+  create: StepLogCreateWithoutStepDataInput
+  connect: StepLogWhereUniqueInput
+}
+
+input StepLogCreateWithoutStepDataInput {
+  user: UserCreateOneWithoutStepLogsInput!
+  date: DateTime!
+  totalSteps: Int!
+}
+
+input StepLogCreateWithoutUserInput {
+  date: DateTime!
+  totalSteps: Int!
+  stepData: StepDataCreateManyWithoutStepLogInput
 }
 
 type StepLogEdge {
@@ -2735,9 +3036,54 @@ input StepLogSubscriptionWhereInput {
 }
 
 input StepLogUpdateInput {
+  user: UserUpdateOneRequiredWithoutStepLogsInput
   date: DateTime
   totalSteps: Int
-  intradayData: StepDataUpdateManyInput
+  stepData: StepDataUpdateManyWithoutStepLogInput
+}
+
+input StepLogUpdateManyWithoutUserInput {
+  create: [StepLogCreateWithoutUserInput!]
+  delete: [StepLogWhereUniqueInput!]
+  connect: [StepLogWhereUniqueInput!]
+  disconnect: [StepLogWhereUniqueInput!]
+  update: [StepLogUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [StepLogUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input StepLogUpdateOneRequiredWithoutStepDataInput {
+  create: StepLogCreateWithoutStepDataInput
+  update: StepLogUpdateWithoutStepDataDataInput
+  upsert: StepLogUpsertWithoutStepDataInput
+  connect: StepLogWhereUniqueInput
+}
+
+input StepLogUpdateWithoutStepDataDataInput {
+  user: UserUpdateOneRequiredWithoutStepLogsInput
+  date: DateTime
+  totalSteps: Int
+}
+
+input StepLogUpdateWithoutUserDataInput {
+  date: DateTime
+  totalSteps: Int
+  stepData: StepDataUpdateManyWithoutStepLogInput
+}
+
+input StepLogUpdateWithWhereUniqueWithoutUserInput {
+  where: StepLogWhereUniqueInput!
+  data: StepLogUpdateWithoutUserDataInput!
+}
+
+input StepLogUpsertWithoutStepDataInput {
+  update: StepLogUpdateWithoutStepDataDataInput!
+  create: StepLogCreateWithoutStepDataInput!
+}
+
+input StepLogUpsertWithWhereUniqueWithoutUserInput {
+  where: StepLogWhereUniqueInput!
+  update: StepLogUpdateWithoutUserDataInput!
+  create: StepLogCreateWithoutUserInput!
 }
 
 input StepLogWhereInput {
@@ -2755,6 +3101,7 @@ input StepLogWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  user: UserWhereInput
   date: DateTime
   date_not: DateTime
   date_in: [DateTime!]
@@ -2771,9 +3118,9 @@ input StepLogWhereInput {
   totalSteps_lte: Int
   totalSteps_gt: Int
   totalSteps_gte: Int
-  intradayData_every: StepDataWhereInput
-  intradayData_some: StepDataWhereInput
-  intradayData_none: StepDataWhereInput
+  stepData_every: StepDataWhereInput
+  stepData_some: StepDataWhereInput
+  stepData_none: StepDataWhereInput
   AND: [StepLogWhereInput!]
   OR: [StepLogWhereInput!]
   NOT: [StepLogWhereInput!]
@@ -2806,8 +3153,12 @@ type User {
   password: String!
   googleFitAccount: GoogleFitAccount
   fitbitAccount: FitbitAccount
-  rescueTimeAcccount: RescueTimeAccount
+  rescueTimeAccount: RescueTimeAccount
   sleepLogs(where: SleepLogWhereInput, orderBy: SleepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SleepLog!]
+  heartLogs(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartLog!]
+  stepLogs(where: StepLogWhereInput, orderBy: StepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepLog!]
+  calorieLogs(where: CalorieLogWhereInput, orderBy: CalorieLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieLog!]
+  distanceLogs(where: DistanceLogWhereInput, orderBy: DistanceLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceLog!]
   sleepLogLastUpdatedDate: DateTime
   productivityLogLastUpdatedDate: DateTime
   createdAt: DateTime!
@@ -2823,10 +3174,166 @@ type UserConnection {
 input UserCreateInput {
   email: String!
   password: String!
-  googleFitAccount: GoogleFitAccountCreateOneInput
-  fitbitAccount: FitbitAccountCreateOneInput
-  rescueTimeAcccount: RescueTimeAccountCreateOneInput
-  sleepLogs: SleepLogCreateManyInput
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateOneWithoutCalorieLogsInput {
+  create: UserCreateWithoutCalorieLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutDistanceLogsInput {
+  create: UserCreateWithoutDistanceLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutFitbitAccountInput {
+  create: UserCreateWithoutFitbitAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutGoogleFitAccountInput {
+  create: UserCreateWithoutGoogleFitAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutHeartLogsInput {
+  create: UserCreateWithoutHeartLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutRescueTimeAccountInput {
+  create: UserCreateWithoutRescueTimeAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutSleepLogsInput {
+  create: UserCreateWithoutSleepLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutStepLogsInput {
+  create: UserCreateWithoutStepLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutCalorieLogsInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutDistanceLogsInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutFitbitAccountInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutGoogleFitAccountInput {
+  email: String!
+  password: String!
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutHeartLogsInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutRescueTimeAccountInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutSleepLogsInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutStepLogsInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
   productivityLogLastUpdatedDate: DateTime
 }
@@ -2884,12 +3391,224 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   email: String
   password: String
-  googleFitAccount: GoogleFitAccountUpdateOneInput
-  fitbitAccount: FitbitAccountUpdateOneInput
-  rescueTimeAcccount: RescueTimeAccountUpdateOneInput
-  sleepLogs: SleepLogUpdateManyInput
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
   productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateOneRequiredWithoutCalorieLogsInput {
+  create: UserCreateWithoutCalorieLogsInput
+  update: UserUpdateWithoutCalorieLogsDataInput
+  upsert: UserUpsertWithoutCalorieLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutDistanceLogsInput {
+  create: UserCreateWithoutDistanceLogsInput
+  update: UserUpdateWithoutDistanceLogsDataInput
+  upsert: UserUpsertWithoutDistanceLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutFitbitAccountInput {
+  create: UserCreateWithoutFitbitAccountInput
+  update: UserUpdateWithoutFitbitAccountDataInput
+  upsert: UserUpsertWithoutFitbitAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutGoogleFitAccountInput {
+  create: UserCreateWithoutGoogleFitAccountInput
+  update: UserUpdateWithoutGoogleFitAccountDataInput
+  upsert: UserUpsertWithoutGoogleFitAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutHeartLogsInput {
+  create: UserCreateWithoutHeartLogsInput
+  update: UserUpdateWithoutHeartLogsDataInput
+  upsert: UserUpsertWithoutHeartLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutRescueTimeAccountInput {
+  create: UserCreateWithoutRescueTimeAccountInput
+  update: UserUpdateWithoutRescueTimeAccountDataInput
+  upsert: UserUpsertWithoutRescueTimeAccountInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutSleepLogsInput {
+  create: UserCreateWithoutSleepLogsInput
+  update: UserUpdateWithoutSleepLogsDataInput
+  upsert: UserUpsertWithoutSleepLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutStepLogsInput {
+  create: UserCreateWithoutStepLogsInput
+  update: UserUpdateWithoutStepLogsDataInput
+  upsert: UserUpsertWithoutStepLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutCalorieLogsDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutDistanceLogsDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutFitbitAccountDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutGoogleFitAccountDataInput {
+  email: String
+  password: String
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutHeartLogsDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutRescueTimeAccountDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutSleepLogsDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutStepLogsDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityLogLastUpdatedDate: DateTime
+}
+
+input UserUpsertWithoutCalorieLogsInput {
+  update: UserUpdateWithoutCalorieLogsDataInput!
+  create: UserCreateWithoutCalorieLogsInput!
+}
+
+input UserUpsertWithoutDistanceLogsInput {
+  update: UserUpdateWithoutDistanceLogsDataInput!
+  create: UserCreateWithoutDistanceLogsInput!
+}
+
+input UserUpsertWithoutFitbitAccountInput {
+  update: UserUpdateWithoutFitbitAccountDataInput!
+  create: UserCreateWithoutFitbitAccountInput!
+}
+
+input UserUpsertWithoutGoogleFitAccountInput {
+  update: UserUpdateWithoutGoogleFitAccountDataInput!
+  create: UserCreateWithoutGoogleFitAccountInput!
+}
+
+input UserUpsertWithoutHeartLogsInput {
+  update: UserUpdateWithoutHeartLogsDataInput!
+  create: UserCreateWithoutHeartLogsInput!
+}
+
+input UserUpsertWithoutRescueTimeAccountInput {
+  update: UserUpdateWithoutRescueTimeAccountDataInput!
+  create: UserCreateWithoutRescueTimeAccountInput!
+}
+
+input UserUpsertWithoutSleepLogsInput {
+  update: UserUpdateWithoutSleepLogsDataInput!
+  create: UserCreateWithoutSleepLogsInput!
+}
+
+input UserUpsertWithoutStepLogsInput {
+  update: UserUpdateWithoutStepLogsDataInput!
+  create: UserCreateWithoutStepLogsInput!
 }
 
 input UserWhereInput {
@@ -2937,10 +3656,22 @@ input UserWhereInput {
   password_not_ends_with: String
   googleFitAccount: GoogleFitAccountWhereInput
   fitbitAccount: FitbitAccountWhereInput
-  rescueTimeAcccount: RescueTimeAccountWhereInput
+  rescueTimeAccount: RescueTimeAccountWhereInput
   sleepLogs_every: SleepLogWhereInput
   sleepLogs_some: SleepLogWhereInput
   sleepLogs_none: SleepLogWhereInput
+  heartLogs_every: HeartLogWhereInput
+  heartLogs_some: HeartLogWhereInput
+  heartLogs_none: HeartLogWhereInput
+  stepLogs_every: StepLogWhereInput
+  stepLogs_some: StepLogWhereInput
+  stepLogs_none: StepLogWhereInput
+  calorieLogs_every: CalorieLogWhereInput
+  calorieLogs_some: CalorieLogWhereInput
+  calorieLogs_none: CalorieLogWhereInput
+  distanceLogs_every: DistanceLogWhereInput
+  distanceLogs_some: DistanceLogWhereInput
+  distanceLogs_none: DistanceLogWhereInput
   sleepLogLastUpdatedDate: DateTime
   sleepLogLastUpdatedDate_not: DateTime
   sleepLogLastUpdatedDate_in: [DateTime!]

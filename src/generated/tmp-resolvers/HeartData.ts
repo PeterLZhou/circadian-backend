@@ -4,5 +4,9 @@
 import { HeartDataResolvers } from "../graphqlgen";
 
 export const HeartData: HeartDataResolvers.Type = {
-  ...HeartDataResolvers.defaultResolvers
+  ...HeartDataResolvers.defaultResolvers,
+
+  heartLog: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

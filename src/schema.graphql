@@ -10,10 +10,10 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  getSleepLogs(userId: ID!, date: String!): String!
+  getSleepLogs(userId: ID!): String!
   deleteAllSleepLogs(userId: ID!): String!
   deleteUser(userId: ID!): User
-  createRescueTimeAccount(userId: ID!, oneTimeCode: String!): String!
+  createRescueTimeAccount(userId: ID!, oneTimeCode: String!): RescueTimeAccount!
   deleteFitbitAccount(id: ID!): FitbitAccount
 }
 
@@ -25,25 +25,20 @@ type AuthPayload {
 type User {
   id: ID!
   email: String!
+  password: String!
   googleFitAccount: GoogleFitAccount
   fitbitAccount: FitbitAccount
-  rescueTimeAcccount: RescueTimeAccount
+  rescueTimeAccount: RescueTimeAccount
   sleepLogs: [SleepLog!]!
   sleepLogLastUpdatedDate: DateTime
   productivityLogLastUpdatedDate: DateTime
   createdAt: DateTime!
-}
-
-type RescueTimeAccount {
-  id: ID!
-  userId: ID!
-  accessToken: String!
-  scope: String!
+  updatedAt: DateTime!
 }
 
 type GoogleFitAccount {
   id: ID!
-  userId: ID!
+  user: User!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
@@ -51,16 +46,23 @@ type GoogleFitAccount {
 
 type FitbitAccount {
   id: ID!
-  userId: ID!
+  user: User!
   fitbitUserId: String!
   refreshToken: String!
   accessToken: String!
   expiration: DateTime!
 }
 
+type RescueTimeAccount {
+  id: ID!
+  user: User!
+  accessToken: String!
+  scope: String!
+}
+
 type SleepLog {
   id: ID!
-  userId: ID!
+  user: User!
   dateOfSleep: String!
   duration: Int!
   efficiency: Int!
@@ -73,7 +75,7 @@ type SleepLog {
   startTime: DateTime!
   timeInBed: Int!
   type: String
-  data: [SleepData!]!
+  sleepData: [SleepData!]!
   summaryDeepCount: Int
   summaryDeepMinutes: Int
   summaryDeepThirtyDayAvgMinutes: Int
@@ -96,7 +98,7 @@ type SleepLog {
 
 type SleepData {
   id: ID!
-  sleepLogId: ID!
+  sleepLog: SleepLog!
   dateTime: DateTime!
   level: String!
   second: Int!
@@ -104,6 +106,7 @@ type SleepData {
 
 type HeartLog {
   id: ID!
+  user: User!
   dateTime: DateTime!
   caloriesOutOfRange: Int!
   minutesOutOfRange: Int!
@@ -121,54 +124,57 @@ type HeartLog {
   minutesPeak: Int!
   maxValuePeak: Int!
   minValuePeak: Int!
-  intradayData: [HeartData!]!
+  heartData: [HeartData!]!
 }
 
 type HeartData {
   id: ID!
-  heartLogId: ID!
+  heartLog: HeartLog!
   dateTime: DateTime!
   heartRate: Float!
 }
 
 type StepLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalSteps: Int!
-  intradayData: [StepData!]!
+  stepData: [StepData!]!
 }
 
 type StepData {
   id: ID!
-  stepLogId: ID!
+  stepLog: StepLog!
   dateTime: DateTime!
   steps: Int!
 }
 
 type CalorieLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalCalories: Float!
-  intradayData: [CalorieData!]!
+  calorieData: [CalorieData!]!
 }
 
 type CalorieData {
   id: ID!
-  calorieLogId: ID!
+  calorieLog: CalorieLog!
   dateTime: DateTime!
   calories: Float!
 }
 
 type DistanceLog {
   id: ID!
+  user: User!
   date: DateTime!
   totalDistance: Float!
-  intradayData: [DistanceData!]!
+  distanceData: [DistanceData!]!
 }
 
 type DistanceData {
   id: ID!
-  distanceLogId: ID!
+  distanceLog: DistanceLog!
   dateTime: DateTime!
   distance: Float!
 }

@@ -6,7 +6,10 @@ import { HeartLogResolvers } from "../graphqlgen";
 export const HeartLog: HeartLogResolvers.Type = {
   ...HeartLogResolvers.defaultResolvers,
 
-  intradayData: parent => {
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  heartData: parent => {
     throw new Error("Resolver not implemented");
   }
 };

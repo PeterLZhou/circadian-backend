@@ -4,5 +4,9 @@
 import { RescueTimeAccountResolvers } from "../graphqlgen";
 
 export const RescueTimeAccount: RescueTimeAccountResolvers.Type = {
-  ...RescueTimeAccountResolvers.defaultResolvers
+  ...RescueTimeAccountResolvers.defaultResolvers,
+
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

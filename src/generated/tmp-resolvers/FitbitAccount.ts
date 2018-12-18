@@ -4,5 +4,9 @@
 import { FitbitAccountResolvers } from "../graphqlgen";
 
 export const FitbitAccount: FitbitAccountResolvers.Type = {
-  ...FitbitAccountResolvers.defaultResolvers
+  ...FitbitAccountResolvers.defaultResolvers,
+
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

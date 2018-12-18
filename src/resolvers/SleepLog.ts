@@ -6,12 +6,10 @@ import { SleepLogResolvers } from '../generated/graphqlgen';
 
 export const SleepLog: SleepLogResolvers.Type = {
   ...SleepLogResolvers.defaultResolvers,
-
-  data: parent => {
-    return prisma.sleepDatas({
-      where: {
-        sleepLogId: parent.id
-      }
-    });
+  user: parent => {
+    return prisma.sleepLog({ id: parent.id }).user();
+  },
+  sleepData: parent => {
+    return prisma.sleepLog({ id: parent.id }).sleepData();
   }
 };

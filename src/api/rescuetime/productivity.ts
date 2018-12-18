@@ -3,7 +3,9 @@ import axios from 'axios';
 import { prisma } from '../../generated/prisma-client';
 
 export const getAllUpdatedProductivityLogs = async (userId: string) => {
-  const rescueTimeAccount = await prisma.rescueTimeAccount({ userId: userId });
+  const rescueTimeAccount = await prisma
+    .user({ id: userId })
+    .rescueTimeAccount();
   const productivityLogLastUpdatedDate = await prisma
     .user({ id: userId })
     .productivityLogLastUpdatedDate();

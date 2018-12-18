@@ -9,10 +9,11 @@ import { refreshToken } from './refresh';
 export const getSleepLogs = async (userId: string, date: string) => {
   // const id = await user.id();
   // console.log(id);
-  const fitbitAccount = await prisma.fitbitAccount({ userId: userId });
+  const fitbitAccount = await prisma.user({ id: userId }).fitbitAccount();
   const fitbitUserId = fitbitAccount.fitbitUserId;
   let accessToken = fitbitAccount.accessToken;
   if (new Date(fitbitAccount.expiration).getTime() < new Date().getTime()) {
+    console.log("expired token");
     let newTokens = await refreshToken(
       fitbitAccount.id,
       fitbitAccount.refreshToken
@@ -29,7 +30,6 @@ export const getSleepLogs = async (userId: string, date: string) => {
     }
   );
 
-  // console.log(response.data.sleep[0].data);
   response.data.sleep.forEach((sleepLog: any) => {
     createSleepLog(userId, sleepLog);
   });
@@ -38,7 +38,7 @@ export const getSleepLogs = async (userId: string, date: string) => {
 };
 
 export const getAllUpdatedSleepLogs = async (userId: string) => {
-  const fitbitAccount = await prisma.fitbitAccount({ userId: userId });
+  const fitbitAccount = await prisma.user({ id: userId }).fitbitAccount();
   if (!fitbitAccount) {
     return;
   }
@@ -56,35 +56,64 @@ export const getAllUpdatedSleepLogs = async (userId: string) => {
   }
   const earliestDate = sleepLogLastUpdatedDate
     ? moment(sleepLogLastUpdatedDate).format("YYYY-MM-DDTHH:mm:ss")
-    : "2007-03-26";
+    : moment()
+        .subtract(31, "days")
+        .format("YYYY-MM-DD");
 
   // TODO will only get 100, need to get everything
-  try {
-    const response = await axios.get(
-      `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`,
-      {
+  let nextLink = `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`;
+  let latestDate = "2007-03-26";
+  while (nextLink) {
+    try {
+      const response = await axios.get(nextLink, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
+      });
+
+      response.data.sleep.forEach((sleepLog: any) => {
+        createSleepLog(userId, sleepLog);
+      });
+
+      if (response.data.sleep.levels) {
+        response.data.sleep.levels.data.forEach((data: any) => {
+          if (moment(data.dateTime).isAfter(latestDate)) {
+            latestDate = data.dateTime;
+          }
+        });
+
+        response.data.sleep.levels.shortData.forEach((data: any) => {
+          if (moment(data.dateTime).isAfter(latestDate)) {
+            latestDate = data.dateTime;
+          }
+        });
       }
-    );
 
-    response.data.sleep.forEach((sleepLog: any) => {
-      createSleepLog(userId, sleepLog);
-    });
-
-    await prisma.updateUser({
-      where: { id: userId },
-      data: { sleepLogLastUpdatedDate: moment().format("YYYY-MM-DDTHH:mm:ss") }
-    });
-  } catch (error) {
-    console.log(error.response.data.errors);
+      if (response.data.pagination) {
+        nextLink = response.data.pagination.next;
+      } else {
+        nextLink = "";
+      }
+    } catch (error) {
+      console.log(error.response.data.errors);
+    }
   }
+
+  await prisma.updateUser({
+    where: { id: userId },
+    data: {
+      sleepLogLastUpdatedDate: moment(latestDate).format("YYYY-MM-DDTHH:mm:ss")
+    }
+  });
 };
 
 export const createSleepLog = async (userId: string, sleepLog: any) => {
   const dbSleepLog = await prisma.createSleepLog({
-    userId: userId,
+    user: {
+      connect: {
+        id: userId
+      }
+    },
     dateOfSleep: sleepLog.dateOfSleep,
     duration: sleepLog.duration,
     efficiency: sleepLog.efficiency,
@@ -140,35 +169,27 @@ export const createSleepLog = async (userId: string, sleepLog: any) => {
     summaryRestlessCount:
       sleepLog.type == "classic" ? sleepLog.levels.summary.restless.count : 0,
     summaryRestlessMinutes:
-      sleepLog.type == "classic" ? sleepLog.levels.summary.restless.minutes : 0
-  });
-
-  await prisma.updateSleepLog({
-    where: { id: dbSleepLog.id },
-    data: {
-      data: {
-        create: sleepLog.levels.data
-          .map((data: any) => {
-            return {
-              sleepLogId: dbSleepLog.id,
-              dateTime: data.dateTime,
-              level: data.level,
-              second: data.seconds
-            };
-          })
-          .concat(
-            sleepLog.levels.shortData
-              ? sleepLog.levels.shortData.map((data: any) => {
-                  return {
-                    sleepLogId: dbSleepLog.id,
-                    dateTime: data.dateTime,
-                    level: data.level,
-                    second: data.seconds
-                  };
-                })
-              : []
-          )
-      }
+      sleepLog.type == "classic" ? sleepLog.levels.summary.restless.minutes : 0,
+    sleepData: {
+      create: sleepLog.levels.data
+        .map((data: any) => {
+          return {
+            dateTime: data.dateTime,
+            level: data.level,
+            second: data.seconds
+          };
+        })
+        .concat(
+          sleepLog.levels.shortData
+            ? sleepLog.levels.shortData.map((data: any) => {
+                return {
+                  dateTime: data.dateTime,
+                  level: data.level,
+                  second: data.seconds
+                };
+              })
+            : []
+        )
     }
   });
 };

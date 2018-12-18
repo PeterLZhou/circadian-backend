@@ -6,7 +6,10 @@ import { CalorieLogResolvers } from "../graphqlgen";
 export const CalorieLog: CalorieLogResolvers.Type = {
   ...CalorieLogResolvers.defaultResolvers,
 
-  intradayData: parent => {
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  calorieData: parent => {
     throw new Error("Resolver not implemented");
   }
 };

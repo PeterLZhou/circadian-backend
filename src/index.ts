@@ -77,14 +77,17 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
       );
 
       const existingAccountId = await prisma
-        .fitbitAccount({
-          userId: userId
-        })
+        .user({ id: userId })
+        .fitbitAccount()
         .id();
       if (!existingAccountId) {
         prisma
           .createFitbitAccount({
-            userId: userId,
+            user: {
+              connect: {
+                id: userId
+              }
+            },
             accessToken: payload.access_token,
             refreshToken: payload.refresh_token,
             fitbitUserId: payload.user_id,
@@ -98,14 +101,12 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         let acct = prisma
           .updateFitbitAccount({
             data: {
-              userId: userId,
               accessToken: payload.access_token,
               refreshToken: payload.refresh_token,
               fitbitUserId: payload.user_id,
               expiration: expirationDate.toISOString()
             },
             where: {
-              userId: userId,
               id: existingAccountId
             }
           })
@@ -116,11 +117,10 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
       }
     })
     .catch(error => {
-      // console.log(error);
       console.log("fucked up");
       console.log(error.response.data.errors);
     });
-  res.send(200);
+  res.sendStatus(200);
 });
 
 server.start(() => console.log("Server is running on http://localhost:4000"));

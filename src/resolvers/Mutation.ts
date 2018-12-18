@@ -36,13 +36,13 @@ export const Mutation: MutationResolvers.Type = {
       user
     };
   },
-  getSleepLogs: async (_parent, { userId, date }, ctx) => {
+  getSleepLogs: async (_parent, { userId }, ctx) => {
     const result = await getAllUpdatedSleepLogs(userId);
     return "OK";
   },
 
   deleteAllSleepLogs: async (_parent, { userId }, ctx) => {
-    await ctx.db.deleteManySleepLogs({ userId: userId }).catch(error => {
+    await ctx.db.deleteManySleepLogs({ user: { id: userId } }).catch(error => {
       console.log(error);
     });
     await ctx.db.updateUser({
@@ -59,25 +59,33 @@ export const Mutation: MutationResolvers.Type = {
     return user || null;
   },
   createRescueTimeAccount: async (_parent, { userId, oneTimeCode }, ctx) => {
-    console.log("rescue me");
     const payload = await getAccessToken(oneTimeCode);
-    if (payload) {
-      await ctx.db.upsertRescueTimeAccount({
+    const rescueTimeAccount = await ctx.db
+      .user({ id: userId })
+      .rescueTimeAccount();
+    if (payload && rescueTimeAccount) {
+      return ctx.db.updateRescueTimeAccount({
         where: {
-          userId: userId
+          id: rescueTimeAccount.id
         },
-        create: {
-          userId: userId,
-          accessToken: payload.access_token,
-          scope: payload.scope
-        },
-        update: {
+        data: {
           accessToken: payload.access_token,
           scope: payload.scope
         }
       });
+    } else if (payload) {
+      return ctx.db.createRescueTimeAccount({
+        user: {
+          connect: {
+            id: userId
+          }
+        },
+        accessToken: payload.access_token,
+        scope: payload.scope
+      });
     }
-    return "OK";
+
+    throw new Error("Could not get access token");
   },
   deleteFitbitAccount: async (_parent, { id }, ctx) => {
     return await ctx.db.deleteFitbitAccount({ id: id });

@@ -6,7 +6,10 @@ import { SleepLogResolvers } from "../graphqlgen";
 export const SleepLog: SleepLogResolvers.Type = {
   ...SleepLogResolvers.defaultResolvers,
 
-  data: parent => {
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  sleepData: parent => {
     throw new Error("Resolver not implemented");
   }
 };

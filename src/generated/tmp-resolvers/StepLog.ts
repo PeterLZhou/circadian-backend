@@ -6,7 +6,10 @@ import { StepLogResolvers } from "../graphqlgen";
 export const StepLog: StepLogResolvers.Type = {
   ...StepLogResolvers.defaultResolvers,
 
-  intradayData: parent => {
+  user: parent => {
+    throw new Error("Resolver not implemented");
+  },
+  stepData: parent => {
     throw new Error("Resolver not implemented");
   }
 };

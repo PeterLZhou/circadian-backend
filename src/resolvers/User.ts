@@ -9,21 +9,12 @@ export const User: UserResolvers.Type = {
     throw new Error("Resolver not implemented");
   },
   fitbitAccount: parent => {
-    return prisma.fitbitAccount({
-      userId: parent.id
-    });
+    return prisma.user({ id: parent.id }).fitbitAccount();
   },
-  rescueTimeAcccount: parent => {
-    return prisma.rescueTimeAccount({
-      userId: parent.id
-    });
+  rescueTimeAccount: parent => {
+    return prisma.user({ id: parent.id }).rescueTimeAccount();
   },
   sleepLogs: async parent => {
-    await getAllUpdatedSleepLogs(parent.id);
-    return prisma.sleepLogs({
-      where: {
-        userId: parent.id
-      }
-    });
+    return prisma.user({ id: parent.id }).sleepLogs({ last: 5 });
   }
 };

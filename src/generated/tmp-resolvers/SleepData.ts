@@ -4,5 +4,9 @@
 import { SleepDataResolvers } from "../graphqlgen";
 
 export const SleepData: SleepDataResolvers.Type = {
-  ...SleepDataResolvers.defaultResolvers
+  ...SleepDataResolvers.defaultResolvers,
+
+  sleepLog: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

@@ -12,7 +12,7 @@ export const User: UserResolvers.Type = {
   fitbitAccount: parent => {
     throw new Error("Resolver not implemented");
   },
-  rescueTimeAcccount: parent => {
+  rescueTimeAccount: parent => {
     throw new Error("Resolver not implemented");
   },
   sleepLogs: parent => {

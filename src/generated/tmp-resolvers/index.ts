@@ -7,9 +7,9 @@ import { Query } from "./Query";
 import { Mutation } from "./Mutation";
 import { AuthPayload } from "./AuthPayload";
 import { User } from "./User";
-import { RescueTimeAccount } from "./RescueTimeAccount";
 import { GoogleFitAccount } from "./GoogleFitAccount";
 import { FitbitAccount } from "./FitbitAccount";
+import { RescueTimeAccount } from "./RescueTimeAccount";
 import { SleepLog } from "./SleepLog";
 import { SleepData } from "./SleepData";
 import { HeartLog } from "./HeartLog";
@@ -26,9 +26,9 @@ export const resolvers: Resolvers = {
   Mutation,
   AuthPayload,
   User,
-  RescueTimeAccount,
   GoogleFitAccount,
   FitbitAccount,
+  RescueTimeAccount,
   SleepLog,
   SleepData,
   HeartLog,

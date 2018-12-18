@@ -4,5 +4,9 @@
 import { StepDataResolvers } from "../graphqlgen";
 
 export const StepData: StepDataResolvers.Type = {
-  ...StepDataResolvers.defaultResolvers
+  ...StepDataResolvers.defaultResolvers,
+
+  stepLog: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

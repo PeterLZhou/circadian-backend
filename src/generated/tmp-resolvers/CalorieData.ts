@@ -4,5 +4,9 @@
 import { CalorieDataResolvers } from "../graphqlgen";
 
 export const CalorieData: CalorieDataResolvers.Type = {
-  ...CalorieDataResolvers.defaultResolvers
+  ...CalorieDataResolvers.defaultResolvers,
+
+  calorieLog: parent => {
+    throw new Error("Resolver not implemented");
+  }
 };

@@ -4,9 +4,9 @@ import { GraphQLResolveInfo } from "graphql";
 import { Context } from "../types";
 import { AuthPayload } from "../types";
 import { UserNode } from "./prisma-client";
-import { RescueTimeAccountNode } from "./prisma-client";
 import { GoogleFitAccountNode } from "./prisma-client";
 import { FitbitAccountNode } from "./prisma-client";
+import { RescueTimeAccountNode } from "./prisma-client";
 import { SleepLogNode } from "./prisma-client";
 import { SleepDataNode } from "./prisma-client";
 import { HeartLogNode } from "./prisma-client";
@@ -155,7 +155,7 @@ export namespace MutationResolvers {
     args: ArgsCreateRescueTimeAccount,
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => RescueTimeAccountNode | Promise<RescueTimeAccountNode>;
 
   export type DeleteFitbitAccountResolver = (
     parent: {},
@@ -205,7 +205,7 @@ export namespace MutationResolvers {
       args: ArgsCreateRescueTimeAccount,
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => RescueTimeAccountNode | Promise<RescueTimeAccountNode>;
 
     deleteFitbitAccount: (
       parent: {},
@@ -257,6 +257,7 @@ export namespace UserResolvers {
   export const defaultResolvers = {
     id: (parent: UserNode) => parent.id,
     email: (parent: UserNode) => parent.email,
+    password: (parent: UserNode) => parent.password,
     sleepLogLastUpdatedDate: (parent: UserNode) =>
       parent.sleepLogLastUpdatedDate === undefined
         ? null
@@ -265,7 +266,8 @@ export namespace UserResolvers {
       parent.productivityLogLastUpdatedDate === undefined
         ? null
         : parent.productivityLogLastUpdatedDate,
-    createdAt: (parent: UserNode) => parent.createdAt
+    createdAt: (parent: UserNode) => parent.createdAt,
+    updatedAt: (parent: UserNode) => parent.updatedAt
   };
 
   export type IdResolver = (
@@ -276,6 +278,13 @@ export namespace UserResolvers {
   ) => string | Promise<string>;
 
   export type EmailResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type PasswordResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
@@ -296,7 +305,7 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
-  export type RescueTimeAcccountResolver = (
+  export type RescueTimeAccountResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
@@ -331,6 +340,13 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
+  export type UpdatedAtResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
   export interface Type {
     id: (
       parent: UserNode,
@@ -340,6 +356,13 @@ export namespace UserResolvers {
     ) => string | Promise<string>;
 
     email: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    password: (
       parent: UserNode,
       args: {},
       ctx: Context,
@@ -360,7 +383,7 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
-    rescueTimeAcccount: (
+    rescueTimeAccount: (
       parent: UserNode,
       args: {},
       ctx: Context,
@@ -394,69 +417,9 @@ export namespace UserResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
-  }
-}
 
-export namespace RescueTimeAccountResolvers {
-  export const defaultResolvers = {
-    id: (parent: RescueTimeAccountNode) => parent.id,
-    userId: (parent: RescueTimeAccountNode) => parent.userId,
-    accessToken: (parent: RescueTimeAccountNode) => parent.accessToken,
-    scope: (parent: RescueTimeAccountNode) => parent.scope
-  };
-
-  export type IdResolver = (
-    parent: RescueTimeAccountNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type UserIdResolver = (
-    parent: RescueTimeAccountNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type AccessTokenResolver = (
-    parent: RescueTimeAccountNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type ScopeResolver = (
-    parent: RescueTimeAccountNode,
-    args: {},
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export interface Type {
-    id: (
-      parent: RescueTimeAccountNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    userId: (
-      parent: RescueTimeAccountNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    accessToken: (
-      parent: RescueTimeAccountNode,
-      args: {},
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    scope: (
-      parent: RescueTimeAccountNode,
+    updatedAt: (
+      parent: UserNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
@@ -467,7 +430,6 @@ export namespace RescueTimeAccountResolvers {
 export namespace GoogleFitAccountResolvers {
   export const defaultResolvers = {
     id: (parent: GoogleFitAccountNode) => parent.id,
-    userId: (parent: GoogleFitAccountNode) => parent.userId,
     refreshToken: (parent: GoogleFitAccountNode) => parent.refreshToken,
     accessToken: (parent: GoogleFitAccountNode) => parent.accessToken,
     expiration: (parent: GoogleFitAccountNode) => parent.expiration
@@ -480,12 +442,12 @@ export namespace GoogleFitAccountResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type UserIdResolver = (
+  export type UserResolver = (
     parent: GoogleFitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => UserNode | Promise<UserNode>;
 
   export type RefreshTokenResolver = (
     parent: GoogleFitAccountNode,
@@ -516,12 +478,12 @@ export namespace GoogleFitAccountResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    userId: (
+    user: (
       parent: GoogleFitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => UserNode | Promise<UserNode>;
 
     refreshToken: (
       parent: GoogleFitAccountNode,
@@ -549,7 +511,6 @@ export namespace GoogleFitAccountResolvers {
 export namespace FitbitAccountResolvers {
   export const defaultResolvers = {
     id: (parent: FitbitAccountNode) => parent.id,
-    userId: (parent: FitbitAccountNode) => parent.userId,
     fitbitUserId: (parent: FitbitAccountNode) => parent.fitbitUserId,
     refreshToken: (parent: FitbitAccountNode) => parent.refreshToken,
     accessToken: (parent: FitbitAccountNode) => parent.accessToken,
@@ -563,12 +524,12 @@ export namespace FitbitAccountResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type UserIdResolver = (
+  export type UserResolver = (
     parent: FitbitAccountNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => UserNode | Promise<UserNode>;
 
   export type FitbitUserIdResolver = (
     parent: FitbitAccountNode,
@@ -606,12 +567,12 @@ export namespace FitbitAccountResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    userId: (
+    user: (
       parent: FitbitAccountNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => UserNode | Promise<UserNode>;
 
     fitbitUserId: (
       parent: FitbitAccountNode,
@@ -643,10 +604,75 @@ export namespace FitbitAccountResolvers {
   }
 }
 
+export namespace RescueTimeAccountResolvers {
+  export const defaultResolvers = {
+    id: (parent: RescueTimeAccountNode) => parent.id,
+    accessToken: (parent: RescueTimeAccountNode) => parent.accessToken,
+    scope: (parent: RescueTimeAccountNode) => parent.scope
+  };
+
+  export type IdResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type UserResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | Promise<UserNode>;
+
+  export type AccessTokenResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type ScopeResolver = (
+    parent: RescueTimeAccountNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export interface Type {
+    id: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    user: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | Promise<UserNode>;
+
+    accessToken: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    scope: (
+      parent: RescueTimeAccountNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+  }
+}
+
 export namespace SleepLogResolvers {
   export const defaultResolvers = {
     id: (parent: SleepLogNode) => parent.id,
-    userId: (parent: SleepLogNode) => parent.userId,
     dateOfSleep: (parent: SleepLogNode) => parent.dateOfSleep,
     duration: (parent: SleepLogNode) => parent.duration,
     efficiency: (parent: SleepLogNode) => parent.efficiency,
@@ -729,12 +755,12 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type UserIdResolver = (
+  export type UserResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => UserNode | Promise<UserNode>;
 
   export type DateOfSleepResolver = (
     parent: SleepLogNode,
@@ -820,7 +846,7 @@ export namespace SleepLogResolvers {
     info: GraphQLResolveInfo
   ) => string | null | Promise<string | null>;
 
-  export type DataResolver = (
+  export type SleepDataResolver = (
     parent: SleepLogNode,
     args: {},
     ctx: Context,
@@ -961,12 +987,12 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    userId: (
+    user: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => UserNode | Promise<UserNode>;
 
     dateOfSleep: (
       parent: SleepLogNode,
@@ -1052,7 +1078,7 @@ export namespace SleepLogResolvers {
       info: GraphQLResolveInfo
     ) => string | null | Promise<string | null>;
 
-    data: (
+    sleepData: (
       parent: SleepLogNode,
       args: {},
       ctx: Context,
@@ -1190,7 +1216,6 @@ export namespace SleepLogResolvers {
 export namespace SleepDataResolvers {
   export const defaultResolvers = {
     id: (parent: SleepDataNode) => parent.id,
-    sleepLogId: (parent: SleepDataNode) => parent.sleepLogId,
     dateTime: (parent: SleepDataNode) => parent.dateTime,
     level: (parent: SleepDataNode) => parent.level,
     second: (parent: SleepDataNode) => parent.second
@@ -1203,12 +1228,12 @@ export namespace SleepDataResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type SleepLogIdResolver = (
+  export type SleepLogResolver = (
     parent: SleepDataNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => SleepLogNode | Promise<SleepLogNode>;
 
   export type DateTimeResolver = (
     parent: SleepDataNode,
@@ -1239,12 +1264,12 @@ export namespace SleepDataResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    sleepLogId: (
+    sleepLog: (
       parent: SleepDataNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => SleepLogNode | Promise<SleepLogNode>;
 
     dateTime: (
       parent: SleepDataNode,
@@ -1297,6 +1322,13 @@ export namespace HeartLogResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
+
+  export type UserResolver = (
+    parent: HeartLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | Promise<UserNode>;
 
   export type DateTimeResolver = (
     parent: HeartLogNode,
@@ -1417,7 +1449,7 @@ export namespace HeartLogResolvers {
     info: GraphQLResolveInfo
   ) => number | Promise<number>;
 
-  export type IntradayDataResolver = (
+  export type HeartDataResolver = (
     parent: HeartLogNode,
     args: {},
     ctx: Context,
@@ -1431,6 +1463,13 @@ export namespace HeartLogResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+
+    user: (
+      parent: HeartLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | Promise<UserNode>;
 
     dateTime: (
       parent: HeartLogNode,
@@ -1551,7 +1590,7 @@ export namespace HeartLogResolvers {
       info: GraphQLResolveInfo
     ) => number | Promise<number>;
 
-    intradayData: (
+    heartData: (
       parent: HeartLogNode,
       args: {},
       ctx: Context,
@@ -1563,7 +1602,6 @@ export namespace HeartLogResolvers {
 export namespace HeartDataResolvers {
   export const defaultResolvers = {
     id: (parent: HeartDataNode) => parent.id,
-    heartLogId: (parent: HeartDataNode) => parent.heartLogId,
     dateTime: (parent: HeartDataNode) => parent.dateTime,
     heartRate: (parent: HeartDataNode) => parent.heartRate
   };
@@ -1575,12 +1613,12 @@ export namespace HeartDataResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type HeartLogIdResolver = (
+  export type HeartLogResolver = (
     parent: HeartDataNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => HeartLogNode | Promise<HeartLogNode>;
 
   export type DateTimeResolver = (
     parent: HeartDataNode,
@@ -1604,12 +1642,12 @@ export namespace HeartDataResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    heartLogId: (
+    heartLog: (
       parent: HeartDataNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => HeartLogNode | Promise<HeartLogNode>;
 
     dateTime: (
       parent: HeartDataNode,
@@ -1641,6 +1679,13 @@ export namespace StepLogResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
+  export type UserResolver = (
+    parent: StepLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | Promise<UserNode>;
+
   export type DateResolver = (
     parent: StepLogNode,
     args: {},
@@ -1655,7 +1700,7 @@ export namespace StepLogResolvers {
     info: GraphQLResolveInfo
   ) => number | Promise<number>;
 
-  export type IntradayDataResolver = (
+  export type StepDataResolver = (
     parent: StepLogNode,
     args: {},
     ctx: Context,
@@ -1669,6 +1714,13 @@ export namespace StepLogResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+
+    user: (
+      parent: StepLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | Promise<UserNode>;
 
     date: (
       parent: StepLogNode,
@@ -1684,7 +1736,7 @@ export namespace StepLogResolvers {
       info: GraphQLResolveInfo
     ) => number | Promise<number>;
 
-    intradayData: (
+    stepData: (
       parent: StepLogNode,
       args: {},
       ctx: Context,
@@ -1696,7 +1748,6 @@ export namespace StepLogResolvers {
 export namespace StepDataResolvers {
   export const defaultResolvers = {
     id: (parent: StepDataNode) => parent.id,
-    stepLogId: (parent: StepDataNode) => parent.stepLogId,
     dateTime: (parent: StepDataNode) => parent.dateTime,
     steps: (parent: StepDataNode) => parent.steps
   };
@@ -1708,12 +1759,12 @@ export namespace StepDataResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type StepLogIdResolver = (
+  export type StepLogResolver = (
     parent: StepDataNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => StepLogNode | Promise<StepLogNode>;
 
   export type DateTimeResolver = (
     parent: StepDataNode,
@@ -1737,12 +1788,12 @@ export namespace StepDataResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    stepLogId: (
+    stepLog: (
       parent: StepDataNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => StepLogNode | Promise<StepLogNode>;
 
     dateTime: (
       parent: StepDataNode,
@@ -1774,6 +1825,13 @@ export namespace CalorieLogResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
+  export type UserResolver = (
+    parent: CalorieLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | Promise<UserNode>;
+
   export type DateResolver = (
     parent: CalorieLogNode,
     args: {},
@@ -1788,7 +1846,7 @@ export namespace CalorieLogResolvers {
     info: GraphQLResolveInfo
   ) => number | Promise<number>;
 
-  export type IntradayDataResolver = (
+  export type CalorieDataResolver = (
     parent: CalorieLogNode,
     args: {},
     ctx: Context,
@@ -1802,6 +1860,13 @@ export namespace CalorieLogResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+
+    user: (
+      parent: CalorieLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | Promise<UserNode>;
 
     date: (
       parent: CalorieLogNode,
@@ -1817,7 +1882,7 @@ export namespace CalorieLogResolvers {
       info: GraphQLResolveInfo
     ) => number | Promise<number>;
 
-    intradayData: (
+    calorieData: (
       parent: CalorieLogNode,
       args: {},
       ctx: Context,
@@ -1829,7 +1894,6 @@ export namespace CalorieLogResolvers {
 export namespace CalorieDataResolvers {
   export const defaultResolvers = {
     id: (parent: CalorieDataNode) => parent.id,
-    calorieLogId: (parent: CalorieDataNode) => parent.calorieLogId,
     dateTime: (parent: CalorieDataNode) => parent.dateTime,
     calories: (parent: CalorieDataNode) => parent.calories
   };
@@ -1841,12 +1905,12 @@ export namespace CalorieDataResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type CalorieLogIdResolver = (
+  export type CalorieLogResolver = (
     parent: CalorieDataNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => CalorieLogNode | Promise<CalorieLogNode>;
 
   export type DateTimeResolver = (
     parent: CalorieDataNode,
@@ -1870,12 +1934,12 @@ export namespace CalorieDataResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    calorieLogId: (
+    calorieLog: (
       parent: CalorieDataNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => CalorieLogNode | Promise<CalorieLogNode>;
 
     dateTime: (
       parent: CalorieDataNode,
@@ -1907,6 +1971,13 @@ export namespace DistanceLogResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
+  export type UserResolver = (
+    parent: DistanceLogNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => UserNode | Promise<UserNode>;
+
   export type DateResolver = (
     parent: DistanceLogNode,
     args: {},
@@ -1921,7 +1992,7 @@ export namespace DistanceLogResolvers {
     info: GraphQLResolveInfo
   ) => number | Promise<number>;
 
-  export type IntradayDataResolver = (
+  export type DistanceDataResolver = (
     parent: DistanceLogNode,
     args: {},
     ctx: Context,
@@ -1935,6 +2006,13 @@ export namespace DistanceLogResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
+
+    user: (
+      parent: DistanceLogNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => UserNode | Promise<UserNode>;
 
     date: (
       parent: DistanceLogNode,
@@ -1950,7 +2028,7 @@ export namespace DistanceLogResolvers {
       info: GraphQLResolveInfo
     ) => number | Promise<number>;
 
-    intradayData: (
+    distanceData: (
       parent: DistanceLogNode,
       args: {},
       ctx: Context,
@@ -1962,7 +2040,6 @@ export namespace DistanceLogResolvers {
 export namespace DistanceDataResolvers {
   export const defaultResolvers = {
     id: (parent: DistanceDataNode) => parent.id,
-    distanceLogId: (parent: DistanceDataNode) => parent.distanceLogId,
     dateTime: (parent: DistanceDataNode) => parent.dateTime,
     distance: (parent: DistanceDataNode) => parent.distance
   };
@@ -1974,12 +2051,12 @@ export namespace DistanceDataResolvers {
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
 
-  export type DistanceLogIdResolver = (
+  export type DistanceLogResolver = (
     parent: DistanceDataNode,
     args: {},
     ctx: Context,
     info: GraphQLResolveInfo
-  ) => string | Promise<string>;
+  ) => DistanceLogNode | Promise<DistanceLogNode>;
 
   export type DateTimeResolver = (
     parent: DistanceDataNode,
@@ -2003,12 +2080,12 @@ export namespace DistanceDataResolvers {
       info: GraphQLResolveInfo
     ) => string | Promise<string>;
 
-    distanceLogId: (
+    distanceLog: (
       parent: DistanceDataNode,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => string | Promise<string>;
+    ) => DistanceLogNode | Promise<DistanceLogNode>;
 
     dateTime: (
       parent: DistanceDataNode,
@@ -2031,9 +2108,9 @@ export interface Resolvers {
   Mutation: MutationResolvers.Type;
   AuthPayload: AuthPayloadResolvers.Type;
   User: UserResolvers.Type;
-  RescueTimeAccount: RescueTimeAccountResolvers.Type;
   GoogleFitAccount: GoogleFitAccountResolvers.Type;
   FitbitAccount: FitbitAccountResolvers.Type;
+  RescueTimeAccount: RescueTimeAccountResolvers.Type;
   SleepLog: SleepLogResolvers.Type;
   SleepData: SleepDataResolvers.Type;
   HeartLog: HeartLogResolvers.Type;

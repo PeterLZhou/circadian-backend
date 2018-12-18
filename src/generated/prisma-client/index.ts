@@ -690,132 +690,6 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type RescueTimeAccountOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "accessToken_ASC"
-  | "accessToken_DESC"
-  | "scope_ASC"
-  | "scope_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type CalorieLogOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "date_ASC"
-  | "date_DESC"
-  | "totalCalories_ASC"
-  | "totalCalories_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type HeartLogOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "caloriesOutOfRange_ASC"
-  | "caloriesOutOfRange_DESC"
-  | "minutesOutOfRange_ASC"
-  | "minutesOutOfRange_DESC"
-  | "maxValueOutOfRange_ASC"
-  | "maxValueOutOfRange_DESC"
-  | "minValueOutOfRange_ASC"
-  | "minValueOutOfRange_DESC"
-  | "caloriesFatBurn_ASC"
-  | "caloriesFatBurn_DESC"
-  | "minutesFatBurn_ASC"
-  | "minutesFatBurn_DESC"
-  | "maxValueFatBurn_ASC"
-  | "maxValueFatBurn_DESC"
-  | "minValueFatBurn_ASC"
-  | "minValueFatBurn_DESC"
-  | "caloriesCardio_ASC"
-  | "caloriesCardio_DESC"
-  | "minutesCardio_ASC"
-  | "minutesCardio_DESC"
-  | "maxValueCardio_ASC"
-  | "maxValueCardio_DESC"
-  | "minValueCardio_ASC"
-  | "minValueCardio_DESC"
-  | "caloriesPeak_ASC"
-  | "caloriesPeak_DESC"
-  | "minutesPeak_ASC"
-  | "minutesPeak_DESC"
-  | "maxValuePeak_ASC"
-  | "maxValuePeak_DESC"
-  | "minValuePeak_ASC"
-  | "minValuePeak_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type UserOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "password_ASC"
-  | "password_DESC"
-  | "sleepLogLastUpdatedDate_ASC"
-  | "sleepLogLastUpdatedDate_DESC"
-  | "productivityLogLastUpdatedDate_ASC"
-  | "productivityLogLastUpdatedDate_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type HeartDataOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "heartLogId_ASC"
-  | "heartLogId_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "heartRate_ASC"
-  | "heartRate_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type StepDataOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "stepLogId_ASC"
-  | "stepLogId_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "steps_ASC"
-  | "steps_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type DistanceDataOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "distanceLogId_ASC"
-  | "distanceLogId_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "distance_ASC"
-  | "distance_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
 export type DistanceLogOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -828,89 +702,9 @@ export type DistanceLogOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type FitbitAccountOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "fitbitUserId_ASC"
-  | "fitbitUserId_DESC"
-  | "refreshToken_ASC"
-  | "refreshToken_DESC"
-  | "accessToken_ASC"
-  | "accessToken_DESC"
-  | "expiration_ASC"
-  | "expiration_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type GoogleFitAccountOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
-  | "refreshToken_ASC"
-  | "refreshToken_DESC"
-  | "accessToken_ASC"
-  | "accessToken_DESC"
-  | "expiration_ASC"
-  | "expiration_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type CalorieDataOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "calorieLogId_ASC"
-  | "calorieLogId_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "calories_ASC"
-  | "calories_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type StepLogOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "date_ASC"
-  | "date_DESC"
-  | "totalSteps_ASC"
-  | "totalSteps_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
-
-export type SleepDataOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "sleepLogId_ASC"
-  | "sleepLogId_DESC"
-  | "dateTime_ASC"
-  | "dateTime_DESC"
-  | "level_ASC"
-  | "level_DESC"
-  | "second_ASC"
-  | "second_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
 export type SleepLogOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "userId_ASC"
-  | "userId_DESC"
   | "dateOfSleep_ASC"
   | "dateOfSleep_DESC"
   | "duration_ASC"
@@ -976,20 +770,295 @@ export type SleepLogOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export interface CalorieLogCreateInput {
-  date: DateTimeInput;
-  totalCalories: Float;
-  intradayData?: CalorieDataCreateManyInput;
+export type CalorieLogOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "date_ASC"
+  | "date_DESC"
+  | "totalCalories_ASC"
+  | "totalCalories_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type UserOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "sleepLogLastUpdatedDate_ASC"
+  | "sleepLogLastUpdatedDate_DESC"
+  | "productivityLogLastUpdatedDate_ASC"
+  | "productivityLogLastUpdatedDate_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type StepDataOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "steps_ASC"
+  | "steps_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type GoogleFitAccountOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "refreshToken_ASC"
+  | "refreshToken_DESC"
+  | "accessToken_ASC"
+  | "accessToken_DESC"
+  | "expiration_ASC"
+  | "expiration_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type SleepDataOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "level_ASC"
+  | "level_DESC"
+  | "second_ASC"
+  | "second_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type HeartLogOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "caloriesOutOfRange_ASC"
+  | "caloriesOutOfRange_DESC"
+  | "minutesOutOfRange_ASC"
+  | "minutesOutOfRange_DESC"
+  | "maxValueOutOfRange_ASC"
+  | "maxValueOutOfRange_DESC"
+  | "minValueOutOfRange_ASC"
+  | "minValueOutOfRange_DESC"
+  | "caloriesFatBurn_ASC"
+  | "caloriesFatBurn_DESC"
+  | "minutesFatBurn_ASC"
+  | "minutesFatBurn_DESC"
+  | "maxValueFatBurn_ASC"
+  | "maxValueFatBurn_DESC"
+  | "minValueFatBurn_ASC"
+  | "minValueFatBurn_DESC"
+  | "caloriesCardio_ASC"
+  | "caloriesCardio_DESC"
+  | "minutesCardio_ASC"
+  | "minutesCardio_DESC"
+  | "maxValueCardio_ASC"
+  | "maxValueCardio_DESC"
+  | "minValueCardio_ASC"
+  | "minValueCardio_DESC"
+  | "caloriesPeak_ASC"
+  | "caloriesPeak_DESC"
+  | "minutesPeak_ASC"
+  | "minutesPeak_DESC"
+  | "maxValuePeak_ASC"
+  | "maxValuePeak_DESC"
+  | "minValuePeak_ASC"
+  | "minValuePeak_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type HeartDataOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "heartRate_ASC"
+  | "heartRate_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type StepLogOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "date_ASC"
+  | "date_DESC"
+  | "totalSteps_ASC"
+  | "totalSteps_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type FitbitAccountOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "fitbitUserId_ASC"
+  | "fitbitUserId_DESC"
+  | "refreshToken_ASC"
+  | "refreshToken_DESC"
+  | "accessToken_ASC"
+  | "accessToken_DESC"
+  | "expiration_ASC"
+  | "expiration_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type RescueTimeAccountOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "accessToken_ASC"
+  | "accessToken_DESC"
+  | "scope_ASC"
+  | "scope_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type DistanceDataOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "distance_ASC"
+  | "distance_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type CalorieDataOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "dateTime_ASC"
+  | "dateTime_DESC"
+  | "calories_ASC"
+  | "calories_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export interface HeartDataUpdateWithWhereUniqueWithoutHeartLogInput {
+  where: HeartDataWhereUniqueInput;
+  data: HeartDataUpdateWithoutHeartLogDataInput;
 }
 
 export type CalorieDataWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface DistanceLogCreateInput {
-  date: DateTimeInput;
-  totalDistance: Float;
-  intradayData?: DistanceDataCreateManyInput;
+export interface StepDataUpdateWithoutStepLogDataInput {
+  dateTime?: DateTimeInput;
+  steps?: Int;
+}
+
+export interface HeartDataWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  heartLog?: HeartLogWhereInput;
+  dateTime?: DateTimeInput;
+  dateTime_not?: DateTimeInput;
+  dateTime_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_lt?: DateTimeInput;
+  dateTime_lte?: DateTimeInput;
+  dateTime_gt?: DateTimeInput;
+  dateTime_gte?: DateTimeInput;
+  heartRate?: Float;
+  heartRate_not?: Float;
+  heartRate_in?: Float[] | Float;
+  heartRate_not_in?: Float[] | Float;
+  heartRate_lt?: Float;
+  heartRate_lte?: Float;
+  heartRate_gt?: Float;
+  heartRate_gte?: Float;
+  AND?: HeartDataWhereInput[] | HeartDataWhereInput;
+  OR?: HeartDataWhereInput[] | HeartDataWhereInput;
+  NOT?: HeartDataWhereInput[] | HeartDataWhereInput;
+}
+
+export interface StepDataUpsertWithWhereUniqueWithoutStepLogInput {
+  where: StepDataWhereUniqueInput;
+  update: StepDataUpdateWithoutStepLogDataInput;
+  create: StepDataCreateWithoutStepLogInput;
+}
+
+export interface StepLogWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  totalSteps?: Int;
+  totalSteps_not?: Int;
+  totalSteps_in?: Int[] | Int;
+  totalSteps_not_in?: Int[] | Int;
+  totalSteps_lt?: Int;
+  totalSteps_lte?: Int;
+  totalSteps_gt?: Int;
+  totalSteps_gte?: Int;
+  stepData_every?: StepDataWhereInput;
+  stepData_some?: StepDataWhereInput;
+  stepData_none?: StepDataWhereInput;
+  AND?: StepLogWhereInput[] | StepLogWhereInput;
+  OR?: StepLogWhereInput[] | StepLogWhereInput;
+  NOT?: StepLogWhereInput[] | StepLogWhereInput;
+}
+
+export interface StepLogUpsertWithWhereUniqueWithoutUserInput {
+  where: StepLogWhereUniqueInput;
+  update: StepLogUpdateWithoutUserDataInput;
+  create: StepLogCreateWithoutUserInput;
 }
 
 export interface CalorieLogWhereInput {
@@ -1007,6 +1076,7 @@ export interface CalorieLogWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
   date?: DateTimeInput;
   date_not?: DateTimeInput;
   date_in?: DateTimeInput[] | DateTimeInput;
@@ -1023,48 +1093,1155 @@ export interface CalorieLogWhereInput {
   totalCalories_lte?: Float;
   totalCalories_gt?: Float;
   totalCalories_gte?: Float;
-  intradayData_every?: CalorieDataWhereInput;
-  intradayData_some?: CalorieDataWhereInput;
-  intradayData_none?: CalorieDataWhereInput;
+  calorieData_every?: CalorieDataWhereInput;
+  calorieData_some?: CalorieDataWhereInput;
+  calorieData_none?: CalorieDataWhereInput;
   AND?: CalorieLogWhereInput[] | CalorieLogWhereInput;
   OR?: CalorieLogWhereInput[] | CalorieLogWhereInput;
   NOT?: CalorieLogWhereInput[] | CalorieLogWhereInput;
 }
 
-export interface StepDataUpdateManyInput {
-  create?: StepDataCreateInput[] | StepDataCreateInput;
+export interface DistanceLogUpdateManyWithoutUserInput {
+  create?:
+    | DistanceLogCreateWithoutUserInput[]
+    | DistanceLogCreateWithoutUserInput;
+  delete?: DistanceLogWhereUniqueInput[] | DistanceLogWhereUniqueInput;
+  connect?: DistanceLogWhereUniqueInput[] | DistanceLogWhereUniqueInput;
+  disconnect?: DistanceLogWhereUniqueInput[] | DistanceLogWhereUniqueInput;
   update?:
-    | StepDataUpdateWithWhereUniqueNestedInput[]
-    | StepDataUpdateWithWhereUniqueNestedInput;
+    | DistanceLogUpdateWithWhereUniqueWithoutUserInput[]
+    | DistanceLogUpdateWithWhereUniqueWithoutUserInput;
   upsert?:
-    | StepDataUpsertWithWhereUniqueNestedInput[]
-    | StepDataUpsertWithWhereUniqueNestedInput;
+    | DistanceLogUpsertWithWhereUniqueWithoutUserInput[]
+    | DistanceLogUpsertWithWhereUniqueWithoutUserInput;
+}
+
+export interface DistanceLogWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  totalDistance?: Float;
+  totalDistance_not?: Float;
+  totalDistance_in?: Float[] | Float;
+  totalDistance_not_in?: Float[] | Float;
+  totalDistance_lt?: Float;
+  totalDistance_lte?: Float;
+  totalDistance_gt?: Float;
+  totalDistance_gte?: Float;
+  distanceData_every?: DistanceDataWhereInput;
+  distanceData_some?: DistanceDataWhereInput;
+  distanceData_none?: DistanceDataWhereInput;
+  AND?: DistanceLogWhereInput[] | DistanceLogWhereInput;
+  OR?: DistanceLogWhereInput[] | DistanceLogWhereInput;
+  NOT?: DistanceLogWhereInput[] | DistanceLogWhereInput;
+}
+
+export interface StepLogCreateWithoutUserInput {
+  date: DateTimeInput;
+  totalSteps: Int;
+  stepData?: StepDataCreateManyWithoutStepLogInput;
+}
+
+export interface HeartLogCreateOneWithoutHeartDataInput {
+  create?: HeartLogCreateWithoutHeartDataInput;
+  connect?: HeartLogWhereUniqueInput;
+}
+
+export interface StepDataCreateManyWithoutStepLogInput {
+  create?:
+    | StepDataCreateWithoutStepLogInput[]
+    | StepDataCreateWithoutStepLogInput;
+  connect?: StepDataWhereUniqueInput[] | StepDataWhereUniqueInput;
+}
+
+export interface DistanceLogUpdateWithWhereUniqueWithoutUserInput {
+  where: DistanceLogWhereUniqueInput;
+  data: DistanceLogUpdateWithoutUserDataInput;
+}
+
+export interface StepDataCreateWithoutStepLogInput {
+  dateTime: DateTimeInput;
+  steps: Int;
+}
+
+export interface StepLogSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: StepLogWhereInput;
+  AND?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
+  OR?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
+  NOT?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
+}
+
+export interface DistanceLogCreateManyWithoutUserInput {
+  create?:
+    | DistanceLogCreateWithoutUserInput[]
+    | DistanceLogCreateWithoutUserInput;
+  connect?: DistanceLogWhereUniqueInput[] | DistanceLogWhereUniqueInput;
+}
+
+export interface StepDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: StepDataWhereInput;
+  AND?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
+  OR?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
+  NOT?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
+}
+
+export interface DistanceLogCreateWithoutUserInput {
+  date: DateTimeInput;
+  totalDistance: Float;
+  distanceData?: DistanceDataCreateManyWithoutDistanceLogInput;
+}
+
+export interface SleepLogSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: SleepLogWhereInput;
+  AND?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+  OR?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+  NOT?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+}
+
+export interface DistanceDataCreateManyWithoutDistanceLogInput {
+  create?:
+    | DistanceDataCreateWithoutDistanceLogInput[]
+    | DistanceDataCreateWithoutDistanceLogInput;
+  connect?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
+}
+
+export interface SleepDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: SleepDataWhereInput;
+  AND?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+  OR?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+  NOT?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
+}
+
+export interface DistanceDataCreateWithoutDistanceLogInput {
+  dateTime: DateTimeInput;
+  distance: Float;
+}
+
+export interface RescueTimeAccountSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: RescueTimeAccountWhereInput;
+  AND?:
+    | RescueTimeAccountSubscriptionWhereInput[]
+    | RescueTimeAccountSubscriptionWhereInput;
+  OR?:
+    | RescueTimeAccountSubscriptionWhereInput[]
+    | RescueTimeAccountSubscriptionWhereInput;
+  NOT?:
+    | RescueTimeAccountSubscriptionWhereInput[]
+    | RescueTimeAccountSubscriptionWhereInput;
+}
+
+export interface CalorieDataUpdateInput {
+  calorieLog?: CalorieLogUpdateOneRequiredWithoutCalorieDataInput;
+  dateTime?: DateTimeInput;
+  calories?: Float;
+}
+
+export interface HeartLogSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: HeartLogWhereInput;
+  AND?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
+  OR?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
+  NOT?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
+}
+
+export interface CalorieLogUpdateOneRequiredWithoutCalorieDataInput {
+  create?: CalorieLogCreateWithoutCalorieDataInput;
+  update?: CalorieLogUpdateWithoutCalorieDataDataInput;
+  upsert?: CalorieLogUpsertWithoutCalorieDataInput;
+  connect?: CalorieLogWhereUniqueInput;
+}
+
+export interface HeartDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: HeartDataWhereInput;
+  AND?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
+  OR?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
+  NOT?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
+}
+
+export interface CalorieLogUpdateWithoutCalorieDataDataInput {
+  user?: UserUpdateOneRequiredWithoutCalorieLogsInput;
+  date?: DateTimeInput;
+  totalCalories?: Float;
+}
+
+export interface FitbitAccountSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: FitbitAccountWhereInput;
+  AND?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+  OR?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+  NOT?:
+    | FitbitAccountSubscriptionWhereInput[]
+    | FitbitAccountSubscriptionWhereInput;
+}
+
+export interface UserUpdateOneRequiredWithoutCalorieLogsInput {
+  create?: UserCreateWithoutCalorieLogsInput;
+  update?: UserUpdateWithoutCalorieLogsDataInput;
+  upsert?: UserUpsertWithoutCalorieLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface DistanceDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: DistanceDataWhereInput;
+  AND?:
+    | DistanceDataSubscriptionWhereInput[]
+    | DistanceDataSubscriptionWhereInput;
+  OR?:
+    | DistanceDataSubscriptionWhereInput[]
+    | DistanceDataSubscriptionWhereInput;
+  NOT?:
+    | DistanceDataSubscriptionWhereInput[]
+    | DistanceDataSubscriptionWhereInput;
+}
+
+export interface UserUpdateWithoutCalorieLogsDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface CalorieDataSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CalorieDataWhereInput;
+  AND?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
+  OR?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
+  NOT?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
+}
+
+export interface GoogleFitAccountUpdateOneWithoutUserInput {
+  create?: GoogleFitAccountCreateWithoutUserInput;
+  update?: GoogleFitAccountUpdateWithoutUserDataInput;
+  upsert?: GoogleFitAccountUpsertWithoutUserInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: GoogleFitAccountWhereUniqueInput;
+}
+
+export interface UserCreateInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface GoogleFitAccountUpdateWithoutUserDataInput {
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface StepLogUpdateInput {
+  user?: UserUpdateOneRequiredWithoutStepLogsInput;
+  date?: DateTimeInput;
+  totalSteps?: Int;
+  stepData?: StepDataUpdateManyWithoutStepLogInput;
+}
+
+export interface GoogleFitAccountUpsertWithoutUserInput {
+  update: GoogleFitAccountUpdateWithoutUserDataInput;
+  create: GoogleFitAccountCreateWithoutUserInput;
+}
+
+export interface StepLogUpsertWithoutStepDataInput {
+  update: StepLogUpdateWithoutStepDataDataInput;
+  create: StepLogCreateWithoutStepDataInput;
+}
+
+export interface FitbitAccountUpdateOneWithoutUserInput {
+  create?: FitbitAccountCreateWithoutUserInput;
+  update?: FitbitAccountUpdateWithoutUserDataInput;
+  upsert?: FitbitAccountUpsertWithoutUserInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: FitbitAccountWhereUniqueInput;
+}
+
+export interface UserUpsertWithoutStepLogsInput {
+  update: UserUpdateWithoutStepLogsDataInput;
+  create: UserCreateWithoutStepLogsInput;
+}
+
+export interface FitbitAccountUpdateWithoutUserDataInput {
+  fitbitUserId?: String;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface UserUpdateOneRequiredWithoutStepLogsInput {
+  create?: UserCreateWithoutStepLogsInput;
+  update?: UserUpdateWithoutStepLogsDataInput;
+  upsert?: UserUpsertWithoutStepLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface FitbitAccountUpsertWithoutUserInput {
+  update: FitbitAccountUpdateWithoutUserDataInput;
+  create: FitbitAccountCreateWithoutUserInput;
+}
+
+export interface StepLogUpdateWithoutStepDataDataInput {
+  user?: UserUpdateOneRequiredWithoutStepLogsInput;
+  date?: DateTimeInput;
+  totalSteps?: Int;
+}
+
+export interface RescueTimeAccountUpdateOneWithoutUserInput {
+  create?: RescueTimeAccountCreateWithoutUserInput;
+  update?: RescueTimeAccountUpdateWithoutUserDataInput;
+  upsert?: RescueTimeAccountUpsertWithoutUserInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: RescueTimeAccountWhereUniqueInput;
+}
+
+export interface StepDataUpdateInput {
+  stepLog?: StepLogUpdateOneRequiredWithoutStepDataInput;
+  dateTime?: DateTimeInput;
+  steps?: Int;
+}
+
+export interface RescueTimeAccountUpdateWithoutUserDataInput {
+  accessToken?: String;
+  scope?: String;
+}
+
+export interface UserCreateWithoutStepLogsInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface RescueTimeAccountUpsertWithoutUserInput {
+  update: RescueTimeAccountUpdateWithoutUserDataInput;
+  create: RescueTimeAccountCreateWithoutUserInput;
+}
+
+export interface StepLogCreateWithoutStepDataInput {
+  user: UserCreateOneWithoutStepLogsInput;
+  date: DateTimeInput;
+  totalSteps: Int;
+}
+
+export interface SleepLogUpdateManyWithoutUserInput {
+  create?: SleepLogCreateWithoutUserInput[] | SleepLogCreateWithoutUserInput;
+  delete?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+  disconnect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+  update?:
+    | SleepLogUpdateWithWhereUniqueWithoutUserInput[]
+    | SleepLogUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | SleepLogUpsertWithWhereUniqueWithoutUserInput[]
+    | SleepLogUpsertWithWhereUniqueWithoutUserInput;
+}
+
+export type GoogleFitAccountWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface SleepLogUpdateWithWhereUniqueWithoutUserInput {
+  where: SleepLogWhereUniqueInput;
+  data: SleepLogUpdateWithoutUserDataInput;
+}
+
+export interface SleepLogUpdateInput {
+  user?: UserUpdateOneRequiredWithoutSleepLogsInput;
+  dateOfSleep?: String;
+  duration?: Int;
+  efficiency?: Int;
+  isMainSleep?: Boolean;
+  logId?: Float;
+  minutesAfterWakeup?: Int;
+  minutesAsleep?: Int;
+  minutesAwake?: Int;
+  minutesToFallAsleep?: Int;
+  startTime?: DateTimeInput;
+  timeInBed?: Int;
+  type?: String;
+  sleepData?: SleepDataUpdateManyWithoutSleepLogInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface SleepLogUpdateWithoutUserDataInput {
+  dateOfSleep?: String;
+  duration?: Int;
+  efficiency?: Int;
+  isMainSleep?: Boolean;
+  logId?: Float;
+  minutesAfterWakeup?: Int;
+  minutesAsleep?: Int;
+  minutesAwake?: Int;
+  minutesToFallAsleep?: Int;
+  startTime?: DateTimeInput;
+  timeInBed?: Int;
+  type?: String;
+  sleepData?: SleepDataUpdateManyWithoutSleepLogInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface SleepLogUpsertWithoutSleepDataInput {
+  update: SleepLogUpdateWithoutSleepDataDataInput;
+  create: SleepLogCreateWithoutSleepDataInput;
+}
+
+export interface SleepDataUpdateManyWithoutSleepLogInput {
+  create?:
+    | SleepDataCreateWithoutSleepLogInput[]
+    | SleepDataCreateWithoutSleepLogInput;
+  delete?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
+  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
+  disconnect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
+  update?:
+    | SleepDataUpdateWithWhereUniqueWithoutSleepLogInput[]
+    | SleepDataUpdateWithWhereUniqueWithoutSleepLogInput;
+  upsert?:
+    | SleepDataUpsertWithWhereUniqueWithoutSleepLogInput[]
+    | SleepDataUpsertWithWhereUniqueWithoutSleepLogInput;
+}
+
+export interface UserUpsertWithoutSleepLogsInput {
+  update: UserUpdateWithoutSleepLogsDataInput;
+  create: UserCreateWithoutSleepLogsInput;
+}
+
+export interface SleepDataUpdateWithWhereUniqueWithoutSleepLogInput {
+  where: SleepDataWhereUniqueInput;
+  data: SleepDataUpdateWithoutSleepLogDataInput;
+}
+
+export interface UserUpdateOneRequiredWithoutSleepLogsInput {
+  create?: UserCreateWithoutSleepLogsInput;
+  update?: UserUpdateWithoutSleepLogsDataInput;
+  upsert?: UserUpsertWithoutSleepLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface SleepDataUpdateWithoutSleepLogDataInput {
+  dateTime?: DateTimeInput;
+  level?: String;
+  second?: Int;
+}
+
+export interface SleepLogUpdateWithoutSleepDataDataInput {
+  user?: UserUpdateOneRequiredWithoutSleepLogsInput;
+  dateOfSleep?: String;
+  duration?: Int;
+  efficiency?: Int;
+  isMainSleep?: Boolean;
+  logId?: Float;
+  minutesAfterWakeup?: Int;
+  minutesAsleep?: Int;
+  minutesAwake?: Int;
+  minutesToFallAsleep?: Int;
+  startTime?: DateTimeInput;
+  timeInBed?: Int;
+  type?: String;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface SleepDataUpsertWithWhereUniqueWithoutSleepLogInput {
+  where: SleepDataWhereUniqueInput;
+  update: SleepDataUpdateWithoutSleepLogDataInput;
+  create: SleepDataCreateWithoutSleepLogInput;
+}
+
+export interface SleepDataUpdateInput {
+  sleepLog?: SleepLogUpdateOneRequiredWithoutSleepDataInput;
+  dateTime?: DateTimeInput;
+  level?: String;
+  second?: Int;
+}
+
+export interface SleepLogUpsertWithWhereUniqueWithoutUserInput {
+  where: SleepLogWhereUniqueInput;
+  update: SleepLogUpdateWithoutUserDataInput;
+  create: SleepLogCreateWithoutUserInput;
+}
+
+export interface UserCreateWithoutSleepLogsInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface HeartLogUpdateManyWithoutUserInput {
+  create?: HeartLogCreateWithoutUserInput[] | HeartLogCreateWithoutUserInput;
+  delete?: HeartLogWhereUniqueInput[] | HeartLogWhereUniqueInput;
+  connect?: HeartLogWhereUniqueInput[] | HeartLogWhereUniqueInput;
+  disconnect?: HeartLogWhereUniqueInput[] | HeartLogWhereUniqueInput;
+  update?:
+    | HeartLogUpdateWithWhereUniqueWithoutUserInput[]
+    | HeartLogUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | HeartLogUpsertWithWhereUniqueWithoutUserInput[]
+    | HeartLogUpsertWithWhereUniqueWithoutUserInput;
+}
+
+export interface SleepLogCreateWithoutSleepDataInput {
+  user: UserCreateOneWithoutSleepLogsInput;
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeInput;
+  timeInBed: Int;
+  type?: String;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface HeartLogUpdateWithWhereUniqueWithoutUserInput {
+  where: HeartLogWhereUniqueInput;
+  data: HeartLogUpdateWithoutUserDataInput;
+}
+
+export type SleepDataWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface HeartLogUpdateWithoutUserDataInput {
+  dateTime?: DateTimeInput;
+  caloriesOutOfRange?: Int;
+  minutesOutOfRange?: Int;
+  maxValueOutOfRange?: Int;
+  minValueOutOfRange?: Int;
+  caloriesFatBurn?: Int;
+  minutesFatBurn?: Int;
+  maxValueFatBurn?: Int;
+  minValueFatBurn?: Int;
+  caloriesCardio?: Int;
+  minutesCardio?: Int;
+  maxValueCardio?: Int;
+  minValueCardio?: Int;
+  caloriesPeak?: Int;
+  minutesPeak?: Int;
+  maxValuePeak?: Int;
+  minValuePeak?: Int;
+  heartData?: HeartDataUpdateManyWithoutHeartLogInput;
+}
+
+export interface UserUpsertWithoutRescueTimeAccountInput {
+  update: UserUpdateWithoutRescueTimeAccountDataInput;
+  create: UserCreateWithoutRescueTimeAccountInput;
+}
+
+export interface HeartDataUpdateManyWithoutHeartLogInput {
+  create?:
+    | HeartDataCreateWithoutHeartLogInput[]
+    | HeartDataCreateWithoutHeartLogInput;
+  delete?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
+  connect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
+  disconnect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
+  update?:
+    | HeartDataUpdateWithWhereUniqueWithoutHeartLogInput[]
+    | HeartDataUpdateWithWhereUniqueWithoutHeartLogInput;
+  upsert?:
+    | HeartDataUpsertWithWhereUniqueWithoutHeartLogInput[]
+    | HeartDataUpsertWithWhereUniqueWithoutHeartLogInput;
+}
+
+export type SleepLogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface HeartDataUpdateInput {
+  heartLog?: HeartLogUpdateOneRequiredWithoutHeartDataInput;
+  dateTime?: DateTimeInput;
+  heartRate?: Float;
+}
+
+export interface RescueTimeAccountUpdateInput {
+  user?: UserUpdateOneRequiredWithoutRescueTimeAccountInput;
+  accessToken?: String;
+  scope?: String;
+}
+
+export interface HeartDataUpdateWithoutHeartLogDataInput {
+  dateTime?: DateTimeInput;
+  heartRate?: Float;
+}
+
+export type StepDataWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface HeartDataUpsertWithWhereUniqueWithoutHeartLogInput {
+  where: HeartDataWhereUniqueInput;
+  update: HeartDataUpdateWithoutHeartLogDataInput;
+  create: HeartDataCreateWithoutHeartLogInput;
+}
+
+export interface RescueTimeAccountCreateInput {
+  user: UserCreateOneWithoutRescueTimeAccountInput;
+  accessToken: String;
+  scope: String;
+}
+
+export interface HeartLogUpsertWithWhereUniqueWithoutUserInput {
+  where: HeartLogWhereUniqueInput;
+  update: HeartLogUpdateWithoutUserDataInput;
+  create: HeartLogCreateWithoutUserInput;
+}
+
+export type StepLogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface StepLogUpdateManyWithoutUserInput {
+  create?: StepLogCreateWithoutUserInput[] | StepLogCreateWithoutUserInput;
+  delete?: StepLogWhereUniqueInput[] | StepLogWhereUniqueInput;
+  connect?: StepLogWhereUniqueInput[] | StepLogWhereUniqueInput;
+  disconnect?: StepLogWhereUniqueInput[] | StepLogWhereUniqueInput;
+  update?:
+    | StepLogUpdateWithWhereUniqueWithoutUserInput[]
+    | StepLogUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | StepLogUpsertWithWhereUniqueWithoutUserInput[]
+    | StepLogUpsertWithWhereUniqueWithoutUserInput;
+}
+
+export interface HeartLogUpsertWithoutHeartDataInput {
+  update: HeartLogUpdateWithoutHeartDataDataInput;
+  create: HeartLogCreateWithoutHeartDataInput;
+}
+
+export interface StepLogUpdateWithWhereUniqueWithoutUserInput {
+  where: StepLogWhereUniqueInput;
+  data: StepLogUpdateWithoutUserDataInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  email?: String;
+}>;
+
+export interface StepLogUpdateWithoutUserDataInput {
+  date?: DateTimeInput;
+  totalSteps?: Int;
+  stepData?: StepDataUpdateManyWithoutStepLogInput;
+}
+
+export interface UserUpdateOneRequiredWithoutHeartLogsInput {
+  create?: UserCreateWithoutHeartLogsInput;
+  update?: UserUpdateWithoutHeartLogsDataInput;
+  upsert?: UserUpsertWithoutHeartLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface StepDataUpdateManyWithoutStepLogInput {
+  create?:
+    | StepDataCreateWithoutStepLogInput[]
+    | StepDataCreateWithoutStepLogInput;
   delete?: StepDataWhereUniqueInput[] | StepDataWhereUniqueInput;
   connect?: StepDataWhereUniqueInput[] | StepDataWhereUniqueInput;
   disconnect?: StepDataWhereUniqueInput[] | StepDataWhereUniqueInput;
+  update?:
+    | StepDataUpdateWithWhereUniqueWithoutStepLogInput[]
+    | StepDataUpdateWithWhereUniqueWithoutStepLogInput;
+  upsert?:
+    | StepDataUpsertWithWhereUniqueWithoutStepLogInput[]
+    | StepDataUpsertWithWhereUniqueWithoutStepLogInput;
 }
 
-export interface GoogleFitAccountCreateInput {
-  userId: ID_Input;
+export interface HeartLogUpdateOneRequiredWithoutHeartDataInput {
+  create?: HeartLogCreateWithoutHeartDataInput;
+  update?: HeartLogUpdateWithoutHeartDataDataInput;
+  upsert?: HeartLogUpsertWithoutHeartDataInput;
+  connect?: HeartLogWhereUniqueInput;
+}
+
+export interface StepDataUpdateWithWhereUniqueWithoutStepLogInput {
+  where: StepDataWhereUniqueInput;
+  data: StepDataUpdateWithoutStepLogDataInput;
+}
+
+export interface CalorieDataCreateInput {
+  calorieLog: CalorieLogCreateOneWithoutCalorieDataInput;
+  dateTime: DateTimeInput;
+  calories: Float;
+}
+
+export interface UserCreateWithoutHeartLogsInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface CalorieLogCreateWithoutCalorieDataInput {
+  user: UserCreateOneWithoutCalorieLogsInput;
+  date: DateTimeInput;
+  totalCalories: Float;
+}
+
+export interface StepDataWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  stepLog?: StepLogWhereInput;
+  dateTime?: DateTimeInput;
+  dateTime_not?: DateTimeInput;
+  dateTime_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_lt?: DateTimeInput;
+  dateTime_lte?: DateTimeInput;
+  dateTime_gt?: DateTimeInput;
+  dateTime_gte?: DateTimeInput;
+  steps?: Int;
+  steps_not?: Int;
+  steps_in?: Int[] | Int;
+  steps_not_in?: Int[] | Int;
+  steps_lt?: Int;
+  steps_lte?: Int;
+  steps_gt?: Int;
+  steps_gte?: Int;
+  AND?: StepDataWhereInput[] | StepDataWhereInput;
+  OR?: StepDataWhereInput[] | StepDataWhereInput;
+  NOT?: StepDataWhereInput[] | StepDataWhereInput;
+}
+
+export interface UserCreateWithoutCalorieLogsInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface CalorieDataWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  calorieLog?: CalorieLogWhereInput;
+  dateTime?: DateTimeInput;
+  dateTime_not?: DateTimeInput;
+  dateTime_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_lt?: DateTimeInput;
+  dateTime_lte?: DateTimeInput;
+  dateTime_gt?: DateTimeInput;
+  dateTime_gte?: DateTimeInput;
+  calories?: Float;
+  calories_not?: Float;
+  calories_in?: Float[] | Float;
+  calories_not_in?: Float[] | Float;
+  calories_lt?: Float;
+  calories_lte?: Float;
+  calories_gt?: Float;
+  calories_gte?: Float;
+  AND?: CalorieDataWhereInput[] | CalorieDataWhereInput;
+  OR?: CalorieDataWhereInput[] | CalorieDataWhereInput;
+  NOT?: CalorieDataWhereInput[] | CalorieDataWhereInput;
+}
+
+export interface GoogleFitAccountCreateWithoutUserInput {
   refreshToken: String;
   accessToken: String;
   expiration: DateTimeInput;
 }
 
-export interface StepLogUpdateInput {
+export interface DistanceDataWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  distanceLog?: DistanceLogWhereInput;
+  dateTime?: DateTimeInput;
+  dateTime_not?: DateTimeInput;
+  dateTime_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_lt?: DateTimeInput;
+  dateTime_lte?: DateTimeInput;
+  dateTime_gt?: DateTimeInput;
+  dateTime_gte?: DateTimeInput;
+  distance?: Float;
+  distance_not?: Float;
+  distance_in?: Float[] | Float;
+  distance_not_in?: Float[] | Float;
+  distance_lt?: Float;
+  distance_lte?: Float;
+  distance_gt?: Float;
+  distance_gte?: Float;
+  AND?: DistanceDataWhereInput[] | DistanceDataWhereInput;
+  OR?: DistanceDataWhereInput[] | DistanceDataWhereInput;
+  NOT?: DistanceDataWhereInput[] | DistanceDataWhereInput;
+}
+
+export interface FitbitAccountCreateWithoutUserInput {
+  fitbitUserId: String;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeInput;
+}
+
+export interface SleepDataWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  sleepLog?: SleepLogWhereInput;
+  dateTime?: DateTimeInput;
+  dateTime_not?: DateTimeInput;
+  dateTime_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
+  dateTime_lt?: DateTimeInput;
+  dateTime_lte?: DateTimeInput;
+  dateTime_gt?: DateTimeInput;
+  dateTime_gte?: DateTimeInput;
+  level?: String;
+  level_not?: String;
+  level_in?: String[] | String;
+  level_not_in?: String[] | String;
+  level_lt?: String;
+  level_lte?: String;
+  level_gt?: String;
+  level_gte?: String;
+  level_contains?: String;
+  level_not_contains?: String;
+  level_starts_with?: String;
+  level_not_starts_with?: String;
+  level_ends_with?: String;
+  level_not_ends_with?: String;
+  second?: Int;
+  second_not?: Int;
+  second_in?: Int[] | Int;
+  second_not_in?: Int[] | Int;
+  second_lt?: Int;
+  second_lte?: Int;
+  second_gt?: Int;
+  second_gte?: Int;
+  AND?: SleepDataWhereInput[] | SleepDataWhereInput;
+  OR?: SleepDataWhereInput[] | SleepDataWhereInput;
+  NOT?: SleepDataWhereInput[] | SleepDataWhereInput;
+}
+
+export interface RescueTimeAccountCreateWithoutUserInput {
+  accessToken: String;
+  scope: String;
+}
+
+export interface DistanceLogUpdateWithoutUserDataInput {
   date?: DateTimeInput;
-  totalSteps?: Int;
-  intradayData?: StepDataUpdateManyInput;
+  totalDistance?: Float;
+  distanceData?: DistanceDataUpdateManyWithoutDistanceLogInput;
 }
 
-export interface DistanceDataCreateManyInput {
-  create?: DistanceDataCreateInput[] | DistanceDataCreateInput;
+export interface SleepLogCreateWithoutUserInput {
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeInput;
+  timeInBed: Int;
+  type?: String;
+  sleepData?: SleepDataCreateManyWithoutSleepLogInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface DistanceDataUpdateManyWithoutDistanceLogInput {
+  create?:
+    | DistanceDataCreateWithoutDistanceLogInput[]
+    | DistanceDataCreateWithoutDistanceLogInput;
+  delete?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
   connect?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
+  disconnect?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
+  update?:
+    | DistanceDataUpdateWithWhereUniqueWithoutDistanceLogInput[]
+    | DistanceDataUpdateWithWhereUniqueWithoutDistanceLogInput;
+  upsert?:
+    | DistanceDataUpsertWithWhereUniqueWithoutDistanceLogInput[]
+    | DistanceDataUpsertWithWhereUniqueWithoutDistanceLogInput;
 }
 
-export interface StepDataCreateManyInput {
-  create?: StepDataCreateInput[] | StepDataCreateInput;
-  connect?: StepDataWhereUniqueInput[] | StepDataWhereUniqueInput;
+export interface SleepDataCreateWithoutSleepLogInput {
+  dateTime: DateTimeInput;
+  level: String;
+  second: Int;
+}
+
+export interface DistanceDataUpdateWithWhereUniqueWithoutDistanceLogInput {
+  where: DistanceDataWhereUniqueInput;
+  data: DistanceDataUpdateWithoutDistanceLogDataInput;
+}
+
+export interface HeartLogCreateWithoutUserInput {
+  dateTime: DateTimeInput;
+  caloriesOutOfRange: Int;
+  minutesOutOfRange: Int;
+  maxValueOutOfRange: Int;
+  minValueOutOfRange: Int;
+  caloriesFatBurn: Int;
+  minutesFatBurn: Int;
+  maxValueFatBurn: Int;
+  minValueFatBurn: Int;
+  caloriesCardio: Int;
+  minutesCardio: Int;
+  maxValueCardio: Int;
+  minValueCardio: Int;
+  caloriesPeak: Int;
+  minutesPeak: Int;
+  maxValuePeak: Int;
+  minValuePeak: Int;
+  heartData?: HeartDataCreateManyWithoutHeartLogInput;
+}
+
+export interface DistanceDataUpdateWithoutDistanceLogDataInput {
+  dateTime?: DateTimeInput;
+  distance?: Float;
+}
+
+export interface HeartDataCreateWithoutHeartLogInput {
+  dateTime: DateTimeInput;
+  heartRate: Float;
+}
+
+export interface DistanceDataUpsertWithWhereUniqueWithoutDistanceLogInput {
+  where: DistanceDataWhereUniqueInput;
+  update: DistanceDataUpdateWithoutDistanceLogDataInput;
+  create: DistanceDataCreateWithoutDistanceLogInput;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -1078,36 +2255,126 @@ export interface UserSubscriptionWhereInput {
   NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
 }
 
-export type SleepLogWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface StepLogSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: StepLogWhereInput;
-  AND?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
-  OR?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
-  NOT?: StepLogSubscriptionWhereInput[] | StepLogSubscriptionWhereInput;
+export interface DistanceLogUpsertWithWhereUniqueWithoutUserInput {
+  where: DistanceLogWhereUniqueInput;
+  update: DistanceLogUpdateWithoutUserDataInput;
+  create: DistanceLogCreateWithoutUserInput;
 }
 
-export interface StepLogCreateInput {
-  date: DateTimeInput;
-  totalSteps: Int;
-  intradayData?: StepDataCreateManyInput;
+export interface RescueTimeAccountWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
+  accessToken?: String;
+  accessToken_not?: String;
+  accessToken_in?: String[] | String;
+  accessToken_not_in?: String[] | String;
+  accessToken_lt?: String;
+  accessToken_lte?: String;
+  accessToken_gt?: String;
+  accessToken_gte?: String;
+  accessToken_contains?: String;
+  accessToken_not_contains?: String;
+  accessToken_starts_with?: String;
+  accessToken_not_starts_with?: String;
+  accessToken_ends_with?: String;
+  accessToken_not_ends_with?: String;
+  scope?: String;
+  scope_not?: String;
+  scope_in?: String[] | String;
+  scope_not_in?: String[] | String;
+  scope_lt?: String;
+  scope_lte?: String;
+  scope_gt?: String;
+  scope_gte?: String;
+  scope_contains?: String;
+  scope_not_contains?: String;
+  scope_starts_with?: String;
+  scope_not_starts_with?: String;
+  scope_ends_with?: String;
+  scope_not_ends_with?: String;
+  AND?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
+  OR?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
+  NOT?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
 }
 
-export interface SleepLogSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: SleepLogWhereInput;
-  AND?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
-  OR?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
-  NOT?: SleepLogSubscriptionWhereInput[] | SleepLogSubscriptionWhereInput;
+export interface UserUpsertWithoutCalorieLogsInput {
+  update: UserUpdateWithoutCalorieLogsDataInput;
+  create: UserCreateWithoutCalorieLogsInput;
+}
+
+export interface GoogleFitAccountWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
+  refreshToken?: String;
+  refreshToken_not?: String;
+  refreshToken_in?: String[] | String;
+  refreshToken_not_in?: String[] | String;
+  refreshToken_lt?: String;
+  refreshToken_lte?: String;
+  refreshToken_gt?: String;
+  refreshToken_gte?: String;
+  refreshToken_contains?: String;
+  refreshToken_not_contains?: String;
+  refreshToken_starts_with?: String;
+  refreshToken_not_starts_with?: String;
+  refreshToken_ends_with?: String;
+  refreshToken_not_ends_with?: String;
+  accessToken?: String;
+  accessToken_not?: String;
+  accessToken_in?: String[] | String;
+  accessToken_not_in?: String[] | String;
+  accessToken_lt?: String;
+  accessToken_lte?: String;
+  accessToken_gt?: String;
+  accessToken_gte?: String;
+  accessToken_contains?: String;
+  accessToken_not_contains?: String;
+  accessToken_starts_with?: String;
+  accessToken_not_starts_with?: String;
+  accessToken_ends_with?: String;
+  accessToken_not_ends_with?: String;
+  expiration?: DateTimeInput;
+  expiration_not?: DateTimeInput;
+  expiration_in?: DateTimeInput[] | DateTimeInput;
+  expiration_not_in?: DateTimeInput[] | DateTimeInput;
+  expiration_lt?: DateTimeInput;
+  expiration_lte?: DateTimeInput;
+  expiration_gt?: DateTimeInput;
+  expiration_gte?: DateTimeInput;
+  AND?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+  OR?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+  NOT?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+}
+
+export interface CalorieLogUpsertWithoutCalorieDataInput {
+  update: CalorieLogUpdateWithoutCalorieDataDataInput;
+  create: CalorieLogCreateWithoutCalorieDataInput;
 }
 
 export interface SleepLogWhereInput {
@@ -1125,20 +2392,7 @@ export interface SleepLogWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  userId?: ID_Input;
-  userId_not?: ID_Input;
-  userId_in?: ID_Input[] | ID_Input;
-  userId_not_in?: ID_Input[] | ID_Input;
-  userId_lt?: ID_Input;
-  userId_lte?: ID_Input;
-  userId_gt?: ID_Input;
-  userId_gte?: ID_Input;
-  userId_contains?: ID_Input;
-  userId_not_contains?: ID_Input;
-  userId_starts_with?: ID_Input;
-  userId_not_starts_with?: ID_Input;
-  userId_ends_with?: ID_Input;
-  userId_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
   dateOfSleep?: String;
   dateOfSleep_not?: String;
   dateOfSleep_in?: String[] | String;
@@ -1241,9 +2495,9 @@ export interface SleepLogWhereInput {
   type_not_starts_with?: String;
   type_ends_with?: String;
   type_not_ends_with?: String;
-  data_every?: SleepDataWhereInput;
-  data_some?: SleepDataWhereInput;
-  data_none?: SleepDataWhereInput;
+  sleepData_every?: SleepDataWhereInput;
+  sleepData_some?: SleepDataWhereInput;
+  sleepData_none?: SleepDataWhereInput;
   summaryDeepCount?: Int;
   summaryDeepCount_not?: Int;
   summaryDeepCount_in?: Int[] | Int;
@@ -1393,122 +2647,10 @@ export interface SleepLogWhereInput {
   NOT?: SleepLogWhereInput[] | SleepLogWhereInput;
 }
 
-export type DistanceLogWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface StepDataUpdateInput {
-  stepLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  steps?: Int;
+export interface UserCreateOneWithoutHeartLogsInput {
+  create?: UserCreateWithoutHeartLogsInput;
+  connect?: UserWhereUniqueInput;
 }
-
-export interface DistanceLogWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  date?: DateTimeInput;
-  date_not?: DateTimeInput;
-  date_in?: DateTimeInput[] | DateTimeInput;
-  date_not_in?: DateTimeInput[] | DateTimeInput;
-  date_lt?: DateTimeInput;
-  date_lte?: DateTimeInput;
-  date_gt?: DateTimeInput;
-  date_gte?: DateTimeInput;
-  totalDistance?: Float;
-  totalDistance_not?: Float;
-  totalDistance_in?: Float[] | Float;
-  totalDistance_not_in?: Float[] | Float;
-  totalDistance_lt?: Float;
-  totalDistance_lte?: Float;
-  totalDistance_gt?: Float;
-  totalDistance_gte?: Float;
-  intradayData_every?: DistanceDataWhereInput;
-  intradayData_some?: DistanceDataWhereInput;
-  intradayData_none?: DistanceDataWhereInput;
-  AND?: DistanceLogWhereInput[] | DistanceLogWhereInput;
-  OR?: DistanceLogWhereInput[] | DistanceLogWhereInput;
-  NOT?: DistanceLogWhereInput[] | DistanceLogWhereInput;
-}
-
-export interface StepDataCreateInput {
-  stepLogId: ID_Input;
-  dateTime: DateTimeInput;
-  steps: Int;
-}
-
-export interface HeartLogSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: HeartLogWhereInput;
-  AND?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
-  OR?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
-  NOT?: HeartLogSubscriptionWhereInput[] | HeartLogSubscriptionWhereInput;
-}
-
-export interface SleepDataUpsertWithWhereUniqueNestedInput {
-  where: SleepDataWhereUniqueInput;
-  update: SleepDataUpdateDataInput;
-  create: SleepDataCreateInput;
-}
-
-export interface GoogleFitAccountSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: GoogleFitAccountWhereInput;
-  AND?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-  OR?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-  NOT?:
-    | GoogleFitAccountSubscriptionWhereInput[]
-    | GoogleFitAccountSubscriptionWhereInput;
-}
-
-export interface SleepDataUpdateDataInput {
-  sleepLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  level?: String;
-  second?: Int;
-}
-
-export interface FitbitAccountSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: FitbitAccountWhereInput;
-  AND?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-  OR?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-  NOT?:
-    | FitbitAccountSubscriptionWhereInput[]
-    | FitbitAccountSubscriptionWhereInput;
-}
-
-export type StepDataWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
 
 export interface DistanceLogSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
@@ -1521,370 +2663,347 @@ export interface DistanceLogSubscriptionWhereInput {
   NOT?: DistanceLogSubscriptionWhereInput[] | DistanceLogSubscriptionWhereInput;
 }
 
-export interface SleepDataUpdateWithWhereUniqueNestedInput {
-  where: SleepDataWhereUniqueInput;
-  data: SleepDataUpdateDataInput;
+export interface HeartLogCreateWithoutHeartDataInput {
+  user: UserCreateOneWithoutHeartLogsInput;
+  dateTime: DateTimeInput;
+  caloriesOutOfRange: Int;
+  minutesOutOfRange: Int;
+  maxValueOutOfRange: Int;
+  minValueOutOfRange: Int;
+  caloriesFatBurn: Int;
+  minutesFatBurn: Int;
+  maxValueFatBurn: Int;
+  minValueFatBurn: Int;
+  caloriesCardio: Int;
+  minutesCardio: Int;
+  maxValueCardio: Int;
+  minValueCardio: Int;
+  caloriesPeak: Int;
+  minutesPeak: Int;
+  maxValuePeak: Int;
+  minValuePeak: Int;
 }
 
-export interface CalorieLogSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: CalorieLogWhereInput;
-  AND?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
-  OR?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
-  NOT?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
+export interface UserUpdateInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
 }
 
-export interface StepDataWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  stepLogId?: ID_Input;
-  stepLogId_not?: ID_Input;
-  stepLogId_in?: ID_Input[] | ID_Input;
-  stepLogId_not_in?: ID_Input[] | ID_Input;
-  stepLogId_lt?: ID_Input;
-  stepLogId_lte?: ID_Input;
-  stepLogId_gt?: ID_Input;
-  stepLogId_gte?: ID_Input;
-  stepLogId_contains?: ID_Input;
-  stepLogId_not_contains?: ID_Input;
-  stepLogId_starts_with?: ID_Input;
-  stepLogId_not_starts_with?: ID_Input;
-  stepLogId_ends_with?: ID_Input;
-  stepLogId_not_ends_with?: ID_Input;
-  dateTime?: DateTimeInput;
-  dateTime_not?: DateTimeInput;
-  dateTime_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_lt?: DateTimeInput;
-  dateTime_lte?: DateTimeInput;
-  dateTime_gt?: DateTimeInput;
-  dateTime_gte?: DateTimeInput;
-  steps?: Int;
-  steps_not?: Int;
-  steps_in?: Int[] | Int;
-  steps_not_in?: Int[] | Int;
-  steps_lt?: Int;
-  steps_lte?: Int;
-  steps_gt?: Int;
-  steps_gte?: Int;
-  AND?: StepDataWhereInput[] | StepDataWhereInput;
-  OR?: StepDataWhereInput[] | StepDataWhereInput;
-  NOT?: StepDataWhereInput[] | StepDataWhereInput;
+export interface CalorieLogCreateInput {
+  user: UserCreateOneWithoutCalorieLogsInput;
+  date: DateTimeInput;
+  totalCalories: Float;
+  calorieData?: CalorieDataCreateManyWithoutCalorieLogInput;
 }
 
-export type GoogleFitAccountWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  userId?: ID_Input;
-}>;
-
-export interface CalorieDataWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  calorieLogId?: ID_Input;
-  calorieLogId_not?: ID_Input;
-  calorieLogId_in?: ID_Input[] | ID_Input;
-  calorieLogId_not_in?: ID_Input[] | ID_Input;
-  calorieLogId_lt?: ID_Input;
-  calorieLogId_lte?: ID_Input;
-  calorieLogId_gt?: ID_Input;
-  calorieLogId_gte?: ID_Input;
-  calorieLogId_contains?: ID_Input;
-  calorieLogId_not_contains?: ID_Input;
-  calorieLogId_starts_with?: ID_Input;
-  calorieLogId_not_starts_with?: ID_Input;
-  calorieLogId_ends_with?: ID_Input;
-  calorieLogId_not_ends_with?: ID_Input;
-  dateTime?: DateTimeInput;
-  dateTime_not?: DateTimeInput;
-  dateTime_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_lt?: DateTimeInput;
-  dateTime_lte?: DateTimeInput;
-  dateTime_gt?: DateTimeInput;
-  dateTime_gte?: DateTimeInput;
-  calories?: Float;
-  calories_not?: Float;
-  calories_in?: Float[] | Float;
-  calories_not_in?: Float[] | Float;
-  calories_lt?: Float;
-  calories_lte?: Float;
-  calories_gt?: Float;
-  calories_gte?: Float;
-  AND?: CalorieDataWhereInput[] | CalorieDataWhereInput;
-  OR?: CalorieDataWhereInput[] | CalorieDataWhereInput;
-  NOT?: CalorieDataWhereInput[] | CalorieDataWhereInput;
+export interface StepLogCreateInput {
+  user: UserCreateOneWithoutStepLogsInput;
+  date: DateTimeInput;
+  totalSteps: Int;
+  stepData?: StepDataCreateManyWithoutStepLogInput;
 }
 
-export interface GoogleFitAccountWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  userId?: ID_Input;
-  userId_not?: ID_Input;
-  userId_in?: ID_Input[] | ID_Input;
-  userId_not_in?: ID_Input[] | ID_Input;
-  userId_lt?: ID_Input;
-  userId_lte?: ID_Input;
-  userId_gt?: ID_Input;
-  userId_gte?: ID_Input;
-  userId_contains?: ID_Input;
-  userId_not_contains?: ID_Input;
-  userId_starts_with?: ID_Input;
-  userId_not_starts_with?: ID_Input;
-  userId_ends_with?: ID_Input;
-  userId_not_ends_with?: ID_Input;
-  refreshToken?: String;
-  refreshToken_not?: String;
-  refreshToken_in?: String[] | String;
-  refreshToken_not_in?: String[] | String;
-  refreshToken_lt?: String;
-  refreshToken_lte?: String;
-  refreshToken_gt?: String;
-  refreshToken_gte?: String;
-  refreshToken_contains?: String;
-  refreshToken_not_contains?: String;
-  refreshToken_starts_with?: String;
-  refreshToken_not_starts_with?: String;
-  refreshToken_ends_with?: String;
-  refreshToken_not_ends_with?: String;
-  accessToken?: String;
-  accessToken_not?: String;
-  accessToken_in?: String[] | String;
-  accessToken_not_in?: String[] | String;
-  accessToken_lt?: String;
-  accessToken_lte?: String;
-  accessToken_gt?: String;
-  accessToken_gte?: String;
-  accessToken_contains?: String;
-  accessToken_not_contains?: String;
-  accessToken_starts_with?: String;
-  accessToken_not_starts_with?: String;
-  accessToken_ends_with?: String;
-  accessToken_not_ends_with?: String;
-  expiration?: DateTimeInput;
-  expiration_not?: DateTimeInput;
-  expiration_in?: DateTimeInput[] | DateTimeInput;
-  expiration_not_in?: DateTimeInput[] | DateTimeInput;
-  expiration_lt?: DateTimeInput;
-  expiration_lte?: DateTimeInput;
-  expiration_gt?: DateTimeInput;
-  expiration_gte?: DateTimeInput;
-  AND?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
-  OR?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
-  NOT?: GoogleFitAccountWhereInput[] | GoogleFitAccountWhereInput;
+export interface CalorieDataCreateManyWithoutCalorieLogInput {
+  create?:
+    | CalorieDataCreateWithoutCalorieLogInput[]
+    | CalorieDataCreateWithoutCalorieLogInput;
+  connect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
 }
 
-export interface SleepDataUpdateManyInput {
-  create?: SleepDataCreateInput[] | SleepDataCreateInput;
-  update?:
-    | SleepDataUpdateWithWhereUniqueNestedInput[]
-    | SleepDataUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | SleepDataUpsertWithWhereUniqueNestedInput[]
-    | SleepDataUpsertWithWhereUniqueNestedInput;
-  delete?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
-  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
-  disconnect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
+export interface UserUpdateWithoutStepLogsDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
 }
 
-export interface SleepLogUpdateWithWhereUniqueNestedInput {
-  where: SleepLogWhereUniqueInput;
-  data: SleepLogUpdateDataInput;
+export interface CalorieDataCreateWithoutCalorieLogInput {
+  dateTime: DateTimeInput;
+  calories: Float;
 }
 
-export interface SleepLogUpdateInput {
-  userId?: ID_Input;
-  dateOfSleep?: String;
-  duration?: Int;
-  efficiency?: Int;
-  isMainSleep?: Boolean;
-  logId?: Float;
-  minutesAfterWakeup?: Int;
-  minutesAsleep?: Int;
-  minutesAwake?: Int;
-  minutesToFallAsleep?: Int;
-  startTime?: DateTimeInput;
-  timeInBed?: Int;
-  type?: String;
-  data?: SleepDataUpdateManyInput;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryDeepThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summaryAsleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
+export interface StepLogUpdateOneRequiredWithoutStepDataInput {
+  create?: StepLogCreateWithoutStepDataInput;
+  update?: StepLogUpdateWithoutStepDataDataInput;
+  upsert?: StepLogUpsertWithoutStepDataInput;
+  connect?: StepLogWhereUniqueInput;
 }
 
-export interface RescueTimeAccountUpsertNestedInput {
-  update: RescueTimeAccountUpdateDataInput;
-  create: RescueTimeAccountCreateInput;
-}
-
-export interface SleepDataCreateManyInput {
-  create?: SleepDataCreateInput[] | SleepDataCreateInput;
-  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
-}
-
-export interface RescueTimeAccountUpdateDataInput {
-  userId?: ID_Input;
-  accessToken?: String;
-  scope?: String;
-}
-
-export type StepLogWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface RescueTimeAccountUpdateOneInput {
-  create?: RescueTimeAccountCreateInput;
-  update?: RescueTimeAccountUpdateDataInput;
-  upsert?: RescueTimeAccountUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: RescueTimeAccountWhereUniqueInput;
-}
-
-export interface SleepLogCreateInput {
-  userId: ID_Input;
-  dateOfSleep: String;
-  duration: Int;
-  efficiency: Int;
-  isMainSleep: Boolean;
-  logId: Float;
-  minutesAfterWakeup: Int;
-  minutesAsleep: Int;
-  minutesAwake: Int;
-  minutesToFallAsleep: Int;
-  startTime: DateTimeInput;
-  timeInBed: Int;
-  type?: String;
-  data?: SleepDataCreateManyInput;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryDeepThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summaryAsleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface FitbitAccountUpdateDataInput {
-  userId?: ID_Input;
-  fitbitUserId?: String;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export interface StepLogWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
+export interface CalorieLogUpdateInput {
+  user?: UserUpdateOneRequiredWithoutCalorieLogsInput;
   date?: DateTimeInput;
-  date_not?: DateTimeInput;
-  date_in?: DateTimeInput[] | DateTimeInput;
-  date_not_in?: DateTimeInput[] | DateTimeInput;
-  date_lt?: DateTimeInput;
-  date_lte?: DateTimeInput;
-  date_gt?: DateTimeInput;
-  date_gte?: DateTimeInput;
-  totalSteps?: Int;
-  totalSteps_not?: Int;
-  totalSteps_in?: Int[] | Int;
-  totalSteps_not_in?: Int[] | Int;
-  totalSteps_lt?: Int;
-  totalSteps_lte?: Int;
-  totalSteps_gt?: Int;
-  totalSteps_gte?: Int;
-  intradayData_every?: StepDataWhereInput;
-  intradayData_some?: StepDataWhereInput;
-  intradayData_none?: StepDataWhereInput;
-  AND?: StepLogWhereInput[] | StepLogWhereInput;
-  OR?: StepLogWhereInput[] | StepLogWhereInput;
-  NOT?: StepLogWhereInput[] | StepLogWhereInput;
+  totalCalories?: Float;
+  calorieData?: CalorieDataUpdateManyWithoutCalorieLogInput;
+}
+
+export interface UserCreateOneWithoutStepLogsInput {
+  create?: UserCreateWithoutStepLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface CalorieDataUpdateManyWithoutCalorieLogInput {
+  create?:
+    | CalorieDataCreateWithoutCalorieLogInput[]
+    | CalorieDataCreateWithoutCalorieLogInput;
+  delete?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
+  connect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
+  disconnect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
+  update?:
+    | CalorieDataUpdateWithWhereUniqueWithoutCalorieLogInput[]
+    | CalorieDataUpdateWithWhereUniqueWithoutCalorieLogInput;
+  upsert?:
+    | CalorieDataUpsertWithWhereUniqueWithoutCalorieLogInput[]
+    | CalorieDataUpsertWithWhereUniqueWithoutCalorieLogInput;
+}
+
+export interface StepDataCreateInput {
+  stepLog: StepLogCreateOneWithoutStepDataInput;
+  dateTime: DateTimeInput;
+  steps: Int;
+}
+
+export interface CalorieDataUpdateWithWhereUniqueWithoutCalorieLogInput {
+  where: CalorieDataWhereUniqueInput;
+  data: CalorieDataUpdateWithoutCalorieLogDataInput;
+}
+
+export type HeartDataWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface CalorieDataUpdateWithoutCalorieLogDataInput {
+  dateTime?: DateTimeInput;
+  calories?: Float;
 }
 
 export type HeartLogWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface SleepDataUpdateInput {
-  sleepLogId?: ID_Input;
+export interface CalorieDataUpsertWithWhereUniqueWithoutCalorieLogInput {
+  where: CalorieDataWhereUniqueInput;
+  update: CalorieDataUpdateWithoutCalorieLogDataInput;
+  create: CalorieDataCreateWithoutCalorieLogInput;
+}
+
+export type RescueTimeAccountWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface DistanceDataCreateInput {
+  distanceLog: DistanceLogCreateOneWithoutDistanceDataInput;
+  dateTime: DateTimeInput;
+  distance: Float;
+}
+
+export interface SleepLogCreateOneWithoutSleepDataInput {
+  create?: SleepLogCreateWithoutSleepDataInput;
+  connect?: SleepLogWhereUniqueInput;
+}
+
+export interface DistanceLogCreateOneWithoutDistanceDataInput {
+  create?: DistanceLogCreateWithoutDistanceDataInput;
+  connect?: DistanceLogWhereUniqueInput;
+}
+
+export interface UserUpdateWithoutRescueTimeAccountDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface DistanceLogCreateWithoutDistanceDataInput {
+  user: UserCreateOneWithoutDistanceLogsInput;
+  date: DateTimeInput;
+  totalDistance: Float;
+}
+
+export interface UserCreateWithoutRescueTimeAccountInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface UserCreateOneWithoutDistanceLogsInput {
+  create?: UserCreateWithoutDistanceLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HeartLogUpdateInput {
+  user?: UserUpdateOneRequiredWithoutHeartLogsInput;
   dateTime?: DateTimeInput;
-  level?: String;
-  second?: Int;
+  caloriesOutOfRange?: Int;
+  minutesOutOfRange?: Int;
+  maxValueOutOfRange?: Int;
+  minValueOutOfRange?: Int;
+  caloriesFatBurn?: Int;
+  minutesFatBurn?: Int;
+  maxValueFatBurn?: Int;
+  minValueFatBurn?: Int;
+  caloriesCardio?: Int;
+  minutesCardio?: Int;
+  maxValueCardio?: Int;
+  minValueCardio?: Int;
+  caloriesPeak?: Int;
+  minutesPeak?: Int;
+  maxValuePeak?: Int;
+  minValuePeak?: Int;
+  heartData?: HeartDataUpdateManyWithoutHeartLogInput;
+}
+
+export interface UserCreateWithoutDistanceLogsInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface UserUpsertWithoutHeartLogsInput {
+  update: UserUpdateWithoutHeartLogsDataInput;
+  create: UserCreateWithoutHeartLogsInput;
+}
+
+export interface CalorieLogCreateManyWithoutUserInput {
+  create?:
+    | CalorieLogCreateWithoutUserInput[]
+    | CalorieLogCreateWithoutUserInput;
+  connect?: CalorieLogWhereUniqueInput[] | CalorieLogWhereUniqueInput;
+}
+
+export interface HeartLogUpdateWithoutHeartDataDataInput {
+  user?: UserUpdateOneRequiredWithoutHeartLogsInput;
+  dateTime?: DateTimeInput;
+  caloriesOutOfRange?: Int;
+  minutesOutOfRange?: Int;
+  maxValueOutOfRange?: Int;
+  minValueOutOfRange?: Int;
+  caloriesFatBurn?: Int;
+  minutesFatBurn?: Int;
+  maxValueFatBurn?: Int;
+  minValueFatBurn?: Int;
+  caloriesCardio?: Int;
+  minutesCardio?: Int;
+  maxValueCardio?: Int;
+  minValueCardio?: Int;
+  caloriesPeak?: Int;
+  minutesPeak?: Int;
+  maxValuePeak?: Int;
+  minValuePeak?: Int;
+}
+
+export interface CalorieLogCreateWithoutUserInput {
+  date: DateTimeInput;
+  totalCalories: Float;
+  calorieData?: CalorieDataCreateManyWithoutCalorieLogInput;
+}
+
+export interface CalorieLogCreateOneWithoutCalorieDataInput {
+  create?: CalorieLogCreateWithoutCalorieDataInput;
+  connect?: CalorieLogWhereUniqueInput;
+}
+
+export interface DistanceDataUpdateInput {
+  distanceLog?: DistanceLogUpdateOneRequiredWithoutDistanceDataInput;
+  dateTime?: DateTimeInput;
+  distance?: Float;
+}
+
+export interface GoogleFitAccountCreateOneWithoutUserInput {
+  create?: GoogleFitAccountCreateWithoutUserInput;
+  connect?: GoogleFitAccountWhereUniqueInput;
+}
+
+export interface DistanceLogUpdateOneRequiredWithoutDistanceDataInput {
+  create?: DistanceLogCreateWithoutDistanceDataInput;
+  update?: DistanceLogUpdateWithoutDistanceDataDataInput;
+  upsert?: DistanceLogUpsertWithoutDistanceDataInput;
+  connect?: DistanceLogWhereUniqueInput;
+}
+
+export interface RescueTimeAccountCreateOneWithoutUserInput {
+  create?: RescueTimeAccountCreateWithoutUserInput;
+  connect?: RescueTimeAccountWhereUniqueInput;
+}
+
+export interface DistanceLogUpdateWithoutDistanceDataDataInput {
+  user?: UserUpdateOneRequiredWithoutDistanceLogsInput;
+  date?: DateTimeInput;
+  totalDistance?: Float;
+}
+
+export interface SleepDataCreateManyWithoutSleepLogInput {
+  create?:
+    | SleepDataCreateWithoutSleepLogInput[]
+    | SleepDataCreateWithoutSleepLogInput;
+  connect?: SleepDataWhereUniqueInput[] | SleepDataWhereUniqueInput;
+}
+
+export interface UserUpdateOneRequiredWithoutDistanceLogsInput {
+  create?: UserCreateWithoutDistanceLogsInput;
+  update?: UserUpdateWithoutDistanceLogsDataInput;
+  upsert?: UserUpsertWithoutDistanceLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HeartDataCreateManyWithoutHeartLogInput {
+  create?:
+    | HeartDataCreateWithoutHeartLogInput[]
+    | HeartDataCreateWithoutHeartLogInput;
+  connect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
+}
+
+export interface UserUpdateWithoutDistanceLogsDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
 }
 
 export interface HeartLogWhereInput {
@@ -1902,6 +3021,7 @@ export interface HeartLogWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
   dateTime?: DateTimeInput;
   dateTime_not?: DateTimeInput;
   dateTime_in?: DateTimeInput[] | DateTimeInput;
@@ -2038,77 +3158,27 @@ export interface HeartLogWhereInput {
   minValuePeak_lte?: Int;
   minValuePeak_gt?: Int;
   minValuePeak_gte?: Int;
-  intradayData_every?: HeartDataWhereInput;
-  intradayData_some?: HeartDataWhereInput;
-  intradayData_none?: HeartDataWhereInput;
+  heartData_every?: HeartDataWhereInput;
+  heartData_some?: HeartDataWhereInput;
+  heartData_none?: HeartDataWhereInput;
   AND?: HeartLogWhereInput[] | HeartLogWhereInput;
   OR?: HeartLogWhereInput[] | HeartLogWhereInput;
   NOT?: HeartLogWhereInput[] | HeartLogWhereInput;
 }
 
-export interface SleepDataCreateInput {
-  sleepLogId: ID_Input;
-  dateTime: DateTimeInput;
-  level: String;
-  second: Int;
-}
-
-export interface GoogleFitAccountUpdateOneInput {
-  create?: GoogleFitAccountCreateInput;
-  update?: GoogleFitAccountUpdateDataInput;
-  upsert?: GoogleFitAccountUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: GoogleFitAccountWhereUniqueInput;
-}
-
-export interface RescueTimeAccountUpdateInput {
-  userId?: ID_Input;
-  accessToken?: String;
-  scope?: String;
-}
-
-export interface SleepLogCreateManyInput {
-  create?: SleepLogCreateInput[] | SleepLogCreateInput;
-  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-}
-
-export interface RescueTimeAccountCreateInput {
-  userId: ID_Input;
-  accessToken: String;
-  scope: String;
-}
-
-export interface RescueTimeAccountCreateOneInput {
-  create?: RescueTimeAccountCreateInput;
-  connect?: RescueTimeAccountWhereUniqueInput;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  email?: String;
-}>;
-
-export interface FitbitAccountCreateOneInput {
-  create?: FitbitAccountCreateInput;
-  connect?: FitbitAccountWhereUniqueInput;
-}
-
-export interface HeartDataUpsertWithWhereUniqueNestedInput {
-  where: HeartDataWhereUniqueInput;
-  update: HeartDataUpdateDataInput;
-  create: HeartDataCreateInput;
-}
-
-export interface UserCreateInput {
-  email: String;
-  password: String;
-  googleFitAccount?: GoogleFitAccountCreateOneInput;
-  fitbitAccount?: FitbitAccountCreateOneInput;
-  rescueTimeAcccount?: RescueTimeAccountCreateOneInput;
-  sleepLogs?: SleepLogCreateManyInput;
-  sleepLogLastUpdatedDate?: DateTimeInput;
-  productivityLogLastUpdatedDate?: DateTimeInput;
+export interface CalorieLogUpdateManyWithoutUserInput {
+  create?:
+    | CalorieLogCreateWithoutUserInput[]
+    | CalorieLogCreateWithoutUserInput;
+  delete?: CalorieLogWhereUniqueInput[] | CalorieLogWhereUniqueInput;
+  connect?: CalorieLogWhereUniqueInput[] | CalorieLogWhereUniqueInput;
+  disconnect?: CalorieLogWhereUniqueInput[] | CalorieLogWhereUniqueInput;
+  update?:
+    | CalorieLogUpdateWithWhereUniqueWithoutUserInput[]
+    | CalorieLogUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | CalorieLogUpsertWithWhereUniqueWithoutUserInput[]
+    | CalorieLogUpsertWithWhereUniqueWithoutUserInput;
 }
 
 export interface UserWhereInput {
@@ -2156,10 +3226,22 @@ export interface UserWhereInput {
   password_not_ends_with?: String;
   googleFitAccount?: GoogleFitAccountWhereInput;
   fitbitAccount?: FitbitAccountWhereInput;
-  rescueTimeAcccount?: RescueTimeAccountWhereInput;
+  rescueTimeAccount?: RescueTimeAccountWhereInput;
   sleepLogs_every?: SleepLogWhereInput;
   sleepLogs_some?: SleepLogWhereInput;
   sleepLogs_none?: SleepLogWhereInput;
+  heartLogs_every?: HeartLogWhereInput;
+  heartLogs_some?: HeartLogWhereInput;
+  heartLogs_none?: HeartLogWhereInput;
+  stepLogs_every?: StepLogWhereInput;
+  stepLogs_some?: StepLogWhereInput;
+  stepLogs_none?: StepLogWhereInput;
+  calorieLogs_every?: CalorieLogWhereInput;
+  calorieLogs_some?: CalorieLogWhereInput;
+  calorieLogs_none?: CalorieLogWhereInput;
+  distanceLogs_every?: DistanceLogWhereInput;
+  distanceLogs_some?: DistanceLogWhereInput;
+  distanceLogs_none?: DistanceLogWhereInput;
   sleepLogLastUpdatedDate?: DateTimeInput;
   sleepLogLastUpdatedDate_not?: DateTimeInput;
   sleepLogLastUpdatedDate_in?: DateTimeInput[] | DateTimeInput;
@@ -2197,160 +3279,356 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export type SleepDataWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface HeartDataUpdateDataInput {
-  heartLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  heartRate?: Float;
+export interface CalorieLogUpdateWithWhereUniqueWithoutUserInput {
+  where: CalorieLogWhereUniqueInput;
+  data: CalorieLogUpdateWithoutUserDataInput;
 }
 
-export interface SleepDataWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  sleepLogId?: ID_Input;
-  sleepLogId_not?: ID_Input;
-  sleepLogId_in?: ID_Input[] | ID_Input;
-  sleepLogId_not_in?: ID_Input[] | ID_Input;
-  sleepLogId_lt?: ID_Input;
-  sleepLogId_lte?: ID_Input;
-  sleepLogId_gt?: ID_Input;
-  sleepLogId_gte?: ID_Input;
-  sleepLogId_contains?: ID_Input;
-  sleepLogId_not_contains?: ID_Input;
-  sleepLogId_starts_with?: ID_Input;
-  sleepLogId_not_starts_with?: ID_Input;
-  sleepLogId_ends_with?: ID_Input;
-  sleepLogId_not_ends_with?: ID_Input;
-  dateTime?: DateTimeInput;
-  dateTime_not?: DateTimeInput;
-  dateTime_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_lt?: DateTimeInput;
-  dateTime_lte?: DateTimeInput;
-  dateTime_gt?: DateTimeInput;
-  dateTime_gte?: DateTimeInput;
-  level?: String;
-  level_not?: String;
-  level_in?: String[] | String;
-  level_not_in?: String[] | String;
-  level_lt?: String;
-  level_lte?: String;
-  level_gt?: String;
-  level_gte?: String;
-  level_contains?: String;
-  level_not_contains?: String;
-  level_starts_with?: String;
-  level_not_starts_with?: String;
-  level_ends_with?: String;
-  level_not_ends_with?: String;
-  second?: Int;
-  second_not?: Int;
-  second_in?: Int[] | Int;
-  second_not_in?: Int[] | Int;
-  second_lt?: Int;
-  second_lte?: Int;
-  second_gt?: Int;
-  second_gte?: Int;
-  AND?: SleepDataWhereInput[] | SleepDataWhereInput;
-  OR?: SleepDataWhereInput[] | SleepDataWhereInput;
-  NOT?: SleepDataWhereInput[] | SleepDataWhereInput;
+export interface CalorieLogSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CalorieLogWhereInput;
+  AND?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
+  OR?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
+  NOT?: CalorieLogSubscriptionWhereInput[] | CalorieLogSubscriptionWhereInput;
 }
 
-export interface HeartDataUpdateWithWhereUniqueNestedInput {
-  where: HeartDataWhereUniqueInput;
-  data: HeartDataUpdateDataInput;
+export interface CalorieLogUpdateWithoutUserDataInput {
+  date?: DateTimeInput;
+  totalCalories?: Float;
+  calorieData?: CalorieDataUpdateManyWithoutCalorieLogInput;
 }
 
 export type DistanceDataWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface HeartDataUpdateManyInput {
-  create?: HeartDataCreateInput[] | HeartDataCreateInput;
-  update?:
-    | HeartDataUpdateWithWhereUniqueNestedInput[]
-    | HeartDataUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | HeartDataUpsertWithWhereUniqueNestedInput[]
-    | HeartDataUpsertWithWhereUniqueNestedInput;
-  delete?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
-  connect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
-  disconnect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
+export interface CalorieLogUpsertWithWhereUniqueWithoutUserInput {
+  where: CalorieLogWhereUniqueInput;
+  update: CalorieLogUpdateWithoutUserDataInput;
+  create: CalorieLogCreateWithoutUserInput;
 }
 
-export interface StepDataSubscriptionWhereInput {
+export type FitbitAccountWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface UserUpsertWithoutDistanceLogsInput {
+  update: UserUpdateWithoutDistanceLogsDataInput;
+  create: UserCreateWithoutDistanceLogsInput;
+}
+
+export interface SleepLogCreateInput {
+  user: UserCreateOneWithoutSleepLogsInput;
+  dateOfSleep: String;
+  duration: Int;
+  efficiency: Int;
+  isMainSleep: Boolean;
+  logId: Float;
+  minutesAfterWakeup: Int;
+  minutesAsleep: Int;
+  minutesAwake: Int;
+  minutesToFallAsleep: Int;
+  startTime: DateTimeInput;
+  timeInBed: Int;
+  type?: String;
+  sleepData?: SleepDataCreateManyWithoutSleepLogInput;
+  summaryDeepCount?: Int;
+  summaryDeepMinutes?: Int;
+  summaryDeepThirtyDayAvgMinutes?: Int;
+  summaryLightCount?: Int;
+  summaryLightMinutes?: Int;
+  summaryLightThirtyDayAvgMinutes?: Int;
+  summaryRemCount?: Int;
+  summaryRemMinutes?: Int;
+  summaryRemThirtyDayAvgMinutes?: Int;
+  summaryWakeCount?: Int;
+  summaryWakeMinutes?: Int;
+  summaryWakeThirtyDayAvgMinutes?: Int;
+  summaryAsleepCount?: Int;
+  summaryAsleepMinutes?: Int;
+  summaryAwakeCount?: Int;
+  summaryAwakeMinutes?: Int;
+  summaryRestlessCount?: Int;
+  summaryRestlessMinutes?: Int;
+}
+
+export interface DistanceLogUpsertWithoutDistanceDataInput {
+  update: DistanceLogUpdateWithoutDistanceDataDataInput;
+  create: DistanceLogCreateWithoutDistanceDataInput;
+}
+
+export interface SleepLogUpdateOneRequiredWithoutSleepDataInput {
+  create?: SleepLogCreateWithoutSleepDataInput;
+  update?: SleepLogUpdateWithoutSleepDataDataInput;
+  upsert?: SleepLogUpsertWithoutSleepDataInput;
+  connect?: SleepLogWhereUniqueInput;
+}
+
+export interface DistanceLogCreateInput {
+  user: UserCreateOneWithoutDistanceLogsInput;
+  date: DateTimeInput;
+  totalDistance: Float;
+  distanceData?: DistanceDataCreateManyWithoutDistanceLogInput;
+}
+
+export interface SleepDataCreateInput {
+  sleepLog: SleepLogCreateOneWithoutSleepDataInput;
+  dateTime: DateTimeInput;
+  level: String;
+  second: Int;
+}
+
+export interface DistanceLogUpdateInput {
+  user?: UserUpdateOneRequiredWithoutDistanceLogsInput;
+  date?: DateTimeInput;
+  totalDistance?: Float;
+  distanceData?: DistanceDataUpdateManyWithoutDistanceLogInput;
+}
+
+export interface UserCreateOneWithoutRescueTimeAccountInput {
+  create?: UserCreateWithoutRescueTimeAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface FitbitAccountCreateInput {
+  user: UserCreateOneWithoutFitbitAccountInput;
+  fitbitUserId: String;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeInput;
+}
+
+export interface UserUpdateWithoutHeartLogsDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface UserCreateOneWithoutFitbitAccountInput {
+  create?: UserCreateWithoutFitbitAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateOneWithoutCalorieLogsInput {
+  create?: UserCreateWithoutCalorieLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateWithoutFitbitAccountInput {
+  email: String;
+  password: String;
+  googleFitAccount?: GoogleFitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface SleepLogCreateManyWithoutUserInput {
+  create?: SleepLogCreateWithoutUserInput[] | SleepLogCreateWithoutUserInput;
+  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
+}
+
+export interface FitbitAccountUpdateInput {
+  user?: UserUpdateOneRequiredWithoutFitbitAccountInput;
+  fitbitUserId?: String;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface StepLogCreateManyWithoutUserInput {
+  create?: StepLogCreateWithoutUserInput[] | StepLogCreateWithoutUserInput;
+  connect?: StepLogWhereUniqueInput[] | StepLogWhereUniqueInput;
+}
+
+export interface UserUpdateOneRequiredWithoutFitbitAccountInput {
+  create?: UserCreateWithoutFitbitAccountInput;
+  update?: UserUpdateWithoutFitbitAccountDataInput;
+  upsert?: UserUpsertWithoutFitbitAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface GoogleFitAccountSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: StepDataWhereInput;
-  AND?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
-  OR?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
-  NOT?: StepDataSubscriptionWhereInput[] | StepDataSubscriptionWhereInput;
-}
-
-export interface HeartLogUpdateInput {
-  dateTime?: DateTimeInput;
-  caloriesOutOfRange?: Int;
-  minutesOutOfRange?: Int;
-  maxValueOutOfRange?: Int;
-  minValueOutOfRange?: Int;
-  caloriesFatBurn?: Int;
-  minutesFatBurn?: Int;
-  maxValueFatBurn?: Int;
-  minValueFatBurn?: Int;
-  caloriesCardio?: Int;
-  minutesCardio?: Int;
-  maxValueCardio?: Int;
-  minValueCardio?: Int;
-  caloriesPeak?: Int;
-  minutesPeak?: Int;
-  maxValuePeak?: Int;
-  minValuePeak?: Int;
-  intradayData?: HeartDataUpdateManyInput;
-}
-
-export interface RescueTimeAccountSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: RescueTimeAccountWhereInput;
+  node?: GoogleFitAccountWhereInput;
   AND?:
-    | RescueTimeAccountSubscriptionWhereInput[]
-    | RescueTimeAccountSubscriptionWhereInput;
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
   OR?:
-    | RescueTimeAccountSubscriptionWhereInput[]
-    | RescueTimeAccountSubscriptionWhereInput;
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
   NOT?:
-    | RescueTimeAccountSubscriptionWhereInput[]
-    | RescueTimeAccountSubscriptionWhereInput;
+    | GoogleFitAccountSubscriptionWhereInput[]
+    | GoogleFitAccountSubscriptionWhereInput;
 }
 
-export interface HeartDataSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: HeartDataWhereInput;
-  AND?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
-  OR?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
-  NOT?: HeartDataSubscriptionWhereInput[] | HeartDataSubscriptionWhereInput;
+export interface UserUpdateWithoutFitbitAccountDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export type DistanceLogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface UserUpsertWithoutFitbitAccountInput {
+  update: UserUpdateWithoutFitbitAccountDataInput;
+  create: UserCreateWithoutFitbitAccountInput;
+}
+
+export interface UserUpdateWithoutSleepLogsDataInput {
+  email?: String;
+  password?: String;
+  googleFitAccount?: GoogleFitAccountUpdateOneWithoutUserInput;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface GoogleFitAccountCreateInput {
+  user: UserCreateOneWithoutGoogleFitAccountInput;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeInput;
+}
+
+export interface UserUpdateOneRequiredWithoutRescueTimeAccountInput {
+  create?: UserCreateWithoutRescueTimeAccountInput;
+  update?: UserUpdateWithoutRescueTimeAccountDataInput;
+  upsert?: UserUpsertWithoutRescueTimeAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateOneWithoutGoogleFitAccountInput {
+  create?: UserCreateWithoutGoogleFitAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HeartLogCreateManyWithoutUserInput {
+  create?: HeartLogCreateWithoutUserInput[] | HeartLogCreateWithoutUserInput;
+  connect?: HeartLogWhereUniqueInput[] | HeartLogWhereUniqueInput;
+}
+
+export interface UserCreateWithoutGoogleFitAccountInput {
+  email: String;
+  password: String;
+  fitbitAccount?: FitbitAccountCreateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountCreateOneWithoutUserInput;
+  sleepLogs?: SleepLogCreateManyWithoutUserInput;
+  heartLogs?: HeartLogCreateManyWithoutUserInput;
+  stepLogs?: StepLogCreateManyWithoutUserInput;
+  calorieLogs?: CalorieLogCreateManyWithoutUserInput;
+  distanceLogs?: DistanceLogCreateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export type CalorieLogWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface GoogleFitAccountUpdateInput {
+  user?: UserUpdateOneRequiredWithoutGoogleFitAccountInput;
+  refreshToken?: String;
+  accessToken?: String;
+  expiration?: DateTimeInput;
+}
+
+export interface UserCreateOneWithoutSleepLogsInput {
+  create?: UserCreateWithoutSleepLogsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HeartDataCreateInput {
+  heartLog: HeartLogCreateOneWithoutHeartDataInput;
+  dateTime: DateTimeInput;
+  heartRate: Float;
+}
+
+export interface UserUpsertWithoutGoogleFitAccountInput {
+  update: UserUpdateWithoutGoogleFitAccountDataInput;
+  create: UserCreateWithoutGoogleFitAccountInput;
+}
+
+export interface UserUpdateWithoutGoogleFitAccountDataInput {
+  email?: String;
+  password?: String;
+  fitbitAccount?: FitbitAccountUpdateOneWithoutUserInput;
+  rescueTimeAccount?: RescueTimeAccountUpdateOneWithoutUserInput;
+  sleepLogs?: SleepLogUpdateManyWithoutUserInput;
+  heartLogs?: HeartLogUpdateManyWithoutUserInput;
+  stepLogs?: StepLogUpdateManyWithoutUserInput;
+  calorieLogs?: CalorieLogUpdateManyWithoutUserInput;
+  distanceLogs?: DistanceLogUpdateManyWithoutUserInput;
+  sleepLogLastUpdatedDate?: DateTimeInput;
+  productivityLogLastUpdatedDate?: DateTimeInput;
+}
+
+export interface UserUpdateOneRequiredWithoutGoogleFitAccountInput {
+  create?: UserCreateWithoutGoogleFitAccountInput;
+  update?: UserUpdateWithoutGoogleFitAccountDataInput;
+  upsert?: UserUpsertWithoutGoogleFitAccountInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HeartLogCreateInput {
+  user: UserCreateOneWithoutHeartLogsInput;
+  dateTime: DateTimeInput;
+  caloriesOutOfRange: Int;
+  minutesOutOfRange: Int;
+  maxValueOutOfRange: Int;
+  minValueOutOfRange: Int;
+  caloriesFatBurn: Int;
+  minutesFatBurn: Int;
+  maxValueFatBurn: Int;
+  minValueFatBurn: Int;
+  caloriesCardio: Int;
+  minutesCardio: Int;
+  maxValueCardio: Int;
+  minValueCardio: Int;
+  caloriesPeak: Int;
+  minutesPeak: Int;
+  maxValuePeak: Int;
+  minValuePeak: Int;
+  heartData?: HeartDataCreateManyWithoutHeartLogInput;
+}
+
+export interface StepLogCreateOneWithoutStepDataInput {
+  create?: StepLogCreateWithoutStepDataInput;
+  connect?: StepLogWhereUniqueInput;
 }
 
 export interface FitbitAccountWhereInput {
@@ -2368,20 +3646,7 @@ export interface FitbitAccountWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  userId?: ID_Input;
-  userId_not?: ID_Input;
-  userId_in?: ID_Input[] | ID_Input;
-  userId_not_in?: ID_Input[] | ID_Input;
-  userId_lt?: ID_Input;
-  userId_lte?: ID_Input;
-  userId_gt?: ID_Input;
-  userId_gte?: ID_Input;
-  userId_contains?: ID_Input;
-  userId_not_contains?: ID_Input;
-  userId_starts_with?: ID_Input;
-  userId_not_starts_with?: ID_Input;
-  userId_ends_with?: ID_Input;
-  userId_not_ends_with?: ID_Input;
+  user?: UserWhereInput;
   fitbitUserId?: String;
   fitbitUserId_not?: String;
   fitbitUserId_in?: String[] | String;
@@ -2437,498 +3702,9 @@ export interface FitbitAccountWhereInput {
   NOT?: FitbitAccountWhereInput[] | FitbitAccountWhereInput;
 }
 
-export interface CalorieDataCreateInput {
-  calorieLogId: ID_Input;
-  dateTime: DateTimeInput;
-  calories: Float;
-}
-
-export interface CalorieDataSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: CalorieDataWhereInput;
-  AND?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
-  OR?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
-  NOT?: CalorieDataSubscriptionWhereInput[] | CalorieDataSubscriptionWhereInput;
-}
-
-export interface CalorieDataUpdateInput {
-  calorieLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  calories?: Float;
-}
-
-export interface SleepLogUpdateDataInput {
-  userId?: ID_Input;
-  dateOfSleep?: String;
-  duration?: Int;
-  efficiency?: Int;
-  isMainSleep?: Boolean;
-  logId?: Float;
-  minutesAfterWakeup?: Int;
-  minutesAsleep?: Int;
-  minutesAwake?: Int;
-  minutesToFallAsleep?: Int;
-  startTime?: DateTimeInput;
-  timeInBed?: Int;
-  type?: String;
-  data?: SleepDataUpdateManyInput;
-  summaryDeepCount?: Int;
-  summaryDeepMinutes?: Int;
-  summaryDeepThirtyDayAvgMinutes?: Int;
-  summaryLightCount?: Int;
-  summaryLightMinutes?: Int;
-  summaryLightThirtyDayAvgMinutes?: Int;
-  summaryRemCount?: Int;
-  summaryRemMinutes?: Int;
-  summaryRemThirtyDayAvgMinutes?: Int;
-  summaryWakeCount?: Int;
-  summaryWakeMinutes?: Int;
-  summaryWakeThirtyDayAvgMinutes?: Int;
-  summaryAsleepCount?: Int;
-  summaryAsleepMinutes?: Int;
-  summaryAwakeCount?: Int;
-  summaryAwakeMinutes?: Int;
-  summaryRestlessCount?: Int;
-  summaryRestlessMinutes?: Int;
-}
-
-export interface HeartDataCreateManyInput {
-  create?: HeartDataCreateInput[] | HeartDataCreateInput;
-  connect?: HeartDataWhereUniqueInput[] | HeartDataWhereUniqueInput;
-}
-
-export type HeartDataWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface HeartLogCreateInput {
-  dateTime: DateTimeInput;
-  caloriesOutOfRange: Int;
-  minutesOutOfRange: Int;
-  maxValueOutOfRange: Int;
-  minValueOutOfRange: Int;
-  caloriesFatBurn: Int;
-  minutesFatBurn: Int;
-  maxValueFatBurn: Int;
-  minValueFatBurn: Int;
-  caloriesCardio: Int;
-  minutesCardio: Int;
-  maxValueCardio: Int;
-  minValueCardio: Int;
-  caloriesPeak: Int;
-  minutesPeak: Int;
-  maxValuePeak: Int;
-  minValuePeak: Int;
-  intradayData?: HeartDataCreateManyInput;
-}
-
-export interface FitbitAccountUpsertNestedInput {
-  update: FitbitAccountUpdateDataInput;
-  create: FitbitAccountCreateInput;
-}
-
-export interface HeartDataUpdateInput {
-  heartLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  heartRate?: Float;
-}
-
-export interface GoogleFitAccountUpsertNestedInput {
-  update: GoogleFitAccountUpdateDataInput;
-  create: GoogleFitAccountCreateInput;
-}
-
-export interface CalorieDataCreateManyInput {
-  create?: CalorieDataCreateInput[] | CalorieDataCreateInput;
-  connect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
-}
-
-export interface UserUpdateInput {
-  email?: String;
-  password?: String;
-  googleFitAccount?: GoogleFitAccountUpdateOneInput;
-  fitbitAccount?: FitbitAccountUpdateOneInput;
-  rescueTimeAcccount?: RescueTimeAccountUpdateOneInput;
-  sleepLogs?: SleepLogUpdateManyInput;
-  sleepLogLastUpdatedDate?: DateTimeInput;
-  productivityLogLastUpdatedDate?: DateTimeInput;
-}
-
-export interface CalorieLogUpdateInput {
-  date?: DateTimeInput;
-  totalCalories?: Float;
-  intradayData?: CalorieDataUpdateManyInput;
-}
-
-export interface RescueTimeAccountWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  userId?: ID_Input;
-  userId_not?: ID_Input;
-  userId_in?: ID_Input[] | ID_Input;
-  userId_not_in?: ID_Input[] | ID_Input;
-  userId_lt?: ID_Input;
-  userId_lte?: ID_Input;
-  userId_gt?: ID_Input;
-  userId_gte?: ID_Input;
-  userId_contains?: ID_Input;
-  userId_not_contains?: ID_Input;
-  userId_starts_with?: ID_Input;
-  userId_not_starts_with?: ID_Input;
-  userId_ends_with?: ID_Input;
-  userId_not_ends_with?: ID_Input;
-  accessToken?: String;
-  accessToken_not?: String;
-  accessToken_in?: String[] | String;
-  accessToken_not_in?: String[] | String;
-  accessToken_lt?: String;
-  accessToken_lte?: String;
-  accessToken_gt?: String;
-  accessToken_gte?: String;
-  accessToken_contains?: String;
-  accessToken_not_contains?: String;
-  accessToken_starts_with?: String;
-  accessToken_not_starts_with?: String;
-  accessToken_ends_with?: String;
-  accessToken_not_ends_with?: String;
-  scope?: String;
-  scope_not?: String;
-  scope_in?: String[] | String;
-  scope_not_in?: String[] | String;
-  scope_lt?: String;
-  scope_lte?: String;
-  scope_gt?: String;
-  scope_gte?: String;
-  scope_contains?: String;
-  scope_not_contains?: String;
-  scope_starts_with?: String;
-  scope_not_starts_with?: String;
-  scope_ends_with?: String;
-  scope_not_ends_with?: String;
-  AND?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
-  OR?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
-  NOT?: RescueTimeAccountWhereInput[] | RescueTimeAccountWhereInput;
-}
-
-export interface CalorieDataUpdateManyInput {
-  create?: CalorieDataCreateInput[] | CalorieDataCreateInput;
-  update?:
-    | CalorieDataUpdateWithWhereUniqueNestedInput[]
-    | CalorieDataUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | CalorieDataUpsertWithWhereUniqueNestedInput[]
-    | CalorieDataUpsertWithWhereUniqueNestedInput;
-  delete?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
-  connect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
-  disconnect?: CalorieDataWhereUniqueInput[] | CalorieDataWhereUniqueInput;
-}
-
-export interface StepDataUpsertWithWhereUniqueNestedInput {
-  where: StepDataWhereUniqueInput;
-  update: StepDataUpdateDataInput;
-  create: StepDataCreateInput;
-}
-
-export interface CalorieDataUpdateWithWhereUniqueNestedInput {
-  where: CalorieDataWhereUniqueInput;
-  data: CalorieDataUpdateDataInput;
-}
-
-export interface StepDataUpdateWithWhereUniqueNestedInput {
-  where: StepDataWhereUniqueInput;
-  data: StepDataUpdateDataInput;
-}
-
-export interface CalorieDataUpdateDataInput {
-  calorieLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  calories?: Float;
-}
-
-export interface SleepDataSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: SleepDataWhereInput;
-  AND?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
-  OR?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
-  NOT?: SleepDataSubscriptionWhereInput[] | SleepDataSubscriptionWhereInput;
-}
-
-export interface CalorieDataUpsertWithWhereUniqueNestedInput {
-  where: CalorieDataWhereUniqueInput;
-  update: CalorieDataUpdateDataInput;
-  create: CalorieDataCreateInput;
-}
-
-export type FitbitAccountWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  userId?: ID_Input;
-}>;
-
-export interface DistanceDataCreateInput {
-  distanceLogId: ID_Input;
-  dateTime: DateTimeInput;
-  distance: Float;
-}
-
-export interface SleepLogUpsertWithWhereUniqueNestedInput {
-  where: SleepLogWhereUniqueInput;
-  update: SleepLogUpdateDataInput;
-  create: SleepLogCreateInput;
-}
-
-export interface DistanceDataUpdateInput {
-  distanceLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  distance?: Float;
-}
-
-export interface HeartDataWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  heartLogId?: ID_Input;
-  heartLogId_not?: ID_Input;
-  heartLogId_in?: ID_Input[] | ID_Input;
-  heartLogId_not_in?: ID_Input[] | ID_Input;
-  heartLogId_lt?: ID_Input;
-  heartLogId_lte?: ID_Input;
-  heartLogId_gt?: ID_Input;
-  heartLogId_gte?: ID_Input;
-  heartLogId_contains?: ID_Input;
-  heartLogId_not_contains?: ID_Input;
-  heartLogId_starts_with?: ID_Input;
-  heartLogId_not_starts_with?: ID_Input;
-  heartLogId_ends_with?: ID_Input;
-  heartLogId_not_ends_with?: ID_Input;
-  dateTime?: DateTimeInput;
-  dateTime_not?: DateTimeInput;
-  dateTime_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_lt?: DateTimeInput;
-  dateTime_lte?: DateTimeInput;
-  dateTime_gt?: DateTimeInput;
-  dateTime_gte?: DateTimeInput;
-  heartRate?: Float;
-  heartRate_not?: Float;
-  heartRate_in?: Float[] | Float;
-  heartRate_not_in?: Float[] | Float;
-  heartRate_lt?: Float;
-  heartRate_lte?: Float;
-  heartRate_gt?: Float;
-  heartRate_gte?: Float;
-  AND?: HeartDataWhereInput[] | HeartDataWhereInput;
-  OR?: HeartDataWhereInput[] | HeartDataWhereInput;
-  NOT?: HeartDataWhereInput[] | HeartDataWhereInput;
-}
-
-export interface HeartDataCreateInput {
-  heartLogId: ID_Input;
-  dateTime: DateTimeInput;
-  heartRate: Float;
-}
-
-export interface GoogleFitAccountUpdateDataInput {
-  userId?: ID_Input;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export interface GoogleFitAccountUpdateInput {
-  userId?: ID_Input;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export interface GoogleFitAccountCreateOneInput {
-  create?: GoogleFitAccountCreateInput;
-  connect?: GoogleFitAccountWhereUniqueInput;
-}
-
-export interface DistanceLogUpdateInput {
-  date?: DateTimeInput;
-  totalDistance?: Float;
-  intradayData?: DistanceDataUpdateManyInput;
-}
-
-export interface DistanceDataWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  distanceLogId?: ID_Input;
-  distanceLogId_not?: ID_Input;
-  distanceLogId_in?: ID_Input[] | ID_Input;
-  distanceLogId_not_in?: ID_Input[] | ID_Input;
-  distanceLogId_lt?: ID_Input;
-  distanceLogId_lte?: ID_Input;
-  distanceLogId_gt?: ID_Input;
-  distanceLogId_gte?: ID_Input;
-  distanceLogId_contains?: ID_Input;
-  distanceLogId_not_contains?: ID_Input;
-  distanceLogId_starts_with?: ID_Input;
-  distanceLogId_not_starts_with?: ID_Input;
-  distanceLogId_ends_with?: ID_Input;
-  distanceLogId_not_ends_with?: ID_Input;
-  dateTime?: DateTimeInput;
-  dateTime_not?: DateTimeInput;
-  dateTime_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_not_in?: DateTimeInput[] | DateTimeInput;
-  dateTime_lt?: DateTimeInput;
-  dateTime_lte?: DateTimeInput;
-  dateTime_gt?: DateTimeInput;
-  dateTime_gte?: DateTimeInput;
-  distance?: Float;
-  distance_not?: Float;
-  distance_in?: Float[] | Float;
-  distance_not_in?: Float[] | Float;
-  distance_lt?: Float;
-  distance_lte?: Float;
-  distance_gt?: Float;
-  distance_gte?: Float;
-  AND?: DistanceDataWhereInput[] | DistanceDataWhereInput;
-  OR?: DistanceDataWhereInput[] | DistanceDataWhereInput;
-  NOT?: DistanceDataWhereInput[] | DistanceDataWhereInput;
-}
-
-export interface DistanceDataUpdateManyInput {
-  create?: DistanceDataCreateInput[] | DistanceDataCreateInput;
-  update?:
-    | DistanceDataUpdateWithWhereUniqueNestedInput[]
-    | DistanceDataUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | DistanceDataUpsertWithWhereUniqueNestedInput[]
-    | DistanceDataUpsertWithWhereUniqueNestedInput;
-  delete?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
-  connect?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
-  disconnect?: DistanceDataWhereUniqueInput[] | DistanceDataWhereUniqueInput;
-}
-
-export interface DistanceDataSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: DistanceDataWhereInput;
-  AND?:
-    | DistanceDataSubscriptionWhereInput[]
-    | DistanceDataSubscriptionWhereInput;
-  OR?:
-    | DistanceDataSubscriptionWhereInput[]
-    | DistanceDataSubscriptionWhereInput;
-  NOT?:
-    | DistanceDataSubscriptionWhereInput[]
-    | DistanceDataSubscriptionWhereInput;
-}
-
-export interface DistanceDataUpdateWithWhereUniqueNestedInput {
-  where: DistanceDataWhereUniqueInput;
-  data: DistanceDataUpdateDataInput;
-}
-
-export interface FitbitAccountUpdateOneInput {
-  create?: FitbitAccountCreateInput;
-  update?: FitbitAccountUpdateDataInput;
-  upsert?: FitbitAccountUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
+export interface FitbitAccountCreateOneWithoutUserInput {
+  create?: FitbitAccountCreateWithoutUserInput;
   connect?: FitbitAccountWhereUniqueInput;
-}
-
-export interface FitbitAccountUpdateInput {
-  userId?: ID_Input;
-  fitbitUserId?: String;
-  refreshToken?: String;
-  accessToken?: String;
-  expiration?: DateTimeInput;
-}
-
-export interface FitbitAccountCreateInput {
-  userId: ID_Input;
-  fitbitUserId: String;
-  refreshToken: String;
-  accessToken: String;
-  expiration: DateTimeInput;
-}
-
-export interface DistanceDataUpsertWithWhereUniqueNestedInput {
-  where: DistanceDataWhereUniqueInput;
-  update: DistanceDataUpdateDataInput;
-  create: DistanceDataCreateInput;
-}
-
-export interface DistanceDataUpdateDataInput {
-  distanceLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  distance?: Float;
-}
-
-export type RescueTimeAccountWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  userId?: ID_Input;
-}>;
-
-export interface SleepLogUpdateManyInput {
-  create?: SleepLogCreateInput[] | SleepLogCreateInput;
-  update?:
-    | SleepLogUpdateWithWhereUniqueNestedInput[]
-    | SleepLogUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | SleepLogUpsertWithWhereUniqueNestedInput[]
-    | SleepLogUpsertWithWhereUniqueNestedInput;
-  delete?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-  connect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-  disconnect?: SleepLogWhereUniqueInput[] | SleepLogWhereUniqueInput;
-}
-
-export type CalorieLogWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface StepDataUpdateDataInput {
-  stepLogId?: ID_Input;
-  dateTime?: DateTimeInput;
-  steps?: Int;
 }
 
 export interface NodeNode {
@@ -2969,22 +3745,78 @@ export interface UserPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface GoogleFitAccountConnectionNode {}
+export interface DistanceDataConnectionNode {}
 
-export interface GoogleFitAccountConnection
-  extends Promise<GoogleFitAccountConnectionNode>,
+export interface DistanceDataConnection
+  extends Promise<DistanceDataConnectionNode>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<GoogleFitAccountEdgeNode>>() => T;
-  aggregate: <T = AggregateGoogleFitAccount>() => T;
+  edges: <T = FragmentableArray<DistanceDataEdgeNode>>() => T;
+  aggregate: <T = AggregateDistanceData>() => T;
 }
 
-export interface GoogleFitAccountConnectionSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountConnectionNode>>,
+export interface DistanceDataConnectionSubscription
+  extends Promise<AsyncIterator<DistanceDataConnectionNode>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<GoogleFitAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateGoogleFitAccountSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<DistanceDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDistanceDataSubscription>() => T;
+}
+
+export interface StepDataPreviousValuesNode {
+  id: ID_Output;
+  dateTime: DateTimeOutput;
+  steps: Int;
+}
+
+export interface StepDataPreviousValues
+  extends Promise<StepDataPreviousValuesNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  dateTime: () => Promise<DateTimeOutput>;
+  steps: () => Promise<Int>;
+}
+
+export interface StepDataPreviousValuesSubscription
+  extends Promise<AsyncIterator<StepDataPreviousValuesNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  steps: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateCalorieLogNode {
+  count: Int;
+}
+
+export interface AggregateCalorieLog
+  extends Promise<AggregateCalorieLogNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCalorieLogSubscription
+  extends Promise<AsyncIterator<AggregateCalorieLogNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CalorieLogConnectionNode {}
+
+export interface CalorieLogConnection
+  extends Promise<CalorieLogConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<CalorieLogEdgeNode>>() => T;
+  aggregate: <T = AggregateCalorieLog>() => T;
+}
+
+export interface CalorieLogConnectionSubscription
+  extends Promise<AsyncIterator<CalorieLogConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CalorieLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCalorieLogSubscription>() => T;
 }
 
 export interface CalorieLogEdgeNode {
@@ -3005,66 +3837,26 @@ export interface CalorieLogEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface CalorieDataEdgeNode {
-  cursor: String;
-}
-
-export interface CalorieDataEdge
-  extends Promise<CalorieDataEdgeNode>,
-    Fragmentable {
-  node: <T = CalorieData>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface CalorieDataEdgeSubscription
-  extends Promise<AsyncIterator<CalorieDataEdgeNode>>,
-    Fragmentable {
-  node: <T = CalorieDataSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateCalorieLogNode {
-  count: Int;
-}
-
-export interface AggregateCalorieLog
-  extends Promise<AggregateCalorieLogNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCalorieLogSubscription
-  extends Promise<AsyncIterator<AggregateCalorieLogNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface GoogleFitAccountNode {
+export interface StepLogPreviousValuesNode {
   id: ID_Output;
-  userId: ID_Output;
-  refreshToken: String;
-  accessToken: String;
-  expiration: DateTimeOutput;
+  date: DateTimeOutput;
+  totalSteps: Int;
 }
 
-export interface GoogleFitAccount
-  extends Promise<GoogleFitAccountNode>,
+export interface StepLogPreviousValues
+  extends Promise<StepLogPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
-  refreshToken: () => Promise<String>;
-  accessToken: () => Promise<String>;
-  expiration: () => Promise<DateTimeOutput>;
+  date: () => Promise<DateTimeOutput>;
+  totalSteps: () => Promise<Int>;
 }
 
-export interface GoogleFitAccountSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountNode>>,
+export interface StepLogPreviousValuesSubscription
+  extends Promise<AsyncIterator<StepLogPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
-  refreshToken: () => Promise<AsyncIterator<String>>;
-  accessToken: () => Promise<AsyncIterator<String>>;
-  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+  totalSteps: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface BatchPayloadNode {
@@ -3079,22 +3871,6 @@ export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayloadNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateFitbitAccountNode {
-  count: Int;
-}
-
-export interface AggregateFitbitAccount
-  extends Promise<AggregateFitbitAccountNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateFitbitAccountSubscription
-  extends Promise<AsyncIterator<AggregateFitbitAccountNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserEdgeNode {
@@ -3113,6 +3889,22 @@ export interface UserEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
+export interface AggregateCalorieDataNode {
+  count: Int;
+}
+
+export interface AggregateCalorieData
+  extends Promise<AggregateCalorieDataNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCalorieDataSubscription
+  extends Promise<AsyncIterator<AggregateCalorieDataNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface CalorieLogNode {
   id: ID_Output;
   date: DateTimeOutput;
@@ -3121,9 +3913,10 @@ export interface CalorieLogNode {
 
 export interface CalorieLog extends Promise<CalorieLogNode>, Fragmentable {
   id: () => Promise<ID_Output>;
+  user: <T = User>() => T;
   date: () => Promise<DateTimeOutput>;
   totalCalories: () => Promise<Float>;
-  intradayData: <T = FragmentableArray<CalorieDataNode>>(
+  calorieData: <T = FragmentableArray<CalorieDataNode>>(
     args?: {
       where?: CalorieDataWhereInput;
       orderBy?: CalorieDataOrderByInput;
@@ -3140,9 +3933,10 @@ export interface CalorieLogSubscription
   extends Promise<AsyncIterator<CalorieLogNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
   totalCalories: () => Promise<AsyncIterator<Float>>;
-  intradayData: <T = Promise<AsyncIterator<CalorieDataSubscription>>>(
+  calorieData: <T = Promise<AsyncIterator<CalorieDataSubscription>>>(
     args?: {
       where?: CalorieDataWhereInput;
       orderBy?: CalorieDataOrderByInput;
@@ -3155,86 +3949,22 @@ export interface CalorieLogSubscription
   ) => T;
 }
 
-export interface StepDataPreviousValuesNode {
-  id: ID_Output;
-  stepLogId: ID_Output;
-  dateTime: DateTimeOutput;
-  steps: Int;
+export interface CalorieDataEdgeNode {
+  cursor: String;
 }
 
-export interface StepDataPreviousValues
-  extends Promise<StepDataPreviousValuesNode>,
+export interface CalorieDataEdge
+  extends Promise<CalorieDataEdgeNode>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  stepLogId: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  steps: () => Promise<Int>;
+  node: <T = CalorieData>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface StepDataPreviousValuesSubscription
-  extends Promise<AsyncIterator<StepDataPreviousValuesNode>>,
+export interface CalorieDataEdgeSubscription
+  extends Promise<AsyncIterator<CalorieDataEdgeNode>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  stepLogId: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  steps: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateUserNode {
-  count: Int;
-}
-
-export interface AggregateUser
-  extends Promise<AggregateUserNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUserNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CalorieDataNode {
-  id: ID_Output;
-  calorieLogId: ID_Output;
-  dateTime: DateTimeOutput;
-  calories: Float;
-}
-
-export interface CalorieData extends Promise<CalorieDataNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  calorieLogId: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  calories: () => Promise<Float>;
-}
-
-export interface CalorieDataSubscription
-  extends Promise<AsyncIterator<CalorieDataNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  calorieLogId: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  calories: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface UserConnectionNode {}
-
-export interface UserConnection
-  extends Promise<UserConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<UserEdgeNode>>() => T;
-  aggregate: <T = AggregateUser>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  node: <T = CalorieDataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface StepLogEdgeNode {
@@ -3253,87 +3983,83 @@ export interface StepLogEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserNode {
+export interface PageInfoNode {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfoNode>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateStepDataNode {
+  count: Int;
+}
+
+export interface AggregateStepData
+  extends Promise<AggregateStepDataNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateStepDataSubscription
+  extends Promise<AsyncIterator<AggregateStepDataNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CalorieDataNode {
   id: ID_Output;
-  email: String;
-  password: String;
-  sleepLogLastUpdatedDate?: DateTimeOutput;
-  productivityLogLastUpdatedDate?: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
+  dateTime: DateTimeOutput;
+  calories: Float;
 }
 
-export interface User extends Promise<UserNode>, Fragmentable {
+export interface CalorieData extends Promise<CalorieDataNode>, Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  googleFitAccount: <T = GoogleFitAccount>() => T;
-  fitbitAccount: <T = FitbitAccount>() => T;
-  rescueTimeAcccount: <T = RescueTimeAccount>() => T;
-  sleepLogs: <T = FragmentableArray<SleepLogNode>>(
-    args?: {
-      where?: SleepLogWhereInput;
-      orderBy?: SleepLogOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  sleepLogLastUpdatedDate: () => Promise<DateTimeOutput>;
-  productivityLogLastUpdatedDate: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  calorieLog: <T = CalorieLog>() => T;
+  dateTime: () => Promise<DateTimeOutput>;
+  calories: () => Promise<Float>;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<UserNode>>,
+export interface CalorieDataSubscription
+  extends Promise<AsyncIterator<CalorieDataNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  googleFitAccount: <T = GoogleFitAccountSubscription>() => T;
-  fitbitAccount: <T = FitbitAccountSubscription>() => T;
-  rescueTimeAcccount: <T = RescueTimeAccountSubscription>() => T;
-  sleepLogs: <T = Promise<AsyncIterator<SleepLogSubscription>>>(
-    args?: {
-      where?: SleepLogWhereInput;
-      orderBy?: SleepLogOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  sleepLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  productivityLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  calorieLog: <T = CalorieLogSubscription>() => T;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  calories: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface UserSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
+export interface StepDataConnectionNode {}
 
-export interface UserSubscriptionPayload
-  extends Promise<UserSubscriptionPayloadNode>,
+export interface StepDataConnection
+  extends Promise<StepDataConnectionNode>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = User>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValues>() => T;
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<StepDataEdgeNode>>() => T;
+  aggregate: <T = AggregateStepData>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayloadNode>>,
+export interface StepDataConnectionSubscription
+  extends Promise<AsyncIterator<StepDataConnectionNode>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StepDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStepDataSubscription>() => T;
 }
 
 export interface CalorieDataSubscriptionPayloadNode {
@@ -3359,25 +4085,24 @@ export interface CalorieDataSubscriptionPayloadSubscription
   previousValues: <T = CalorieDataPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateStepDataNode {
-  count: Int;
+export interface SleepLogEdgeNode {
+  cursor: String;
 }
 
-export interface AggregateStepData
-  extends Promise<AggregateStepDataNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface SleepLogEdge extends Promise<SleepLogEdgeNode>, Fragmentable {
+  node: <T = SleepLog>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregateStepDataSubscription
-  extends Promise<AsyncIterator<AggregateStepDataNode>>,
+export interface SleepLogEdgeSubscription
+  extends Promise<AsyncIterator<SleepLogEdgeNode>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = SleepLogSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CalorieDataPreviousValuesNode {
   id: ID_Output;
-  calorieLogId: ID_Output;
   dateTime: DateTimeOutput;
   calories: Float;
 }
@@ -3386,7 +4111,6 @@ export interface CalorieDataPreviousValues
   extends Promise<CalorieDataPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  calorieLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
   calories: () => Promise<Float>;
 }
@@ -3395,61 +4119,60 @@ export interface CalorieDataPreviousValuesSubscription
   extends Promise<AsyncIterator<CalorieDataPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  calorieLogId: () => Promise<AsyncIterator<ID_Output>>;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   calories: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface StepDataConnectionNode {}
-
-export interface StepDataConnection
-  extends Promise<StepDataConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<StepDataEdgeNode>>() => T;
-  aggregate: <T = AggregateStepData>() => T;
-}
-
-export interface StepDataConnectionSubscription
-  extends Promise<AsyncIterator<StepDataConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<StepDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateStepDataSubscription>() => T;
-}
-
-export interface FitbitAccountEdgeNode {
-  cursor: String;
-}
-
-export interface FitbitAccountEdge
-  extends Promise<FitbitAccountEdgeNode>,
-    Fragmentable {
-  node: <T = FitbitAccount>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface FitbitAccountEdgeSubscription
-  extends Promise<AsyncIterator<FitbitAccountEdgeNode>>,
-    Fragmentable {
-  node: <T = FitbitAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateSleepLogNode {
+export interface AggregateSleepDataNode {
   count: Int;
 }
 
-export interface AggregateSleepLog
-  extends Promise<AggregateSleepLogNode>,
+export interface AggregateSleepData
+  extends Promise<AggregateSleepDataNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateSleepLogSubscription
-  extends Promise<AsyncIterator<AggregateSleepLogNode>>,
+export interface AggregateSleepDataSubscription
+  extends Promise<AsyncIterator<AggregateSleepDataNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CalorieDataConnectionNode {}
+
+export interface CalorieDataConnection
+  extends Promise<CalorieDataConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<CalorieDataEdgeNode>>() => T;
+  aggregate: <T = AggregateCalorieData>() => T;
+}
+
+export interface CalorieDataConnectionSubscription
+  extends Promise<AsyncIterator<CalorieDataConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CalorieDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCalorieDataSubscription>() => T;
+}
+
+export interface SleepDataConnectionNode {}
+
+export interface SleepDataConnection
+  extends Promise<SleepDataConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<SleepDataEdgeNode>>() => T;
+  aggregate: <T = AggregateSleepData>() => T;
+}
+
+export interface SleepDataConnectionSubscription
+  extends Promise<AsyncIterator<SleepDataConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SleepDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSleepDataSubscription>() => T;
 }
 
 export interface CalorieLogSubscriptionPayloadNode {
@@ -3475,22 +4198,22 @@ export interface CalorieLogSubscriptionPayloadSubscription
   previousValues: <T = CalorieLogPreviousValuesSubscription>() => T;
 }
 
-export interface SleepLogConnectionNode {}
-
-export interface SleepLogConnection
-  extends Promise<SleepLogConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<SleepLogEdgeNode>>() => T;
-  aggregate: <T = AggregateSleepLog>() => T;
+export interface RescueTimeAccountEdgeNode {
+  cursor: String;
 }
 
-export interface SleepLogConnectionSubscription
-  extends Promise<AsyncIterator<SleepLogConnectionNode>>,
+export interface RescueTimeAccountEdge
+  extends Promise<RescueTimeAccountEdgeNode>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SleepLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSleepLogSubscription>() => T;
+  node: <T = RescueTimeAccount>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RescueTimeAccountEdgeSubscription
+  extends Promise<AsyncIterator<RescueTimeAccountEdgeNode>>,
+    Fragmentable {
+  node: <T = RescueTimeAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CalorieLogPreviousValuesNode {
@@ -3515,9 +4238,156 @@ export interface CalorieLogPreviousValuesSubscription
   totalCalories: () => Promise<AsyncIterator<Float>>;
 }
 
+export interface UserNode {
+  id: ID_Output;
+  email: String;
+  password: String;
+  sleepLogLastUpdatedDate?: DateTimeOutput;
+  productivityLogLastUpdatedDate?: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface User extends Promise<UserNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  googleFitAccount: <T = GoogleFitAccount>() => T;
+  fitbitAccount: <T = FitbitAccount>() => T;
+  rescueTimeAccount: <T = RescueTimeAccount>() => T;
+  sleepLogs: <T = FragmentableArray<SleepLogNode>>(
+    args?: {
+      where?: SleepLogWhereInput;
+      orderBy?: SleepLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  heartLogs: <T = FragmentableArray<HeartLogNode>>(
+    args?: {
+      where?: HeartLogWhereInput;
+      orderBy?: HeartLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stepLogs: <T = FragmentableArray<StepLogNode>>(
+    args?: {
+      where?: StepLogWhereInput;
+      orderBy?: StepLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  calorieLogs: <T = FragmentableArray<CalorieLogNode>>(
+    args?: {
+      where?: CalorieLogWhereInput;
+      orderBy?: CalorieLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  distanceLogs: <T = FragmentableArray<DistanceLogNode>>(
+    args?: {
+      where?: DistanceLogWhereInput;
+      orderBy?: DistanceLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  sleepLogLastUpdatedDate: () => Promise<DateTimeOutput>;
+  productivityLogLastUpdatedDate: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<UserNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  googleFitAccount: <T = GoogleFitAccountSubscription>() => T;
+  fitbitAccount: <T = FitbitAccountSubscription>() => T;
+  rescueTimeAccount: <T = RescueTimeAccountSubscription>() => T;
+  sleepLogs: <T = Promise<AsyncIterator<SleepLogSubscription>>>(
+    args?: {
+      where?: SleepLogWhereInput;
+      orderBy?: SleepLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  heartLogs: <T = Promise<AsyncIterator<HeartLogSubscription>>>(
+    args?: {
+      where?: HeartLogWhereInput;
+      orderBy?: HeartLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  stepLogs: <T = Promise<AsyncIterator<StepLogSubscription>>>(
+    args?: {
+      where?: StepLogWhereInput;
+      orderBy?: StepLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  calorieLogs: <T = Promise<AsyncIterator<CalorieLogSubscription>>>(
+    args?: {
+      where?: CalorieLogWhereInput;
+      orderBy?: CalorieLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  distanceLogs: <T = Promise<AsyncIterator<DistanceLogSubscription>>>(
+    args?: {
+      where?: DistanceLogWhereInput;
+      orderBy?: DistanceLogOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  sleepLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  productivityLogLastUpdatedDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
 export interface SleepLogNode {
   id: ID_Output;
-  userId: ID_Output;
   dateOfSleep: String;
   duration: Int;
   efficiency: Int;
@@ -3552,7 +4422,7 @@ export interface SleepLogNode {
 
 export interface SleepLog extends Promise<SleepLogNode>, Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
+  user: <T = User>() => T;
   dateOfSleep: () => Promise<String>;
   duration: () => Promise<Int>;
   efficiency: () => Promise<Int>;
@@ -3565,7 +4435,7 @@ export interface SleepLog extends Promise<SleepLogNode>, Fragmentable {
   startTime: () => Promise<DateTimeOutput>;
   timeInBed: () => Promise<Int>;
   type: () => Promise<String>;
-  data: <T = FragmentableArray<SleepDataNode>>(
+  sleepData: <T = FragmentableArray<SleepDataNode>>(
     args?: {
       where?: SleepDataWhereInput;
       orderBy?: SleepDataOrderByInput;
@@ -3600,7 +4470,7 @@ export interface SleepLogSubscription
   extends Promise<AsyncIterator<SleepLogNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
   dateOfSleep: () => Promise<AsyncIterator<String>>;
   duration: () => Promise<AsyncIterator<Int>>;
   efficiency: () => Promise<AsyncIterator<Int>>;
@@ -3613,7 +4483,7 @@ export interface SleepLogSubscription
   startTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   timeInBed: () => Promise<AsyncIterator<Int>>;
   type: () => Promise<AsyncIterator<String>>;
-  data: <T = Promise<AsyncIterator<SleepDataSubscription>>>(
+  sleepData: <T = Promise<AsyncIterator<SleepDataSubscription>>>(
     args?: {
       where?: SleepDataWhereInput;
       orderBy?: SleepDataOrderByInput;
@@ -3644,39 +4514,19 @@ export interface SleepLogSubscription
   summaryRestlessMinutes: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface FitbitAccountConnectionNode {}
-
-export interface FitbitAccountConnection
-  extends Promise<FitbitAccountConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<FitbitAccountEdgeNode>>() => T;
-  aggregate: <T = AggregateFitbitAccount>() => T;
-}
-
-export interface FitbitAccountConnectionSubscription
-  extends Promise<AsyncIterator<FitbitAccountConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<FitbitAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateFitbitAccountSubscription>() => T;
-}
-
-export interface SleepDataEdgeNode {
+export interface HeartLogEdgeNode {
   cursor: String;
 }
 
-export interface SleepDataEdge
-  extends Promise<SleepDataEdgeNode>,
-    Fragmentable {
-  node: <T = SleepData>() => T;
+export interface HeartLogEdge extends Promise<HeartLogEdgeNode>, Fragmentable {
+  node: <T = HeartLog>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface SleepDataEdgeSubscription
-  extends Promise<AsyncIterator<SleepDataEdgeNode>>,
+export interface HeartLogEdgeSubscription
+  extends Promise<AsyncIterator<HeartLogEdgeNode>>,
     Fragmentable {
-  node: <T = SleepDataSubscription>() => T;
+  node: <T = HeartLogSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
@@ -3703,31 +4553,24 @@ export interface DistanceDataSubscriptionPayloadSubscription
   previousValues: <T = DistanceDataPreviousValuesSubscription>() => T;
 }
 
-export interface StepLogPreviousValuesNode {
-  id: ID_Output;
-  date: DateTimeOutput;
-  totalSteps: Int;
+export interface AggregateHeartDataNode {
+  count: Int;
 }
 
-export interface StepLogPreviousValues
-  extends Promise<StepLogPreviousValuesNode>,
+export interface AggregateHeartData
+  extends Promise<AggregateHeartDataNode>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  date: () => Promise<DateTimeOutput>;
-  totalSteps: () => Promise<Int>;
+  count: () => Promise<Int>;
 }
 
-export interface StepLogPreviousValuesSubscription
-  extends Promise<AsyncIterator<StepLogPreviousValuesNode>>,
+export interface AggregateHeartDataSubscription
+  extends Promise<AsyncIterator<AggregateHeartDataNode>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalSteps: () => Promise<AsyncIterator<Int>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface DistanceDataPreviousValuesNode {
   id: ID_Output;
-  distanceLogId: ID_Output;
   dateTime: DateTimeOutput;
   distance: Float;
 }
@@ -3736,7 +4579,6 @@ export interface DistanceDataPreviousValues
   extends Promise<DistanceDataPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  distanceLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
   distance: () => Promise<Float>;
 }
@@ -3745,59 +4587,66 @@ export interface DistanceDataPreviousValuesSubscription
   extends Promise<AsyncIterator<DistanceDataPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  distanceLogId: () => Promise<AsyncIterator<ID_Output>>;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   distance: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface AggregateRescueTimeAccountNode {
-  count: Int;
-}
+export interface HeartDataConnectionNode {}
 
-export interface AggregateRescueTimeAccount
-  extends Promise<AggregateRescueTimeAccountNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateRescueTimeAccountSubscription
-  extends Promise<AsyncIterator<AggregateRescueTimeAccountNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateCalorieDataNode {
-  count: Int;
-}
-
-export interface AggregateCalorieData
-  extends Promise<AggregateCalorieDataNode>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCalorieDataSubscription
-  extends Promise<AsyncIterator<AggregateCalorieDataNode>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface RescueTimeAccountConnectionNode {}
-
-export interface RescueTimeAccountConnection
-  extends Promise<RescueTimeAccountConnectionNode>,
+export interface HeartDataConnection
+  extends Promise<HeartDataConnectionNode>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<RescueTimeAccountEdgeNode>>() => T;
-  aggregate: <T = AggregateRescueTimeAccount>() => T;
+  edges: <T = FragmentableArray<HeartDataEdgeNode>>() => T;
+  aggregate: <T = AggregateHeartData>() => T;
 }
 
-export interface RescueTimeAccountConnectionSubscription
-  extends Promise<AsyncIterator<RescueTimeAccountConnectionNode>>,
+export interface HeartDataConnectionSubscription
+  extends Promise<AsyncIterator<HeartDataConnectionNode>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<RescueTimeAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateRescueTimeAccountSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HeartDataEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHeartDataSubscription>() => T;
+}
+
+export interface DistanceDataNode {
+  id: ID_Output;
+  dateTime: DateTimeOutput;
+  distance: Float;
+}
+
+export interface DistanceData extends Promise<DistanceDataNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  distanceLog: <T = DistanceLog>() => T;
+  dateTime: () => Promise<DateTimeOutput>;
+  distance: () => Promise<Float>;
+}
+
+export interface DistanceDataSubscription
+  extends Promise<AsyncIterator<DistanceDataNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  distanceLog: <T = DistanceLogSubscription>() => T;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  distance: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface GoogleFitAccountEdgeNode {
+  cursor: String;
+}
+
+export interface GoogleFitAccountEdge
+  extends Promise<GoogleFitAccountEdgeNode>,
+    Fragmentable {
+  node: <T = GoogleFitAccount>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface GoogleFitAccountEdgeSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountEdgeNode>>,
+    Fragmentable {
+  node: <T = GoogleFitAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface DistanceLogSubscriptionPayloadNode {
@@ -3823,29 +4672,27 @@ export interface DistanceLogSubscriptionPayloadSubscription
   previousValues: <T = DistanceLogPreviousValuesSubscription>() => T;
 }
 
-export interface RescueTimeAccountNode {
-  id: ID_Output;
-  userId: ID_Output;
-  accessToken: String;
-  scope: String;
+export interface StepLogSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
 }
 
-export interface RescueTimeAccount
-  extends Promise<RescueTimeAccountNode>,
+export interface StepLogSubscriptionPayload
+  extends Promise<StepLogSubscriptionPayloadNode>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
-  accessToken: () => Promise<String>;
-  scope: () => Promise<String>;
+  mutation: () => Promise<MutationType>;
+  node: <T = StepLog>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StepLogPreviousValues>() => T;
 }
 
-export interface RescueTimeAccountSubscription
-  extends Promise<AsyncIterator<RescueTimeAccountNode>>,
+export interface StepLogSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StepLogSubscriptionPayloadNode>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
-  accessToken: () => Promise<AsyncIterator<String>>;
-  scope: () => Promise<AsyncIterator<String>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StepLogSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StepLogPreviousValuesSubscription>() => T;
 }
 
 export interface DistanceLogPreviousValuesNode {
@@ -3870,25 +4717,26 @@ export interface DistanceLogPreviousValuesSubscription
   totalDistance: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface HeartLogEdgeNode {
+export interface FitbitAccountEdgeNode {
   cursor: String;
 }
 
-export interface HeartLogEdge extends Promise<HeartLogEdgeNode>, Fragmentable {
-  node: <T = HeartLog>() => T;
+export interface FitbitAccountEdge
+  extends Promise<FitbitAccountEdgeNode>,
+    Fragmentable {
+  node: <T = FitbitAccount>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface HeartLogEdgeSubscription
-  extends Promise<AsyncIterator<HeartLogEdgeNode>>,
+export interface FitbitAccountEdgeSubscription
+  extends Promise<AsyncIterator<FitbitAccountEdgeNode>>,
     Fragmentable {
-  node: <T = HeartLogSubscription>() => T;
+  node: <T = FitbitAccountSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface FitbitAccountNode {
   id: ID_Output;
-  userId: ID_Output;
   fitbitUserId: String;
   refreshToken: String;
   accessToken: String;
@@ -3899,7 +4747,7 @@ export interface FitbitAccount
   extends Promise<FitbitAccountNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
+  user: <T = User>() => T;
   fitbitUserId: () => Promise<String>;
   refreshToken: () => Promise<String>;
   accessToken: () => Promise<String>;
@@ -3910,34 +4758,38 @@ export interface FitbitAccountSubscription
   extends Promise<AsyncIterator<FitbitAccountNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
   fitbitUserId: () => Promise<AsyncIterator<String>>;
   refreshToken: () => Promise<AsyncIterator<String>>;
   accessToken: () => Promise<AsyncIterator<String>>;
   expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PageInfoNode {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+export interface GoogleFitAccountNode {
+  id: ID_Output;
+  refreshToken: String;
+  accessToken: String;
+  expiration: DateTimeOutput;
 }
 
-export interface PageInfo extends Promise<PageInfoNode>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfoNode>>,
+export interface GoogleFitAccount
+  extends Promise<GoogleFitAccountNode>,
     Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+  id: () => Promise<ID_Output>;
+  user: <T = User>() => T;
+  refreshToken: () => Promise<String>;
+  accessToken: () => Promise<String>;
+  expiration: () => Promise<DateTimeOutput>;
+}
+
+export interface GoogleFitAccountSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
+  refreshToken: () => Promise<AsyncIterator<String>>;
+  accessToken: () => Promise<AsyncIterator<String>>;
+  expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface FitbitAccountSubscriptionPayloadNode {
@@ -3963,25 +4815,26 @@ export interface FitbitAccountSubscriptionPayloadSubscription
   previousValues: <T = FitbitAccountPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateHeartDataNode {
-  count: Int;
+export interface DistanceLogEdgeNode {
+  cursor: String;
 }
 
-export interface AggregateHeartData
-  extends Promise<AggregateHeartDataNode>,
+export interface DistanceLogEdge
+  extends Promise<DistanceLogEdgeNode>,
     Fragmentable {
-  count: () => Promise<Int>;
+  node: <T = DistanceLog>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregateHeartDataSubscription
-  extends Promise<AsyncIterator<AggregateHeartDataNode>>,
+export interface DistanceLogEdgeSubscription
+  extends Promise<AsyncIterator<DistanceLogEdgeNode>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = DistanceLogSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface FitbitAccountPreviousValuesNode {
   id: ID_Output;
-  userId: ID_Output;
   fitbitUserId: String;
   refreshToken: String;
   accessToken: String;
@@ -3992,7 +4845,6 @@ export interface FitbitAccountPreviousValues
   extends Promise<FitbitAccountPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
   fitbitUserId: () => Promise<String>;
   refreshToken: () => Promise<String>;
   accessToken: () => Promise<String>;
@@ -4003,68 +4855,93 @@ export interface FitbitAccountPreviousValuesSubscription
   extends Promise<AsyncIterator<FitbitAccountPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
   fitbitUserId: () => Promise<AsyncIterator<String>>;
   refreshToken: () => Promise<AsyncIterator<String>>;
   accessToken: () => Promise<AsyncIterator<String>>;
   expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface HeartDataConnectionNode {}
-
-export interface HeartDataConnection
-  extends Promise<HeartDataConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<HeartDataEdgeNode>>() => T;
-  aggregate: <T = AggregateHeartData>() => T;
-}
-
-export interface HeartDataConnectionSubscription
-  extends Promise<AsyncIterator<HeartDataConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HeartDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHeartDataSubscription>() => T;
-}
-
-export interface AggregateDistanceLogNode {
+export interface AggregateDistanceDataNode {
   count: Int;
 }
 
-export interface AggregateDistanceLog
-  extends Promise<AggregateDistanceLogNode>,
+export interface AggregateDistanceData
+  extends Promise<AggregateDistanceDataNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateDistanceLogSubscription
-  extends Promise<AsyncIterator<AggregateDistanceLogNode>>,
+export interface AggregateDistanceDataSubscription
+  extends Promise<AsyncIterator<AggregateDistanceDataNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface HeartDataNode {
+export interface DistanceLogNode {
   id: ID_Output;
-  heartLogId: ID_Output;
-  dateTime: DateTimeOutput;
-  heartRate: Float;
+  date: DateTimeOutput;
+  totalDistance: Float;
 }
 
-export interface HeartData extends Promise<HeartDataNode>, Fragmentable {
+export interface DistanceLog extends Promise<DistanceLogNode>, Fragmentable {
   id: () => Promise<ID_Output>;
-  heartLogId: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  heartRate: () => Promise<Float>;
+  user: <T = User>() => T;
+  date: () => Promise<DateTimeOutput>;
+  totalDistance: () => Promise<Float>;
+  distanceData: <T = FragmentableArray<DistanceDataNode>>(
+    args?: {
+      where?: DistanceDataWhereInput;
+      orderBy?: DistanceDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
 }
 
-export interface HeartDataSubscription
-  extends Promise<AsyncIterator<HeartDataNode>>,
+export interface DistanceLogSubscription
+  extends Promise<AsyncIterator<DistanceLogNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  heartLogId: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  heartRate: () => Promise<AsyncIterator<Float>>;
+  user: <T = UserSubscription>() => T;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+  totalDistance: () => Promise<AsyncIterator<Float>>;
+  distanceData: <T = Promise<AsyncIterator<DistanceDataSubscription>>>(
+    args?: {
+      where?: DistanceDataWhereInput;
+      orderBy?: DistanceDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface UserSubscriptionPayloadNode {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface UserSubscriptionPayload
+  extends Promise<UserSubscriptionPayloadNode>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = User>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValues>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayloadNode>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface GoogleFitAccountSubscriptionPayloadNode {
@@ -4090,27 +4967,26 @@ export interface GoogleFitAccountSubscriptionPayloadSubscription
   previousValues: <T = GoogleFitAccountPreviousValuesSubscription>() => T;
 }
 
-export interface GoogleFitAccountEdgeNode {
-  cursor: String;
+export interface UserConnectionNode {}
+
+export interface UserConnection
+  extends Promise<UserConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<UserEdgeNode>>() => T;
+  aggregate: <T = AggregateUser>() => T;
 }
 
-export interface GoogleFitAccountEdge
-  extends Promise<GoogleFitAccountEdgeNode>,
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnectionNode>>,
     Fragmentable {
-  node: <T = GoogleFitAccount>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface GoogleFitAccountEdgeSubscription
-  extends Promise<AsyncIterator<GoogleFitAccountEdgeNode>>,
-    Fragmentable {
-  node: <T = GoogleFitAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 export interface GoogleFitAccountPreviousValuesNode {
   id: ID_Output;
-  userId: ID_Output;
   refreshToken: String;
   accessToken: String;
   expiration: DateTimeOutput;
@@ -4120,7 +4996,6 @@ export interface GoogleFitAccountPreviousValues
   extends Promise<GoogleFitAccountPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
   refreshToken: () => Promise<String>;
   accessToken: () => Promise<String>;
   expiration: () => Promise<DateTimeOutput>;
@@ -4130,86 +5005,67 @@ export interface GoogleFitAccountPreviousValuesSubscription
   extends Promise<AsyncIterator<GoogleFitAccountPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
   refreshToken: () => Promise<AsyncIterator<String>>;
   accessToken: () => Promise<AsyncIterator<String>>;
   expiration: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface AggregateStepLogNode {
+export interface StepLogConnectionNode {}
+
+export interface StepLogConnection
+  extends Promise<StepLogConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<StepLogEdgeNode>>() => T;
+  aggregate: <T = AggregateStepLog>() => T;
+}
+
+export interface StepLogConnectionSubscription
+  extends Promise<AsyncIterator<StepLogConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StepLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStepLogSubscription>() => T;
+}
+
+export interface RescueTimeAccountNode {
+  id: ID_Output;
+  accessToken: String;
+  scope: String;
+}
+
+export interface RescueTimeAccount
+  extends Promise<RescueTimeAccountNode>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  user: <T = User>() => T;
+  accessToken: () => Promise<String>;
+  scope: () => Promise<String>;
+}
+
+export interface RescueTimeAccountSubscription
+  extends Promise<AsyncIterator<RescueTimeAccountNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
+  accessToken: () => Promise<AsyncIterator<String>>;
+  scope: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateSleepLogNode {
   count: Int;
 }
 
-export interface AggregateStepLog
-  extends Promise<AggregateStepLogNode>,
+export interface AggregateSleepLog
+  extends Promise<AggregateSleepLogNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateStepLogSubscription
-  extends Promise<AsyncIterator<AggregateStepLogNode>>,
+export interface AggregateSleepLogSubscription
+  extends Promise<AsyncIterator<AggregateSleepLogNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface DistanceLogEdgeNode {
-  cursor: String;
-}
-
-export interface DistanceLogEdge
-  extends Promise<DistanceLogEdgeNode>,
-    Fragmentable {
-  node: <T = DistanceLog>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface DistanceLogEdgeSubscription
-  extends Promise<AsyncIterator<DistanceLogEdgeNode>>,
-    Fragmentable {
-  node: <T = DistanceLogSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface StepLogNode {
-  id: ID_Output;
-  date: DateTimeOutput;
-  totalSteps: Int;
-}
-
-export interface StepLog extends Promise<StepLogNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  date: () => Promise<DateTimeOutput>;
-  totalSteps: () => Promise<Int>;
-  intradayData: <T = FragmentableArray<StepDataNode>>(
-    args?: {
-      where?: StepDataWhereInput;
-      orderBy?: StepDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface StepLogSubscription
-  extends Promise<AsyncIterator<StepLogNode>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalSteps: () => Promise<AsyncIterator<Int>>;
-  intradayData: <T = Promise<AsyncIterator<StepDataSubscription>>>(
-    args?: {
-      where?: StepDataWhereInput;
-      orderBy?: StepDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
 }
 
 export interface HeartDataSubscriptionPayloadNode {
@@ -4235,32 +5091,26 @@ export interface HeartDataSubscriptionPayloadSubscription
   previousValues: <T = HeartDataPreviousValuesSubscription>() => T;
 }
 
-export interface StepDataNode {
-  id: ID_Output;
-  stepLogId: ID_Output;
-  dateTime: DateTimeOutput;
-  steps: Int;
+export interface SleepDataEdgeNode {
+  cursor: String;
 }
 
-export interface StepData extends Promise<StepDataNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  stepLogId: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  steps: () => Promise<Int>;
-}
-
-export interface StepDataSubscription
-  extends Promise<AsyncIterator<StepDataNode>>,
+export interface SleepDataEdge
+  extends Promise<SleepDataEdgeNode>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  stepLogId: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  steps: () => Promise<AsyncIterator<Int>>;
+  node: <T = SleepData>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface SleepDataEdgeSubscription
+  extends Promise<AsyncIterator<SleepDataEdgeNode>>,
+    Fragmentable {
+  node: <T = SleepDataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface HeartDataPreviousValuesNode {
   id: ID_Output;
-  heartLogId: ID_Output;
   dateTime: DateTimeOutput;
   heartRate: Float;
 }
@@ -4269,7 +5119,6 @@ export interface HeartDataPreviousValues
   extends Promise<HeartDataPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  heartLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
   heartRate: () => Promise<Float>;
 }
@@ -4278,68 +5127,66 @@ export interface HeartDataPreviousValuesSubscription
   extends Promise<AsyncIterator<HeartDataPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  heartLogId: () => Promise<AsyncIterator<ID_Output>>;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   heartRate: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface DistanceDataNode {
+export interface RescueTimeAccountConnectionNode {}
+
+export interface RescueTimeAccountConnection
+  extends Promise<RescueTimeAccountConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<RescueTimeAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateRescueTimeAccount>() => T;
+}
+
+export interface RescueTimeAccountConnectionSubscription
+  extends Promise<AsyncIterator<RescueTimeAccountConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RescueTimeAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRescueTimeAccountSubscription>() => T;
+}
+
+export interface StepDataNode {
   id: ID_Output;
-  distanceLogId: ID_Output;
   dateTime: DateTimeOutput;
-  distance: Float;
+  steps: Int;
 }
 
-export interface DistanceData extends Promise<DistanceDataNode>, Fragmentable {
+export interface StepData extends Promise<StepDataNode>, Fragmentable {
   id: () => Promise<ID_Output>;
-  distanceLogId: () => Promise<ID_Output>;
+  stepLog: <T = StepLog>() => T;
   dateTime: () => Promise<DateTimeOutput>;
-  distance: () => Promise<Float>;
+  steps: () => Promise<Int>;
 }
 
-export interface DistanceDataSubscription
-  extends Promise<AsyncIterator<DistanceDataNode>>,
+export interface StepDataSubscription
+  extends Promise<AsyncIterator<StepDataNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  distanceLogId: () => Promise<AsyncIterator<ID_Output>>;
+  stepLog: <T = StepLogSubscription>() => T;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  distance: () => Promise<AsyncIterator<Float>>;
+  steps: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface DistanceLogConnectionNode {}
+export interface HeartLogConnectionNode {}
 
-export interface DistanceLogConnection
-  extends Promise<DistanceLogConnectionNode>,
+export interface HeartLogConnection
+  extends Promise<HeartLogConnectionNode>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<DistanceLogEdgeNode>>() => T;
-  aggregate: <T = AggregateDistanceLog>() => T;
+  edges: <T = FragmentableArray<HeartLogEdgeNode>>() => T;
+  aggregate: <T = AggregateHeartLog>() => T;
 }
 
-export interface DistanceLogConnectionSubscription
-  extends Promise<AsyncIterator<DistanceLogConnectionNode>>,
+export interface HeartLogConnectionSubscription
+  extends Promise<AsyncIterator<HeartLogConnectionNode>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<DistanceLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateDistanceLogSubscription>() => T;
-}
-
-export interface SleepDataConnectionNode {}
-
-export interface SleepDataConnection
-  extends Promise<SleepDataConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<SleepDataEdgeNode>>() => T;
-  aggregate: <T = AggregateSleepData>() => T;
-}
-
-export interface SleepDataConnectionSubscription
-  extends Promise<AsyncIterator<SleepDataConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<SleepDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateSleepDataSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HeartLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHeartLogSubscription>() => T;
 }
 
 export interface HeartLogSubscriptionPayloadNode {
@@ -4365,22 +5212,20 @@ export interface HeartLogSubscriptionPayloadSubscription
   previousValues: <T = HeartLogPreviousValuesSubscription>() => T;
 }
 
-export interface RescueTimeAccountEdgeNode {
-  cursor: String;
+export interface AggregateGoogleFitAccountNode {
+  count: Int;
 }
 
-export interface RescueTimeAccountEdge
-  extends Promise<RescueTimeAccountEdgeNode>,
+export interface AggregateGoogleFitAccount
+  extends Promise<AggregateGoogleFitAccountNode>,
     Fragmentable {
-  node: <T = RescueTimeAccount>() => T;
-  cursor: () => Promise<String>;
+  count: () => Promise<Int>;
 }
 
-export interface RescueTimeAccountEdgeSubscription
-  extends Promise<AsyncIterator<RescueTimeAccountEdgeNode>>,
+export interface AggregateGoogleFitAccountSubscription
+  extends Promise<AsyncIterator<AggregateGoogleFitAccountNode>>,
     Fragmentable {
-  node: <T = RescueTimeAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface HeartLogPreviousValuesNode {
@@ -4450,36 +5295,37 @@ export interface HeartLogPreviousValuesSubscription
   minValuePeak: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface AggregateHeartLogNode {
+export interface AggregateFitbitAccountNode {
   count: Int;
 }
 
-export interface AggregateHeartLog
-  extends Promise<AggregateHeartLogNode>,
+export interface AggregateFitbitAccount
+  extends Promise<AggregateFitbitAccountNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateHeartLogSubscription
-  extends Promise<AsyncIterator<AggregateHeartLogNode>>,
+export interface AggregateFitbitAccountSubscription
+  extends Promise<AsyncIterator<AggregateFitbitAccountNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface DistanceLogNode {
+export interface StepLogNode {
   id: ID_Output;
   date: DateTimeOutput;
-  totalDistance: Float;
+  totalSteps: Int;
 }
 
-export interface DistanceLog extends Promise<DistanceLogNode>, Fragmentable {
+export interface StepLog extends Promise<StepLogNode>, Fragmentable {
   id: () => Promise<ID_Output>;
+  user: <T = User>() => T;
   date: () => Promise<DateTimeOutput>;
-  totalDistance: () => Promise<Float>;
-  intradayData: <T = FragmentableArray<DistanceDataNode>>(
+  totalSteps: () => Promise<Int>;
+  stepData: <T = FragmentableArray<StepDataNode>>(
     args?: {
-      where?: DistanceDataWhereInput;
-      orderBy?: DistanceDataOrderByInput;
+      where?: StepDataWhereInput;
+      orderBy?: StepDataOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
@@ -4489,16 +5335,17 @@ export interface DistanceLog extends Promise<DistanceLogNode>, Fragmentable {
   ) => T;
 }
 
-export interface DistanceLogSubscription
-  extends Promise<AsyncIterator<DistanceLogNode>>,
+export interface StepLogSubscription
+  extends Promise<AsyncIterator<StepLogNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalDistance: () => Promise<AsyncIterator<Float>>;
-  intradayData: <T = Promise<AsyncIterator<DistanceDataSubscription>>>(
+  totalSteps: () => Promise<AsyncIterator<Int>>;
+  stepData: <T = Promise<AsyncIterator<StepDataSubscription>>>(
     args?: {
-      where?: DistanceDataWhereInput;
-      orderBy?: DistanceDataOrderByInput;
+      where?: StepDataWhereInput;
+      orderBy?: StepDataOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
@@ -4508,91 +5355,20 @@ export interface DistanceLogSubscription
   ) => T;
 }
 
-export interface HeartLogNode {
-  id: ID_Output;
-  dateTime: DateTimeOutput;
-  caloriesOutOfRange: Int;
-  minutesOutOfRange: Int;
-  maxValueOutOfRange: Int;
-  minValueOutOfRange: Int;
-  caloriesFatBurn: Int;
-  minutesFatBurn: Int;
-  maxValueFatBurn: Int;
-  minValueFatBurn: Int;
-  caloriesCardio: Int;
-  minutesCardio: Int;
-  maxValueCardio: Int;
-  minValueCardio: Int;
-  caloriesPeak: Int;
-  minutesPeak: Int;
-  maxValuePeak: Int;
-  minValuePeak: Int;
+export interface AggregateDistanceLogNode {
+  count: Int;
 }
 
-export interface HeartLog extends Promise<HeartLogNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  caloriesOutOfRange: () => Promise<Int>;
-  minutesOutOfRange: () => Promise<Int>;
-  maxValueOutOfRange: () => Promise<Int>;
-  minValueOutOfRange: () => Promise<Int>;
-  caloriesFatBurn: () => Promise<Int>;
-  minutesFatBurn: () => Promise<Int>;
-  maxValueFatBurn: () => Promise<Int>;
-  minValueFatBurn: () => Promise<Int>;
-  caloriesCardio: () => Promise<Int>;
-  minutesCardio: () => Promise<Int>;
-  maxValueCardio: () => Promise<Int>;
-  minValueCardio: () => Promise<Int>;
-  caloriesPeak: () => Promise<Int>;
-  minutesPeak: () => Promise<Int>;
-  maxValuePeak: () => Promise<Int>;
-  minValuePeak: () => Promise<Int>;
-  intradayData: <T = FragmentableArray<HeartDataNode>>(
-    args?: {
-      where?: HeartDataWhereInput;
-      orderBy?: HeartDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface HeartLogSubscription
-  extends Promise<AsyncIterator<HeartLogNode>>,
+export interface AggregateDistanceLog
+  extends Promise<AggregateDistanceLogNode>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  caloriesOutOfRange: () => Promise<AsyncIterator<Int>>;
-  minutesOutOfRange: () => Promise<AsyncIterator<Int>>;
-  maxValueOutOfRange: () => Promise<AsyncIterator<Int>>;
-  minValueOutOfRange: () => Promise<AsyncIterator<Int>>;
-  caloriesFatBurn: () => Promise<AsyncIterator<Int>>;
-  minutesFatBurn: () => Promise<AsyncIterator<Int>>;
-  maxValueFatBurn: () => Promise<AsyncIterator<Int>>;
-  minValueFatBurn: () => Promise<AsyncIterator<Int>>;
-  caloriesCardio: () => Promise<AsyncIterator<Int>>;
-  minutesCardio: () => Promise<AsyncIterator<Int>>;
-  maxValueCardio: () => Promise<AsyncIterator<Int>>;
-  minValueCardio: () => Promise<AsyncIterator<Int>>;
-  caloriesPeak: () => Promise<AsyncIterator<Int>>;
-  minutesPeak: () => Promise<AsyncIterator<Int>>;
-  maxValuePeak: () => Promise<AsyncIterator<Int>>;
-  minValuePeak: () => Promise<AsyncIterator<Int>>;
-  intradayData: <T = Promise<AsyncIterator<HeartDataSubscription>>>(
-    args?: {
-      where?: HeartDataWhereInput;
-      orderBy?: HeartDataOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
+  count: () => Promise<Int>;
+}
+
+export interface AggregateDistanceLogSubscription
+  extends Promise<AsyncIterator<AggregateDistanceLogNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface RescueTimeAccountSubscriptionPayloadNode {
@@ -4618,32 +5394,26 @@ export interface RescueTimeAccountSubscriptionPayloadSubscription
   previousValues: <T = RescueTimeAccountPreviousValuesSubscription>() => T;
 }
 
-export interface StepLogSubscriptionPayloadNode {
-  mutation: MutationType;
-  updatedFields?: String[];
+export interface DistanceDataEdgeNode {
+  cursor: String;
 }
 
-export interface StepLogSubscriptionPayload
-  extends Promise<StepLogSubscriptionPayloadNode>,
+export interface DistanceDataEdge
+  extends Promise<DistanceDataEdgeNode>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = StepLog>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = StepLogPreviousValues>() => T;
+  node: <T = DistanceData>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface StepLogSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<StepLogSubscriptionPayloadNode>>,
+export interface DistanceDataEdgeSubscription
+  extends Promise<AsyncIterator<DistanceDataEdgeNode>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = StepLogSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = StepLogPreviousValuesSubscription>() => T;
+  node: <T = DistanceDataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface RescueTimeAccountPreviousValuesNode {
   id: ID_Output;
-  userId: ID_Output;
   accessToken: String;
   scope: String;
 }
@@ -4652,7 +5422,6 @@ export interface RescueTimeAccountPreviousValues
   extends Promise<RescueTimeAccountPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
   accessToken: () => Promise<String>;
   scope: () => Promise<String>;
 }
@@ -4661,59 +5430,64 @@ export interface RescueTimeAccountPreviousValuesSubscription
   extends Promise<AsyncIterator<RescueTimeAccountPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
   accessToken: () => Promise<AsyncIterator<String>>;
   scope: () => Promise<AsyncIterator<String>>;
 }
 
-export interface CalorieLogConnectionNode {}
-
-export interface CalorieLogConnection
-  extends Promise<CalorieLogConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<CalorieLogEdgeNode>>() => T;
-  aggregate: <T = AggregateCalorieLog>() => T;
-}
-
-export interface CalorieLogConnectionSubscription
-  extends Promise<AsyncIterator<CalorieLogConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CalorieLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCalorieLogSubscription>() => T;
-}
-
-export interface AggregateDistanceDataNode {
+export interface AggregateStepLogNode {
   count: Int;
 }
 
-export interface AggregateDistanceData
-  extends Promise<AggregateDistanceDataNode>,
+export interface AggregateStepLog
+  extends Promise<AggregateStepLogNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateDistanceDataSubscription
-  extends Promise<AsyncIterator<AggregateDistanceDataNode>>,
+export interface AggregateStepLogSubscription
+  extends Promise<AsyncIterator<AggregateStepLogNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface StepDataEdgeNode {
-  cursor: String;
+export interface HeartDataNode {
+  id: ID_Output;
+  dateTime: DateTimeOutput;
+  heartRate: Float;
 }
 
-export interface StepDataEdge extends Promise<StepDataEdgeNode>, Fragmentable {
-  node: <T = StepData>() => T;
-  cursor: () => Promise<String>;
+export interface HeartData extends Promise<HeartDataNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  heartLog: <T = HeartLog>() => T;
+  dateTime: () => Promise<DateTimeOutput>;
+  heartRate: () => Promise<Float>;
 }
 
-export interface StepDataEdgeSubscription
-  extends Promise<AsyncIterator<StepDataEdgeNode>>,
+export interface HeartDataSubscription
+  extends Promise<AsyncIterator<HeartDataNode>>,
     Fragmentable {
-  node: <T = StepDataSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  heartLog: <T = HeartLogSubscription>() => T;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  heartRate: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface SleepLogConnectionNode {}
+
+export interface SleepLogConnection
+  extends Promise<SleepLogConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<SleepLogEdgeNode>>() => T;
+  aggregate: <T = AggregateSleepLog>() => T;
+}
+
+export interface SleepLogConnectionSubscription
+  extends Promise<AsyncIterator<SleepLogConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<SleepLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateSleepLogSubscription>() => T;
 }
 
 export interface SleepDataSubscriptionPayloadNode {
@@ -4739,25 +5513,24 @@ export interface SleepDataSubscriptionPayloadSubscription
   previousValues: <T = SleepDataPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateSleepDataNode {
+export interface AggregateHeartLogNode {
   count: Int;
 }
 
-export interface AggregateSleepData
-  extends Promise<AggregateSleepDataNode>,
+export interface AggregateHeartLog
+  extends Promise<AggregateHeartLogNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateSleepDataSubscription
-  extends Promise<AsyncIterator<AggregateSleepDataNode>>,
+export interface AggregateHeartLogSubscription
+  extends Promise<AsyncIterator<AggregateHeartLogNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface SleepDataPreviousValuesNode {
   id: ID_Output;
-  sleepLogId: ID_Output;
   dateTime: DateTimeOutput;
   level: String;
   second: Int;
@@ -4767,7 +5540,6 @@ export interface SleepDataPreviousValues
   extends Promise<SleepDataPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  sleepLogId: () => Promise<ID_Output>;
   dateTime: () => Promise<DateTimeOutput>;
   level: () => Promise<String>;
   second: () => Promise<Int>;
@@ -4777,82 +5549,150 @@ export interface SleepDataPreviousValuesSubscription
   extends Promise<AsyncIterator<SleepDataPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  sleepLogId: () => Promise<AsyncIterator<ID_Output>>;
   dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
   level: () => Promise<AsyncIterator<String>>;
   second: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface CalorieDataConnectionNode {}
+export interface GoogleFitAccountConnectionNode {}
 
-export interface CalorieDataConnection
-  extends Promise<CalorieDataConnectionNode>,
+export interface GoogleFitAccountConnection
+  extends Promise<GoogleFitAccountConnectionNode>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<CalorieDataEdgeNode>>() => T;
-  aggregate: <T = AggregateCalorieData>() => T;
+  edges: <T = FragmentableArray<GoogleFitAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateGoogleFitAccount>() => T;
 }
 
-export interface CalorieDataConnectionSubscription
-  extends Promise<AsyncIterator<CalorieDataConnectionNode>>,
+export interface GoogleFitAccountConnectionSubscription
+  extends Promise<AsyncIterator<GoogleFitAccountConnectionNode>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CalorieDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCalorieDataSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GoogleFitAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGoogleFitAccountSubscription>() => T;
 }
 
-export interface DistanceDataEdgeNode {
+export interface HeartLogNode {
+  id: ID_Output;
+  dateTime: DateTimeOutput;
+  caloriesOutOfRange: Int;
+  minutesOutOfRange: Int;
+  maxValueOutOfRange: Int;
+  minValueOutOfRange: Int;
+  caloriesFatBurn: Int;
+  minutesFatBurn: Int;
+  maxValueFatBurn: Int;
+  minValueFatBurn: Int;
+  caloriesCardio: Int;
+  minutesCardio: Int;
+  maxValueCardio: Int;
+  minValueCardio: Int;
+  caloriesPeak: Int;
+  minutesPeak: Int;
+  maxValuePeak: Int;
+  minValuePeak: Int;
+}
+
+export interface HeartLog extends Promise<HeartLogNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  user: <T = User>() => T;
+  dateTime: () => Promise<DateTimeOutput>;
+  caloriesOutOfRange: () => Promise<Int>;
+  minutesOutOfRange: () => Promise<Int>;
+  maxValueOutOfRange: () => Promise<Int>;
+  minValueOutOfRange: () => Promise<Int>;
+  caloriesFatBurn: () => Promise<Int>;
+  minutesFatBurn: () => Promise<Int>;
+  maxValueFatBurn: () => Promise<Int>;
+  minValueFatBurn: () => Promise<Int>;
+  caloriesCardio: () => Promise<Int>;
+  minutesCardio: () => Promise<Int>;
+  maxValueCardio: () => Promise<Int>;
+  minValueCardio: () => Promise<Int>;
+  caloriesPeak: () => Promise<Int>;
+  minutesPeak: () => Promise<Int>;
+  maxValuePeak: () => Promise<Int>;
+  minValuePeak: () => Promise<Int>;
+  heartData: <T = FragmentableArray<HeartDataNode>>(
+    args?: {
+      where?: HeartDataWhereInput;
+      orderBy?: HeartDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface HeartLogSubscription
+  extends Promise<AsyncIterator<HeartLogNode>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  user: <T = UserSubscription>() => T;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  caloriesOutOfRange: () => Promise<AsyncIterator<Int>>;
+  minutesOutOfRange: () => Promise<AsyncIterator<Int>>;
+  maxValueOutOfRange: () => Promise<AsyncIterator<Int>>;
+  minValueOutOfRange: () => Promise<AsyncIterator<Int>>;
+  caloriesFatBurn: () => Promise<AsyncIterator<Int>>;
+  minutesFatBurn: () => Promise<AsyncIterator<Int>>;
+  maxValueFatBurn: () => Promise<AsyncIterator<Int>>;
+  minValueFatBurn: () => Promise<AsyncIterator<Int>>;
+  caloriesCardio: () => Promise<AsyncIterator<Int>>;
+  minutesCardio: () => Promise<AsyncIterator<Int>>;
+  maxValueCardio: () => Promise<AsyncIterator<Int>>;
+  minValueCardio: () => Promise<AsyncIterator<Int>>;
+  caloriesPeak: () => Promise<AsyncIterator<Int>>;
+  minutesPeak: () => Promise<AsyncIterator<Int>>;
+  maxValuePeak: () => Promise<AsyncIterator<Int>>;
+  minValuePeak: () => Promise<AsyncIterator<Int>>;
+  heartData: <T = Promise<AsyncIterator<HeartDataSubscription>>>(
+    args?: {
+      where?: HeartDataWhereInput;
+      orderBy?: HeartDataOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface DistanceLogConnectionNode {}
+
+export interface DistanceLogConnection
+  extends Promise<DistanceLogConnectionNode>,
+    Fragmentable {
+  pageInfo: <T = PageInfo>() => T;
+  edges: <T = FragmentableArray<DistanceLogEdgeNode>>() => T;
+  aggregate: <T = AggregateDistanceLog>() => T;
+}
+
+export interface DistanceLogConnectionSubscription
+  extends Promise<AsyncIterator<DistanceLogConnectionNode>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<DistanceLogEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDistanceLogSubscription>() => T;
+}
+
+export interface StepDataEdgeNode {
   cursor: String;
 }
 
-export interface DistanceDataEdge
-  extends Promise<DistanceDataEdgeNode>,
-    Fragmentable {
-  node: <T = DistanceData>() => T;
+export interface StepDataEdge extends Promise<StepDataEdgeNode>, Fragmentable {
+  node: <T = StepData>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface DistanceDataEdgeSubscription
-  extends Promise<AsyncIterator<DistanceDataEdgeNode>>,
+export interface StepDataEdgeSubscription
+  extends Promise<AsyncIterator<StepDataEdgeNode>>,
     Fragmentable {
-  node: <T = DistanceDataSubscription>() => T;
+  node: <T = StepDataSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface HeartDataEdgeNode {
-  cursor: String;
-}
-
-export interface HeartDataEdge
-  extends Promise<HeartDataEdgeNode>,
-    Fragmentable {
-  node: <T = HeartData>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface HeartDataEdgeSubscription
-  extends Promise<AsyncIterator<HeartDataEdgeNode>>,
-    Fragmentable {
-  node: <T = HeartDataSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface StepLogConnectionNode {}
-
-export interface StepLogConnection
-  extends Promise<StepLogConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<StepLogEdgeNode>>() => T;
-  aggregate: <T = AggregateStepLog>() => T;
-}
-
-export interface StepLogConnectionSubscription
-  extends Promise<AsyncIterator<StepLogConnectionNode>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<StepLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateStepLogSubscription>() => T;
 }
 
 export interface StepDataSubscriptionPayloadNode {
@@ -4878,27 +5718,33 @@ export interface StepDataSubscriptionPayloadSubscription
   previousValues: <T = StepDataPreviousValuesSubscription>() => T;
 }
 
-export interface DistanceDataConnectionNode {}
-
-export interface DistanceDataConnection
-  extends Promise<DistanceDataConnectionNode>,
-    Fragmentable {
-  pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<DistanceDataEdgeNode>>() => T;
-  aggregate: <T = AggregateDistanceData>() => T;
+export interface SleepDataNode {
+  id: ID_Output;
+  dateTime: DateTimeOutput;
+  level: String;
+  second: Int;
 }
 
-export interface DistanceDataConnectionSubscription
-  extends Promise<AsyncIterator<DistanceDataConnectionNode>>,
+export interface SleepData extends Promise<SleepDataNode>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  sleepLog: <T = SleepLog>() => T;
+  dateTime: () => Promise<DateTimeOutput>;
+  level: () => Promise<String>;
+  second: () => Promise<Int>;
+}
+
+export interface SleepDataSubscription
+  extends Promise<AsyncIterator<SleepDataNode>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<DistanceDataEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateDistanceDataSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  sleepLog: <T = SleepLogSubscription>() => T;
+  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  level: () => Promise<AsyncIterator<String>>;
+  second: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface SleepLogPreviousValuesNode {
   id: ID_Output;
-  userId: ID_Output;
   dateOfSleep: String;
   duration: Int;
   efficiency: Int;
@@ -4935,7 +5781,6 @@ export interface SleepLogPreviousValues
   extends Promise<SleepLogPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  userId: () => Promise<ID_Output>;
   dateOfSleep: () => Promise<String>;
   duration: () => Promise<Int>;
   efficiency: () => Promise<Int>;
@@ -4972,7 +5817,6 @@ export interface SleepLogPreviousValuesSubscription
   extends Promise<AsyncIterator<SleepLogPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  userId: () => Promise<AsyncIterator<ID_Output>>;
   dateOfSleep: () => Promise<AsyncIterator<String>>;
   duration: () => Promise<AsyncIterator<Int>>;
   efficiency: () => Promise<AsyncIterator<Int>>;
@@ -5028,97 +5872,80 @@ export interface SleepLogSubscriptionPayloadSubscription
   previousValues: <T = SleepLogPreviousValuesSubscription>() => T;
 }
 
-export interface SleepLogEdgeNode {
-  cursor: String;
-}
-
-export interface SleepLogEdge extends Promise<SleepLogEdgeNode>, Fragmentable {
-  node: <T = SleepLog>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface SleepLogEdgeSubscription
-  extends Promise<AsyncIterator<SleepLogEdgeNode>>,
-    Fragmentable {
-  node: <T = SleepLogSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateGoogleFitAccountNode {
+export interface AggregateRescueTimeAccountNode {
   count: Int;
 }
 
-export interface AggregateGoogleFitAccount
-  extends Promise<AggregateGoogleFitAccountNode>,
+export interface AggregateRescueTimeAccount
+  extends Promise<AggregateRescueTimeAccountNode>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateGoogleFitAccountSubscription
-  extends Promise<AsyncIterator<AggregateGoogleFitAccountNode>>,
+export interface AggregateRescueTimeAccountSubscription
+  extends Promise<AsyncIterator<AggregateRescueTimeAccountNode>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface HeartLogConnectionNode {}
+export interface AggregateUserNode {
+  count: Int;
+}
 
-export interface HeartLogConnection
-  extends Promise<HeartLogConnectionNode>,
+export interface AggregateUser
+  extends Promise<AggregateUserNode>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUserNode>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface FitbitAccountConnectionNode {}
+
+export interface FitbitAccountConnection
+  extends Promise<FitbitAccountConnectionNode>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<HeartLogEdgeNode>>() => T;
-  aggregate: <T = AggregateHeartLog>() => T;
+  edges: <T = FragmentableArray<FitbitAccountEdgeNode>>() => T;
+  aggregate: <T = AggregateFitbitAccount>() => T;
 }
 
-export interface HeartLogConnectionSubscription
-  extends Promise<AsyncIterator<HeartLogConnectionNode>>,
+export interface FitbitAccountConnectionSubscription
+  extends Promise<AsyncIterator<FitbitAccountConnectionNode>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HeartLogEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHeartLogSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<FitbitAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateFitbitAccountSubscription>() => T;
 }
 
-export interface SleepDataNode {
-  id: ID_Output;
-  sleepLogId: ID_Output;
-  dateTime: DateTimeOutput;
-  level: String;
-  second: Int;
+export interface HeartDataEdgeNode {
+  cursor: String;
 }
 
-export interface SleepData extends Promise<SleepDataNode>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  sleepLogId: () => Promise<ID_Output>;
-  dateTime: () => Promise<DateTimeOutput>;
-  level: () => Promise<String>;
-  second: () => Promise<Int>;
-}
-
-export interface SleepDataSubscription
-  extends Promise<AsyncIterator<SleepDataNode>>,
+export interface HeartDataEdge
+  extends Promise<HeartDataEdgeNode>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  sleepLogId: () => Promise<AsyncIterator<ID_Output>>;
-  dateTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  level: () => Promise<AsyncIterator<String>>;
-  second: () => Promise<AsyncIterator<Int>>;
+  node: <T = HeartData>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HeartDataEdgeSubscription
+  extends Promise<AsyncIterator<HeartDataEdgeNode>>,
+    Fragmentable {
+  node: <T = HeartDataSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 /*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+The `Boolean` scalar type represents `true` or `false`.
 */
-export type ID_Input = string | number;
-export type ID_Output = string;
+export type Boolean = boolean;
 
-/*
-DateTime scalar input type, allowing Date
-*/
-export type DateTimeInput = Date | string;
-
-/*
-DateTime scalar output type, which is always a string
-*/
-export type DateTimeOutput = string;
+export type Long = string;
 
 /*
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
@@ -5131,16 +5958,25 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 export type Int = number;
 
 /*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
+
+/*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
 
 /*
-The `Boolean` scalar type represents `true` or `false`.
+DateTime scalar input type, allowing Date
 */
-export type Boolean = boolean;
+export type DateTimeInput = Date | string;
 
-export type Long = string;
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
 
 /**
  * Type Defs
