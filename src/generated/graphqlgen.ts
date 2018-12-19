@@ -17,6 +17,7 @@ import { CalorieLogNode } from "./prisma-client";
 import { CalorieDataNode } from "./prisma-client";
 import { DistanceLogNode } from "./prisma-client";
 import { DistanceDataNode } from "./prisma-client";
+import { ProductivityDataNode } from "./prisma-client";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -107,14 +108,6 @@ export namespace MutationResolvers {
     password: string;
   }
 
-  export interface ArgsRefreshSleepLogs {
-    userId: string;
-  }
-
-  export interface ArgsDeleteAllSleepLogs {
-    userId: string;
-  }
-
   export interface ArgsDeleteUser {
     userId: string;
   }
@@ -126,6 +119,22 @@ export namespace MutationResolvers {
 
   export interface ArgsDeleteFitbitAccount {
     id: string;
+  }
+
+  export interface ArgsRefreshSleepLogs {
+    userId: string;
+  }
+
+  export interface ArgsDeleteAllSleepLogs {
+    userId: string;
+  }
+
+  export interface ArgsRefreshProductivityData {
+    userId: string;
+  }
+
+  export interface ArgsDeleteAllProductivityData {
+    userId: string;
   }
 
   export type SignupResolver = (
@@ -141,20 +150,6 @@ export namespace MutationResolvers {
     ctx: Context,
     info: GraphQLResolveInfo
   ) => AuthPayload | Promise<AuthPayload>;
-
-  export type RefreshSleepLogsResolver = (
-    parent: {},
-    args: ArgsRefreshSleepLogs,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
-
-  export type DeleteAllSleepLogsResolver = (
-    parent: {},
-    args: ArgsDeleteAllSleepLogs,
-    ctx: Context,
-    info: GraphQLResolveInfo
-  ) => string | Promise<string>;
 
   export type DeleteUserResolver = (
     parent: {},
@@ -177,6 +172,34 @@ export namespace MutationResolvers {
     info: GraphQLResolveInfo
   ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
 
+  export type RefreshSleepLogsResolver = (
+    parent: {},
+    args: ArgsRefreshSleepLogs,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DeleteAllSleepLogsResolver = (
+    parent: {},
+    args: ArgsDeleteAllSleepLogs,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type RefreshProductivityDataResolver = (
+    parent: {},
+    args: ArgsRefreshProductivityData,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DeleteAllProductivityDataResolver = (
+    parent: {},
+    args: ArgsDeleteAllProductivityData,
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
   export interface Type {
     signup: (
       parent: {},
@@ -191,20 +214,6 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => AuthPayload | Promise<AuthPayload>;
-
-    refreshSleepLogs: (
-      parent: {},
-      args: ArgsRefreshSleepLogs,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
-
-    deleteAllSleepLogs: (
-      parent: {},
-      args: ArgsDeleteAllSleepLogs,
-      ctx: Context,
-      info: GraphQLResolveInfo
-    ) => string | Promise<string>;
 
     deleteUser: (
       parent: {},
@@ -226,6 +235,34 @@ export namespace MutationResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => FitbitAccountNode | null | Promise<FitbitAccountNode | null>;
+
+    refreshSleepLogs: (
+      parent: {},
+      args: ArgsRefreshSleepLogs,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    deleteAllSleepLogs: (
+      parent: {},
+      args: ArgsDeleteAllSleepLogs,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    refreshProductivityData: (
+      parent: {},
+      args: ArgsRefreshProductivityData,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    deleteAllProductivityData: (
+      parent: {},
+      args: ArgsDeleteAllProductivityData,
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
   }
 }
 
@@ -275,10 +312,10 @@ export namespace UserResolvers {
       parent.sleepLogLastUpdatedDate === undefined
         ? null
         : parent.sleepLogLastUpdatedDate,
-    productivityLogLastUpdatedDate: (parent: UserNode) =>
-      parent.productivityLogLastUpdatedDate === undefined
+    productivityDataLastUpdatedDate: (parent: UserNode) =>
+      parent.productivityDataLastUpdatedDate === undefined
         ? null
-        : parent.productivityLogLastUpdatedDate,
+        : parent.productivityDataLastUpdatedDate,
     createdAt: (parent: UserNode) => parent.createdAt,
     updatedAt: (parent: UserNode) => parent.updatedAt
   };
@@ -332,6 +369,13 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => SleepLogNode[] | Promise<SleepLogNode[]>;
 
+  export type ProductivityDataResolver = (
+    parent: UserNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => ProductivityDataNode[] | Promise<ProductivityDataNode[]>;
+
   export type SleepLogLastUpdatedDateResolver = (
     parent: UserNode,
     args: {},
@@ -339,7 +383,7 @@ export namespace UserResolvers {
     info: GraphQLResolveInfo
   ) => string | null | Promise<string | null>;
 
-  export type ProductivityLogLastUpdatedDateResolver = (
+  export type ProductivityDataLastUpdatedDateResolver = (
     parent: UserNode,
     args: {},
     ctx: Context,
@@ -410,6 +454,13 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => SleepLogNode[] | Promise<SleepLogNode[]>;
 
+    productivityData: (
+      parent: UserNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => ProductivityDataNode[] | Promise<ProductivityDataNode[]>;
+
     sleepLogLastUpdatedDate: (
       parent: UserNode,
       args: {},
@@ -417,7 +468,7 @@ export namespace UserResolvers {
       info: GraphQLResolveInfo
     ) => string | null | Promise<string | null>;
 
-    productivityLogLastUpdatedDate: (
+    productivityDataLastUpdatedDate: (
       parent: UserNode,
       args: {},
       ctx: Context,
@@ -2116,6 +2167,103 @@ export namespace DistanceDataResolvers {
   }
 }
 
+export namespace ProductivityDataResolvers {
+  export const defaultResolvers = {
+    id: (parent: ProductivityDataNode) => parent.id,
+    startTime: (parent: ProductivityDataNode) => parent.startTime,
+    duration: (parent: ProductivityDataNode) => parent.duration,
+    activity: (parent: ProductivityDataNode) => parent.activity,
+    category: (parent: ProductivityDataNode) => parent.category,
+    productivity: (parent: ProductivityDataNode) => parent.productivity
+  };
+
+  export type IdResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type StartTimeResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type DurationResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export type ActivityResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type CategoryResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => string | Promise<string>;
+
+  export type ProductivityResolver = (
+    parent: ProductivityDataNode,
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => number | Promise<number>;
+
+  export interface Type {
+    id: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    startTime: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    duration: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+
+    activity: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    category: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => string | Promise<string>;
+
+    productivity: (
+      parent: ProductivityDataNode,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => number | Promise<number>;
+  }
+}
+
 export interface Resolvers {
   Query: QueryResolvers.Type;
   Mutation: MutationResolvers.Type;
@@ -2134,4 +2282,5 @@ export interface Resolvers {
   CalorieData: CalorieDataResolvers.Type;
   DistanceLog: DistanceLogResolvers.Type;
   DistanceData: DistanceDataResolvers.Type;
+  ProductivityData: ProductivityDataResolvers.Type;
 }

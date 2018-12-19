@@ -30,6 +30,10 @@ type AggregateHeartLog {
   count: Int!
 }
 
+type AggregateProductivityData {
+  count: Int!
+}
+
 type AggregateRescueTimeAccount {
   count: Int!
 }
@@ -1702,6 +1706,12 @@ type Mutation {
   upsertHeartLog(where: HeartLogWhereUniqueInput!, create: HeartLogCreateInput!, update: HeartLogUpdateInput!): HeartLog!
   deleteHeartLog(where: HeartLogWhereUniqueInput!): HeartLog
   deleteManyHeartLogs(where: HeartLogWhereInput): BatchPayload!
+  createProductivityData(data: ProductivityDataCreateInput!): ProductivityData!
+  updateProductivityData(data: ProductivityDataUpdateInput!, where: ProductivityDataWhereUniqueInput!): ProductivityData
+  updateManyProductivityDatas(data: ProductivityDataUpdateInput!, where: ProductivityDataWhereInput): BatchPayload!
+  upsertProductivityData(where: ProductivityDataWhereUniqueInput!, create: ProductivityDataCreateInput!, update: ProductivityDataUpdateInput!): ProductivityData!
+  deleteProductivityData(where: ProductivityDataWhereUniqueInput!): ProductivityData
+  deleteManyProductivityDatas(where: ProductivityDataWhereInput): BatchPayload!
   createRescueTimeAccount(data: RescueTimeAccountCreateInput!): RescueTimeAccount!
   updateRescueTimeAccount(data: RescueTimeAccountUpdateInput!, where: RescueTimeAccountWhereUniqueInput!): RescueTimeAccount
   updateManyRescueTimeAccounts(data: RescueTimeAccountUpdateInput!, where: RescueTimeAccountWhereInput): BatchPayload!
@@ -1757,6 +1767,209 @@ type PageInfo {
   endCursor: String
 }
 
+type ProductivityData {
+  id: ID!
+  user: User!
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
+}
+
+type ProductivityDataConnection {
+  pageInfo: PageInfo!
+  edges: [ProductivityDataEdge]!
+  aggregate: AggregateProductivityData!
+}
+
+input ProductivityDataCreateInput {
+  user: UserCreateOneWithoutProductivityDataInput!
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
+}
+
+input ProductivityDataCreateManyWithoutUserInput {
+  create: [ProductivityDataCreateWithoutUserInput!]
+  connect: [ProductivityDataWhereUniqueInput!]
+}
+
+input ProductivityDataCreateWithoutUserInput {
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
+}
+
+type ProductivityDataEdge {
+  node: ProductivityData!
+  cursor: String!
+}
+
+enum ProductivityDataOrderByInput {
+  id_ASC
+  id_DESC
+  startTime_ASC
+  startTime_DESC
+  duration_ASC
+  duration_DESC
+  activity_ASC
+  activity_DESC
+  category_ASC
+  category_DESC
+  productivity_ASC
+  productivity_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProductivityDataPreviousValues {
+  id: ID!
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
+}
+
+type ProductivityDataSubscriptionPayload {
+  mutation: MutationType!
+  node: ProductivityData
+  updatedFields: [String!]
+  previousValues: ProductivityDataPreviousValues
+}
+
+input ProductivityDataSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProductivityDataWhereInput
+  AND: [ProductivityDataSubscriptionWhereInput!]
+  OR: [ProductivityDataSubscriptionWhereInput!]
+  NOT: [ProductivityDataSubscriptionWhereInput!]
+}
+
+input ProductivityDataUpdateInput {
+  user: UserUpdateOneRequiredWithoutProductivityDataInput
+  startTime: DateTime
+  duration: Int
+  activity: String
+  category: String
+  productivity: Int
+}
+
+input ProductivityDataUpdateManyWithoutUserInput {
+  create: [ProductivityDataCreateWithoutUserInput!]
+  delete: [ProductivityDataWhereUniqueInput!]
+  connect: [ProductivityDataWhereUniqueInput!]
+  disconnect: [ProductivityDataWhereUniqueInput!]
+  update: [ProductivityDataUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [ProductivityDataUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input ProductivityDataUpdateWithoutUserDataInput {
+  startTime: DateTime
+  duration: Int
+  activity: String
+  category: String
+  productivity: Int
+}
+
+input ProductivityDataUpdateWithWhereUniqueWithoutUserInput {
+  where: ProductivityDataWhereUniqueInput!
+  data: ProductivityDataUpdateWithoutUserDataInput!
+}
+
+input ProductivityDataUpsertWithWhereUniqueWithoutUserInput {
+  where: ProductivityDataWhereUniqueInput!
+  update: ProductivityDataUpdateWithoutUserDataInput!
+  create: ProductivityDataCreateWithoutUserInput!
+}
+
+input ProductivityDataWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  user: UserWhereInput
+  startTime: DateTime
+  startTime_not: DateTime
+  startTime_in: [DateTime!]
+  startTime_not_in: [DateTime!]
+  startTime_lt: DateTime
+  startTime_lte: DateTime
+  startTime_gt: DateTime
+  startTime_gte: DateTime
+  duration: Int
+  duration_not: Int
+  duration_in: [Int!]
+  duration_not_in: [Int!]
+  duration_lt: Int
+  duration_lte: Int
+  duration_gt: Int
+  duration_gte: Int
+  activity: String
+  activity_not: String
+  activity_in: [String!]
+  activity_not_in: [String!]
+  activity_lt: String
+  activity_lte: String
+  activity_gt: String
+  activity_gte: String
+  activity_contains: String
+  activity_not_contains: String
+  activity_starts_with: String
+  activity_not_starts_with: String
+  activity_ends_with: String
+  activity_not_ends_with: String
+  category: String
+  category_not: String
+  category_in: [String!]
+  category_not_in: [String!]
+  category_lt: String
+  category_lte: String
+  category_gt: String
+  category_gte: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  productivity: Int
+  productivity_not: Int
+  productivity_in: [Int!]
+  productivity_not_in: [Int!]
+  productivity_lt: Int
+  productivity_lte: Int
+  productivity_gt: Int
+  productivity_gte: Int
+  AND: [ProductivityDataWhereInput!]
+  OR: [ProductivityDataWhereInput!]
+  NOT: [ProductivityDataWhereInput!]
+}
+
+input ProductivityDataWhereUniqueInput {
+  id: ID
+}
+
 type Query {
   calorieData(where: CalorieDataWhereUniqueInput!): CalorieData
   calorieDatas(where: CalorieDataWhereInput, orderBy: CalorieDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieData]!
@@ -1782,6 +1995,9 @@ type Query {
   heartLog(where: HeartLogWhereUniqueInput!): HeartLog
   heartLogs(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HeartLog]!
   heartLogsConnection(where: HeartLogWhereInput, orderBy: HeartLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeartLogConnection!
+  productivityData(where: ProductivityDataWhereUniqueInput!): ProductivityData
+  productivityDatas(where: ProductivityDataWhereInput, orderBy: ProductivityDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductivityData]!
+  productivityDatasConnection(where: ProductivityDataWhereInput, orderBy: ProductivityDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductivityDataConnection!
   rescueTimeAccount(where: RescueTimeAccountWhereUniqueInput!): RescueTimeAccount
   rescueTimeAccounts(where: RescueTimeAccountWhereInput, orderBy: RescueTimeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [RescueTimeAccount]!
   rescueTimeAccountsConnection(where: RescueTimeAccountWhereInput, orderBy: RescueTimeAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RescueTimeAccountConnection!
@@ -3139,6 +3355,7 @@ type Subscription {
   googleFitAccount(where: GoogleFitAccountSubscriptionWhereInput): GoogleFitAccountSubscriptionPayload
   heartData(where: HeartDataSubscriptionWhereInput): HeartDataSubscriptionPayload
   heartLog(where: HeartLogSubscriptionWhereInput): HeartLogSubscriptionPayload
+  productivityData(where: ProductivityDataSubscriptionWhereInput): ProductivityDataSubscriptionPayload
   rescueTimeAccount(where: RescueTimeAccountSubscriptionWhereInput): RescueTimeAccountSubscriptionPayload
   sleepData(where: SleepDataSubscriptionWhereInput): SleepDataSubscriptionPayload
   sleepLog(where: SleepLogSubscriptionWhereInput): SleepLogSubscriptionPayload
@@ -3159,8 +3376,9 @@ type User {
   stepLogs(where: StepLogWhereInput, orderBy: StepLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [StepLog!]
   calorieLogs(where: CalorieLogWhereInput, orderBy: CalorieLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CalorieLog!]
   distanceLogs(where: DistanceLogWhereInput, orderBy: DistanceLogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DistanceLog!]
+  productivityData(where: ProductivityDataWhereInput, orderBy: ProductivityDataOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductivityData!]
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -3182,8 +3400,9 @@ input UserCreateInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateOneWithoutCalorieLogsInput {
@@ -3208,6 +3427,11 @@ input UserCreateOneWithoutGoogleFitAccountInput {
 
 input UserCreateOneWithoutHeartLogsInput {
   create: UserCreateWithoutHeartLogsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutProductivityDataInput {
+  create: UserCreateWithoutProductivityDataInput
   connect: UserWhereUniqueInput
 }
 
@@ -3236,8 +3460,9 @@ input UserCreateWithoutCalorieLogsInput {
   heartLogs: HeartLogCreateManyWithoutUserInput
   stepLogs: StepLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutDistanceLogsInput {
@@ -3250,8 +3475,9 @@ input UserCreateWithoutDistanceLogsInput {
   heartLogs: HeartLogCreateManyWithoutUserInput
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutFitbitAccountInput {
@@ -3264,8 +3490,9 @@ input UserCreateWithoutFitbitAccountInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutGoogleFitAccountInput {
@@ -3278,8 +3505,9 @@ input UserCreateWithoutGoogleFitAccountInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutHeartLogsInput {
@@ -3292,8 +3520,24 @@ input UserCreateWithoutHeartLogsInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
+}
+
+input UserCreateWithoutProductivityDataInput {
+  email: String!
+  password: String!
+  googleFitAccount: GoogleFitAccountCreateOneWithoutUserInput
+  fitbitAccount: FitbitAccountCreateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountCreateOneWithoutUserInput
+  sleepLogs: SleepLogCreateManyWithoutUserInput
+  heartLogs: HeartLogCreateManyWithoutUserInput
+  stepLogs: StepLogCreateManyWithoutUserInput
+  calorieLogs: CalorieLogCreateManyWithoutUserInput
+  distanceLogs: DistanceLogCreateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutRescueTimeAccountInput {
@@ -3306,8 +3550,9 @@ input UserCreateWithoutRescueTimeAccountInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutSleepLogsInput {
@@ -3320,8 +3565,9 @@ input UserCreateWithoutSleepLogsInput {
   stepLogs: StepLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserCreateWithoutStepLogsInput {
@@ -3334,8 +3580,9 @@ input UserCreateWithoutStepLogsInput {
   heartLogs: HeartLogCreateManyWithoutUserInput
   calorieLogs: CalorieLogCreateManyWithoutUserInput
   distanceLogs: DistanceLogCreateManyWithoutUserInput
+  productivityData: ProductivityDataCreateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 type UserEdge {
@@ -3352,8 +3599,8 @@ enum UserOrderByInput {
   password_DESC
   sleepLogLastUpdatedDate_ASC
   sleepLogLastUpdatedDate_DESC
-  productivityLogLastUpdatedDate_ASC
-  productivityLogLastUpdatedDate_DESC
+  productivityDataLastUpdatedDate_ASC
+  productivityDataLastUpdatedDate_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -3365,7 +3612,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -3399,8 +3646,9 @@ input UserUpdateInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateOneRequiredWithoutCalorieLogsInput {
@@ -3438,6 +3686,13 @@ input UserUpdateOneRequiredWithoutHeartLogsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneRequiredWithoutProductivityDataInput {
+  create: UserCreateWithoutProductivityDataInput
+  update: UserUpdateWithoutProductivityDataDataInput
+  upsert: UserUpsertWithoutProductivityDataInput
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateOneRequiredWithoutRescueTimeAccountInput {
   create: UserCreateWithoutRescueTimeAccountInput
   update: UserUpdateWithoutRescueTimeAccountDataInput
@@ -3469,8 +3724,9 @@ input UserUpdateWithoutCalorieLogsDataInput {
   heartLogs: HeartLogUpdateManyWithoutUserInput
   stepLogs: StepLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutDistanceLogsDataInput {
@@ -3483,8 +3739,9 @@ input UserUpdateWithoutDistanceLogsDataInput {
   heartLogs: HeartLogUpdateManyWithoutUserInput
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutFitbitAccountDataInput {
@@ -3497,8 +3754,9 @@ input UserUpdateWithoutFitbitAccountDataInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutGoogleFitAccountDataInput {
@@ -3511,8 +3769,9 @@ input UserUpdateWithoutGoogleFitAccountDataInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutHeartLogsDataInput {
@@ -3525,8 +3784,24 @@ input UserUpdateWithoutHeartLogsDataInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
+}
+
+input UserUpdateWithoutProductivityDataDataInput {
+  email: String
+  password: String
+  googleFitAccount: GoogleFitAccountUpdateOneWithoutUserInput
+  fitbitAccount: FitbitAccountUpdateOneWithoutUserInput
+  rescueTimeAccount: RescueTimeAccountUpdateOneWithoutUserInput
+  sleepLogs: SleepLogUpdateManyWithoutUserInput
+  heartLogs: HeartLogUpdateManyWithoutUserInput
+  stepLogs: StepLogUpdateManyWithoutUserInput
+  calorieLogs: CalorieLogUpdateManyWithoutUserInput
+  distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  sleepLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutRescueTimeAccountDataInput {
@@ -3539,8 +3814,9 @@ input UserUpdateWithoutRescueTimeAccountDataInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutSleepLogsDataInput {
@@ -3553,8 +3829,9 @@ input UserUpdateWithoutSleepLogsDataInput {
   stepLogs: StepLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpdateWithoutStepLogsDataInput {
@@ -3567,8 +3844,9 @@ input UserUpdateWithoutStepLogsDataInput {
   heartLogs: HeartLogUpdateManyWithoutUserInput
   calorieLogs: CalorieLogUpdateManyWithoutUserInput
   distanceLogs: DistanceLogUpdateManyWithoutUserInput
+  productivityData: ProductivityDataUpdateManyWithoutUserInput
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
 }
 
 input UserUpsertWithoutCalorieLogsInput {
@@ -3594,6 +3872,11 @@ input UserUpsertWithoutGoogleFitAccountInput {
 input UserUpsertWithoutHeartLogsInput {
   update: UserUpdateWithoutHeartLogsDataInput!
   create: UserCreateWithoutHeartLogsInput!
+}
+
+input UserUpsertWithoutProductivityDataInput {
+  update: UserUpdateWithoutProductivityDataDataInput!
+  create: UserCreateWithoutProductivityDataInput!
 }
 
 input UserUpsertWithoutRescueTimeAccountInput {
@@ -3672,6 +3955,9 @@ input UserWhereInput {
   distanceLogs_every: DistanceLogWhereInput
   distanceLogs_some: DistanceLogWhereInput
   distanceLogs_none: DistanceLogWhereInput
+  productivityData_every: ProductivityDataWhereInput
+  productivityData_some: ProductivityDataWhereInput
+  productivityData_none: ProductivityDataWhereInput
   sleepLogLastUpdatedDate: DateTime
   sleepLogLastUpdatedDate_not: DateTime
   sleepLogLastUpdatedDate_in: [DateTime!]
@@ -3680,14 +3966,14 @@ input UserWhereInput {
   sleepLogLastUpdatedDate_lte: DateTime
   sleepLogLastUpdatedDate_gt: DateTime
   sleepLogLastUpdatedDate_gte: DateTime
-  productivityLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate_not: DateTime
-  productivityLogLastUpdatedDate_in: [DateTime!]
-  productivityLogLastUpdatedDate_not_in: [DateTime!]
-  productivityLogLastUpdatedDate_lt: DateTime
-  productivityLogLastUpdatedDate_lte: DateTime
-  productivityLogLastUpdatedDate_gt: DateTime
-  productivityLogLastUpdatedDate_gte: DateTime
+  productivityDataLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate_not: DateTime
+  productivityDataLastUpdatedDate_in: [DateTime!]
+  productivityDataLastUpdatedDate_not_in: [DateTime!]
+  productivityDataLastUpdatedDate_lt: DateTime
+  productivityDataLastUpdatedDate_lte: DateTime
+  productivityDataLastUpdatedDate_gt: DateTime
+  productivityDataLastUpdatedDate_gte: DateTime
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

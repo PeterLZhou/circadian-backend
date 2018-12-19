@@ -11,11 +11,13 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  refreshSleepLogs(userId: ID!): String!
-  deleteAllSleepLogs(userId: ID!): String!
   deleteUser(userId: ID!): User
   createRescueTimeAccount(userId: ID!, oneTimeCode: String!): RescueTimeAccount!
   deleteFitbitAccount(id: ID!): FitbitAccount
+  refreshSleepLogs(userId: ID!): String!
+  deleteAllSleepLogs(userId: ID!): String!
+  refreshProductivityData(userId: ID!): String!
+  deleteAllProductivityData(userId: ID!): String!
 }
 
 type AuthPayload {
@@ -31,8 +33,9 @@ type User {
   fitbitAccount: FitbitAccount
   rescueTimeAccount: RescueTimeAccount
   sleepLogs: [SleepLog!]!
+  productivityData: [ProductivityData!]!
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -178,4 +181,13 @@ type DistanceData {
   distanceLog: DistanceLog!
   dateTime: DateTime!
   distance: Float!
+}
+
+type ProductivityData {
+  id: ID!
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
 }

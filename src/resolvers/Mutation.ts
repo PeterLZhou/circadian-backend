@@ -1,6 +1,7 @@
 import { APP_SECRET, getUserId } from '../utils';
 import { compare, hash } from 'bcrypt';
 import { getAccessToken } from '../api/rescuetime/signup';
+import { getAllUpdatedProductivityData } from '../api/rescuetime/productivity';
 import { getAllUpdatedSleepLogs, getSleepLogs } from '../api/fitbit/sleep';
 import { MutationResolvers } from '../generated/graphqlgen';
 import { sign } from 'jsonwebtoken';
@@ -59,7 +60,25 @@ export const Mutation: MutationResolvers.Type = {
       where: { id: userId },
       data: { sleepLogLastUpdatedDate: "2007-03-26T00:00:00" }
     });
-    return "OK";
+    return sleepLogs.length.toString();
+  },
+  refreshProductivityData: async (_parent, { userId }, ctx) => {
+    const result = await getAllUpdatedProductivityData(userId);
+    if (result != undefined) {
+      return result.toString();
+    }
+    return "Error";
+  },
+  deleteAllProductivityData: async (_parent, { userId }, ctx) => {
+    const count = await ctx.db
+      .deleteManyProductivityDatas({ user: { id: userId } })
+      .count();
+    await ctx.db.updateUser({
+      where: { id: userId },
+      // TODO fix
+      data: { productivityDataLastUpdatedDate: "2018-12-18T00:00:00" }
+    });
+    return count;
   },
   deleteUser: async (_parent, { userId }, ctx) => {
     let user = await ctx.db.deleteUser({ id: userId }).catch(error => {

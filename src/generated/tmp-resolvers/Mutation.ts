@@ -11,11 +11,13 @@ export const Mutation: MutationResolvers.Type = {
   login: (parent, args) => {
     throw new Error("Resolver not implemented");
   },
-  refreshSleepLogs: (parent, args) => "",
-  deleteAllSleepLogs: (parent, args) => "",
   deleteUser: (parent, args) => null,
   createRescueTimeAccount: (parent, args) => {
     throw new Error("Resolver not implemented");
   },
-  deleteFitbitAccount: (parent, args) => null
+  deleteFitbitAccount: (parent, args) => null,
+  refreshSleepLogs: (parent, args) => "",
+  deleteAllSleepLogs: (parent, args) => "",
+  refreshProductivityData: (parent, args) => "",
+  deleteAllProductivityData: (parent, args) => ""
 };

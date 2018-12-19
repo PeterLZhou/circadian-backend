@@ -10,8 +10,9 @@ type User {
   stepLogs: [StepLog!]! @relation(name: "StepLogOnUser", onDelete: CASCADE)
   calorieLogs: [CalorieLog!]! @relation(name: "CalorieLogOnUser", onDelete: CASCADE)
   distanceLogs: [DistanceLog!]! @relation(name: "DistanceLogOnUser", onDelete: CASCADE)
+  productivityData: [ProductivityData!]! @relation(name: "ProductivityDataOnUser", onDelete: CASCADE)
   sleepLogLastUpdatedDate: DateTime
-  productivityLogLastUpdatedDate: DateTime
+  productivityDataLastUpdatedDate: DateTime
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -159,3 +160,12 @@ type DistanceData {
   distance: Float!
 }
 
+type ProductivityData {
+  id: ID! @unique
+  user: User! @relation(name: "ProductivityDataOnUser")
+  startTime: DateTime!
+  duration: Int!
+  activity: String!
+  category: String!
+  productivity: Int!
+}

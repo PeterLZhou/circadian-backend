@@ -20,6 +20,7 @@ import { CalorieLog } from "./CalorieLog";
 import { CalorieData } from "./CalorieData";
 import { DistanceLog } from "./DistanceLog";
 import { DistanceData } from "./DistanceData";
+import { ProductivityData } from "./ProductivityData";
 
 export const resolvers: Resolvers = {
   Query,
@@ -38,5 +39,6 @@ export const resolvers: Resolvers = {
   CalorieLog,
   CalorieData,
   DistanceLog,
-  DistanceData
+  DistanceData,
+  ProductivityData
 };
