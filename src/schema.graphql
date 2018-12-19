@@ -5,12 +5,13 @@ type Query {
   users: [User!]!
   fitbitAccounts: [FitbitAccount!]!
   sleepDatas: [SleepData!]!
+  sleepLogs: [SleepLog!]!
 }
 
 type Mutation {
   signup(email: String!, password: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  getSleepLogs(userId: ID!): String!
+  refreshSleepLogs(userId: ID!): String!
   deleteAllSleepLogs(userId: ID!): String!
   deleteUser(userId: ID!): User
   createRescueTimeAccount(userId: ID!, oneTimeCode: String!): RescueTimeAccount!

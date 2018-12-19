@@ -14,5 +14,8 @@ export const Query: QueryResolvers.Type = {
   },
   sleepDatas: parent => {
     throw new Error("Resolver not implemented");
+  },
+  sleepLogs: parent => {
+    throw new Error("Resolver not implemented");
   }
 };

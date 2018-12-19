@@ -36,14 +36,24 @@ export const Mutation: MutationResolvers.Type = {
       user
     };
   },
-  getSleepLogs: async (_parent, { userId }, ctx) => {
+  refreshSleepLogs: async (_parent, { userId }, ctx) => {
     const result = await getAllUpdatedSleepLogs(userId);
-    return "OK";
+    if (result != undefined) {
+      return result.toString();
+    }
+    return "Error";
   },
 
   deleteAllSleepLogs: async (_parent, { userId }, ctx) => {
-    await ctx.db.deleteManySleepLogs({ user: { id: userId } }).catch(error => {
-      console.log(error);
+    // https://github.com/prisma/prisma/issues/1936 cannot do a deleteMany because it doesn't support cascading deletes
+    // await ctx.db.deleteManySleepLogs({ user: { id: userId } }).catch(error => {
+    //   console.log(error);
+    // });
+    const sleepLogs = await ctx.db.user({ id: userId }).sleepLogs();
+    sleepLogs.forEach(sleepLog => {
+      ctx.db.deleteSleepLog({ id: sleepLog.id }).catch(error => {
+        throw new Error(error);
+      });
     });
     await ctx.db.updateUser({
       where: { id: userId },

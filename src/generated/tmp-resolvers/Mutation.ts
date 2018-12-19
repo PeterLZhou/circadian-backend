@@ -11,7 +11,7 @@ export const Mutation: MutationResolvers.Type = {
   login: (parent, args) => {
     throw new Error("Resolver not implemented");
   },
-  getSleepLogs: (parent, args) => "",
+  refreshSleepLogs: (parent, args) => "",
   deleteAllSleepLogs: (parent, args) => "",
   deleteUser: (parent, args) => null,
   createRescueTimeAccount: (parent, args) => {

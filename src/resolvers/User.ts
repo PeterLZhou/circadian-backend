@@ -15,6 +15,7 @@ export const User: UserResolvers.Type = {
     return prisma.user({ id: parent.id }).rescueTimeAccount();
   },
   sleepLogs: async parent => {
-    return prisma.user({ id: parent.id }).sleepLogs({ last: 5 });
+    await getAllUpdatedSleepLogs(parent.id);
+    return prisma.user({ id: parent.id }).sleepLogs();
   }
 };

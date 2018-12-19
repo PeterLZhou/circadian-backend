@@ -1,9 +1,9 @@
-import * as moment from "moment";
-import * as querystring from "querystring";
-import axios from "axios";
-import { access } from "fs";
-import { prisma } from "../../generated/prisma-client";
-import { refreshToken } from "./refresh";
+import * as moment from 'moment';
+import * as querystring from 'querystring';
+import axios from 'axios';
+import { access } from 'fs';
+import { prisma } from '../../generated/prisma-client';
+import { refreshToken } from './refresh';
 
 // Date is yyyy-MM-dd
 export const getSleepLogs = async (userId: string, date: string) => {
@@ -55,56 +55,77 @@ export const getAllUpdatedSleepLogs = async (userId: string) => {
     accessToken = newTokens.accessToken;
   }
   const earliestDate = sleepLogLastUpdatedDate
-    ? moment(sleepLogLastUpdatedDate).format("YYYY-MM-DDTHH:mm:ss")
-    : moment()
-        .subtract(31, "days")
-        .format("YYYY-MM-DD");
+    ? moment(sleepLogLastUpdatedDate)
+        .utc()
+        .format("YYYY-MM-DDTHH:mm:ss")
+    : "2007-03-26";
 
   // TODO will only get 100, need to get everything
-  let nextLink = `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`;
-  let latestDate = "2007-03-26";
+  let nextLink:
+    | string
+    | null = `https://api.fitbit.com/1.2/user/${fitbitUserId}/sleep/list.json?afterDate=${earliestDate}&sort=asc&offset=0&limit=100`;
+  let latestDate = earliestDate;
+  let addedEntries = 0;
   while (nextLink) {
     try {
-      const response = await axios.get(nextLink, {
+      const response: any = await axios.get(nextLink, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
       });
-
-      response.data.sleep.forEach((sleepLog: any) => {
-        createSleepLog(userId, sleepLog);
-      });
-
-      if (response.data.sleep.levels) {
-        response.data.sleep.levels.data.forEach((data: any) => {
-          if (moment(data.dateTime).isAfter(latestDate)) {
-            latestDate = data.dateTime;
-          }
-        });
-
-        response.data.sleep.levels.shortData.forEach((data: any) => {
-          if (moment(data.dateTime).isAfter(latestDate)) {
-            latestDate = data.dateTime;
+      if (response.data.sleep && response.data.sleep.length > 0) {
+        response.data.sleep.forEach((sleepLog: any) => {
+          addedEntries++;
+          createSleepLog(userId, sleepLog);
+          if (sleepLog.levels && sleepLog.levels.data) {
+            sleepLog.levels.data.forEach((data: any) => {
+              if (
+                moment(data.dateTime)
+                  .add(data.seconds, "seconds")
+                  .isAfter(latestDate)
+              ) {
+                latestDate = moment(data.dateTime)
+                  .add(data.seconds, "seconds")
+                  .format("YYYY-MM-DDTHH:mm:ss");
+              }
+            });
+          } else if (sleepLog.levels && sleepLog.levels.shortData) {
+            sleepLog.levels.shortData.forEach((data: any) => {
+              if (
+                moment(data.dateTime)
+                  .add(data.seconds, "seconds")
+                  .isAfter(latestDate)
+              ) {
+                latestDate = moment(data.dateTime)
+                  .add(data.seconds, "seconds")
+                  .format("YYYY-MM-DDTHH:mm:ss");
+              }
+            });
           }
         });
       }
-
       if (response.data.pagination) {
         nextLink = response.data.pagination.next;
       } else {
         nextLink = "";
       }
     } catch (error) {
+      nextLink = null;
       console.log(error.response.data.errors);
     }
   }
-
-  await prisma.updateUser({
-    where: { id: userId },
-    data: {
-      sleepLogLastUpdatedDate: moment(latestDate).format("YYYY-MM-DDTHH:mm:ss")
-    }
-  });
+  if (addedEntries) {
+    await prisma.updateUser({
+      where: { id: userId },
+      data: {
+        sleepLogLastUpdatedDate: moment(latestDate)
+          .utc()
+          .add(1, "seconds")
+          .format("YYYY-MM-DDTHH:mm:ss")
+      }
+    });
+  }
+  return addedEntries;
 };
 
 export const createSleepLog = async (userId: string, sleepLog: any) => {

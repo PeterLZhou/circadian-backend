@@ -49,6 +49,13 @@ export namespace QueryResolvers {
     info: GraphQLResolveInfo
   ) => SleepDataNode[] | Promise<SleepDataNode[]>;
 
+  export type SleepLogsResolver = (
+    parent: {},
+    args: {},
+    ctx: Context,
+    info: GraphQLResolveInfo
+  ) => SleepLogNode[] | Promise<SleepLogNode[]>;
+
   export interface Type {
     me: (
       parent: {},
@@ -77,6 +84,13 @@ export namespace QueryResolvers {
       ctx: Context,
       info: GraphQLResolveInfo
     ) => SleepDataNode[] | Promise<SleepDataNode[]>;
+
+    sleepLogs: (
+      parent: {},
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => SleepLogNode[] | Promise<SleepLogNode[]>;
   }
 }
 
@@ -93,9 +107,8 @@ export namespace MutationResolvers {
     password: string;
   }
 
-  export interface ArgsGetSleepLogs {
+  export interface ArgsRefreshSleepLogs {
     userId: string;
-    date: string;
   }
 
   export interface ArgsDeleteAllSleepLogs {
@@ -129,9 +142,9 @@ export namespace MutationResolvers {
     info: GraphQLResolveInfo
   ) => AuthPayload | Promise<AuthPayload>;
 
-  export type GetSleepLogsResolver = (
+  export type RefreshSleepLogsResolver = (
     parent: {},
-    args: ArgsGetSleepLogs,
+    args: ArgsRefreshSleepLogs,
     ctx: Context,
     info: GraphQLResolveInfo
   ) => string | Promise<string>;
@@ -179,9 +192,9 @@ export namespace MutationResolvers {
       info: GraphQLResolveInfo
     ) => AuthPayload | Promise<AuthPayload>;
 
-    getSleepLogs: (
+    refreshSleepLogs: (
       parent: {},
-      args: ArgsGetSleepLogs,
+      args: ArgsRefreshSleepLogs,
       ctx: Context,
       info: GraphQLResolveInfo
     ) => string | Promise<string>;

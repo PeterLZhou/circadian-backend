@@ -13,5 +13,8 @@ export const Query: QueryResolvers.Type = {
   },
   sleepDatas: (parent, args, ctx) => {
     return ctx.db.sleepDatas();
+  },
+  sleepLogs: (parent, args, ctx) => {
+    return ctx.db.sleepLogs();
   }
 };
