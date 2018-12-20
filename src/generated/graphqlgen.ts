@@ -320,6 +320,10 @@ export namespace UserResolvers {
     updatedAt: (parent: UserNode) => parent.updatedAt
   };
 
+  export interface ArgsProductivityData {
+    day: string;
+  }
+
   export type IdResolver = (
     parent: UserNode,
     args: {},
@@ -371,7 +375,7 @@ export namespace UserResolvers {
 
   export type ProductivityDataResolver = (
     parent: UserNode,
-    args: {},
+    args: ArgsProductivityData,
     ctx: Context,
     info: GraphQLResolveInfo
   ) => ProductivityDataNode[] | Promise<ProductivityDataNode[]>;
@@ -456,7 +460,7 @@ export namespace UserResolvers {
 
     productivityData: (
       parent: UserNode,
-      args: {},
+      args: ArgsProductivityData,
       ctx: Context,
       info: GraphQLResolveInfo
     ) => ProductivityDataNode[] | Promise<ProductivityDataNode[]>;

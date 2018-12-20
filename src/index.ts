@@ -1,13 +1,14 @@
-import * as bodyParser from "body-parser";
-import * as querystring from "querystring";
-import axios from "axios";
-import { base64Hash, getFrontendUrl } from "./utils";
-import { fetchAggregateSteps } from "./api/googlefit/aggregate";
-import { getAllUpdatedSleepLogs, getSleepLogs } from "./api/fitbit/sleep";
-import { GraphQLServer } from "graphql-yoga";
-import { permissions } from "./permissions";
-import { prisma } from "./generated/prisma-client";
-import { resolvers } from "./resolvers";
+import * as bodyParser from 'body-parser';
+import * as moment from 'moment';
+import * as querystring from 'querystring';
+import axios from 'axios';
+import { base64Hash, getFrontendUrl } from './utils';
+import { fetchAggregateSteps } from './api/googlefit/aggregate';
+import { getAllUpdatedSleepLogs, getSleepLogs } from './api/fitbit/sleep';
+import { GraphQLServer } from 'graphql-yoga';
+import { permissions } from './permissions';
+import { prisma } from './generated/prisma-client';
+import { resolvers } from './resolvers';
 
 const server = new GraphQLServer({
   typeDefs: "src/schema.graphql",
@@ -34,18 +35,7 @@ server.express.use((req, res, next) => {
 server.express.use(bodyParser.json());
 server.express.use(bodyParser.urlencoded({ extended: true }));
 
-server.express.get("/hello", (req, res) => {
-  fetchAggregateSteps("me", 1538798400000, 1541217600000);
-  res.send("HELLO NONGRAPHQL ENDPOINT");
-});
-
 server.express.get("/oauthcallback", (req, res) => {});
-
-server.express.post("/user/:id/googlefitauthenticate", (req, res) => {
-  const userId = req.params.id;
-  const oneTimeCode = req.body.code;
-  // WE ARE HERE, NOW TO REFRESH THE TOKEN!
-});
 
 server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
   const userId = req.params.id;
@@ -59,7 +49,8 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         grant_type: "authorization_code",
         code: oneTimeCode,
         client_id: process.env.FITBIT_CLIENT_ID,
-        redirect_uri: getFrontendUrl() + "/auth/fitbit"
+        redirect_uri: getFrontendUrl() + "/auth/fitbit",
+        expires_in: 30
       }),
     data: {},
     headers: {
@@ -71,10 +62,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
   })
     .then(async response => {
       const payload = response.data;
-      let expirationDate = new Date();
-      expirationDate.setSeconds(
-        expirationDate.getSeconds() + payload.expires_in
-      );
+      let expirationDate = moment().add(payload.expires_in, "seconds");
 
       const existingAccountId = await prisma
         .user({ id: userId })
@@ -91,7 +79,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
             accessToken: payload.access_token,
             refreshToken: payload.refresh_token,
             fitbitUserId: payload.user_id,
-            expiration: expirationDate.toISOString()
+            expiration: expirationDate.format("YYYY-MM-DDTHH:mm:ss.SSSZ")
           })
           .then(acct => {})
           .catch(error => {
@@ -104,7 +92,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
               accessToken: payload.access_token,
               refreshToken: payload.refresh_token,
               fitbitUserId: payload.user_id,
-              expiration: expirationDate.toISOString()
+              expiration: expirationDate.format("YYYY-MM-DDTHH:mm:ss.SSSZ")
             },
             where: {
               id: existingAccountId

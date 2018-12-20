@@ -8,6 +8,7 @@ import { GoogleFitAccount } from './GoogleFitAccount';
 import { HeartData } from './HeartData';
 import { HeartLog } from './HeartLog';
 import { Mutation } from './Mutation';
+import { ProductivityData } from './ProductivityData';
 import { Query } from './Query';
 import { RescueTimeAccount } from './RescueTimeAccount';
 import { Resolvers } from '../generated/graphqlgen';
@@ -34,5 +35,6 @@ export const resolvers: Resolvers = {
   StepLog,
   CalorieData,
   CalorieLog,
-  RescueTimeAccount
+  RescueTimeAccount,
+  ProductivityData
 };

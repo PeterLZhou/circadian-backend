@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { getAllUpdatedSleepLogs } from '../api/fitbit/sleep';
 import { prisma } from '../generated/prisma-client';
 import { UserResolvers } from '../generated/graphqlgen';
@@ -18,7 +19,15 @@ export const User: UserResolvers.Type = {
     // await getAllUpdatedSleepLogs(parent.id);
     return prisma.user({ id: parent.id }).sleepLogs();
   },
-  productivityData: async parent => {
-    return prisma.user({ id: parent.id }).productivityData();
+  productivityData: async (parent, { day }, ctx) => {
+    const currentDay = moment(day).utc();
+    const nextDay = currentDay.clone().add(1, "day");
+    return prisma.user({ id: parent.id }).productivityData({
+      where: {
+        startTime_lt: nextDay.format("YYYY-MM-DDTHH:mm:ss"),
+        startTime_gte: currentDay.format("YYYY-MM-DDTHH:mm:ss")
+      },
+      orderBy: "startTime_ASC"
+    });
   }
 };

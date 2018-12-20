@@ -33,7 +33,7 @@ type User {
   fitbitAccount: FitbitAccount
   rescueTimeAccount: RescueTimeAccount
   sleepLogs: [SleepLog!]!
-  productivityData: [ProductivityData!]!
+  productivityData(day: DateTime!): [ProductivityData!]!
   sleepLogLastUpdatedDate: DateTime
   productivityDataLastUpdatedDate: DateTime
   createdAt: DateTime!

@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as querystring from 'querystring';
 import axios from 'axios';
 import { base64Hash, getFrontendUrl } from '../../utils';
@@ -25,7 +26,8 @@ export const refreshToken = async (
         querystring.stringify({
           grant_type: "refresh_token",
           refresh_token: refreshToken,
-          redirect_uri: getFrontendUrl() + "/auth/fitbit"
+          redirect_uri: getFrontendUrl() + "/auth/fitbit",
+          expires_in: 30
         }),
       data: {},
       headers: {
@@ -36,19 +38,17 @@ export const refreshToken = async (
       }
     })
       .then(response => {
-        let expirationDate = new Date();
-        expirationDate.setSeconds(
-          expirationDate.getSeconds() + response.data.expires_in
-        );
+        let expirationDate = moment().utc();
+        expirationDate.add(response.data.expires_in, "seconds");
         console.log("got new token");
         console.log(response.data.access_token);
         console.log(response.data.refresh_token);
-
+        console.log(expirationDate);
         prisma.updateFitbitAccount({
           data: {
             accessToken: response.data.access_token,
             refreshToken: response.data.refresh_token,
-            expiration: expirationDate.toISOString()
+            expiration: expirationDate.format("YYYY-MM-DDTHH:mm:ss.SSSZ")
           },
           where: {
             id: fitbitAccountId
@@ -57,7 +57,7 @@ export const refreshToken = async (
         resolve({
           accessToken: response.data.access_token,
           refreshToken: response.data.refresh_token,
-          expiration: expirationDate.toISOString()
+          expiration: expirationDate.format("YYYY-MM-DDTHH:mm:ss.SSSZ")
         });
       })
       .catch(error => {

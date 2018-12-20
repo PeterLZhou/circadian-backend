@@ -18,7 +18,7 @@ export const User: UserResolvers.Type = {
   sleepLogs: parent => {
     throw new Error("Resolver not implemented");
   },
-  productivityData: parent => {
+  productivityData: (parent, args) => {
     throw new Error("Resolver not implemented");
   }
 };

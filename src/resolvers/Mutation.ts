@@ -75,8 +75,7 @@ export const Mutation: MutationResolvers.Type = {
       .count();
     await ctx.db.updateUser({
       where: { id: userId },
-      // TODO fix
-      data: { productivityDataLastUpdatedDate: "2018-12-18T00:00:00" }
+      data: { productivityDataLastUpdatedDate: "2009-01-01T00:00:00" }
     });
     return count;
   },
