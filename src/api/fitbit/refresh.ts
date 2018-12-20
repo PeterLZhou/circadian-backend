@@ -26,8 +26,7 @@ export const refreshToken = async (
         querystring.stringify({
           grant_type: "refresh_token",
           refresh_token: refreshToken,
-          redirect_uri: getFrontendUrl() + "/auth/fitbit",
-          expires_in: 30
+          redirect_uri: getFrontendUrl() + "/auth/fitbit"
         }),
       data: {},
       headers: {

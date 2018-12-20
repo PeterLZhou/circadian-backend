@@ -49,8 +49,7 @@ server.express.post("/user/:id/fitbitauthenticate", async (req, res) => {
         grant_type: "authorization_code",
         code: oneTimeCode,
         client_id: process.env.FITBIT_CLIENT_ID,
-        redirect_uri: getFrontendUrl() + "/auth/fitbit",
-        expires_in: 30
+        redirect_uri: getFrontendUrl() + "/auth/fitbit"
       }),
     data: {},
     headers: {
