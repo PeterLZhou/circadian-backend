@@ -24,12 +24,6 @@ export const getAllUpdatedProductivityData = async (userId: string) => {
     let monthFound = false;
     while (!monthFound) {
       let nextMonth = latestDate.clone().add(1, "month");
-      console.log(
-        "searching between " +
-          latestDate.format("YYYY-MM-DD") +
-          " and " +
-          nextMonth.format("YYYY-MM-DD")
-      );
       const searchResponse = await axios
         .post("https://www.rescuetime.com/api/oauth/data", {
           access_token: rescueTimeAccessToken,
